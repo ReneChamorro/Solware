@@ -1,0 +1,77 @@
+document.addEventListener('DOMContentLoaded', () => {
+  // Función para cargar un archivo HTML y agregarlo al DOM
+  async function loadHTML(fileName, elementId) {
+    try {
+      const response = await fetch(fileName);
+      const html = await response.text();
+      document.getElementById(elementId).innerHTML = html;
+    } catch (error) {
+      console.error(`Error al cargar ${fileName}:`, error);
+      // Manejo de errores (puedes mostrar un mensaje al usuario, etc.)
+    }
+  }
+
+  // Cargar el encabezado y pie de página
+  loadHTML('header.html', 'header');
+  loadHTML('footer.html', 'footer');
+
+  // Lógica del formulario 
+  const formulario = document.getElementById('contactForm');
+  const servicioSelect = document.getElementById('servicio');
+  const precioInput = document.getElementById('precio');
+
+  // Evento para actualizar el precio al seleccionar un servicio
+  servicioSelect.addEventListener('change', () => {
+    const selectedOption = servicioSelect.options[servicioSelect.selectedIndex];
+    const precio = selectedOption.dataset.precio;
+
+    if (precio) {
+      precioInput.value = precio;
+    } else {
+      precioInput.value = '';
+    }
+  });
+
+  formulario.addEventListener('submit', async (event) => {
+    event.preventDefault(); // Evitar el envío tradicional del formulario
+
+    const formData = new FormData(formulario);
+    const data = Object.fromEntries(formData);
+
+    const precio = data.servicio ? data.servicio.split('$')[0] : ''; // Extraer precio
+
+    try {
+      const response = await fetch('/api/enviar-formulario', { // Ruta de tu Cloudflare Worker
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify({
+          ...data,
+          precio: parseFloat(precio) // Convertir el precio a número
+        })
+      });
+
+      if (response.ok) {
+        mostrarMensaje('¡Formulario enviado con éxito!', 'success');
+        formulario.reset(); // Limpiar el formulario
+      } else {
+        mostrarMensaje('Hubo un error al enviar el formulario.', 'error');
+      }
+    } catch (error) {
+      mostrarMensaje('Error de conexión. Inténtalo más tarde.', 'error');
+    }
+  });
+
+  // Función para mostrar mensajes de éxito o error
+  function mostrarMensaje(mensaje, tipo) {
+    const mensajeDiv = document.getElementById('mensaje');
+    mensajeDiv.textContent = mensaje;
+    mensajeDiv.classList.add(tipo); // Agregar clase para estilos
+
+    setTimeout(() => {
+      mensajeDiv.textContent = '';
+      mensajeDiv.classList.remove(tipo);
+    }, 3000); // Ocultar mensaje después de 3 segundos
+  }
+});

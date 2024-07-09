@@ -1,0 +1,165 @@
+/* Estilos generales */
+body {
+  font-family: 'Arial', sans-serif;
+  margin: 0;
+  padding: 0;
+  line-height: 1.6;
+  background-color: #DFD0B8;
+  color: #3C5B6F;
+}
+
+/* Encabezado */
+header {
+  background-color: #1B515E;
+  color: white;
+  padding: 1.5rem 0;
+  text-align: center;
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* Sombra sutil en el encabezado */
+}
+
+
+header h1 {
+  margin: 0;
+  font-size: 2.8rem;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline;
+  margin: 0 1rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  /* Transición suave para el color del enlace */
+}
+
+nav a:hover {
+  color: #948979;
+  /* Cambio de color al pasar el mouse */
+}
+
+/* Hero */
+#hero {
+  text-align: center;
+  padding: 6rem 2rem;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('ruta/a/tu/imagen.jpg');
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Transiciones para hover */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  /* Sombra inicial más suave */
+}
+
+#hero h2 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+#hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+#hero:hover {
+  transform: translateY(-5px);
+  /* Eleva la sección al pasar el mouse */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  /* Sombra más intensa al pasar el mouse */
+}
+
+/* Secciones (Acerca de, Servicios, Contacto) */
+section {
+  padding: 4rem 3rem;
+  margin-bottom: 4rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Sombra inicial */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Transiciones para hover */
+}
+
+#acerca-de {
+  background-color: #f5f5f5;
+  color: #333;
+}
+
+#servicios {
+  background-color: #e0f0e8;
+  color: #333;
+}
+
+#contacto {
+  background-color: #e3f2fd;
+  color: #333;
+}
+
+section:hover {
+  transform: translateY(-5px);
+  /* Eleva la sección al pasar el mouse */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  /* Sombra más intensa al pasar el mouse */
+}
+
+section h2 {
+  color: #948979;
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
+
+/* Listas */
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+li {
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  /* Transiciones para hover */
+}
+
+#servicios li:hover {
+  background-color: #f0f8ff;
+  /* Cambia el fondo al pasar el mouse */
+  transform: scale(1.02);
+  /* Escala ligeramente el elemento */
+}
+
+/* Botones */
+button {
+  background-color: #1B515E;
+  color: white;
+  padding: 1rem 2rem;
+  border: none;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1.1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  /* Sombra inicial más pronunciada */
+
+  button:hover {
+    background-color: #3C5B6F;
+    transform: translateY(-2px);
+    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
+    /* Sombra aún más intensa al pasar el mouse */
+  }
+
+  /* Pie de página */
+  footer {
+    text-align: center;
+    padding: 1.5rem 0;
+    background-color: #1B515E;
+    color: white;
+  }

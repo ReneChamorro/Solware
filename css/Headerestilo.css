@@ -1,0 +1,41 @@
+/* Estilos del encabezado */
+header {
+  background-color: #1B515E;
+  /* Azul oscuro para el encabezado */
+  color: white;
+  padding: 1.5rem 0;
+  /* Más espacio vertical */
+  text-align: center;
+  /* Centrar el contenido del encabezado */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* Sombra sutil en el encabezado */
+}
+
+header h1 {
+  margin: 0;
+  font-size: 2.8rem;
+}
+
+nav ul {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+}
+
+nav li {
+  display: inline;
+  margin: 0 1rem;
+}
+
+nav a {
+  color: white;
+  text-decoration: none;
+  font-weight: bold;
+  transition: color 0.3s ease;
+  /* Transición suave para el color del enlace */
+}
+
+nav a:hover {
+  color: #948979;
+  /* Cambio de color al pasar el mouse */
+}

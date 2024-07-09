@@ -1,67 +1,57 @@
-
 <html>
+
 <head>
-  <title>Soy un guebo</title>
-  <link rel="stylesheet" href="./css/FormularioEstilo.css">
+  <title>Solware - Empoderando el Crecimiento Digital</title>
+  <link rel="stylesheet" href="./css/Estilo.css">
+  <link rel="stylesheet" href="./css/Headerestilo.css">
+  <link rel="stylesheet" href="./css/Footerestilo.css">
+
 </head>
+
 <body>
 
-  <h2>Contáctanos y solicita nuestros servicios</h2>
+  <header>
+    <h1>Solware</h1>
+    <nav>
+      <ul>
+        <li><a href="index.html">Inicio</a></li>
+        <li><a href="contacto.html">Contáctanos</a>
+        </li>
+      </ul>
+    </nav>
+  </header>
+  <section id="hero">
+    <h2>Empoderando el Crecimiento Digital de Pymes, Startups y E-commerce</h2>
+    <p>Soluciones integrales y personalizadas para impulsar tu éxito en línea.</p>
+    <button>Descubre cómo</button>
+  </section>
 
-  <form id="contactForm">
+  <section id="acerca-de">
+    <h2>Acerca de Solware</h2>
+    <p>Nacimos de la pasión por aprender y compartir conocimiento, con la misión de democratizar el acceso a
+      herramientas y estrategias de marketing digital de alto nivel.</p>
+  </section>
 
-    <h3>Información de Contacto</h3>
+  <section id="servicios">
+    <h2>Nuestros Servicios</h2>
+    <ul>
+      <li>GoHighLevel: Implementación, capacitación y soporte.</li>
+      <li>Desarrollo Web: Sitios web personalizados y optimizados.</li>
+      <li>Diseño Gráfico: Logos, landing pages y materiales visuales.</li>
+      <li>Marketing Digital: SEO, redes sociales, email marketing.</li>
+      <li>Automatizaciones: Flujos de trabajo eficientes con GoHighLevel y Zapier.</li>
+    </ul>
+  </section>
 
-    <div>
-      <label for="nombre">Nombre:</label>
-      <input type="text" id="nombre" name="nombre" required>
-    </div>
+  <section id="contacto">
+    <h2>Contáctanos</h2>
+    <p>¿Listo para llevar tu negocio al siguiente nivel? ¡Hablemos!</p>
+    <a href="contactanos.html"><button>Contáctanos</button></a>
+  </section>
 
-    <div>
-      <label for="apellido">Apellido:</label>
-      <input type="text" id="apellido" name="apellido" required>
-    </div>
-
-    <div>
-      <label for="email">Correo Electrónico:</label>
-      <input type="email" id="email" name="email" required>
-    </div>
-
-    <div>
-      <label for="telefono">Teléfono:</label>
-      <input type="tel" id="telefono" name="telefono" required>
-    </div>
-
-    <div>
-      <label for="fechaIngreso">Fecha de Ingreso:</label>
-      <input type="date" id="fechaIngreso" name="fechaIngreso" required>
-    </div>
-
-    <h3>Servicios</h3>
-
-    <div>
-      <label for="servicio">Servicio:</label>
-      <select id="servicio" name="servicio">
-        <option value="">Selecciona un servicio</option>
-        <option value="desarrollo_web_completo" data-precio="150$">Desarrollo de página web completo </option>
-        <option value="landing_page" data-precio="50$">Landing Page </option>
-        <option value="asesoria" data-precio="30$">Asesoría </option>
-      </select>
-    </div>
-
-    <div id="precioContainer">
-      <label for="precio">Precio:</label>
-      <input type="text" id="precio" name="precio" readonly> 
-    </div>
-
-    <button type="submit">Enviar</button>
-
-  </form>
-
-  <div id="mensaje"></div>
-        </div>
-        <script src="js/Formulariojs.js"></script> 
-      </div>
+  <footer>
+    <p>&copy; 2024 Solware</p>
+  </footer>
 </body>
 
 </html>
