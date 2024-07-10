@@ -1,5 +1,7 @@
+/* -------------------------------------------------------- */
+/* -------------------------------------------------------- */
 /* RESET DE CSS (Normaliza estilos entre navegadores) */
-
+/* -------------------------------------------------------- */
 *, *::before, *::after {
   box-sizing: border-box; /* Modelo de caja más intuitivo */
   margin: 0; /* Elimina márgenes predeterminados */
@@ -8,15 +10,24 @@
 
 /* VARIABLES CSS (Personalización y mantenimiento) */
 :root {
-  --primary-color: #1B515E;   /* Azul oscuro principal */
-  --secondary-color: #0aa5ff; /* Azul claro de acento */
-  --accent-color: #948979;   /* Marrón claro de acento */
-  --text-color: white;       /* Color de texto principal (blanco) */
-  --background-color: #010101; /* Color de fondo general (negro) */
-  --light-background: #f5f5f5; /* Fondo claro para secciones */
-  --form-background: #fff;     /* Fondo blanco para el formulario */
-  --label-color: #555;       /* Color de las etiquetas */
-  --border-color: #ccc;       /* Color de los bordes */
+  --primary-color: #1B515E;
+  /* Azul oscuro principal */
+  --secondary-color: #0aa5ff;
+  /* Azul claro de acento */
+  --accent-color: #948979;
+  /* Marrón claro de acento */
+  --text-color: white;
+  /* Color de texto principal (blanco) */
+  --background-color: #010101;
+  /* Color de fondo general (negro) */
+  --light-background: #f5f5f5;
+  /* Fondo claro para secciones */
+  --form-background: #fff;
+  /* Fondo blanco para el formulario */
+  --label-color: #555;
+  /* Color de las etiquetas */
+  --border-color: #ccc;
+  /* Color de los bordes */
 }
 
 /* IMPORTACIÓN DE FUENTES */
@@ -24,8 +35,10 @@
 
 /* ESTILOS GENERALES DEL BODY */
 body {
-  font-family: "Ubuntu", sans-serif; /* Fuente principal */
-  line-height: 1.6;              /* Interlineado mejorado */
+  font-family: "Ubuntu", sans-serif;
+  /* Fuente principal */
+  line-height: 1.6;
+  /* Interlineado mejorado */
   background-color: var(--background-color);
   color: var(--text-color);
 }
@@ -36,7 +49,8 @@ header {
   background-color: var(--primary-color);
   padding: 1.5rem 0;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* Sombra sutil */
 }
 
 /*  */
@@ -107,11 +121,14 @@ header {
 .menu-btn {
   font-size: 32px;
   color: var(--text-color);
-  display: none; /* Oculto en pantallas grandes */
+  display: none;
+  /* Oculto en pantallas grandes */
   cursor: pointer;
 }
 
-@media (max-width: 53rem) { /* Muestra el menú hamburguesa en pantallas pequeñas */
+@media (max-width: 53rem) {
+
+  /* Muestra el menú hamburguesa en pantallas pequeñas */
   .menu {
     display: none;
   }
@@ -126,11 +143,14 @@ header {
 #hero {
   text-align: center;
   padding: 6rem 2rem;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('ruta/a/tu/imagen.jpg'); /* Reemplaza 'ruta/a/tu/imagen.jpg' con la ruta correcta de tu imagen */
+  background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('ruta/a/tu/imagen.jpg');
+  /* Reemplaza 'ruta/a/tu/imagen.jpg' con la ruta correcta de tu imagen */
   background-size: cover;
   background-position: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Sombra inicial */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Transiciones suaves */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  /* Sombra inicial */
 }
 
 #hero h2 {
@@ -144,8 +164,10 @@ header {
 }
 
 #hero:hover {
-  transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el ratón */
+  transform: translateY(-5px);
+  /* Efecto de elevación al pasar el ratón */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  /* Sombra más intensa al pasar el ratón */
 }
 
 /* SECCIONES (Acerca de, Servicios, Contacto) */
@@ -153,13 +175,17 @@ section {
   padding: 4rem 3rem;
   margin-bottom: 4rem;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra inicial */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Sombra inicial */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Transiciones suaves */
 }
 
 section:hover {
-  transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el ratón */
+  transform: translateY(-5px);
+  /* Efecto de elevación al pasar el ratón */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  /* Sombra más intensa al pasar el ratón */
 }
 
 section h2 {
@@ -177,6 +203,7 @@ section h2 {
   background-color: #e0f0e8;
   color: #333;
 }
+
 /* SECCIÓN CONTACTO */
 #contacto {
   padding: 4rem 3rem;
@@ -195,7 +222,8 @@ section h2 {
 /* Estilos del Formulario */
 #contactForm {
   width: 80%;
-  max-width: 500px; /* Ancho máximo para evitar que se expanda demasiado */
+  max-width: 500px;
+  /* Ancho máximo para evitar que se expanda demasiado */
   margin: 20px auto;
   padding: 30px;
   border: 1px solid var(--border-color);
@@ -203,8 +231,8 @@ section h2 {
   background-color: var(--form-background);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
 }
-}
-#contactForm > div {
+
+#contactForm>div {
   margin-bottom: 15px;
 }
 
@@ -242,28 +270,27 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #3C5B6F;
 }
-
-/* -------------------------------------------------------- */
 /* LISTAS (Servicios) */
-/* -------------------------------------------------------- */
 ul {
-  list-style: none; /* Elimina los puntos de la lista */
+  list-style: none;
+  /* Elimina los puntos de la lista */
   padding: 0;
 }
 
 li {
   margin-bottom: 1rem;
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  /* Transiciones suaves */
 }
 
 #servicios li:hover {
-  background-color: #f0f8ff; /* Cambia el fondo al pasar el ratón */
-  transform: scale(1.02);    /* Escala ligeramente al pasar el ratón */
+  background-color: #f0f8ff;
+  /* Cambia el fondo al pasar el ratón */
+  transform: scale(1.02);
+  /* Escala ligeramente al pasar el ratón */
 }
 
-/* -------------------------------------------------------- */
 /* PIE DE PÁGINA (FOOTER) */
-/* -------------------------------------------------------- */
 footer {
   text-align: center;
   padding: 1.5rem 0;
