@@ -43,18 +43,19 @@ body {
   color: var(--text-color);
 }
 
+/* -------------------------------------------------------- */
 /* ENCABEZADO (HEADER) */
-
+/* -------------------------------------------------------- */
 header {
   background-color: var(--primary-color);
   padding: 1.5rem 0;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  /* Sombra sutil */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
 }
 
-/*  */
+/* -------------------------------------------------------- */
 /* LOGOTIPO */
+/* -------------------------------------------------------- */
 .logo i {
   color: var(--secondary-color);
   font-size: 22px;
@@ -67,7 +68,9 @@ header {
   margin-left: 12px;
 }
 
+/* -------------------------------------------------------- */
 /* BARRA DE NAVEGACIÓN (NAVBAR) */
+/* -------------------------------------------------------- */
 .navbar {
   height: 90px;
   padding: 20px 40px;
@@ -116,19 +119,17 @@ header {
   color: var(--text-color);
 }
 
+/* -------------------------------------------------------- */
 /* MENÚ HAMBURGUESA (RESPONSIVE) */
-
+/* -------------------------------------------------------- */
 .menu-btn {
   font-size: 32px;
   color: var(--text-color);
-  display: none;
-  /* Oculto en pantallas grandes */
+  display: none; /* Oculto en pantallas grandes */
   cursor: pointer;
 }
 
-@media (max-width: 53rem) {
-
-  /* Muestra el menú hamburguesa en pantallas pequeñas */
+@media (max-width: 53rem) { /* Muestra el menú hamburguesa en pantallas pequeñas */
   .menu {
     display: none;
   }
