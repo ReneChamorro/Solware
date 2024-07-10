@@ -1,61 +1,76 @@
+/* -------------------------------------------------------- */
+/* RESET DE CSS (Normaliza estilos entre navegadores) */
+/* -------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box; /* Modelo de caja más intuitivo */
+  margin: 0; /* Elimina márgenes predeterminados */
+  padding: 0; /* Elimina rellenos predeterminados */
+}
+
+/* -------------------------------------------------------- */
+/* VARIABLES CSS (Personalización y mantenimiento) */
+/* -------------------------------------------------------- */
+:root {
+  --primary-color: #1B515E;   /* Azul oscuro principal */
+  --secondary-color: #0aa5ff; /* Azul claro de acento */
+  --accent-color: #948979;   /* Marrón claro de acento */
+  --text-color: white;       /* Color de texto principal (blanco) */
+  --background-color: #010101; /* Color de fondo general (negro) */
+  --light-background: #f5f5f5; /* Fondo claro para secciones */
+  --form-background: #fff;     /* Fondo blanco para el formulario */
+  --label-color: #555;       /* Color de las etiquetas */
+  --border-color: #ccc;       /* Color de los bordes */
+}
+
+/* -------------------------------------------------------- */
+/* IMPORTACIÓN DE FUENTES */
+/* -------------------------------------------------------- */
 @import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
 
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
-}
-
-/* Estilos generales */
+/* -------------------------------------------------------- */
+/* ESTILOS GENERALES DEL BODY */
+/* -------------------------------------------------------- */
 body {
-  margin: 0;
-  padding: 0;
-  background-color: #010101;
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Ubuntu", sans-serif; /* Fuente principal */
+  line-height: 1.6;              /* Interlineado mejorado */
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
-/* Encabezado */
+/* -------------------------------------------------------- */
+/* ENCABEZADO (HEADER) */
+/* -------------------------------------------------------- */
 header {
-  background-color: #1B515E;
-  color: white;
+  background-color: var(--primary-color);
   padding: 1.5rem 0;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  /* Sombra sutil en el encabezado */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
 }
 
-
-a {
-  text-decoration: none;
+/* -------------------------------------------------------- */
+/* LOGOTIPO */
+/* -------------------------------------------------------- */
+.logo i {
+  color: var(--secondary-color);
+  font-size: 22px;
 }
 
-button {
-  border: 0;
-  outline: none;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: pointer;
+.logo a {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-left: 12px;
 }
 
+/* -------------------------------------------------------- */
+/* BARRA DE NAVEGACIÓN (NAVBAR) */
+/* -------------------------------------------------------- */
 .navbar {
   height: 90px;
-  background-color: hsl(0, 0%, 10%);
   padding: 20px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.navbar .logo i {
-  color: #0aa5ff;
-  font-size: 22px;
-}
-
-.navbar .logo a {
-  font-size: 24px;
-  font-weight: 700;
-  color: white;
-  margin-left: 12px;
 }
 
 .menu {
@@ -64,10 +79,10 @@ button {
   gap: 32px;
 }
 
+/* Enlaces del Menú */
 .menu-links {
   display: flex;
   gap: 24px;
-  border-right: 1px solid #999999;
   padding-inline: 24px;
 }
 
@@ -75,32 +90,40 @@ button {
   font-weight: 500;
   color: #999999;
   padding: 8px 16px;
+  transition: color 0.3s ease;
 }
+
 .menu-links a:hover {
-  color: white;
+  color: var(--text-color);
 }
+
+/* Botón "Log In" */
 .log-in {
   font-weight: 500;
   padding: 12px 22px;
   background-color: transparent;
   color: #999999;
   border-radius: 10px;
-  border: 2px solid #0aa5ff;
-  transition: 0.2s;
-}
-.log-in:hover {
-  background-color: #0aa5ff;
-  color: white;
+  border: 2px solid var(--secondary-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.log-in:hover {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+/* -------------------------------------------------------- */
+/* MENÚ HAMBURGUESA (RESPONSIVE) */
+/* -------------------------------------------------------- */
 .menu-btn {
   font-size: 32px;
-  color: white;
-  display: none;
+  color: var(--text-color);
+  display: none; /* Oculto en pantallas grandes */
   cursor: pointer;
 }
 
-@media (max-width: 53rem) {
+@media (max-width: 53rem) { /* Muestra el menú hamburguesa en pantallas pequeñas */
   .menu {
     display: none;
   }
@@ -110,73 +133,127 @@ button {
   }
 }
 
-/* Estilos generales del formulario */
+/* -------------------------------------------------------- */
+/* SECCIÓN HERO (Portada) */
+/* -------------------------------------------------------- */
+#hero {
+  text-align: center;
+  padding: 6rem 2rem;
+  background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('ruta/a/tu/imagen.jpg'); /* Reemplaza 'ruta/a/tu/imagen.jpg' con la ruta correcta de tu imagen */
+  background-size: cover;
+  background-position: center;
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Sombra inicial */
+}
+
+#hero h2 {
+  font-size: 3rem;
+  margin-bottom: 1.5rem;
+}
+
+#hero p {
+  font-size: 1.2rem;
+  margin-bottom: 2rem;
+}
+
+#hero:hover {
+  transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el ratón */
+}
+
+/* -------------------------------------------------------- */
+/* SECCIONES (Acerca de, Servicios, Contacto) */
+/* -------------------------------------------------------- */
+section {
+  padding: 4rem 3rem;
+  margin-bottom: 4rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra inicial */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+}
+
+section:hover {
+  transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el ratón */
+}
+
+section h2 {
+  color: var(--accent-color);
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
+}
+
+#acerca-de {
+  background-color: var(--light-background);
+  color: #333;
+}
+
+#servicios {
+  background-color: #e0f0e8;
+  color: #333;
+}
+
+/* -------------------------------------------------------- */
+/* SECCIÓN CONTACTO */
+/* -------------------------------------------------------- */
+#contacto {
+  padding: 4rem 3rem;
+  margin-bottom: 4rem;
+  border-radius: 10px;
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  background-color: var(--light-background);
+}
+
+#contacto:hover {
+  transform: translateY(-5px);
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+}
+
+/* Estilos del Formulario */
 #contactForm {
-  width: 400px;
+  width: 80%;
+  max-width: 500px; /* Ancho máximo para evitar que se expanda demasiado */
+  margin: 20
+/* Estilos del Formulario */
+#contactForm {
+  width: 80%;
+  max-width: 500px; /* Ancho máximo para evitar que se expanda demasiado */
   margin: 20px auto;
   padding: 30px;
-  border: 1px solid #e0f0e8;
+  border: 1px solid var(--border-color);
   border-radius: 15px;
-  background-color: #fff;
-  /* Fondo blanco para mejor legibilidad */
+  background-color: var(--form-background);
   box-shadow: 0 2px 5px rgba(0, 0, 0, 0.1);
-  /* Sombra sutil para destacar el formulario */
 }
 
-body {
-  font-family: sans-serif;
-  /* Fuente más moderna y legible */
-  line-height: 1.6;
-  /* Interlineado mejorado */
-  background-color: #f0f8ff;
-}
-
-/* Estilos para los títulos */
-h2,
-h3 {
-  text-align: center;
-  color: #333;
-  /* Color de texto más oscuro para contraste */
-}
-
-/* Estilos para los campos del formulario */
-#contactForm>div {
+#contactForm > div {
   margin-bottom: 15px;
-  /* Espacio reducido entre secciones */
 }
 
+/* Etiquetas del Formulario */
 label {
   display: block;
   margin-bottom: 5px;
-  color: #555;
-  /* Color de etiqueta más oscuro */
+  color: var(--label-color);
 }
 
+/* Campos del Formulario */
 input[type="text"],
 input[type="email"],
-input[type="tel"],
-input[type="date"],
-select {
+textarea {
   width: 100%;
   padding: 10px;
-  border: 1px solid #ccc;
-  /* Borde gris claro */
+  border: 1px solid var(--border-color);
   border-radius: 5px;
   box-sizing: border-box;
   font-size: 16px;
 }
 
-/* Ocultar el campo de precio visible */
-#precio {
-  display: none;
-  /* Ocultar el campo de precio */
-}
-
-/* Estilos para el botón de enviar */
+/* Botón de Enviar */
 button[type="submit"] {
-  background-color: #007bff;
-  /* Color azul primario */
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--text-color);
   padding: 10px 20px;
   border: none;
   border-radius: 5px;
@@ -186,13 +263,33 @@ button[type="submit"] {
 }
 
 button[type="submit"]:hover {
-  background-color: #0056b3;
-  /* Color azul más oscuro al pasar el mouse */
+  background-color: #3C5B6F;
 }
 
-/* Estilos para el mensaje de resultado */
-#mensaje {
+/* -------------------------------------------------------- */
+/* LISTAS (Servicios) */
+/* -------------------------------------------------------- */
+ul {
+  list-style: none; /* Elimina los puntos de la lista */
+  padding: 0;
+}
+
+li {
+  margin-bottom: 1rem;
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
+}
+
+#servicios li:hover {
+  background-color: #f0f8ff; /* Cambia el fondo al pasar el ratón */
+  transform: scale(1.02);    /* Escala ligeramente al pasar el ratón */
+}
+
+/* -------------------------------------------------------- */
+/* PIE DE PÁGINA (FOOTER) */
+/* -------------------------------------------------------- */
+footer {
   text-align: center;
-  margin-top: 15px;
-  font-weight: bold;
+  padding: 1.5rem 0;
+  background-color: var(--primary-color);
+  color: var(--text-color);
 }
