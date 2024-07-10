@@ -1,64 +1,67 @@
-@import url("https://fonts.googleapis.com/css2?family=Ubuntu:wght@400;500;700&display=swap");
-
-*,
-*::before,
-*::after {
-  box-sizing: border-box;
+/* -------------------------------------------------------- */
+/* RESET DE CSS (Normaliza estilos entre navegadores) */
+/* -------------------------------------------------------- */
+*, *::before, *::after {
+  box-sizing: border-box; /* Modelo de caja más intuitivo */
+  margin: 0; /* Elimina márgenes predeterminados */
+  padding: 0; /* Elimina rellenos predeterminados */
 }
 
+/* -------------------------------------------------------- */
+/* VARIABLES CSS (Personalización y mantenimiento) */
+/* -------------------------------------------------------- */
+:root {
+  --primary-color: #1B515E;   /* Azul oscuro principal */
+  --secondary-color: #0aa5ff; /* Azul claro de acento */
+  --accent-color: #948979;   /* Marrón claro de acento */
+  --text-color: white;       /* Color de texto principal (blanco) */
+  --background-color: #010101; /* Color de fondo general (negro) */
+  --light-background: #f5f5f5; /* Fondo claro para secciones */
+}
 
-
-
-/* Estilos generales */
+/* -------------------------------------------------------- */
+/* ESTILOS GENERALES DEL BODY */
+/* -------------------------------------------------------- */
 body {
-  margin: 0;
-  padding: 0;
-  background-color: #010101;
-  font-family: "Ubuntu", sans-serif;
+  font-family: "Ubuntu", sans-serif; /* Fuente principal */
+  background-color: var(--background-color);
+  color: var(--text-color);
 }
 
-/* Encabezado */
+/* -------------------------------------------------------- */
+/* ENCABEZADO (HEADER) */
+/* -------------------------------------------------------- */
 header {
-  background-color: #1B515E;
-  color: white;
+  background-color: var(--primary-color);
   padding: 1.5rem 0;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
-  /* Sombra sutil en el encabezado */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
 }
 
-
-a {
-  text-decoration: none;
+/* -------------------------------------------------------- */
+/* LOGOTIPO */
+/* -------------------------------------------------------- */
+.logo i {
+  color: var(--secondary-color);
+  font-size: 22px;
 }
 
-button {
-  border: 0;
-  outline: none;
-  font-family: inherit;
-  font-size: inherit;
-  cursor: pointer;
+.logo a {
+  font-size: 24px;
+  font-weight: 700;
+  color: var(--text-color);
+  margin-left: 12px;
 }
 
+/* -------------------------------------------------------- */
+/* BARRA DE NAVEGACIÓN (NAVBAR) */
+/* -------------------------------------------------------- */
 .navbar {
   height: 90px;
-  background-color: hsl(0, 0%, 10%);
   padding: 20px 40px;
   display: flex;
   justify-content: space-between;
   align-items: center;
-}
-
-.navbar .logo i {
-  color: #0aa5ff;
-  font-size: 22px;
-}
-
-.navbar .logo a {
-  font-size: 24px;
-  font-weight: 700;
-  color: white;
-  margin-left: 12px;
 }
 
 .menu {
@@ -67,10 +70,10 @@ button {
   gap: 32px;
 }
 
+/* Enlaces del Menú */
 .menu-links {
   display: flex;
   gap: 24px;
-  border-right: 1px solid #999999;
   padding-inline: 24px;
 }
 
@@ -78,32 +81,40 @@ button {
   font-weight: 500;
   color: #999999;
   padding: 8px 16px;
+  transition: color 0.3s ease;
 }
+
 .menu-links a:hover {
-  color: white;
+  color: var(--text-color);
 }
+
+/* Botón "Log In" */
 .log-in {
   font-weight: 500;
   padding: 12px 22px;
   background-color: transparent;
   color: #999999;
   border-radius: 10px;
-  border: 2px solid #0aa5ff;
-  transition: 0.2s;
-}
-.log-in:hover {
-  background-color: #0aa5ff;
-  color: white;
+  border: 2px solid var(--secondary-color);
+  transition: background-color 0.3s ease, color 0.3s ease;
 }
 
+.log-in:hover {
+  background-color: var(--secondary-color);
+  color: var(--text-color);
+}
+
+/* -------------------------------------------------------- */
+/* MENÚ HAMBURGUESA (RESPONSIVE) */
+/* -------------------------------------------------------- */
 .menu-btn {
   font-size: 32px;
-  color: white;
-  display: none;
+  color: var(--text-color);
+  display: none; /* Oculto en pantallas grandes */
   cursor: pointer;
 }
 
-@media (max-width: 53rem) {
+@media (max-width: 53rem) { /* Muestra el menú hamburguesa en pantallas pequeñas */
   .menu {
     display: none;
   }
@@ -113,17 +124,17 @@ button {
   }
 }
 
-/* Hero */
+/* -------------------------------------------------------- */
+/* SECCIÓN HERO (Portada) */
+/* -------------------------------------------------------- */
 #hero {
   text-align: center;
   padding: 6rem 2rem;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('ruta/a/tu/imagen.jpg');
+  background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('ruta/a/tu/imagen.jpg'); /* Reemplaza 'ruta/a/tu/imagen.jpg' con la ruta correcta de tu imagen */
   background-size: cover;
   background-position: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  /* Transiciones para hover */
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
-  /* Sombra inicial más suave */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Sombra inicial */
 }
 
 #hero h2 {
@@ -137,25 +148,34 @@ button {
 }
 
 #hero:hover {
-  transform: translateY(-5px);
-  /* Eleva la sección al pasar el mouse */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  /* Sombra más intensa al pasar el mouse */
+  transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el ratón */
 }
 
-/* Secciones (Acerca de, Servicios, Contacto) */
+/* -------------------------------------------------------- */
+/* SECCIONES (Acerca de, Servicios, Contacto) */
+/* -------------------------------------------------------- */
 section {
   padding: 4rem 3rem;
   margin-bottom: 4rem;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
-  /* Sombra inicial */
-  transition: transform 0.3s ease, box-shadow 0.3s ease;
-  /* Transiciones para hover */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra inicial */
+  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+}
+
+section:hover {
+  transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el ratón */
+}
+
+section h2 {
+  color: var(--accent-color);
+  font-size: 2.2rem;
+  margin-bottom: 2rem;
 }
 
 #acerca-de {
-  background-color: #f5f5f5;
+  background-color: var(--light-background);
   color: #333;
 }
 
@@ -169,63 +189,54 @@ section {
   color: #333;
 }
 
-section:hover {
-  transform: translateY(-5px);
-  /* Eleva la sección al pasar el mouse */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
-  /* Sombra más intensa al pasar el mouse */
-}
-
-section h2 {
-  color: #948979;
-  font-size: 2.2rem;
-  margin-bottom: 2rem;
-}
-
-/* Listas */
+/* -------------------------------------------------------- */
+/* LISTAS (Servicios) */
+/* -------------------------------------------------------- */
 ul {
-  list-style: none;
+  list-style: none; /* Elimina los puntos de la lista */
   padding: 0;
 }
 
 li {
   margin-bottom: 1rem;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  /* Transiciones para hover */
+  transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
 }
 
 #servicios li:hover {
-  background-color: #f0f8ff;
-  /* Cambia el fondo al pasar el mouse */
-  transform: scale(1.02);
-  /* Escala ligeramente el elemento */
+  background-color: #f0f8ff; /* Cambia el fondo al pasar el ratón */
+  transform: scale(1.02);    /* Escala ligeramente al pasar el ratón */
 }
 
-/* Botones */
+/* -------------------------------------------------------- */
+/* BOTONES */
+/* -------------------------------------------------------- */
 button {
-  background-color: #1B515E;
-  color: white;
+  background-color: var(--primary-color);
+  color: var(--text-color);
   padding: 1rem 2rem;
   border: none;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1.1rem;
-  transition: background-color 0.3s ease, transform 0.2s ease;
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
-  /* Sombra inicial más pronunciada */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra inicial */
+}
 
-  button:hover {
-    background-color: #3C5B6F;
-    transform: translateY(-2px);
-    box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25);
-    /* Sombra aún más intensa al pasar el mouse */
-  }
+button:hover {
+  background-color: #3C5B6F
+}
 
-  /* Pie de página */
-  footer {
-    text-align: center;
-    padding: 1.5rem 0;
-    background-color: #1B515E;
-    color: white;
-  }
+/* Cambio de color al pasar el ratón /
+transform: translateY(-2px); / Sube ligeramente al pasar el ratón /
+box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25); / Sombra más intensa al pasar el ratón */
+
+
+/* -------------------------------------------------------- /
+/ PIE DE PÁGINA (FOOTER) /
+/ -------------------------------------------------------- */
+footer {
+text-align: center;
+padding: 1.5rem 0;
+background-color: var(--primary-color);
+color: var(--text-color);
 }
