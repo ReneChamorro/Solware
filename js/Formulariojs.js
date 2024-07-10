@@ -1,20 +1,17 @@
 document.addEventListener("DOMContentLoaded", () => {
   const servicioSelect = document.getElementById("servicio");
-  const precioInput = document.getElementById("precio");
-  const precioOculto = document.getElementById("precioOculto"); // Nuevo campo oculto para el precio
-  const contactForm = document.getElementById("contactForm"); // Obtén el formulario
-  const mensajeDiv = document.getElementById("mensaje"); // Obtén el div para mensajes
+  const precioInput = document.getElementById("precio"); // Campo de precio visible
+  const contactForm = document.getElementById("contactForm");
+  const mensajeDiv = document.getElementById("mensaje");
 
   servicioSelect.addEventListener("change", () => {
     const selectedOption = servicioSelect.options[servicioSelect.selectedIndex];
     const precio = selectedOption.dataset.precio;
 
     if (precio) {
-      precioInput.value = precio;
-      precioOculto.value = precio; // Actualiza el campo oculto también
+      precioInput.value = precio; // Actualiza el campo visible
     } else {
       precioInput.value = "";
-      precioOculto.value = ""; // Limpia el campo oculto si no hay precio
     }
   });
 
@@ -28,10 +25,11 @@ document.addEventListener("DOMContentLoaded", () => {
       apellido: formData.get("apellido"),
       correo_electronico: formData.get("email"),
       telefono: formData.get("telefono"),
-      fecha_ingreso: formData.get("fechaIngreso"), // Corregir el nombre del campo
+      fecha_ingreso: formData.get("fechaIngreso"),
       servicio: formData.get("servicio"),
-      precio: parseFloat(formData.get("precioOculto")), // Convertir a número
+      precio: parseFloat(formData.get("precio")), // Obtener precio del campo visible y convertirlo a número
     };
+
     try {
       const response = await fetch(
         "https://datos-formulario.solwaremap.workers.dev",
@@ -57,3 +55,4 @@ document.addEventListener("DOMContentLoaded", () => {
     }
   });
 });
+
