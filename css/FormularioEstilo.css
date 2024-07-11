@@ -2,10 +2,15 @@
 /* -------------------------------------------------------- */
 /* RESET DE CSS (Normaliza estilos entre navegadores) */
 /* -------------------------------------------------------- */
-*, *::before, *::after {
-  box-sizing: border-box; /* Modelo de caja más intuitivo */
-  margin: 0; /* Elimina márgenes predeterminados */
-  padding: 0; /* Elimina rellenos predeterminados */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /* Modelo de caja más intuitivo */
+  margin: 0;
+  /* Elimina márgenes predeterminados */
+  padding: 0;
+  /* Elimina rellenos predeterminados */
 }
 
 /* VARIABLES CSS (Personalización y mantenimiento) */
@@ -50,7 +55,8 @@ header {
   background-color: var(--primary-color);
   padding: 1.5rem 0;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* Sombra sutil */
 }
 
 /* -------------------------------------------------------- */
@@ -97,13 +103,13 @@ header {
   color: #999999;
   padding: 8px 16px;
   transition: color 0.3s ease;
-  a {
-    text-decoration: none;
-  }
+  text-decoration: none;
+  /* Agregar esta línea para quitar el subrayado */
 }
 
 .menu-links a:hover {
   color: var(--text-color);
+  text-decoration: none;
 }
 
 /* Botón "Log In" */
@@ -123,16 +129,19 @@ header {
 }
 
 /* -------------------------------------------------------- */
-/* MENÚ HAMBURGUESA (RESPONSIVE) */
+/* MENÚ (RESPONSIVE) */
 /* -------------------------------------------------------- */
 .menu-btn {
   font-size: 32px;
   color: var(--text-color);
-  display: none; /* Oculto en pantallas grandes */
+  display: none;
+  /* Oculto en pantallas grandes */
   cursor: pointer;
 }
 
-@media (max-width: 53rem) { /* Muestra el menú hamburguesa en pantallas pequeñas */
+@media (max-width: 53rem) {
+
+  /* Muestra el menú hamburguesa en pantallas pequeñas */
   .menu {
     display: none;
   }
@@ -274,6 +283,7 @@ button[type="submit"] {
 button[type="submit"]:hover {
   background-color: #3C5B6F;
 }
+
 /* LISTAS (Servicios) */
 ul {
   list-style: none;

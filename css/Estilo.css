@@ -1,29 +1,41 @@
 /* -------------------------------------------------------- */
 /* RESET DE CSS (Normaliza estilos entre navegadores) */
 /* -------------------------------------------------------- */
-*, *::before, *::after {
-  box-sizing: border-box; /* Modelo de caja más intuitivo */
-  margin: 0; /* Elimina márgenes predeterminados */
-  padding: 0; /* Elimina rellenos predeterminados */
+*,
+*::before,
+*::after {
+  box-sizing: border-box;
+  /* Modelo de caja más intuitivo */
+  margin: 0;
+  /* Elimina márgenes predeterminados */
+  padding: 0;
+  /* Elimina rellenos predeterminados */
 }
 
 /* -------------------------------------------------------- */
 /* VARIABLES CSS (Personalización y mantenimiento) */
 /* -------------------------------------------------------- */
 :root {
-  --primary-color: #1B515E;   /* Azul oscuro principal */
-  --secondary-color: #0aa5ff; /* Azul claro de acento */
-  --accent-color: #948979;   /* Marrón claro de acento */
-  --text-color: white;       /* Color de texto principal (blanco) */
-  --background-color: #010101; /* Color de fondo general (negro) */
-  --light-background: #f5f5f5; /* Fondo claro para secciones */
+  --primary-color: #1B515E;
+  /* Azul oscuro principal */
+  --secondary-color: #0aa5ff;
+  /* Azul claro de acento */
+  --accent-color: #948979;
+  /* Marrón claro de acento */
+  --text-color: white;
+  /* Color de texto principal (blanco) */
+  --background-color: #010101;
+  /* Color de fondo general (negro) */
+  --light-background: #f5f5f5;
+  /* Fondo claro para secciones */
 }
 
 /* -------------------------------------------------------- */
 /* ESTILOS GENERALES DEL BODY */
 /* -------------------------------------------------------- */
 body {
-  font-family: "Ubuntu", sans-serif; /* Fuente principal */
+  font-family: "Ubuntu", sans-serif;
+  /* Fuente principal */
   background-color: var(--background-color);
   color: var(--text-color);
 }
@@ -35,7 +47,8 @@ header {
   background-color: var(--primary-color);
   padding: 1.5rem 0;
   text-align: center;
-  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2); /* Sombra sutil */
+  box-shadow: 0 2px 5px rgba(0, 0, 0, 0.2);
+  /* Sombra sutil */
 }
 
 /* -------------------------------------------------------- */
@@ -44,9 +57,10 @@ header {
 .logo i {
   color: var(--secondary-color);
   font-size: 22px;
+
   a {
-  text-decoration: none;
-}
+    text-decoration: none;
+  }
 }
 
 .logo a {
@@ -54,9 +68,10 @@ header {
   font-weight: 700;
   color: var(--text-color);
   margin-left: 12px;
+
   a {
-  text-decoration: none;
-}
+    text-decoration: none;
+  }
 }
 
 /* -------------------------------------------------------- */
@@ -81,6 +96,7 @@ header {
   display: flex;
   gap: 24px;
   padding-inline: 24px;
+
 }
 
 .menu-links a {
@@ -88,7 +104,8 @@ header {
   color: #999999;
   padding: 8px 16px;
   transition: color 0.3s ease;
-  text-decoration: none; /* Agregar esta línea para quitar el subrayado */
+  text-decoration: none;
+  /* Agregar esta línea para quitar el subrayado */
 }
 
 .menu-links a:hover {
@@ -117,11 +134,14 @@ header {
 .menu-btn {
   font-size: 32px;
   color: var(--text-color);
-  display: none; /* Oculto en pantallas grandes */
+  display: none;
+  /* Oculto en pantallas grandes */
   cursor: pointer;
 }
 
-@media (max-width: 53rem) { /* Muestra el menú hamburguesa en pantallas pequeñas */
+@media (max-width: 53rem) {
+
+  /* Muestra el menú hamburguesa en pantallas pequeñas */
   .menu {
     display: none;
   }
@@ -137,11 +157,14 @@ header {
 #hero {
   text-align: center;
   padding: 6rem 2rem;
-  background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('ruta/a/tu/imagen.jpg'); /* Reemplaza 'ruta/a/tu/imagen.jpg' con la ruta correcta de tu imagen */
+  background-image: linear-gradient(rgba(255, 255, 255, 0.7), rgba(255, 255, 255, 0.7)), url('ruta/a/tu/imagen.jpg');
+  /* Reemplaza 'ruta/a/tu/imagen.jpg' con la ruta correcta de tu imagen */
   background-size: cover;
   background-position: center;
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
-  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1); /* Sombra inicial */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Transiciones suaves */
+  box-shadow: 0 5px 10px rgba(0, 0, 0, 0.1);
+  /* Sombra inicial */
 }
 
 #hero h2 {
@@ -155,8 +178,10 @@ header {
 }
 
 #hero:hover {
-  transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el ratón */
+  transform: translateY(-5px);
+  /* Efecto de elevación al pasar el ratón */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  /* Sombra más intensa al pasar el ratón */
 }
 
 /* -------------------------------------------------------- */
@@ -166,13 +191,17 @@ section {
   padding: 4rem 3rem;
   margin-bottom: 4rem;
   border-radius: 10px;
-  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1); /* Sombra inicial */
-  transition: transform 0.3s ease, box-shadow 0.3s ease; /* Transiciones suaves */
+  box-shadow: 0 4px 8px rgba(0, 0, 0, 0.1);
+  /* Sombra inicial */
+  transition: transform 0.3s ease, box-shadow 0.3s ease;
+  /* Transiciones suaves */
 }
 
 section:hover {
-  transform: translateY(-5px); /* Efecto de elevación al pasar el ratón */
-  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2); /* Sombra más intensa al pasar el ratón */
+  transform: translateY(-5px);
+  /* Efecto de elevación al pasar el ratón */
+  box-shadow: 0 8px 15px rgba(0, 0, 0, 0.2);
+  /* Sombra más intensa al pasar el ratón */
 }
 
 section h2 {
@@ -200,18 +229,22 @@ section h2 {
 /* LISTAS (Servicios) */
 /* -------------------------------------------------------- */
 ul {
-  list-style: none; /* Elimina los puntos de la lista */
+  list-style: none;
+  /* Elimina los puntos de la lista */
   padding: 0;
 }
 
 li {
   margin-bottom: 1rem;
-  transition: background-color 0.3s ease, transform 0.2s ease; /* Transiciones suaves */
+  transition: background-color 0.3s ease, transform 0.2s ease;
+  /* Transiciones suaves */
 }
 
 #servicios li:hover {
-  background-color: #f0f8ff; /* Cambia el fondo al pasar el ratón */
-  transform: scale(1.02);    /* Escala ligeramente al pasar el ratón */
+  background-color: #f0f8ff;
+  /* Cambia el fondo al pasar el ratón */
+  transform: scale(1.02);
+  /* Escala ligeramente al pasar el ratón */
 }
 
 /* -------------------------------------------------------- */
@@ -225,8 +258,10 @@ button {
   border-radius: 5px;
   cursor: pointer;
   font-size: 1.1rem;
-  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease; /* Transiciones suaves */
-  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2); /* Sombra inicial */
+  transition: background-color 0.3s ease, transform 0.2s ease, box-shadow 0.3s ease;
+  /* Transiciones suaves */
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.2);
+  /* Sombra inicial */
 }
 
 button:hover {
@@ -242,8 +277,8 @@ box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25); / Sombra más intensa al pasar el rat
 / PIE DE PÁGINA (FOOTER) /
 / -------------------------------------------------------- */
 footer {
-text-align: center;
-padding: 1.5rem 0;
-background-color: var(--primary-color);
-color: var(--text-color);
+  text-align: center;
+  padding: 1.5rem 0;
+  background-color: var(--primary-color);
+  color: var(--text-color);
 }
