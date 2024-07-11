@@ -59,9 +59,7 @@ header {
   /* Sombra sutil */
 }
 
-/* -------------------------------------------------------- */
-/* LOGOTIPO */
-/* -------------------------------------------------------- */
+/* ---------------------- LOGOTIPO ----------------------------- */
 .logo i {
   color: var(--secondary-color);
   font-size: 22px;
@@ -113,7 +111,7 @@ header {
 }
 
 /* Botón "Log In" */
-.log-in {
+.log-in a {
   font-weight: 500;
   padding: 12px 22px;
   background-color: transparent;
@@ -121,6 +119,7 @@ header {
   border-radius: 10px;
   border: 2px solid var(--secondary-color);
   transition: background-color 0.3s ease, color 0.3s ease;
+  text-decoration: none;
 }
 
 .log-in:hover {
@@ -128,9 +127,7 @@ header {
   color: var(--text-color);
 }
 
-/* -------------------------------------------------------- */
-/* MENÚ (RESPONSIVE) */
-/* -------------------------------------------------------- */
+/* --------------------MENÚ (RESPONSIVE) --------------------------- */
 .menu-btn {
   font-size: 32px;
   color: var(--text-color);

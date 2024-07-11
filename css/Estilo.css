@@ -1,6 +1,4 @@
-/* -------------------------------------------------------- */
-/* RESET DE CSS (Normaliza estilos entre navegadores) */
-/* -------------------------------------------------------- */
+/* ----------------------- RESET DE CSS (Normaliza estilos entre navegadores)----------------------------- */
 *,
 *::before,
 *::after {
@@ -12,9 +10,7 @@
   /* Elimina rellenos predeterminados */
 }
 
-/* -------------------------------------------------------- */
-/* VARIABLES CSS (Personalización y mantenimiento) */
-/* -------------------------------------------------------- */
+/* -------------VARIABLES CSS (Personalización y mantenimiento) ------------------------ */
 :root {
   --primary-color: #1B515E;
   /* Azul oscuro principal */
@@ -30,9 +26,7 @@
   /* Fondo claro para secciones */
 }
 
-/* -------------------------------------------------------- */
-/* ESTILOS GENERALES DEL BODY */
-/* -------------------------------------------------------- */
+/* ------------------------ESTILOS GENERALES DEL BODY ---------------------------- */
 body {
   font-family: "Ubuntu", sans-serif;
   /* Fuente principal */
@@ -40,9 +34,7 @@ body {
   color: var(--text-color);
 }
 
-/* -------------------------------------------------------- */
-/* ENCABEZADO (HEADER) */
-/* -------------------------------------------------------- */
+/* --------------------- ENCABEZADO (HEADER) ----------------------- */
 header {
   background-color: var(--primary-color);
   padding: 1.5rem 0;
@@ -51,13 +43,10 @@ header {
   /* Sombra sutil */
 }
 
-/* -------------------------------------------------------- */
-/* LOGOTIPO */
-/* -------------------------------------------------------- */
+/* ------------------------- LOGOTIPO ------------------------- */
 .logo i {
   color: var(--secondary-color);
   font-size: 22px;
-
   a {
     text-decoration: none;
   }
@@ -74,9 +63,7 @@ header {
   }
 }
 
-/* -------------------------------------------------------- */
-/* BARRA DE NAVEGACIÓN (NAVBAR) */
-/* -------------------------------------------------------- */
+/* ------BARRA DE NAVEGACIÓN----- (NAVBAR) */
 .navbar {
   height: 90px;
   padding: 20px 40px;
@@ -110,6 +97,7 @@ header {
 
 .menu-links a:hover {
   color: var(--text-color);
+  text-decoration: none;
 }
 
 /* Botón "Log In" */
@@ -128,9 +116,7 @@ header {
   color: var(--text-color);
 }
 
-/* -------------------------------------------------------- */
-/* MENÚ HAMBURGUESA (RESPONSIVE) */
-/* -------------------------------------------------------- */
+/* ---------MENÚ (RESPONSIVE)---------- */
 .menu-btn {
   font-size: 32px;
   color: var(--text-color);
@@ -141,7 +127,7 @@ header {
 
 @media (max-width: 53rem) {
 
-  /* Muestra el menú hamburguesa en pantallas pequeñas */
+  /* Muestra en pantallas pequeñas */
   .menu {
     display: none;
   }
@@ -151,9 +137,7 @@ header {
   }
 }
 
-/* -------------------------------------------------------- */
-/* SECCIÓN HERO (Portada) */
-/* -------------------------------------------------------- */
+/*SECCIÓN HERO (Portada)*/
 #hero {
   text-align: center;
   padding: 6rem 2rem;
@@ -184,9 +168,9 @@ header {
   /* Sombra más intensa al pasar el ratón */
 }
 
-/* -------------------------------------------------------- */
-/* SECCIONES (Acerca de, Servicios, Contacto) */
-/* -------------------------------------------------------- */
+/* -------------------------------------------------------- /
+/ SECCIONES (Acerca de, Servicios, Contacto) 
+/ -------------------------------------------------------- */
 section {
   padding: 4rem 3rem;
   margin-bottom: 4rem;
@@ -225,9 +209,9 @@ section h2 {
   color: #333;
 }
 
-/* -------------------------------------------------------- */
-/* LISTAS (Servicios) */
-/* -------------------------------------------------------- */
+/* -------------------------------------------------------- /
+ LISTAS (Servicios) 
+/ -------------------------------------------------------- */
 ul {
   list-style: none;
   /* Elimina los puntos de la lista */
@@ -247,9 +231,9 @@ li {
   /* Escala ligeramente al pasar el ratón */
 }
 
-/* -------------------------------------------------------- */
-/* BOTONES */
-/* -------------------------------------------------------- */
+/* -------------------------------------------------------- /
+/ BOTONES 
+/-------------------------------------------------------- */
 button {
   background-color: var(--primary-color);
   color: var(--text-color);
@@ -265,12 +249,11 @@ button {
 }
 
 button:hover {
-  background-color: #3C5B6F
+  background-color: #3C5B6F; /* Cambio de color al pasar el ratón */
+  transform: translateY(-2px); /* Sube ligeramente al pasar el ratón */
+  box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25); /* Sombra más intensa al pasar el ratón */
 }
 
-/* Cambio de color al pasar el ratón /
-transform: translateY(-2px); / Sube ligeramente al pasar el ratón /
-box-shadow: 0 6px 8px rgba(0, 0, 0, 0.25); / Sombra más intensa al pasar el ratón */
 
 
 /* -------------------------------------------------------- /
