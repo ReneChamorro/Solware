@@ -97,6 +97,9 @@ header {
   color: #999999;
   padding: 8px 16px;
   transition: color 0.3s ease;
+  a {
+    text-decoration: none;
+  }
 }
 
 .menu-links a:hover {
