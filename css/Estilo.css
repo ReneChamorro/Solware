@@ -44,6 +44,9 @@ header {
 .logo i {
   color: var(--secondary-color);
   font-size: 22px;
+  a {
+  text-decoration: none;
+}
 }
 
 .logo a {
@@ -51,6 +54,9 @@ header {
   font-weight: 700;
   color: var(--text-color);
   margin-left: 12px;
+  a {
+  text-decoration: none;
+}
 }
 
 /* -------------------------------------------------------- */
@@ -82,6 +88,7 @@ header {
   color: #999999;
   padding: 8px 16px;
   transition: color 0.3s ease;
+  text-decoration: none; /* Agregar esta línea para quitar el subrayado */
 }
 
 .menu-links a:hover {
