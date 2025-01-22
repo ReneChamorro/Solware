@@ -27,6 +27,12 @@ export default {
           800: '#4b77bc',
           900: '#507fc9',
         },
+        darkSecondary: '#2E4156',
+        darkText: {
+          primary: '#D4D8DD',
+          secondary: '#AAB7B7',
+        },
+        darkBorder: '#C8D0DA',
       },
     },
   },

@@ -5,7 +5,7 @@ export default function Hero() {
   return (
     <div className="relative min-h-screen flex items-center" id="inicio">
       {/* Background with gradient overlay and animated particles */}
-      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/90 to-purple-600/90 overflow-hidden">
+      <div className="absolute inset-0 bg-gradient-to-br from-blue-600/90 to-purple-600/90 dark:from-indigo-900/90 dark:to-purple-900/90 overflow-hidden">
         <div className="absolute inset-0 bg-grid-white/[0.05] bg-[length:32px_32px]" />
         
         {/* Animated particles */}
@@ -13,7 +13,7 @@ export default function Hero() {
           {[...Array(20)].map((_, i) => (
             <div
               key={i}
-              className="particle absolute rounded-full bg-white/20 animate-float"
+              className="particle absolute rounded-full bg-white/20 dark:bg-blue-400/30 animate-float"
               style={{
                 left: `${Math.random() * 100}%`,
                 top: `${Math.random() * 100}%`,
@@ -31,39 +31,40 @@ export default function Hero() {
       <div className="relative max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-32">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div className="text-center lg:text-left">
-            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white mb-6 animate-fade-in 
-              [text-shadow:_0_2px_10px_rgba(0,0,0,0.2)]">
+            <h1 className="text-4xl sm:text-5xl lg:text-6xl font-bold text-white dark:text-blue-100 mb-6 animate-fade-in 
+              [text-shadow:_0_2px_10px_rgba(0,0,0,0.2)] dark:[text-shadow:_0_0_20px_rgba(147,197,253,0.5)]">
               Transformación Digital para tu Empresa
             </h1>
             
-            <p className="text-xl text-white/90 mb-8 animate-fade-in-delay 
-              [text-shadow:_0_1px_5px_rgba(0,0,0,0.1)]">
+            <p className="text-xl text-white/90 dark:text-blue-200 mb-8 animate-fade-in-delay 
+              [text-shadow:_0_1px_5px_rgba(0,0,0,0.1)] dark:[text-shadow:_0_0_15px_rgba(147,197,253,0.3)]">
               Automatizamos tus procesos empresariales y potenciamos tu negocio con soluciones 
               tecnológicas innovadoras y personalizadas.
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-delay-2">
-              <button className="group px-8 py-4 bg-white text-blue-600 rounded-full font-medium 
-                hover:bg-blue-50 transition-all duration-300 flex items-center justify-center
+              <button className="group px-8 py-4 bg-white dark:bg-blue-500 text-blue-600 dark:text-white rounded-full font-medium 
+                hover:bg-blue-50 dark:hover:bg-blue-400 transition-all duration-300 flex items-center justify-center
                 shadow-lg hover:shadow-xl hover:-translate-y-0.5 active:translate-y-0 
-                active:shadow-md">
+                active:shadow-md dark:shadow-blue-500/50 dark:hover:shadow-blue-400/50">
                 Comenzar ahora
                 <ArrowRight className="ml-2 h-5 w-5 transform group-hover:translate-x-1 transition-transform" />
               </button>
               
-              <button className="group px-8 py-4 bg-transparent border-2 border-white text-white 
-                rounded-full font-medium hover:bg-white/10 transition-all duration-300
+              <button className="group px-8 py-4 bg-transparent border-2 border-white dark:border-blue-400 text-white 
+                rounded-full font-medium hover:bg-white/10 dark:hover:bg-blue-400/10 transition-all duration-300
                 flex items-center justify-center backdrop-blur-sm
-                hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] 
-                active:shadow-[0_0_5px_rgba(255,255,255,0.2)]">
+                hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] dark:hover:shadow-[0_0_25px_rgba(96,165,250,0.4)]
+                active:shadow-[0_0_5px_rgba(255,255,255,0.2)] dark:active:shadow-[0_0_15px_rgba(96,165,250,0.3)]">
                 Ver demostración
               </button>
             </div>
           </div>
 
           <div className="hidden lg:block">
-            <div className="bg-white/10 backdrop-blur-lg rounded-2xl p-8 shadow-2xl 
-              animate-fade-in-delay hover:shadow-[0_0_30px_rgba(255,255,255,0.2)]
+            <div className="bg-white/10 dark:bg-blue-900/20 backdrop-blur-lg rounded-2xl p-8 
+              shadow-2xl dark:shadow-blue-500/20 animate-fade-in-delay 
+              hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] dark:hover:shadow-[0_0_40px_rgba(96,165,250,0.3)]
               transition-all duration-500">
               <div className="grid grid-cols-2 gap-6">
                 {[
@@ -72,50 +73,55 @@ export default function Hero() {
                     title: "Automatización",
                     value: "+60%",
                     label: "más eficiencia",
-                    hoverColor: "group-hover:text-yellow-400"
+                    hoverColor: "group-hover:text-yellow-400 dark:group-hover:text-yellow-300",
+                    glowColor: "dark:group-hover:shadow-[0_0_15px_rgba(250,204,21,0.5)]"
                   },
                   {
                     icon: <Shield className="h-8 w-8" />,
                     title: "Seguridad",
                     value: "99.9%",
                     label: "tiempo activo",
-                    hoverColor: "group-hover:text-green-400"
+                    hoverColor: "group-hover:text-green-400 dark:group-hover:text-green-300",
+                    glowColor: "dark:group-hover:shadow-[0_0_15px_rgba(74,222,128,0.5)]"
                   },
                   {
                     icon: <Clock className="h-8 w-8" />,
                     title: "Ahorro",
                     value: "-40%",
                     label: "en costos",
-                    hoverColor: "group-hover:text-orange-400"
+                    hoverColor: "group-hover:text-orange-400 dark:group-hover:text-orange-300",
+                    glowColor: "dark:group-hover:shadow-[0_0_15px_rgba(251,146,60,0.5)]"
                   },
                   {
                     icon: <ArrowRight className="h-8 w-8" />,
                     title: "Escalabilidad",
                     value: "∞",
                     label: "sin límites",
-                    hoverColor: "group-hover:text-blue-400"
+                    hoverColor: "group-hover:text-blue-400 dark:group-hover:text-blue-300",
+                    glowColor: "dark:group-hover:shadow-[0_0_15px_rgba(96,165,250,0.5)]"
                   }
                 ].map((stat, index) => (
                   <div key={index} 
-                    className="group text-center p-4 rounded-xl bg-white/5 hover:bg-white/10 
+                    className="group text-center p-4 rounded-xl bg-white/5 dark:bg-blue-900/30 
+                      hover:bg-white/10 dark:hover:bg-blue-800/40 
                       transform hover:-translate-y-1 transition-all duration-300
-                      hover:shadow-lg hover:shadow-white/10">
-                    <div className="inline-flex items-center justify-center w-12 h-12 
-                      rounded-lg bg-white/10 mb-3 transform group-hover:scale-110 
-                      transition-all duration-300 group-hover:rotate-3">
+                      hover:shadow-lg hover:shadow-white/10 dark:hover:shadow-blue-500/20">
+                    <div className={`inline-flex items-center justify-center w-12 h-12 
+                      rounded-lg bg-white/10 dark:bg-blue-800/50 mb-3 transform group-hover:scale-110 
+                      transition-all duration-300 group-hover:rotate-3 ${stat.glowColor}`}>
                       {React.cloneElement(stat.icon, {
                         className: `h-8 w-8 text-white transition-colors duration-300 ${stat.hoverColor}`
                       })}
                     </div>
-                    <h3 className="text-lg font-medium text-white mb-1 transition-colors duration-300
+                    <h3 className="text-lg font-medium text-white dark:text-blue-100 mb-1 transition-colors duration-300
                       group-hover:text-white/90">
                       {stat.title}
                     </h3>
-                    <p className="text-2xl font-bold text-white mb-1 transition-transform duration-300
+                    <p className="text-2xl font-bold text-white dark:text-blue-200 mb-1 transition-transform duration-300
                       group-hover:scale-110">
                       {stat.value}
                     </p>
-                    <p className="text-sm text-white/80 transition-colors duration-300
+                    <p className="text-sm text-white/80 dark:text-blue-200/80 transition-colors duration-300
                       group-hover:text-white/90">
                       {stat.label}
                     </p>
