@@ -30,6 +30,7 @@ const areasDeInteres = [
 const Contact: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
+  const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null);
   const [formData, setFormData] = useState<FormData>({
     name: '',
     email: '',
@@ -108,6 +109,10 @@ const Contact: React.FC = () => {
   const openWhatsApp = () => {
     const message = encodeURIComponent('Hola, me gustaría obtener más información sobre sus servicios.');
     window.open(`https://wa.me/584126652245?text=${message}`, '_blank');
+  };
+
+  const handleFaqClick = (index: number) => {
+    setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
 
   return (
@@ -340,17 +345,32 @@ const Contact: React.FC = () => {
               
               <div className="space-y-4">
                 {faqs.map((faq, index) => (
-                  <details key={index} className="group">
+                  <details 
+                    key={index} 
+                    className="group"
+                    open={openFaqIndex === index}
+                    onClick={(e) => {
+                      e.preventDefault();
+                      handleFaqClick(index);
+                    }}
+                  >
                     <summary className="flex justify-between items-center cursor-pointer 
                       text-gray-700 dark:text-gray-300 hover:text-blue-600 
-                      dark:hover:text-blue-400 transition-colors">
+                      dark:hover:text-blue-400 transition-colors list-none">
                       <span>{faq.question}</span>
-                      <ChevronDown className="h-5 w-5 transform group-open:rotate-180 
-                        transition-transform" />
+                      <ChevronDown className={`h-5 w-5 transform transition-transform duration-500
+                        ${openFaqIndex === index ? 'rotate-180' : ''}`} />
                     </summary>
-                    <p className="mt-2 text-gray-600 dark:text-gray-400 transition-colors duration-300">
-                      {faq.answer}
-                    </p>
+                    <div className="overflow-hidden transition-all duration-500 ease-in-out"
+                      style={{
+                        maxHeight: openFaqIndex === index ? '200px' : '0px',
+                        opacity: openFaqIndex === index ? 1 : 0,
+                        marginTop: openFaqIndex === index ? '0.5rem' : '0'
+                      }}>
+                      <p className="text-gray-600 dark:text-gray-400">
+                        {faq.answer}
+                      </p>
+                    </div>
                   </details>
                 ))}
               </div>
