@@ -21,29 +21,6 @@ const areasDeInteres = [
   { id: 'consultoria', label: 'Consultoría Digital' }
 ];
 
-const faqs = [
-  {
-    question: "¿Cómo puede Solware ayudar a mi empresa?",
-    answer: "Solware puede ayudar a tu empresa a aumentar la eficiencia operativa, reducir costos, mejorar la experiencia del cliente y facilitar la adopción de nuevas tecnologías para mantenerte competitivo en el mercado."
-  },
-  {
-    question: "¿Qué es la transformación digital?",
-    answer: "La transformación digital es el proceso de integrar tecnologías digitales en todas las áreas de una empresa para mejorar su funcionamiento y ofrecer un mejor valor a los clientes."
-  },
-  {
-    question: "¿Cómo se inicia un proyecto con Solware?",
-    answer: "Iniciamos con un diagnóstico inicial para entender las necesidades de tu empresa, seguido del diseño de soluciones personalizadas y la implementación de las herramientas necesarias."
-  },
-  {
-    question: "¿Ofrecen soporte post-implementación?",
-    answer: "Sí, ofrecemos soporte continuo y seguimiento para garantizar que las soluciones implementadas funcionen correctamente y se ajusten a las necesidades cambiantes de tu negocio."
-  },
-  {
-    question: "¿Puedo contactar a Solware para una consulta gratuita?",
-    answer: "Sí, puedes contactarnos a través de nuestro formulario en la sección de contacto y estaremos encantados de ofrecerte una consulta inicial sin compromiso."
-  }
-];
-
 const Contact: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -83,7 +60,7 @@ const Contact: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const scriptUrl = 'https://script.google.com/macros/s/AKfycbzg5LYztxz4C-es0XtLHtyGnX2aZ5cHi-kWbMuz0De9WXjs_G64NNi-9aqThnR6DdCA1w/exec';
+      const scriptUrl = 'https://script.google.com/macros/s/AKfycbyr7P6y5kf4cmzuG7jzgCqX2JxYGoNTCXd9BE1LHfU-hmUCA3pE9kB0Q-PSQbtgcq8Cww/exec';
       
       const formDataToSend = {
         nombreCompleto: formData.name,
@@ -102,7 +79,7 @@ const Contact: React.FC = () => {
         headers: {
           'Content-Type': 'application/x-www-form-urlencoded'
         },
-        body: new URLSearchParams(formDataToSend)
+        body: new URLSearchParams(formDataToSend).toString()
       });
 
       if (!response.ok) {
@@ -404,5 +381,28 @@ const Contact: React.FC = () => {
     </section>
   );
 };
+
+const faqs = [
+  {
+    question: "¿Cómo puede Solware ayudar a mi empresa?",
+    answer: "Solware puede ayudar a tu empresa a aumentar la eficiencia operativa, reducir costos, mejorar la experiencia del cliente y facilitar la adopción de nuevas tecnologías para mantenerte competitivo en el mercado."
+  },
+  {
+    question: "¿Qué es la transformación digital?",
+    answer: "La transformación digital es el proceso de integrar tecnologías digitales en todas las áreas de una empresa para mejorar su funcionamiento y ofrecer un mejor valor a los clientes."
+  },
+  {
+    question: "¿Cómo se inicia un proyecto con Solware?",
+    answer: "Iniciamos con un diagnóstico inicial para entender las necesidades de tu empresa, seguido del diseño de soluciones personalizadas y la implementación de las herramientas necesarias."
+  },
+  {
+    question: "¿Ofrecen soporte post-implementación?",
+    answer: "Sí, ofrecemos soporte continuo y seguimiento para garantizar que las soluciones implementadas funcionen correctamente y se ajusten a las necesidades cambiantes de tu negocio."
+  },
+  {
+    question: "¿Puedo contactar a Solware para una consulta gratuita?",
+    answer: "Sí, puedes contactarnos a través de nuestro formulario en la sección de contacto y estaremos encantados de ofrecerte una consulta inicial sin compromiso."
+  }
+];
 
 export default Contact;
