@@ -26,11 +26,10 @@ const Carousel: React.FC<CarouselProps> = ({
   const containerRef = useRef<HTMLDivElement>(null);
   const slideRef = useRef<HTMLDivElement>(null);
 
-  // Create extended items array with cloned items for infinite effect
   const extendedItems = [
-    items[items.length - 1], // Clone last item to start
+    items[items.length - 1],
     ...items,
-    items[0] // Clone first item to end
+    items[0]
   ];
 
   const resetTransition = (newIndex: number) => {
@@ -117,7 +116,10 @@ const Carousel: React.FC<CarouselProps> = ({
   }, [autoPlay, isHovered, isTransitioning, isTouchActive, autoPlayInterval]);
 
   const getTransform = () => {
-    const translateValue = -(currentIndex * 33.333) + 33.333; // Ajustado para centrar la tarjeta activa
+    const translateValue = window.innerWidth < 640 
+      ? -(currentIndex * 70) + 15 // Móvil: reducido de 80% a 70%
+      : -(currentIndex * 30) + 35; // Desktop: reducido de 33.333% a 30%
+    
     return {
       transform: `translateX(${translateValue}%)`,
       transition: isTransitioning ? 'transform 275ms cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
@@ -145,9 +147,9 @@ const Carousel: React.FC<CarouselProps> = ({
           {extendedItems.map((item, index) => (
             <div
               key={`${item.id}-${index}`}
-              className="w-1/3 flex-shrink-0 px-2 sm:px-3 lg:px-4"
+              className="w-[70%] sm:w-[30%] flex-shrink-0 px-2 sm:px-3 lg:px-4"
               style={{ 
-                transform: `scale(${index === currentIndex ? 1 : 0.85})`,
+                transform: `scale(${index === currentIndex ? 1 : 0.9})`,
                 opacity: index === currentIndex ? 1 : 0.5,
                 transition: 'all 275ms cubic-bezier(0.4, 0, 0.2, 1)',
                 zIndex: index === currentIndex ? 10 : 0
@@ -157,7 +159,7 @@ const Carousel: React.FC<CarouselProps> = ({
               <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg 
                 transition-all duration-275 ease-out hover:shadow-xl
                 transform hover:translate-y-[-2px]">
-                <div className="relative aspect-video overflow-hidden">
+                <div className="relative aspect-[3/2] overflow-hidden">
                   <img
                     src={item.image}
                     alt={item.title}
@@ -166,25 +168,25 @@ const Carousel: React.FC<CarouselProps> = ({
                     loading="lazy"
                   />
                   {item.icon && (
-                    <div className="absolute bottom-3 left-3">
+                    <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3">
                       <div className="bg-blue-600/90 dark:bg-blue-500/90 p-1.5 rounded-lg 
                         backdrop-blur-sm transition-transform duration-275 ease-out 
                         hover:scale-105">
                         {React.cloneElement(item.icon, {
-                          className: 'h-4 w-4 text-white'
+                          className: 'h-4 w-4 sm:h-5 sm:w-5 text-white'
                         })}
                       </div>
                     </div>
                   )}
                 </div>
 
-                <div className="p-4 text-center">
-                  <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-2 
-                    transition-colors duration-275">
+                <div className="p-4">
+                  <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2 
+                    transition-colors duration-275 line-clamp-1">
                     {item.title}
                   </h3>
                   <p className="text-sm text-gray-600 dark:text-gray-300 
-                    transition-colors duration-275">
+                    transition-colors duration-275 line-clamp-3">
                     {item.description}
                   </p>
                 </div>
@@ -196,27 +198,27 @@ const Carousel: React.FC<CarouselProps> = ({
 
       <button
         onClick={handlePrevious}
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-2.5 rounded-full
           bg-white/90 dark:bg-gray-800/90 shadow-lg hover:bg-white dark:hover:bg-gray-700 
           transition-all duration-275 ease-out hover:scale-105 hover:shadow-xl
-          transform active:scale-95"
+          transform active:scale-95 -translate-x-1/2 sm:translate-x-0"
         aria-label="Anterior"
       >
-        <ChevronLeft className="w-5 h-5 text-gray-800 dark:text-gray-200" />
+        <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-gray-800 dark:text-gray-200" />
       </button>
 
       <button
         onClick={handleNext}
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 p-2 rounded-full
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-2.5 rounded-full
           bg-white/90 dark:bg-gray-800/90 shadow-lg hover:bg-white dark:hover:bg-gray-700 
           transition-all duration-275 ease-out hover:scale-105 hover:shadow-xl
-          transform active:scale-95"
+          transform active:scale-95 translate-x-1/2 sm:translate-x-0"
         aria-label="Siguiente"
       >
-        <ChevronRight className="w-5 h-5 text-gray-800 dark:text-gray-200" />
+        <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-800 dark:text-gray-200" />
       </button>
 
-      <div className="flex justify-center items-center gap-2 mt-4">
+      <div className="flex justify-center items-center gap-1.5 sm:gap-2 mt-4">
         {items.map((_, index) => (
           <button
             key={index}

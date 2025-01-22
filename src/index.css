@@ -8,7 +8,7 @@
   }
 
   html {
-    @apply antialiased;
+    @apply antialiased scroll-smooth;
   }
 
   body {
@@ -100,29 +100,43 @@
     animation: float linear infinite;
   }
 
-  /* Fade in animations */
-  @keyframes fadeIn {
-    from {
-      opacity: 0;
-      transform: translateY(20px);
+  /* Workflow line animation */
+  @keyframes drawLine {
+    0% {
+      stroke-dashoffset: 1000;
     }
-    to {
-      opacity: 1;
-      transform: translateY(0);
+    100% {
+      stroke-dashoffset: 0;
     }
   }
 
-  .animate-fade-in {
-    animation: fadeIn 0.6s ease-out forwards;
+  .path-animation {
+    stroke-dasharray: 1000;
+    stroke-dashoffset: 1000;
+    animation: drawLine 2s cubic-bezier(0.4, 0, 0.2, 1) forwards;
   }
 
-  .animate-fade-in-delay {
-    animation: fadeIn 0.6s ease-out 0.3s forwards;
-    opacity: 0;
+  /* Scroll reveal animations */
+  .scroll-reveal {
+    will-change: transform, opacity;
   }
 
-  .animate-fade-in-delay-2 {
-    animation: fadeIn 0.6s ease-out 0.6s forwards;
+  .scroll-reveal-stagger > * {
     opacity: 0;
+    transform: translateY(20px);
+    transition: opacity 600ms cubic-bezier(0.4, 0, 0.2, 1),
+                transform 600ms cubic-bezier(0.4, 0, 0.2, 1);
+  }
+
+  .scroll-reveal-stagger > *:nth-child(1) { transition-delay: 0ms; }
+  .scroll-reveal-stagger > *:nth-child(2) { transition-delay: 100ms; }
+  .scroll-reveal-stagger > *:nth-child(3) { transition-delay: 200ms; }
+  .scroll-reveal-stagger > *:nth-child(4) { transition-delay: 300ms; }
+  .scroll-reveal-stagger > *:nth-child(5) { transition-delay: 400ms; }
+  .scroll-reveal-stagger > *:nth-child(6) { transition-delay: 500ms; }
+
+  .scroll-reveal-stagger.visible > * {
+    opacity: 1;
+    transform: translateY(0);
   }
 }

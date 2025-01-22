@@ -5,8 +5,9 @@ interface ScrollRevealOptions {
   rootMargin?: string;
   once?: boolean;
   delay?: number;
-  variant?: 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right' | 'scale';
+  variant?: 'fade-up' | 'fade-down' | 'fade-left' | 'fade-right' | 'zoom' | 'scale';
   duration?: number;
+  distance?: string;
 }
 
 export const useScrollReveal = (options: ScrollRevealOptions = {}) => {
@@ -15,26 +16,50 @@ export const useScrollReveal = (options: ScrollRevealOptions = {}) => {
   useEffect(() => {
     const {
       threshold = 0.1,
-      rootMargin = '0px',
+      rootMargin = '-50px',
       once = true,
       delay = 0,
       variant = 'fade-up',
-      duration = 600
+      duration = 600,
+      distance = '30px'
     } = options;
 
     const element = elementRef.current;
     if (!element) return;
 
-    // Asegurarse de que el elemento tenga las clases necesarias desde el inicio
-    element.classList.add('reveal');
-    if (variant) {
-      element.classList.add(`reveal-${variant}`);
-    }
+    // Configurar estilos iniciales
+    element.style.visibility = 'hidden';
+    element.style.opacity = '0';
+    element.style.willChange = 'opacity, transform';
+    element.style.transition = `
+      opacity ${duration}ms cubic-bezier(0.4, 0, 0.2, 1),
+      transform ${duration}ms cubic-bezier(0.4, 0, 0.2, 1)
+    `;
 
-    // Aplicar estilos de transición
-    element.style.transitionDuration = `${duration}ms`;
     if (delay) {
       element.style.transitionDelay = `${delay}ms`;
+    }
+
+    // Aplicar transformación inicial según la variante
+    switch (variant) {
+      case 'fade-up':
+        element.style.transform = `translateY(${distance})`;
+        break;
+      case 'fade-down':
+        element.style.transform = `translateY(-${distance})`;
+        break;
+      case 'fade-left':
+        element.style.transform = `translateX(${distance})`;
+        break;
+      case 'fade-right':
+        element.style.transform = `translateX(-${distance})`;
+        break;
+      case 'zoom':
+        element.style.transform = 'scale(0.95)';
+        break;
+      case 'scale':
+        element.style.transform = 'scale(0.9)';
+        break;
     }
 
     const observer = new IntersectionObserver(
@@ -42,7 +67,9 @@ export const useScrollReveal = (options: ScrollRevealOptions = {}) => {
         entries.forEach((entry) => {
           if (entry.isIntersecting) {
             requestAnimationFrame(() => {
-              entry.target.classList.add('reveal-visible');
+              element.style.visibility = 'visible';
+              element.style.opacity = '1';
+              element.style.transform = 'none';
             });
             
             if (once) {
@@ -50,7 +77,28 @@ export const useScrollReveal = (options: ScrollRevealOptions = {}) => {
             }
           } else if (!once) {
             requestAnimationFrame(() => {
-              entry.target.classList.remove('reveal-visible');
+              element.style.visibility = 'hidden';
+              element.style.opacity = '0';
+              switch (variant) {
+                case 'fade-up':
+                  element.style.transform = `translateY(${distance})`;
+                  break;
+                case 'fade-down':
+                  element.style.transform = `translateY(-${distance})`;
+                  break;
+                case 'fade-left':
+                  element.style.transform = `translateX(${distance})`;
+                  break;
+                case 'fade-right':
+                  element.style.transform = `translateX(-${distance})`;
+                  break;
+                case 'zoom':
+                  element.style.transform = 'scale(0.95)';
+                  break;
+                case 'scale':
+                  element.style.transform = 'scale(0.9)';
+                  break;
+              }
             });
           }
         });

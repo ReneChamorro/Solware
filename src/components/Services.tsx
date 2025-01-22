@@ -1,6 +1,7 @@
 import React, { useState } from 'react';
 import { Settings, Code2, Users, Server, Megaphone, Cuboid as Cube } from 'lucide-react';
 import ServiceCard from './ServiceCard';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const services = [
   {
@@ -151,6 +152,9 @@ const services = [
 
 const Services: React.FC = () => {
   const [flippedCard, setFlippedCard] = useState<number | null>(null);
+  const titleRef = useScrollReveal({ variant: 'fade-up', delay: 100 });
+  const descriptionRef = useScrollReveal({ variant: 'fade-up', delay: 200 });
+  const cardsContainerRef = useScrollReveal({ variant: 'fade-up', delay: 300 });
 
   const handleFlip = (index: number) => {
     setFlippedCard(flippedCard === index ? null : index);
@@ -160,16 +164,16 @@ const Services: React.FC = () => {
     <section className="py-24 bg-white dark:bg-gray-900 transition-colors duration-300" id="servicios">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 relative transition-colors duration-300">
+          <h2 ref={titleRef} className="text-4xl font-bold text-gray-900 dark:text-white mb-4 relative transition-colors duration-300">
             Soluciones Digitales Integrales
             <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 dark:bg-blue-500 rounded-full"></span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 transition-colors duration-300">
+          <p ref={descriptionRef} className="text-xl text-gray-600 dark:text-gray-300 transition-colors duration-300">
             Transformamos tu negocio con tecnología de vanguardia y soluciones personalizadas
           </p>
         </div>
 
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+        <div ref={cardsContainerRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
           {services.map((service, index) => (
             <ServiceCard
               key={index}

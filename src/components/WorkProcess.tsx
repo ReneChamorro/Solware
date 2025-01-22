@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect, useRef } from 'react';
 import { Target, Route, Lightbulb, Cog, ClipboardList, X } from 'lucide-react';
 
 const steps = [
@@ -81,13 +81,40 @@ const steps = [
 
 const WorkProcess: React.FC = () => {
   const [selectedStep, setSelectedStep] = useState<number | null>(null);
+  const [isVisible, setIsVisible] = useState(false);
+  const sectionRef = useRef<HTMLElement>(null);
+
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      ([entry]) => {
+        if (entry.isIntersecting) {
+          setIsVisible(true);
+          observer.unobserve(entry.target);
+        }
+      },
+      {
+        threshold: 0.3,
+        rootMargin: '-50px'
+      }
+    );
+
+    if (sectionRef.current) {
+      observer.observe(sectionRef.current);
+    }
+
+    return () => {
+      if (sectionRef.current) {
+        observer.unobserve(sectionRef.current);
+      }
+    };
+  }, []);
 
   const handleStepClick = (index: number) => {
     setSelectedStep(selectedStep === index ? null : index);
   };
 
   return (
-    <section className="py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300" id="proceso">
+    <section ref={sectionRef} className="py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300" id="proceso">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 relative transition-colors duration-300">
@@ -121,12 +148,17 @@ const WorkProcess: React.FC = () => {
                 strokeWidth="4"
                 fill="none"
                 strokeLinecap="round"
-                className="path-animation"
+                className={`path-animation ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+                style={{ 
+                  animationDelay: '0.5s',
+                  animationPlayState: isVisible ? 'running' : 'paused'
+                }}
               />
               <defs>
                 <linearGradient id="gradientLine" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" className="text-blue-600 dark:text-blue-400" stopColor="currentColor" />
-                  <stop offset="100%" className="text-purple-600 dark:text-purple-400" stopColor="currentColor" />
+                  <stop offset="0%" className="text-blue-600" stopColor="currentColor" />
+                  <stop offset="50%" className="text-purple-600" stopColor="currentColor" />
+                  <stop offset="100%" className="text-pink-600" stopColor="currentColor" />
                 </linearGradient>
               </defs>
             </svg>

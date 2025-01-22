@@ -1,12 +1,6 @@
 import React, { useState, useRef } from 'react';
-import { 
-  Mail, 
-  Phone, 
-  Clock, 
-  Send, 
-  ChevronDown,
-  MessageCircle
-} from 'lucide-react';
+import { Mail, Phone, Clock, Send, ChevronDown, MessageCircle } from 'lucide-react';
+import { useScrollReveal } from '../hooks/useScrollReveal';
 
 interface FormData {
   name: string;
@@ -27,6 +21,29 @@ const areasDeInteres = [
   { id: 'consultoria', label: 'Consultoría Digital' }
 ];
 
+const faqs = [
+  {
+    question: "¿Cómo puede Solware ayudar a mi empresa?",
+    answer: "Solware puede ayudar a tu empresa a aumentar la eficiencia operativa, reducir costos, mejorar la experiencia del cliente y facilitar la adopción de nuevas tecnologías para mantenerte competitivo en el mercado."
+  },
+  {
+    question: "¿Qué es la transformación digital?",
+    answer: "La transformación digital es el proceso de integrar tecnologías digitales en todas las áreas de una empresa para mejorar su funcionamiento y ofrecer un mejor valor a los clientes."
+  },
+  {
+    question: "¿Cómo se inicia un proyecto con Solware?",
+    answer: "Iniciamos con un diagnóstico inicial para entender las necesidades de tu empresa, seguido del diseño de soluciones personalizadas y la implementación de las herramientas necesarias."
+  },
+  {
+    question: "¿Ofrecen soporte post-implementación?",
+    answer: "Sí, ofrecemos soporte continuo y seguimiento para garantizar que las soluciones implementadas funcionen correctamente y se ajusten a las necesidades cambiantes de tu negocio."
+  },
+  {
+    question: "¿Puedo contactar a Solware para una consulta gratuita?",
+    answer: "Sí, puedes contactarnos a través de nuestro formulario en la sección de contacto y estaremos encantados de ofrecerte una consulta inicial sin compromiso."
+  }
+];
+
 const Contact: React.FC = () => {
   const formRef = useRef<HTMLFormElement>(null);
   const [isSubmitting, setIsSubmitting] = useState(false);
@@ -40,6 +57,12 @@ const Contact: React.FC = () => {
     message: '',
     areas: []
   });
+
+  // Referencias para las animaciones de scroll
+  const titleRef = useScrollReveal({ variant: 'fade-up', delay: 100 });
+  const descriptionRef = useScrollReveal({ variant: 'fade-up', delay: 200 });
+  const formContainerRef = useScrollReveal({ variant: 'fade-right', delay: 300 });
+  const infoContainerRef = useScrollReveal({ variant: 'fade-left', delay: 400 });
 
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
@@ -112,25 +135,25 @@ const Contact: React.FC = () => {
   };
 
   const handleFaqClick = (index: number) => {
-    setOpenFaqIndex(openFaqIndex === index ? null : index);
+    setOpenFaqIndex(prevIndex => prevIndex === index ? null : index);
   };
 
   return (
     <section className="py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300" id="contacto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 relative transition-colors duration-300">
+          <h2 ref={titleRef} className="text-4xl font-bold text-gray-900 dark:text-white mb-4 relative transition-colors duration-300">
             ¡Conectemos! Tu éxito es nuestra prioridad
             <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 dark:bg-blue-500 rounded-full"></span>
           </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 transition-colors duration-300">
+          <p ref={descriptionRef} className="text-xl text-gray-600 dark:text-gray-300 transition-colors duration-300">
             Estamos listos para responder tus consultas y ayudarte a potenciar tu negocio 
             con soluciones tecnológicas innovadoras
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
+          <div ref={formContainerRef} className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -293,7 +316,7 @@ const Contact: React.FC = () => {
             </form>
           </div>
 
-          <div className="space-y-8">
+          <div ref={infoContainerRef} className="space-y-8">
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300">
                 Información de Contacto
@@ -381,28 +404,5 @@ const Contact: React.FC = () => {
     </section>
   );
 };
-
-const faqs = [
-  {
-    question: "¿Cómo puede Solware ayudar a mi empresa?",
-    answer: "Solware puede ayudar a tu empresa a aumentar la eficiencia operativa, reducir costos, mejorar la experiencia del cliente y facilitar la adopción de nuevas tecnologías para mantenerte competitivo en el mercado."
-  },
-  {
-    question: "¿Qué es la transformación digital?",
-    answer: "La transformación digital es el proceso de integrar tecnologías digitales en todas las áreas de una empresa para mejorar su funcionamiento y ofrecer un mejor valor a los clientes."
-  },
-  {
-    question: "¿Cómo se inicia un proyecto con Solware?",
-    answer: "Iniciamos con un diagnóstico inicial para entender las necesidades de tu empresa, seguido del diseño de soluciones personalizadas y la implementación de las herramientas necesarias."
-  },
-  {
-    question: "¿Ofrecen soporte post-implementación?",
-    answer: "Sí, ofrecemos soporte continuo y seguimiento para garantizar que las soluciones implementadas funcionen correctamente y se ajusten a las necesidades cambiantes de tu negocio."
-  },
-  {
-    question: "¿Puedo contactar a Solware para una consulta gratuita?",
-    answer: "Sí, puedes contactarnos a través de nuestro formulario en la sección de contacto y estaremos encantados de ofrecerte una consulta inicial sin compromiso."
-  }
-];
 
 export default Contact;
