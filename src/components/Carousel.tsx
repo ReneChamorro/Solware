@@ -21,6 +21,8 @@ const Carousel: React.FC<CarouselProps> = ({
   const [currentIndex, setCurrentIndex] = useState(1);
   const [isTransitioning, setIsTransitioning] = useState(false);
   const [isHovered, setIsHovered] = useState(false);
+  const [isTouchActive, setIsTouchActive] = useState(false);
+  const [touchStart, setTouchStart] = useState(0);
   const containerRef = useRef<HTMLDivElement>(null);
   const slideRef = useRef<HTMLDivElement>(null);
 
@@ -32,19 +34,15 @@ const Carousel: React.FC<CarouselProps> = ({
   ];
 
   const resetTransition = (newIndex: number) => {
-    // Disable transition temporarily
     if (slideRef.current) {
       slideRef.current.style.transition = 'none';
     }
     setIsTransitioning(true);
     
-    // Force a reflow to ensure the transition is disabled
     slideRef.current?.offsetHeight;
     
-    // Set new index
     setCurrentIndex(newIndex);
     
-    // Re-enable transition after a short delay
     requestAnimationFrame(() => {
       if (slideRef.current) {
         slideRef.current.style.transition = 'transform 275ms cubic-bezier(0.4, 0, 0.2, 1)';
@@ -77,17 +75,35 @@ const Carousel: React.FC<CarouselProps> = ({
     }
   };
 
-  const handleDotClick = (index: number) => {
-    if (!isTransitioning) {
-      setIsTransitioning(true);
-      setCurrentIndex(index + 1);
+  const handleTouchStart = (e: React.TouchEvent) => {
+    setIsTouchActive(true);
+    setTouchStart(e.touches[0].clientX);
+  };
+
+  const handleTouchMove = (e: React.TouchEvent) => {
+    if (!isTouchActive) return;
+
+    const currentTouch = e.touches[0].clientX;
+    const diff = touchStart - currentTouch;
+
+    if (Math.abs(diff) > 50) {
+      if (diff > 0) {
+        handleNext();
+      } else {
+        handlePrevious();
+      }
+      setIsTouchActive(false);
     }
+  };
+
+  const handleTouchEnd = () => {
+    setIsTouchActive(false);
   };
 
   useEffect(() => {
     let interval: NodeJS.Timeout;
     
-    if (autoPlay && !isHovered && !isTransitioning) {
+    if (autoPlay && !isHovered && !isTransitioning && !isTouchActive) {
       interval = setInterval(() => {
         handleNext();
       }, autoPlayInterval);
@@ -98,10 +114,10 @@ const Carousel: React.FC<CarouselProps> = ({
         clearInterval(interval);
       }
     };
-  }, [autoPlay, isHovered, isTransitioning, autoPlayInterval]);
+  }, [autoPlay, isHovered, isTransitioning, isTouchActive, autoPlayInterval]);
 
   const getTransform = () => {
-    const translateValue = -currentIndex * 100;
+    const translateValue = -(currentIndex * 33.333) + 33.333; // Ajustado para centrar la tarjeta activa
     return {
       transform: `translateX(${translateValue}%)`,
       transition: isTransitioning ? 'transform 275ms cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
@@ -110,12 +126,16 @@ const Carousel: React.FC<CarouselProps> = ({
 
   return (
     <div 
-      className="relative max-w-3xl mx-auto px-12"
+      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       ref={containerRef}
     >
-      <div className="overflow-hidden">
+      <div className="overflow-hidden touch-pan-y"
+        onTouchStart={handleTouchStart}
+        onTouchMove={handleTouchMove}
+        onTouchEnd={handleTouchEnd}
+      >
         <div 
           ref={slideRef}
           className="flex"
@@ -125,12 +145,17 @@ const Carousel: React.FC<CarouselProps> = ({
           {extendedItems.map((item, index) => (
             <div
               key={`${item.id}-${index}`}
-              className={`w-full flex-shrink-0 px-4 transition-all duration-275 ease-out
-                ${index === currentIndex ? 'scale-100 opacity-100' : 'scale-95 opacity-40'}`}
+              className="w-1/3 flex-shrink-0 px-2 sm:px-3 lg:px-4"
+              style={{ 
+                transform: `scale(${index === currentIndex ? 1 : 0.85})`,
+                opacity: index === currentIndex ? 1 : 0.5,
+                transition: 'all 275ms cubic-bezier(0.4, 0, 0.2, 1)',
+                zIndex: index === currentIndex ? 10 : 0
+              }}
               aria-hidden={index !== currentIndex}
             >
               <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg 
-                transition-all duration-275 ease-out hover:shadow-xl max-w-sm mx-auto
+                transition-all duration-275 ease-out hover:shadow-xl
                 transform hover:translate-y-[-2px]">
                 <div className="relative aspect-video overflow-hidden">
                   <img
@@ -195,7 +220,7 @@ const Carousel: React.FC<CarouselProps> = ({
         {items.map((_, index) => (
           <button
             key={index}
-            onClick={() => handleDotClick(index)}
+            onClick={() => !isTransitioning && setCurrentIndex(index + 1)}
             className={`w-1.5 h-1.5 rounded-full transition-all duration-275 ease-out 
               transform hover:scale-110 ${
               index === currentIndex - 1

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useEffect } from 'react';
 import { Menu, X, Code2, Moon, Sun } from 'lucide-react';
 import { useActiveSection } from '../hooks/useActiveSection';
 import { useDarkMode } from '../hooks/useDarkMode';
@@ -13,8 +13,18 @@ const navItems = [
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isScrolled, setIsScrolled] = useState(false);
   const activeSection = useActiveSection();
   const { isDark, setIsDark } = useDarkMode();
+
+  useEffect(() => {
+    const handleScroll = () => {
+      setIsScrolled(window.scrollY > 20);
+    };
+
+    window.addEventListener('scroll', handleScroll);
+    return () => window.removeEventListener('scroll', handleScroll);
+  }, []);
 
   const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
     e.preventDefault();
@@ -25,9 +35,9 @@ export default function Header() {
     const element = document.getElementById(targetId);
     if (!element) return;
     
-    const offset = 100;
+    const headerHeight = 80; // Altura aproximada del header
     const elementPosition = element.getBoundingClientRect().top;
-    const offsetPosition = elementPosition + window.pageYOffset - offset;
+    const offsetPosition = elementPosition + window.pageYOffset - headerHeight;
 
     window.scrollTo({
       top: offsetPosition,
@@ -42,27 +52,33 @@ export default function Header() {
   };
 
   return (
-    <header className="fixed w-full bg-white/95 dark:bg-dark/95 backdrop-blur-sm z-50 shadow-sm transition-colors duration-300">
+    <header 
+      className={`fixed w-full z-50 transition-all duration-300 ${
+        isScrolled 
+          ? 'bg-white/95 dark:bg-dark/95 backdrop-blur-sm shadow-sm' 
+          : 'bg-transparent'
+      }`}
+    >
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex justify-between items-center py-4">
+        <div className="flex justify-between items-center h-16 sm:h-20">
           <a 
             href="#inicio" 
             onClick={handleNavClick}
-            className="flex items-center hover:opacity-80 transition-opacity"
+            className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
           >
-            <Code2 className="h-8 w-8 text-blue-600 dark:text-blue-400" />
-            <span className="ml-2 text-2xl font-bold text-gray-900 dark:text-white">
+            <Code2 className="h-7 w-7 sm:h-8 sm:w-8 text-blue-600 dark:text-blue-400" />
+            <span className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
               Solware
             </span>
           </a>
           
-          <nav className="hidden md:flex space-x-8">
+          <nav className="hidden md:flex space-x-1 lg:space-x-8">
             {navItems.map(({ href, label }) => (
               <a
                 key={href}
                 href={href}
                 onClick={handleNavClick}
-                className={`transition-colors duration-200 ${
+                className={`px-3 py-2 rounded-md text-sm lg:text-base transition-colors duration-200 ${
                   activeSection === href.replace('#', '')
                     ? 'text-blue-600 dark:text-blue-400 font-medium'
                     : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
@@ -88,15 +104,20 @@ export default function Header() {
               )}
             </button>
 
-            <button className="bg-blue-600 dark:bg-blue-500 text-white px-6 py-2 
-              rounded-full hover:bg-blue-700 dark:hover:bg-blue-600 
-              transition-colors duration-300">
+            <a 
+              href="#contacto"
+              onClick={handleNavClick}
+              className="bg-blue-600 dark:bg-blue-500 text-white px-4 sm:px-6 py-2 
+                rounded-full text-sm sm:text-base hover:bg-blue-700 dark:hover:bg-blue-600 
+                transition-colors duration-300 whitespace-nowrap"
+            >
               Consulta Gratis
-            </button>
+            </a>
           </div>
 
           <button 
-            className="md:hidden text-gray-700 dark:text-gray-300"
+            className="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300
+              hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
           >
@@ -105,44 +126,85 @@ export default function Header() {
         </div>
       </div>
 
-      {isMenuOpen && (
-        <div className="md:hidden bg-white dark:bg-dark border-t border-gray-100 dark:border-gray-800">
-          <div className="px-2 pt-2 pb-3 space-y-1 sm:px-3">
-            {navItems.map(({ href, label }) => (
-              <a
-                key={href}
-                href={href}
-                onClick={handleNavClick}
-                className={`block px-3 py-2 rounded-md transition-colors duration-200 ${
-                  activeSection === href.replace('#', '')
-                    ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50 font-medium'
-                    : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
-                }`}
-              >
-                {label}
-              </a>
-            ))}
-            <div className="px-3 py-2 flex items-center justify-between">
+      {/* Menú móvil */}
+      <div 
+        className={`md:hidden fixed inset-0 z-50 transition-all duration-300 ${
+          isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
+        }`}
+      >
+        <div 
+          className="absolute inset-0 bg-black/50 backdrop-blur-sm"
+          onClick={() => setIsMenuOpen(false)}
+        />
+        
+        <div 
+          className={`absolute right-0 top-0 h-full w-64 bg-white dark:bg-gray-900 
+            shadow-xl transition-transform duration-300 transform ${
+            isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
+        >
+          <div className="flex flex-col h-full">
+            <div className="flex justify-end p-4">
               <button
-                onClick={toggleDarkMode}
-                className="flex items-center space-x-2 text-gray-700 dark:text-gray-300"
+                onClick={() => setIsMenuOpen(false)}
+                className="p-2 rounded-lg text-gray-700 dark:text-gray-300
+                  hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               >
-                {isDark ? (
-                  <>
-                    <Sun className="h-5 w-5" />
-                    <span>Modo claro</span>
-                  </>
-                ) : (
-                  <>
-                    <Moon className="h-5 w-5" />
-                    <span>Modo oscuro</span>
-                  </>
-                )}
+                <X className="h-6 w-6" />
               </button>
+            </div>
+
+            <nav className="flex-1 px-4 pb-4 space-y-1">
+              {navItems.map(({ href, label }) => (
+                <a
+                  key={href}
+                  href={href}
+                  onClick={handleNavClick}
+                  className={`block px-4 py-3 rounded-lg transition-colors duration-200 ${
+                    activeSection === href.replace('#', '')
+                      ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50 font-medium'
+                      : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
+                  }`}
+                >
+                  {label}
+                </a>
+              ))}
+            </nav>
+
+            <div className="p-4 border-t border-gray-200 dark:border-gray-800">
+              <div className="flex items-center justify-between mb-4">
+                <button
+                  onClick={toggleDarkMode}
+                  className="flex items-center space-x-2 text-gray-700 dark:text-gray-300
+                    hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
+                >
+                  {isDark ? (
+                    <>
+                      <Sun className="h-5 w-5" />
+                      <span>Modo claro</span>
+                    </>
+                  ) : (
+                    <>
+                      <Moon className="h-5 w-5" />
+                      <span>Modo oscuro</span>
+                    </>
+                  )}
+                </button>
+              </div>
+
+              <a
+                href="#contacto"
+                onClick={handleNavClick}
+                className="block w-full text-center bg-blue-600 dark:bg-blue-500 text-white 
+                  px-6 py-3 rounded-full hover:bg-blue-700 dark:hover:bg-blue-600 
+                  transition-colors duration-300"
+              >
+                Consulta Gratis
+              </a>
             </div>
           </div>
         </div>
-      )}
+      </div>
     </header>
   );
 }
