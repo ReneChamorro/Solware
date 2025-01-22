@@ -85,23 +85,29 @@ const Contact: React.FC = () => {
     try {
       const scriptUrl = 'https://script.google.com/macros/s/AKfycbzg5LYztxz4C-es0XtLHtyGnX2aZ5cHi-kWbMuz0De9WXjs_G64NNi-9aqThnR6DdCA1w/exec';
       
-      const params = new URLSearchParams();
-      params.append('nombreCompleto', formData.name);
-      params.append('correoElectronico', formData.email);
-      params.append('telefono', formData.phone);
-      params.append('empresa', formData.company);
-      params.append('sector', formData.sector);
-      params.append('areasInteres', formData.areas.map(id => 
-        areasDeInteres.find(area => area.id === id)?.label || id
-      ).join(', '));
-      params.append('mensaje', formData.message);
+      const formDataToSend = {
+        nombreCompleto: formData.name,
+        correoElectronico: formData.email,
+        telefono: formData.phone,
+        empresa: formData.company,
+        sector: formData.sector,
+        areasInteres: formData.areas.map(id => 
+          areasDeInteres.find(area => area.id === id)?.label || id
+        ).join(', '),
+        mensaje: formData.message
+      };
 
-      const urlWithParams = `${scriptUrl}?${params.toString()}`;
-
-      await fetch(urlWithParams, {
-        method: 'GET',
-        mode: 'no-cors'
+      const response = await fetch(scriptUrl, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/x-www-form-urlencoded'
+        },
+        body: new URLSearchParams(formDataToSend)
       });
+
+      if (!response.ok) {
+        throw new Error('Error en la respuesta del servidor');
+      }
 
       alert('¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.');
       
