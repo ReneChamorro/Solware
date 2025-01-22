@@ -58,12 +58,6 @@ const Contact: React.FC = () => {
     areas: []
   });
 
-  // Referencias para las animaciones de scroll
-  const titleRef = useScrollReveal({ variant: 'fade-up', delay: 100 });
-  const descriptionRef = useScrollReveal({ variant: 'fade-up', delay: 200 });
-  const formContainerRef = useScrollReveal({ variant: 'fade-right', delay: 300 });
-  const infoContainerRef = useScrollReveal({ variant: 'fade-left', delay: 400 });
-
   const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
@@ -89,11 +83,11 @@ const Contact: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const scriptUrl = 'https://script.google.com/macros/s/AKfycbxGL1ELw7YpU-Hps7UaNi4x4GWqBP0JJs9u7rnHQ8IuOJtgAS_6PkheVS5YobJVOW79/exec';
+      const scriptUrl = 'https://script.google.com/macros/s/AKfycbzg5LYztxz4C-es0XtLHtyGnX2aZ5cHi-kWbMuz0De9WXjs_G64NNi-9aqThnR6DdCA1w/exec';
       
       const params = new URLSearchParams();
-      params.append('nombre', formData.name);
-      params.append('correo', formData.email);
+      params.append('nombreCompleto', formData.name);
+      params.append('correoElectronico', formData.email);
       params.append('telefono', formData.phone);
       params.append('empresa', formData.company);
       params.append('sector', formData.sector);
@@ -135,25 +129,25 @@ const Contact: React.FC = () => {
   };
 
   const handleFaqClick = (index: number) => {
-    setOpenFaqIndex(prevIndex => prevIndex === index ? null : index);
+    setOpenFaqIndex(openFaqIndex === index ? null : index);
   };
 
   return (
     <section className="py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300" id="contacto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 ref={titleRef} className="text-4xl font-bold text-gray-900 dark:text-white mb-4 relative transition-colors duration-300">
+          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 relative transition-colors duration-300">
             ¡Conectemos! Tu éxito es nuestra prioridad
             <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 dark:bg-blue-500 rounded-full"></span>
           </h2>
-          <p ref={descriptionRef} className="text-xl text-gray-600 dark:text-gray-300 transition-colors duration-300">
+          <p className="text-xl text-gray-600 dark:text-gray-300 transition-colors duration-300">
             Estamos listos para responder tus consultas y ayudarte a potenciar tu negocio 
             con soluciones tecnológicas innovadoras
           </p>
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-          <div ref={formContainerRef} className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
+          <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -316,7 +310,7 @@ const Contact: React.FC = () => {
             </form>
           </div>
 
-          <div ref={infoContainerRef} className="space-y-8">
+          <div className="space-y-8">
             <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
               <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300">
                 Información de Contacto
