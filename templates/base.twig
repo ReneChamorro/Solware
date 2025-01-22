@@ -1,0 +1,133 @@
+<!DOCTYPE html>
+<html lang="{{ app.locale|default('es') }}" dir="ltr" class="no-js">
+<head>
+    {# Codificación y viewport #}
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, viewport-fit=cover">
+    
+    {# Prevenir indexación en entornos no productivos #}
+    {% if app.environment != 'prod' %}
+        <meta name="robots" content="noindex,nofollow">
+    {% endif %}
+
+    {# Meta tags básicos #}
+    <title>{% block title %}{{ config.get('general/sitename') }}{% if record.title is defined %} | {{ record.title }}{% endif %}{% endblock %}</title>
+    <meta name="description" content="{% block description %}{{ record.excerpt|default(config.get('general/description'))|striptags }}{% endblock %}">
+    <meta name="author" content="{{ config.get('general/sitename') }}">
+    
+    {# Control de caché y seguridad #}
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta http-equiv="Content-Security-Policy" content="default-src 'self' https: data: 'unsafe-inline' 'unsafe-eval';">
+    <meta name="referrer" content="strict-origin-when-cross-origin">
+    
+    {# Open Graph / Social Media #}
+    <meta property="og:type" content="{% block og_type %}website{% endblock %}">
+    <meta property="og:site_name" content="{{ config.get('general/sitename') }}">
+    <meta property="og:title" content="{% block og_title %}{{ block('title') }}{% endblock %}">
+    <meta property="og:description" content="{% block og_description %}{{ block('description') }}{% endblock %}">
+    <meta property="og:url" content="{{ canonical_url() }}">
+    <meta property="og:locale" content="{{ app.locale|default('es_ES') }}">
+    {% block og_image %}
+        {% if record.image is defined and record.image is not empty %}
+            <meta property="og:image" content="{{ absolute_url(thumbnail(record.image, 1200, 630)) }}">
+            <meta property="og:image:width" content="1200">
+            <meta property="og:image:height" content="630">
+            <meta property="og:image:alt" content="{{ record.title|default(config.get('general/sitename')) }}">
+        {% endif %}
+    {% endblock %}
+
+    {# Twitter Card #}
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="{{ block('title') }}">
+    <meta name="twitter:description" content="{{ block('description') }}">
+    {% if record.image is defined and record.image is not empty %}
+        <meta name="twitter:image" content="{{ absolute_url(thumbnail(record.image, 1200, 630)) }}">
+    {% endif %}
+
+    {# Canonical URL #}
+    <link rel="canonical" href="{{ canonical_url() }}">
+    
+    {# Alternates para idiomas #}
+    {% for locale in supported_locales() %}
+        <link rel="alternate" href="{{ url(app.request.get('_route'), app.request.get('_route_params')|merge({'_locale': locale})) }}" hreflang="{{ locale }}">
+    {% endfor %}
+
+    {# Favicons y PWA #}
+    <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('favicon-32x32.png', 'theme') }}">
+    <link rel="icon" type="image/png" sizes="16x16" href="{{ asset('favicon-16x16.png', 'theme') }}">
+    <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('apple-touch-icon.png', 'theme') }}">
+    <link rel="manifest" href="{{ asset('manifest.json', 'theme') }}">
+    <meta name="theme-color" content="#ffffff">
+    <meta name="apple-mobile-web-app-capable" content="yes">
+    <meta name="apple-mobile-web-app-status-bar-style" content="default">
+
+    {# Precargas críticas #}
+    <link rel="preconnect" href="https://fonts.googleapis.com" crossorigin>
+    <link rel="preload" href="{{ asset('fonts/primary.woff2', 'theme') }}" as="font" type="font/woff2" crossorigin>
+    
+    {# CSS crítico inline #}
+    <style>
+        {% include '@theme/css/critical.css' %}
+    </style>
+
+    {# CSS no crítico con carga diferida #}
+    <link rel="preload" href="{{ asset('css/main.css', 'theme') }}" as="style" onload="this.onload=null;this.rel='stylesheet'">
+    <noscript><link rel="stylesheet" href="{{ asset('css/main.css', 'theme') }}"></noscript>
+
+    {# Scripts de inicialización #}
+    <script>document.documentElement.classList.remove('no-js');</script>
+    
+    {# Bloque para CSS/JS adicional #}
+    {% block stylesheets %}{% endblock %}
+    {% block javascripts_head %}{% endblock %}
+</head>
+
+<body class="{% block body_class %}{% endblock %}">
+    {# Skip link para accesibilidad #}
+    <a href="#main-content" class="skip-link">{{ 'Skip to main content'|trans }}</a>
+
+    {# Header #}
+    <header role="banner">
+        {% block header %}
+            {% include '@theme/partials/_header.twig' %}
+        {% endblock %}
+    </header>
+
+    {# Navegación principal #}
+    <nav role="navigation" aria-label="{{ 'Main navigation'|trans }}">
+        {% block navigation %}
+            {% include '@theme/partials/_navigation.twig' %}
+        {% endblock %}
+    </nav>
+
+    {# Contenido principal #}
+    <main id="main-content" role="main" tabindex="-1">
+        {% block main %}{% endblock %}
+    </main>
+
+    {# Footer #}
+    <footer role="contentinfo">
+        {% block footer %}
+            {% include '@theme/partials/_footer.twig' %}
+        {% endblock %}
+    </footer>
+
+    {# Scripts al final del body #}
+    {% block javascripts_footer %}
+        <script src="{{ asset('js/main.js', 'theme') }}" defer></script>
+    {% endblock %}
+
+    {# Service Worker #}
+    <script>
+        if ('serviceWorker' in navigator) {
+            window.addEventListener('load', () => {
+                navigator.serviceWorker.register('/sw.js').then(registration => {
+                    console.log('SW registered:', registration);
+                }).catch(error => {
+                    console.log('SW registration failed:', error);
+                });
+            });
+        }
+    </script>
+</body>
+</html>
