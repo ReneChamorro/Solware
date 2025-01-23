@@ -118,9 +118,8 @@ const Carousel: React.FC<CarouselProps> = ({
 
   const getTransform = () => {
     const isMobile = window.innerWidth < 768;
-    const translateValue = isMobile
-      ? -(currentIndex * 75) + 12.5 // Móvil: 75% width + 25% preview
-      : -(currentIndex * 33.333) + 33.333; // Desktop: sin cambios
+    const cardWidth = isMobile ? 85 : 33.333;
+    const translateValue = -(currentIndex * cardWidth) + ((100 - cardWidth) / 2);
     
     return {
       transform: `translateX(${translateValue}%)`,
@@ -151,7 +150,7 @@ const Carousel: React.FC<CarouselProps> = ({
           {extendedItems.map((item, index) => (
             <div
               key={`${item.id}-${index}`}
-              className="w-[75%] md:w-[33.333%] flex-shrink-0 px-2 md:px-3 lg:px-4 snap-center"
+              className="w-[85%] md:w-[33.333%] flex-shrink-0 px-3 md:px-4 snap-center"
               style={{ 
                 transform: `scale(${index === currentIndex ? 1 : 0.95})`,
                 opacity: index === currentIndex ? 1 : 0.7,
@@ -176,12 +175,12 @@ const Carousel: React.FC<CarouselProps> = ({
                     />
                   )}
                   {item.icon && (
-                    <div className="absolute bottom-2 left-2 md:bottom-3 md:left-3">
-                      <div className="bg-blue-600/90 dark:bg-blue-500/90 p-1.5 rounded-lg 
+                    <div className="absolute bottom-3 left-3">
+                      <div className="bg-blue-600/90 dark:bg-blue-500/90 p-2 rounded-lg 
                         backdrop-blur-sm transition-transform duration-275 ease-out 
                         hover:scale-105">
                         {React.cloneElement(item.icon, {
-                          className: 'h-4 w-4 md:h-5 md:w-5 text-white'
+                          className: 'h-5 w-5 text-white'
                         })}
                       </div>
                     </div>
@@ -189,11 +188,11 @@ const Carousel: React.FC<CarouselProps> = ({
                 </div>
 
                 <div className="p-4 md:p-6">
-                  <h3 className="text-base md:text-lg font-bold text-gray-900 dark:text-white mb-2 
+                  <h3 className="font-bold text-gray-900 dark:text-white mb-3
                     transition-colors duration-275 mobile-carousel-title">
                     {item.title}
                   </h3>
-                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 
+                  <p className="text-gray-600 dark:text-gray-300 
                     transition-colors duration-275 mobile-carousel-description">
                     {item.description}
                   </p>
@@ -206,32 +205,32 @@ const Carousel: React.FC<CarouselProps> = ({
 
       <button
         onClick={handlePrevious}
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2 md:p-2.5 rounded-full
+        className="absolute left-2 md:left-4 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full
           bg-white/90 dark:bg-gray-800/90 shadow-lg hover:bg-white dark:hover:bg-gray-700 
           transition-all duration-275 ease-out hover:scale-105 hover:shadow-xl
-          transform active:scale-95 translate-x-1 md:-translate-x-1/2"
+          transform active:scale-95"
         aria-label="Anterior"
       >
-        <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 text-gray-800 dark:text-gray-200" />
+        <ChevronLeft className="w-5 h-5 text-gray-800 dark:text-gray-200" />
       </button>
 
       <button
         onClick={handleNext}
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 p-2 md:p-2.5 rounded-full
+        className="absolute right-2 md:right-4 top-1/2 -translate-y-1/2 z-20 p-2.5 rounded-full
           bg-white/90 dark:bg-gray-800/90 shadow-lg hover:bg-white dark:hover:bg-gray-700 
           transition-all duration-275 ease-out hover:scale-105 hover:shadow-xl
-          transform active:scale-95 -translate-x-1 md:translate-x-1/2"
+          transform active:scale-95"
         aria-label="Siguiente"
       >
-        <ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-gray-800 dark:text-gray-200" />
+        <ChevronRight className="w-5 h-5 text-gray-800 dark:text-gray-200" />
       </button>
 
-      <div className="flex justify-center items-center gap-1.5 md:gap-2 mt-4">
+      <div className="flex justify-center items-center gap-2 mt-4">
         {items.map((_, index) => (
           <button
             key={index}
             onClick={() => !isTransitioning && setCurrentIndex(index + 1)}
-            className={`w-1.5 h-1.5 rounded-full transition-all duration-275 ease-out 
+            className={`w-2 h-2 rounded-full transition-all duration-275 ease-out 
               transform hover:scale-110 ${
               index === currentIndex - 1
                 ? 'bg-blue-600 dark:bg-blue-500 scale-125'

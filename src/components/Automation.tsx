@@ -13,28 +13,28 @@ const Automation = () => {
     {
       id: 1,
       title: "Automatización de Facturación",
-      description: "Sistema inteligente que automatiza la generación, envío y seguimiento de facturas, reduciendo errores y ahorrando tiempo valioso.",
+      description: "Sistema inteligente que automatiza la generación, envío, y reduciendo errores y ahorrando tiempo valioso.",
       image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800",
       icon: <FileSpreadsheet className="h-6 w-6 text-white" />
     },
     {
       id: 2,
-      title: "Gestión de Inventario Predictivo",
-      description: "IA que predice niveles óptimos de inventario y automatiza pedidos basándose en patrones históricos y tendencias.",
+      title: "Inventario Predictivo",
+      description: "IA que predice niveles óptimos de inventario y automatiza pedidos basándose en patrones históricos.",
       image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800",
       icon: <Database className="h-6 w-6 text-white" />
     },
     {
       id: 3,
       title: "Chatbots de Atención 24/7",
-      description: "Asistentes virtuales que manejan consultas de clientes automáticamente, proporcionando respuestas instantáneas y derivación inteligente.",
+      description: "Asistentes virtuales que manejan consultas de clientes, proporcionando respuestas inteligentes e instantáneas.",
       image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&q=80&w=800",
       icon: <Bot className="h-6 w-6 text-white" />
     },
     {
       id: 4,
       title: "Automatización de Marketing",
-      description: "Campañas personalizadas que se adaptan automáticamente según el comportamiento del usuario y métricas en tiempo real.",
+      description: "Campañas personalizadas que se adaptan en tiempo real al comportamiento del usuario.",
       CustomImage: MarketingAutomationIllustration,
       icon: <BarChart2 className="h-6 w-6 text-white" />
     },
@@ -48,7 +48,7 @@ const Automation = () => {
     {
       id: 6,
       title: "Automatización Financiera",
-      description: "Simplifica la gestión de presupuestos, pagos y reportes financieros con flujos automatizados que garantizan precisión y eficiencia.",
+      description: "Simplifica la gestión de presupuestos, pagos y reportes financieros con flujos automatizados que garantizan precisión.",
       image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800",
       icon: <Clock className="h-6 w-6 text-white" />
     }

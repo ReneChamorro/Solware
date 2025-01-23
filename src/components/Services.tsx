@@ -15,10 +15,6 @@ const services = [
         description: "Diseñamos y configuramos flujos de trabajo que automatizan tareas repetitivas."
       },
       {
-        title: "Integración de Sistemas",
-        description: "Conectamos diferentes plataformas y aplicaciones para crear un ecosistema digital cohesivo."
-      },
-      {
         title: "Reducción de Errores",
         description: "Minimizamos errores humanos mediante la automatización de procesos críticos."
       },
@@ -43,13 +39,9 @@ const services = [
         description: "Agentes AI que aprenden y mejoran continuamente sus respuestas y acciones."
       },
       {
-        title: "Procesamiento de Lenguaje Natural",
-        description: "Comprensión avanzada del lenguaje para interacciones más naturales y efectivas."
+        title: "Soporte Multicanal Inteligente",
+        description: "Centraliza tu comunicación con agentes AI capaces de gestionar en diversos canales."
       },
-      {
-        title: "Integración Multicanal",
-        description: "Presencia consistente en todos los canales de comunicación con el cliente."
-      }
     ]
   },
   {
@@ -64,35 +56,27 @@ const services = [
       },
       {
         title: "Desarrollo Full-Stack",
-        description: "Implementamos soluciones completas que integran front-end y back-end de manera eficiente."
-      },
-      {
-        title: "Aplicaciones Progresivas",
-        description: "Desarrollamos PWAs que funcionan en cualquier dispositivo y ofrecen una experiencia nativa."
+        description: "Implementamos soluciones que integran front-end y back-end de manera eficiente."
       },
       {
         title: "Optimización SEO",
-        description: "Aseguramos que tus aplicaciones sean visibles y rankeen bien en los motores de búsqueda."
+        description: "Tu Web y aplicaciones serán visibles en motores de búsqueda."
       }
     ]
   },
   {
     icon: <Users className="h-6 w-6 text-white" />,
     title: "CRM & Business Intelligence",
-    description: "Potencia la toma de decisiones estratégicas con herramientas avanzadas de CRM y análisis inteligente de datos.",
+    description: "Toma de decisiones estratégicas basadas en  análisis inteligente de datos.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
     details: [
       {
         title: "Análisis Predictivo de Clientes",
-        description: "Anticipamos comportamientos y necesidades de clientes mediante modelos avanzados de análisis."
-      },
-      {
-        title: "Dashboards Personalizados",
-        description: "Visualizaciones interactivas que muestran KPIs clave y métricas de negocio en tiempo real."
+        description: "Anticipamos comportamientos y necesidades de clientes mediante modelos de análisis."
       },
       {
         title: "Segmentación Inteligente",
-        description: "Clasificación automática de clientes basada en patrones de comportamiento y datos históricos."
+        description: "Clasificación automática de clientes basada en patrones de comportamiento."
       },
       {
         title: "Automatización de Insights",

@@ -65,7 +65,7 @@
 
   .carousel-slide-inactive {
     opacity: 0.7;
-    transform: scale(0.9);
+    transform: scale(0.95);
   }
 
   /* Line clamp utilities */
@@ -84,8 +84,8 @@
   }
 
   /* Touch handling */
-  .touch-pan-y {
-    touch-action: pan-y pinch-zoom;
+  .touch-pan-x {
+    touch-action: pan-x pinch-zoom;
   }
 
   /* Particle animation */
@@ -153,35 +153,36 @@
   /* Optimizaciones para el carrusel en móvil */
   @media (max-width: 767px) {
     .mobile-carousel-title {
-      font-size: 1rem;
-      line-height: 1.4;
-      margin-bottom: 0.5rem;
+      font-size: 1.125rem;
+      line-height: 1.35;
+      letter-spacing: -0.01em;
+      margin-bottom: 0.75rem;
       display: block;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      -webkit-hyphens: auto;
-      -ms-hyphens: auto;
-      hyphens: auto;
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
+      text-overflow: ellipsis;
+      max-height: 3rem;
     }
 
     .mobile-carousel-description {
-      font-size: 0.875rem;
+      font-size: 0.9375rem;
       line-height: 1.5;
       display: block;
-      word-wrap: break-word;
-      overflow-wrap: break-word;
-      -webkit-hyphens: auto;
-      -ms-hyphens: auto;
-      hyphens: auto;
+      word-break: normal;
+      overflow-wrap: normal;
+      hyphens: none;
+      text-overflow: ellipsis;
+      max-height: 4.5rem;
     }
   }
 
   /* Ajustes para el carrusel en desktop */
   @media (min-width: 768px) {
     .mobile-carousel-title {
-      font-size: 1.125rem;
-      line-height: 1.5;
-      margin-bottom: 0.75rem;
+      font-size: 1.25rem;
+      line-height: 1.4;
+      margin-bottom: 1rem;
     }
 
     .mobile-carousel-description {
