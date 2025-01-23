@@ -12,7 +12,7 @@ const Automation = () => {
   const automations = [
     {
       id: 1,
-      title: "Automatización de Facturación",
+      title: "Facturación Inteligente",
       description: "Sistema inteligente que automatiza la generación, envío, y reduciendo errores y ahorrando tiempo valioso.",
       image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800",
       icon: <FileSpreadsheet className="h-6 w-6 text-white" />
@@ -26,7 +26,7 @@ const Automation = () => {
     },
     {
       id: 3,
-      title: "Chatbots de Atención 24/7",
+      title: "Asistentes Virtuales Inteligentes",
       description: "Asistentes virtuales que manejan consultas de clientes, proporcionando respuestas inteligentes e instantáneas.",
       image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&q=80&w=800",
       icon: <Bot className="h-6 w-6 text-white" />
@@ -40,14 +40,14 @@ const Automation = () => {
     },
     {
       id: 5,
-      title: "Soporte Técnico Automatizado",
+      title: "Soporte Inteligente",
       description: "Resuelve incidencias de forma más eficiente con flujos de soporte técnico automatizados y seguimiento inteligente.",
       image: "https://images.unsplash.com/photo-1549923746-c502d488b3ea?auto=format&fit=crop&q=80&w=800",
       icon: <Zap className="h-6 w-6 text-white" />
     },
     {
       id: 6,
-      title: "Automatización Financiera",
+      title: "Gestión Financiera",
       description: "Simplifica la gestión de presupuestos, pagos y reportes financieros con flujos automatizados que garantizan precisión.",
       image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800",
       icon: <Clock className="h-6 w-6 text-white" />
