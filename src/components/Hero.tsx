@@ -2,6 +2,14 @@ import React from 'react';
 import { ArrowRight, Zap, Shield, Clock } from 'lucide-react';
 
 export default function Hero() {
+  const scrollToContact = (e: React.MouseEvent<HTMLButtonElement>) => {
+    e.preventDefault();
+    const contactSection = document.getElementById('contacto');
+    if (contactSection) {
+      contactSection.scrollIntoView({ behavior: 'smooth' });
+    }
+  };
+
   return (
     <div className="relative min-h-[100svh] flex items-center" id="inicio">
       {/* Background with gradient overlay and animated particles */}
@@ -45,12 +53,14 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-delay-2">
-              <button className="group px-6 sm:px-8 py-3 sm:py-4 bg-white dark:bg-blue-500 text-blue-600 
-                dark:text-white rounded-full font-medium text-sm sm:text-base
-                hover:bg-blue-50 dark:hover:bg-blue-400 transition-all duration-300 
-                flex items-center justify-center shadow-lg hover:shadow-xl 
-                hover:-translate-y-0.5 active:translate-y-0 active:shadow-md 
-                dark:shadow-blue-500/50 dark:hover:shadow-blue-400/50">
+              <button 
+                onClick={scrollToContact}
+                className="group px-6 sm:px-8 py-3 sm:py-4 bg-white dark:bg-blue-500 text-blue-600 
+                  dark:text-white rounded-full font-medium text-sm sm:text-base
+                  hover:bg-blue-50 dark:hover:bg-blue-400 transition-all duration-300 
+                  flex items-center justify-center shadow-lg hover:shadow-xl 
+                  hover:-translate-y-0.5 active:translate-y-0 active:shadow-md 
+                  dark:shadow-blue-500/50 dark:hover:shadow-blue-400/50">
                 Comenzar ahora
                 <ArrowRight className="ml-2 h-4 sm:h-5 w-4 sm:w-5 transform group-hover:translate-x-1 transition-transform" />
               </button>
