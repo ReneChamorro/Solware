@@ -55,7 +55,7 @@ export default function Header() {
     <header 
       className={`fixed w-full z-50 transition-all duration-300 ${
         isScrolled 
-          ? 'md:bg-white/95 md:dark:bg-dark/95 md:backdrop-blur-sm bg-[#1A2D42] shadow-sm' 
+          ? 'bg-white dark:bg-gray-900 md:bg-white/95 md:dark:bg-dark/95 md:backdrop-blur-sm shadow-sm' 
           : 'bg-transparent'
       }`}
     >
@@ -116,7 +116,8 @@ export default function Header() {
           </div>
 
           <button 
-            className="md:hidden p-2 rounded-lg text-gray-300 hover:text-white transition-colors"
+            className="md:hidden p-2 rounded-lg text-gray-700 dark:text-gray-300
+              hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
             onClick={() => setIsMenuOpen(!isMenuOpen)}
             aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
           >
@@ -137,14 +138,17 @@ export default function Header() {
         />
         
         <div 
-          className={`absolute right-0 top-0 h-full w-64 bg-[#1A2D42] transition-transform 
-            duration-300 transform ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
+          className={`absolute right-0 top-0 h-full w-64 bg-white dark:bg-gray-900 
+            shadow-xl transition-transform duration-300 transform ${
+            isMenuOpen ? 'translate-x-0' : 'translate-x-full'
+          }`}
         >
           <div className="flex flex-col h-full">
             <div className="flex justify-end p-4">
               <button
                 onClick={() => setIsMenuOpen(false)}
-                className="p-2 rounded-lg text-gray-300 hover:text-white transition-colors"
+                className="p-2 rounded-lg text-gray-700 dark:text-gray-300
+                  hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
               >
                 <X className="h-6 w-6" />
               </button>
@@ -156,22 +160,23 @@ export default function Header() {
                   key={href}
                   href={href}
                   onClick={handleNavClick}
-                  className={`block px-4 py-3 text-lg font-medium transition-colors duration-200 
-                    ${activeSection === href.replace('#', '')
-                      ? 'text-blue-400'
-                      : 'text-gray-300 hover:text-white'
-                    }`}
+                  className={`block px-4 py-3 rounded-lg text-lg font-medium transition-colors duration-200 ${
+                    activeSection === href.replace('#', '')
+                      ? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50'
+                      : 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
+                  }`}
                 >
                   {label}
                 </a>
               ))}
             </nav>
 
-            <div className="p-4 border-t border-gray-700/50">
+            <div className="p-4 border-t border-gray-200 dark:border-gray-800">
               <div className="flex items-center justify-between mb-4">
                 <button
                   onClick={toggleDarkMode}
-                  className="flex items-center space-x-2 text-gray-300 hover:text-white transition-colors"
+                  className="flex items-center space-x-2 text-gray-700 dark:text-gray-300
+                    hover:text-blue-600 dark:hover:text-blue-400 transition-colors"
                 >
                   {isDark ? (
                     <>
@@ -190,8 +195,9 @@ export default function Header() {
               <a
                 href="#contacto"
                 onClick={handleNavClick}
-                className="block w-full text-center bg-blue-500 text-white px-6 py-3 
-                  rounded-full hover:bg-blue-600 transition-colors duration-300"
+                className="block w-full text-center bg-blue-600 dark:bg-blue-500 text-white 
+                  px-6 py-3 rounded-full hover:bg-blue-700 dark:hover:bg-blue-600 
+                  transition-colors duration-300"
               >
                 Consulta Gratis
               </a>
