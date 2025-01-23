@@ -102,10 +102,6 @@ const services = [
         title: "Visualización Arquitectónica",
         description: "Transformación de planos en visualizaciones 3D impactantes."
       },
-      {
-        title: "Renderizado en 4K",
-        description: "Imágenes de alta resolución que destacan cada detalle."
-      }
     ]
   },
   {
@@ -114,10 +110,6 @@ const services = [
     description: "Obtén insights clave para tomar decisiones informadas y mejorar tus resultados.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
     details: [
-      {
-        title: "Análisis Predictivo",
-        description: "Utilización de modelos avanzados para predecir tendencias y comportamientos."
-      },
       {
         title: "Dashboards Interactivos",
         description: "Visualizaciones dinámicas que permiten explorar y comprender los datos fácilmente."

@@ -24,17 +24,17 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   onFlip
 }) => {
   return (
-    <div className="perspective-1000 w-full h-[500px]">
+    <div className="perspective-1000 w-full h-[28rem] sm:h-[32rem]">
       <div
         className={`relative w-full h-full transition-transform duration-600 transform-style-3d ${
           isFlipped ? 'rotate-y-180' : ''
         }`}
       >
-        {/* Frente de la card */}
+        {/* Front of card */}
         <div className="absolute w-full h-full backface-hidden">
           <div className="h-full bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden group 
             hover:shadow-xl transition-all duration-300">
-            <div className="relative h-48 overflow-hidden">
+            <div className="relative h-40 sm:h-48 overflow-hidden">
               <img
                 src={image}
                 alt={title}
@@ -48,18 +48,18 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
               </div>
             </div>
 
-            <div className="p-6">
-              <h3 className="text-xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">
+            <div className="p-4 sm:p-6">
+              <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">
                 {title}
               </h3>
-              <p className="text-gray-600 dark:text-gray-300 mb-4 transition-colors duration-300">
+              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4 transition-colors duration-300">
                 {description}
               </p>
               
               <button
                 onClick={onFlip}
                 className="inline-flex items-center text-blue-600 dark:text-blue-400 font-medium 
-                  hover:text-blue-700 dark:hover:text-blue-300 transition-colors group/btn"
+                  hover:text-blue-700 dark:hover:text-blue-300 transition-colors group/btn text-sm sm:text-base"
               >
                 Saber más
                 <ChevronRight className="ml-2 h-4 w-4 transform group-hover/btn:translate-x-1 transition-transform" />
@@ -68,20 +68,22 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
           </div>
         </div>
 
-        {/* Reverso de la card */}
+        {/* Back of card */}
         <div className="absolute w-full h-full backface-hidden rotate-y-180">
-          <div className="h-full bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-6 overflow-y-auto">
-            <h3 className="text-lg font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">
+          <div className="h-full bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4 sm:p-6 flex flex-col">
+            <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 transition-colors duration-300">
               Detalles del Servicio
             </h3>
 
-            <div className="space-y-4">
+            <div className="flex-grow space-y-4 sm:space-y-6 overflow-y-auto scrollbar-hide">
               {details.map((detail, index) => (
-                <div key={index}>
-                  <h4 className="text-base font-semibold text-blue-600 dark:text-blue-400 mb-2 transition-colors duration-300">
+                <div key={index} className="group">
+                  <h4 className="text-sm sm:text-base font-semibold text-blue-600 dark:text-blue-400 mb-1 sm:mb-2 
+                    transition-colors duration-300 group-hover:text-blue-700 dark:group-hover:text-blue-300">
                     {detail.title}
                   </h4>
-                  <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">
+                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300 
+                    leading-relaxed group-hover:text-gray-900 dark:group-hover:text-gray-200">
                     {detail.description}
                   </p>
                 </div>
@@ -90,8 +92,9 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
 
             <button
               onClick={onFlip}
-              className="mt-6 inline-flex items-center text-blue-600 dark:text-blue-400 font-medium 
-                hover:text-blue-700 dark:hover:text-blue-300 transition-colors group/btn"
+              className="mt-4 sm:mt-6 inline-flex items-center text-blue-600 dark:text-blue-400 
+                font-medium hover:text-blue-700 dark:hover:text-blue-300 transition-colors 
+                group/btn text-sm sm:text-base"
             >
               <ArrowLeft className="mr-2 h-4 w-4 transform group-hover/btn:-translate-x-1 transition-transform" />
               Volver
