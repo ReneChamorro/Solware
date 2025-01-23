@@ -271,7 +271,10 @@ const WorkProcess: React.FC = () => {
                     border-2 border-white dark:border-gray-800 shadow-md group z-20
                     ${selectedStep === index ? 'ring-4 ring-blue-500 ring-opacity-50' : ''}
                     ${isVisible ? 'animate-pulse' : ''}`}
-                  style={{ animationDelay: `${index * 0.3}s` }}
+                  style={{ 
+                    animationDelay: `${index * 0.3}s`,
+                    animationPlayState: isVisible ? 'running' : 'paused'
+                  }}
                   aria-expanded={selectedStep === index}
                 >
                   <span className="text-2xl font-bold text-gray-800 dark:text-white group-hover:scale-110 transition-transform">
@@ -287,7 +290,10 @@ const WorkProcess: React.FC = () => {
                     transform transition-all duration-300 hover:rotate-12 hover:scale-110 hover:shadow-md
                     border border-white/50 dark:border-gray-700/50
                     ${isVisible ? 'animate-icon-pulse' : ''}`}
-                  style={{ animationDelay: `${index * 0.3 + 0.1}s` }}
+                  style={{ 
+                    animationDelay: `${index * 0.3 + 0.1}s`,
+                    animationPlayState: isVisible ? 'running' : 'paused'
+                  }}
                 >
                   {React.cloneElement(step.icon, {
                     className: `h-6 w-6 ${step.iconColor}`
@@ -299,7 +305,10 @@ const WorkProcess: React.FC = () => {
                   className={`bg-white dark:bg-gray-800 rounded-xl p-3 shadow-lg transform hover:scale-105 
                     transition-all duration-300 hover:shadow-xl max-w-[200px] cursor-pointer
                     ${isVisible ? 'animate-box-pulse' : ''}`}
-                  style={{ animationDelay: `${index * 0.3 + 0.2}s` }}
+                  style={{ 
+                    animationDelay: `${index * 0.3 + 0.2}s`,
+                    animationPlayState: isVisible ? 'running' : 'paused'
+                  }}
                   onClick={() => handleStepClick(index)}
                 >
                   <h3 className="text-center text-lg font-semibold text-gray-800 dark:text-white whitespace-normal transition-colors duration-300">
