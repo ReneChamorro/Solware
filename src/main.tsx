@@ -7,6 +7,7 @@ import {
 } from 'react-router-dom';
 import App from './App';
 import NotFound from './components/NotFound';
+import PrivacyPolicy from './components/PrivacyPolicy';
 import './index.css';
 
 // Inicializar el tema oscuro antes de renderizar
@@ -28,6 +29,7 @@ root.render(
     <BrowserRouter>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
