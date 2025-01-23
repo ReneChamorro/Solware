@@ -3,80 +3,80 @@ import { Target, Route, Lightbulb, Cog, ClipboardList, X } from 'lucide-react';
 
 const steps = [
   {
-    number: "1",
-    title: "Establecer metas claras",
-    icon: <Target className="h-6 w-6" />,
-    bgColor: "bg-blue-100 dark:bg-blue-900/30",
-    iconColor: "text-blue-600 dark:text-blue-400",
-    description: "Definimos objetivos específicos, medibles y alcanzables para tu transformación digital.",
-    details: [
-      "Análisis detallado de la situación actual",
-      "Identificación de áreas de mejora",
-      "Establecimiento de KPIs",
-      "Definición de plazos realistas",
-      "Alineación con objetivos empresariales"
-    ]
-  },
-  {
-    number: "2",
-    title: "Crear plan de acción",
-    icon: <Route className="h-6 w-6" />,
-    bgColor: "bg-green-100 dark:bg-green-900/30",
-    iconColor: "text-green-600 dark:text-green-400",
-    description: "Desarrollamos una estrategia detallada con pasos concretos para alcanzar los objetivos.",
-    details: [
-      "Mapeo de procesos actuales",
-      "Diseño de flujos de trabajo optimizados",
-      "Selección de herramientas y tecnologías",
-      "Asignación de recursos y responsabilidades",
-      "Establecimiento de hitos y checkpoints"
-    ]
-  },
-  {
-    number: "3",
-    title: "Desarrollar habilidades",
-    icon: <Lightbulb className="h-6 w-6" />,
-    bgColor: "bg-yellow-100 dark:bg-yellow-900/30",
-    iconColor: "text-yellow-600 dark:text-yellow-400",
-    description: "Capacitamos a tu equipo en las nuevas tecnologías y metodologías.",
-    details: [
-      "Programas de capacitación personalizados",
-      "Talleres prácticos y hands-on",
-      "Documentación y recursos de aprendizaje",
-      "Mentorías y soporte continuo",
-      "Evaluación de competencias adquiridas"
-    ]
-  },
-  {
-    number: "4",
-    title: "Implementar soluciones",
-    icon: <Cog className="h-6 w-6" />,
-    bgColor: "bg-pink-100 dark:bg-pink-900/30",
-    iconColor: "text-pink-600 dark:text-pink-400",
-    description: "Ponemos en marcha las soluciones diseñadas de manera gradual y controlada.",
-    details: [
-      "Implementación por fases",
-      "Pruebas y validación continua",
-      "Ajustes y optimizaciones",
-      "Monitoreo de rendimiento",
-      "Gestión del cambio organizacional"
-    ]
-  },
-  {
-    number: "5",
-    title: "Evaluar el progreso",
-    icon: <ClipboardList className="h-6 w-6" />,
-    bgColor: "bg-purple-100 dark:bg-purple-900/30",
-    iconColor: "text-purple-600 dark:text-purple-400",
-    description: "Medimos y analizamos los resultados para garantizar el éxito del proceso.",
-    details: [
-      "Seguimiento de KPIs establecidos",
-      "Análisis de feedback de usuarios",
-      "Identificación de áreas de mejora",
-      "Reportes de progreso periódicos",
-      "Ajustes estratégicos basados en resultados"
-    ]
-  }
+  number: "1",
+  title: "Establecer metas claras",
+  icon: <Target className="h-6 w-6" />,
+  bgColor: "bg-blue-100 dark:bg-blue-900/30",
+  iconColor: "text-blue-600 dark:text-blue-400",
+  description: "Definimos objetivos específicos, medibles y alcanzables para tu transformación digital.",
+  details: [
+    "Detección de oportunidades y puntos críticos",
+    "Diagnóstico completo de tu situación actual",
+    "Definición de KPIs clave para medir el éxito",
+    "Alineación con objetivos empresariales",
+    "Creación de un roadmap con plazos alcanzables"
+  ]
+},
+{
+  number: "2",
+  title: "Crear plan de acción",
+  icon: <Route className="h-6 w-6" />,
+  bgColor: "bg-green-100 dark:bg-green-900/30",
+  iconColor: "text-green-600 dark:text-green-400",
+  description: "Desarrollamos una estrategia detallada con pasos concretos para alcanzar los objetivos.",
+  details: [
+    "Mapeo de procesos actuales",
+    "Diseño de flujos de trabajo optimizados",
+    "Establecimiento de hitos y checkpoints",
+    "Implementación de soluciones efectivas",
+    "Asignación de recursos y responsabilidades"
+  ]
+},
+{
+  number: "3",
+  title: "Desarrollar habilidades",
+  icon: <Lightbulb className="h-6 w-6" />,
+  bgColor: "bg-yellow-100 dark:bg-yellow-900/30",
+  iconColor: "text-yellow-600 dark:text-yellow-400",
+  description: "Capacitamos a tu equipo en las nuevas tecnologías y metodologías.",
+  details: [
+    "Talleres inmersivos y prácticos",
+    "Programas personalizados para tu negocio",
+    "Soporte experto en tiempo real",
+    "Documentación y recursos de aprendizaje",
+    "Certificaciones y evaluación continua"
+  ]
+},
+{
+  number: "4",
+  title: "Implementar soluciones",
+  icon: <Cog className="h-6 w-6" />,
+  bgColor: "bg-pink-100 dark:bg-pink-900/30",
+  iconColor: "text-pink-600 dark:text-pink-400",
+  description: "Ponemos en marcha las soluciones diseñadas de manera gradual y controlada.",
+  details: [
+    "Despliegue por fases estratégicas",
+    "Pruebas y validación en tiempo real",
+    "Optimización y mejora continua",
+    "Supervisión de rendimiento inteligente",
+    "Gestión del cambio organizacional"
+  ]
+},
+{
+  number: "5",
+  title: "Evaluar el progreso",
+  icon: <ClipboardList className="h-6 w-6" />,
+  bgColor: "bg-purple-100 dark:bg-purple-900/30",
+  iconColor: "text-purple-600 dark:text-purple-400",
+  description: "Medimos y analizamos los resultados para garantizar el éxito del proceso.",
+  details: [
+    "Seguimiento detallado de KPIs clave",
+    "Análisis estratégico de feedback de usuarios",
+    "Detección proactiva de áreas críticas",
+    "Reportes dinámicos de progreso",
+    "Ajustes estratégicos basados en resultados"
+  ]
+}
 ];
 
 const WorkProcess: React.FC = () => {
