@@ -117,49 +117,52 @@ const Carousel: React.FC<CarouselProps> = ({
   }, [autoPlay, isHovered, isTransitioning, isTouchActive, autoPlayInterval]);
 
   const getTransform = () => {
-    const translateValue = window.innerWidth < 640 
-      ? -(currentIndex * 70) + 15 // Móvil: reducido de 80% a 70%
-      : -(currentIndex * 30) + 35; // Desktop: reducido de 33.333% a 30%
+    const isMobile = window.innerWidth < 768;
+    const translateValue = isMobile
+      ? -(currentIndex * 75) + 12.5 // Móvil: 75% width + 25% preview
+      : -(currentIndex * 33.333) + 33.333; // Desktop: sin cambios
     
     return {
       transform: `translateX(${translateValue}%)`,
-      transition: isTransitioning ? 'transform 275ms cubic-bezier(0.4, 0, 0.2, 1)' : 'none'
+      transition: isTransitioning ? 'transform 275ms cubic-bezier(0.4, 0, 0.2, 1)' : 'none',
+      willChange: 'transform'
     };
   };
 
   return (
     <div 
-      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8"
+      className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden"
       onMouseEnter={() => setIsHovered(true)}
       onMouseLeave={() => setIsHovered(false)}
       ref={containerRef}
     >
-      <div className="overflow-hidden touch-pan-y"
+      <div 
+        className="overflow-hidden touch-pan-x"
         onTouchStart={handleTouchStart}
         onTouchMove={handleTouchMove}
         onTouchEnd={handleTouchEnd}
       >
         <div 
           ref={slideRef}
-          className="flex"
+          className="flex snap-x snap-mandatory"
           style={getTransform()}
           onTransitionEnd={handleTransitionEnd}
         >
           {extendedItems.map((item, index) => (
             <div
               key={`${item.id}-${index}`}
-              className="w-[70%] sm:w-[30%] flex-shrink-0 px-2 sm:px-3 lg:px-4"
+              className="w-[75%] md:w-[33.333%] flex-shrink-0 px-2 md:px-3 lg:px-4 snap-center"
               style={{ 
-                transform: `scale(${index === currentIndex ? 1 : 0.9})`,
-                opacity: index === currentIndex ? 1 : 0.5,
+                transform: `scale(${index === currentIndex ? 1 : 0.95})`,
+                opacity: index === currentIndex ? 1 : 0.7,
                 transition: 'all 275ms cubic-bezier(0.4, 0, 0.2, 1)',
-                zIndex: index === currentIndex ? 10 : 0
+                willChange: 'transform, opacity'
               }}
               aria-hidden={index !== currentIndex}
             >
               <div className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg 
                 transition-all duration-275 ease-out hover:shadow-xl
-                transform hover:translate-y-[-2px]">
+                transform hover:-translate-y-1">
                 <div className="relative aspect-[3/2] overflow-hidden">
                   {item.CustomImage ? (
                     <item.CustomImage />
@@ -173,25 +176,25 @@ const Carousel: React.FC<CarouselProps> = ({
                     />
                   )}
                   {item.icon && (
-                    <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3">
+                    <div className="absolute bottom-2 left-2 md:bottom-3 md:left-3">
                       <div className="bg-blue-600/90 dark:bg-blue-500/90 p-1.5 rounded-lg 
                         backdrop-blur-sm transition-transform duration-275 ease-out 
                         hover:scale-105">
                         {React.cloneElement(item.icon, {
-                          className: 'h-4 w-4 sm:h-5 sm:w-5 text-white'
+                          className: 'h-4 w-4 md:h-5 md:w-5 text-white'
                         })}
                       </div>
                     </div>
                   )}
                 </div>
 
-                <div className="p-4">
-                  <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-2 
-                    transition-colors duration-275 line-clamp-1">
+                <div className="p-4 md:p-6">
+                  <h3 className="text-base md:text-lg font-bold text-gray-900 dark:text-white mb-2 
+                    transition-colors duration-275 mobile-carousel-title">
                     {item.title}
                   </h3>
-                  <p className="text-sm text-gray-600 dark:text-gray-300 
-                    transition-colors duration-275 line-clamp-3">
+                  <p className="text-sm md:text-base text-gray-600 dark:text-gray-300 
+                    transition-colors duration-275 mobile-carousel-description">
                     {item.description}
                   </p>
                 </div>
@@ -203,27 +206,27 @@ const Carousel: React.FC<CarouselProps> = ({
 
       <button
         onClick={handlePrevious}
-        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-2.5 rounded-full
+        className="absolute left-0 top-1/2 -translate-y-1/2 z-20 p-2 md:p-2.5 rounded-full
           bg-white/90 dark:bg-gray-800/90 shadow-lg hover:bg-white dark:hover:bg-gray-700 
           transition-all duration-275 ease-out hover:scale-105 hover:shadow-xl
-          transform active:scale-95 -translate-x-1/2 sm:translate-x-0"
+          transform active:scale-95 translate-x-1 md:-translate-x-1/2"
         aria-label="Anterior"
       >
-        <ChevronLeft className="w-4 h-4 sm:w-5 sm:h-5 text-gray-800 dark:text-gray-200" />
+        <ChevronLeft className="w-4 h-4 md:w-5 md:h-5 text-gray-800 dark:text-gray-200" />
       </button>
 
       <button
         onClick={handleNext}
-        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 p-2 sm:p-2.5 rounded-full
+        className="absolute right-0 top-1/2 -translate-y-1/2 z-20 p-2 md:p-2.5 rounded-full
           bg-white/90 dark:bg-gray-800/90 shadow-lg hover:bg-white dark:hover:bg-gray-700 
           transition-all duration-275 ease-out hover:scale-105 hover:shadow-xl
-          transform active:scale-95 translate-x-1/2 sm:translate-x-0"
+          transform active:scale-95 -translate-x-1 md:translate-x-1/2"
         aria-label="Siguiente"
       >
-        <ChevronRight className="w-4 h-4 sm:w-5 sm:h-5 text-gray-800 dark:text-gray-200" />
+        <ChevronRight className="w-4 h-4 md:w-5 md:h-5 text-gray-800 dark:text-gray-200" />
       </button>
 
-      <div className="flex justify-center items-center gap-1.5 sm:gap-2 mt-4">
+      <div className="flex justify-center items-center gap-1.5 md:gap-2 mt-4">
         {items.map((_, index) => (
           <button
             key={index}

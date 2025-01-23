@@ -37,6 +37,16 @@
     transition-duration: 600ms;
   }
 
+  /* Optimizaciones para el carrusel */
+  .snap-x {
+    scroll-snap-type: x mandatory;
+    -webkit-overflow-scrolling: touch;
+  }
+
+  .snap-center {
+    scroll-snap-align: center;
+  }
+
   /* Carousel utilities */
   .carousel-gradient-mask {
     mask-image: linear-gradient(
@@ -138,5 +148,45 @@
   .scroll-reveal-stagger.visible > * {
     opacity: 1;
     transform: translateY(0);
+  }
+
+  /* Optimizaciones para el carrusel en móvil */
+  @media (max-width: 767px) {
+    .mobile-carousel-title {
+      font-size: 1rem;
+      line-height: 1.4;
+      margin-bottom: 0.5rem;
+      display: block;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+      hyphens: auto;
+    }
+
+    .mobile-carousel-description {
+      font-size: 0.875rem;
+      line-height: 1.5;
+      display: block;
+      word-wrap: break-word;
+      overflow-wrap: break-word;
+      -webkit-hyphens: auto;
+      -ms-hyphens: auto;
+      hyphens: auto;
+    }
+  }
+
+  /* Ajustes para el carrusel en desktop */
+  @media (min-width: 768px) {
+    .mobile-carousel-title {
+      font-size: 1.125rem;
+      line-height: 1.5;
+      margin-bottom: 0.75rem;
+    }
+
+    .mobile-carousel-description {
+      font-size: 1rem;
+      line-height: 1.6;
+    }
   }
 }
