@@ -131,7 +131,7 @@ const WorkProcess: React.FC = () => {
           <div className="hidden lg:block absolute inset-0 pointer-events-none">
             <svg 
               className="w-full h-full" 
-              viewBox="0 0 1200 300"
+              viewBox="0 0 1200 600"
               preserveAspectRatio="xMidYMid meet"
               xmlns="http://www.w3.org/2000/svg"
             >
@@ -142,7 +142,7 @@ const WorkProcess: React.FC = () => {
                       attributeName="stop-color"
                       values="#3B82F6; #10B981; #F59E0B; #EC4899; #8B5CF6"
                       dur="4s"
-                      repeatCount="1"
+                      repeatCount="infinite"
                     />
                   </stop>
                   <stop offset="100%" stopColor="#8B5CF6">
@@ -150,13 +150,13 @@ const WorkProcess: React.FC = () => {
                       attributeName="stop-color"
                       values="#8B5CF6; #EC4899; #F59E0B; #10B981; #3B82F6"
                       dur="4s"
-                      repeatCount="1"
+                      repeatCount="infinite"
                     />
                   </stop>
                 </linearGradient>
                 
                 <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
-                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                  <feGaussianBlur stdDeviation="4" result="coloredBlur"/>
                   <feMerge>
                     <feMergeNode in="coloredBlur"/>
                     <feMergeNode in="SourceGraphic"/>
@@ -164,110 +164,114 @@ const WorkProcess: React.FC = () => {
                 </filter>
               </defs>
 
-              {/* Background path */}
+              {/* Animated path with smooth curves through all points */}
               <path
-                d="M100,150 C250,150 300,50 450,50 S650,250 800,250 S1000,50 1100,50"
-                stroke="currentColor"
-                className="text-gray-200 dark:text-gray-700"
-                strokeWidth="4"
-                fill="none"
-              />
-
-              {/* Animated path */}
-              <path
-                d="M100,150 C250,150 300,50 450,50 S650,250 800,250 S1000,50 1100,50"
+                d="M 200,150 
+                   C 300,150 350,250 400,300
+                   C 450,350 500,350 600,300
+                   C 700,250 750,150 800,150
+                   C 850,150 900,250 950,300
+                   C 1000,350 1050,350 1100,300"
                 stroke="url(#gradientLine)"
                 strokeWidth="4"
                 fill="none"
                 strokeLinecap="round"
                 filter="url(#glow)"
-                className={isVisible ? 'animate-draw-line' : 'opacity-0'}
+                className={`path-animation ${isVisible ? 'opacity-100' : 'opacity-0'}`}
                 style={{ 
-                  strokeDasharray: '2000',
-                  strokeDashoffset: '2000'
+                  animationDelay: '0.5s',
+                  animationPlayState: isVisible ? 'running' : 'paused'
                 }}
               />
             </svg>
 
             <style>{`
-              @keyframes drawLine {
-                to {
-                  stroke-dashoffset: 0;
+                @keyframes drawLine {
+                  0% {
+                    stroke-dasharray: 3000;
+                    stroke-dashoffset: 3000;
+                  }
+                  100% {
+                    stroke-dasharray: 3000;
+                    stroke-dashoffset: 0;
+                  }
                 }
-              }
 
-              .animate-draw-line {
-                animation: drawLine 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-              }
-
-              @keyframes pulse {
-                0% {
-                  transform: scale(1);
-                  opacity: 0.8;
+                .path-animation {
+                  animation: drawLine 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
                 }
-                50% {
-                  transform: scale(1.1);
-                  opacity: 1;
-                }
-                100% {
-                  transform: scale(1);
-                  opacity: 0.8;
-                }
-              }
 
-              .step-highlight {
-                animation: pulse 2s ease-in-out infinite;
-              }
-
-              @keyframes success {
-                0% {
-                  transform: scale(1);
-                  box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4);
+                @keyframes pulse {
+                  0% {
+                    transform: scale(1);
+                    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5);
+                  }
+                  70% {
+                    transform: scale(1.05);
+                    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+                  }
+                  100% {
+                    transform: scale(1);
+                    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+                  }
                 }
-                50% {
-                  transform: scale(1.1);
-                  box-shadow: 0 0 0 10px rgba(139, 92, 246, 0);
+
+                @keyframes iconPulse {
+                  0% {
+                    transform: scale(1);
+                  }
+                  50% {
+                    transform: scale(1.1) rotate(5deg);
+                  }
+                  100% {
+                    transform: scale(1);
+                  }
                 }
-                100% {
-                  transform: scale(1);
-                  box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
+
+                @keyframes boxPulse {
+                  0% {
+                    transform: translateY(0);
+                  }
+                  50% {
+                    transform: translateY(-5px);
+                  }
+                  100% {
+                    transform: translateY(0);
+                  }
                 }
-              }
 
-              .animate-success {
-                animation: success 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-                animation-delay: 3.5s;
-              }
+                .animate-pulse {
+                  animation: pulse 2s infinite;
+                }
 
-              .animate-success-icon {
-                animation: success 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-                animation-delay: 3.7s;
-              }
+                .animate-icon-pulse {
+                  animation: iconPulse 2s infinite;
+                }
 
-              .animate-success-text {
-                animation: success 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
-                animation-delay: 3.9s;
-              }
-            `}</style>
+                .animate-box-pulse {
+                  animation: boxPulse 2s infinite;
+                }
+              `}</style>
           </div>
 
-          {/* Pasos del proceso */}
+          {/* Steps grid */}
           <div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 relative z-10">
             {steps.map((step, index) => (
               <div
                 key={index}
                 className={`relative flex flex-col items-center ${
-                  index % 2 === 0 ? 'lg:mt-0' : 'lg:mt-64'
+                  index % 2 === 0 ? 'lg:mt-0' : 'lg:mt-96'
                 }`}
               >
-                {/* Número y círculo */}
+                {/* Step number and circle */}
                 <button
                   onClick={() => handleStepClick(index)}
                   className={`relative w-16 h-16 rounded-full ${step.bgColor} flex items-center justify-center mb-8 
                     transform transition-all duration-300 hover:scale-110 cursor-pointer
                     border-2 border-white dark:border-gray-800 shadow-md group z-20
                     ${selectedStep === index ? 'ring-4 ring-blue-500 ring-opacity-50' : ''}
-                    ${index === 4 && isVisible ? 'animate-success' : ''}`}
+                    ${isVisible ? 'animate-pulse' : ''}`}
+                  style={{ animationDelay: `${index * 0.3}s` }}
                   aria-expanded={selectedStep === index}
                 >
                   <span className="text-2xl font-bold text-gray-800 dark:text-white group-hover:scale-110 transition-transform">
@@ -277,20 +281,25 @@ const WorkProcess: React.FC = () => {
                     group-hover:opacity-100 transition-opacity duration-300"></div>
                 </button>
 
-                {/* Icono */}
-                <div className={`w-12 h-12 rounded-full ${step.bgColor} flex items-center justify-center mb-6 
-                  transform transition-all duration-300 hover:rotate-12 hover:scale-110 hover:shadow-md
-                  border border-white/50 dark:border-gray-700/50
-                  ${index === 4 && isVisible ? 'animate-success-icon' : ''}`}>
+                {/* Icon */}
+                <div 
+                  className={`w-12 h-12 rounded-full ${step.bgColor} flex items-center justify-center mb-6 
+                    transform transition-all duration-300 hover:rotate-12 hover:scale-110 hover:shadow-md
+                    border border-white/50 dark:border-gray-700/50
+                    ${isVisible ? 'animate-icon-pulse' : ''}`}
+                  style={{ animationDelay: `${index * 0.3 + 0.1}s` }}
+                >
                   {React.cloneElement(step.icon, {
                     className: `h-6 w-6 ${step.iconColor}`
                   })}
                 </div>
 
-                {/* Título */}
-                <div className={`bg-white dark:bg-gray-800 rounded-xl p-3 shadow-lg transform hover:scale-105 
-                  transition-all duration-300 hover:shadow-xl max-w-[200px] cursor-pointer
-                  ${index === 4 && isVisible ? 'animate-success-text' : ''}`}
+                {/* Title */}
+                <div 
+                  className={`bg-white dark:bg-gray-800 rounded-xl p-3 shadow-lg transform hover:scale-105 
+                    transition-all duration-300 hover:shadow-xl max-w-[200px] cursor-pointer
+                    ${isVisible ? 'animate-box-pulse' : ''}`}
+                  style={{ animationDelay: `${index * 0.3 + 0.2}s` }}
                   onClick={() => handleStepClick(index)}
                 >
                   <h3 className="text-center text-lg font-semibold text-gray-800 dark:text-white whitespace-normal transition-colors duration-300">
