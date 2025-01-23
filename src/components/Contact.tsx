@@ -311,10 +311,10 @@ const Contact: React.FC = () => {
               <div className="space-y-4">
                 <div className="flex items-center">
                   <Mail className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                  <a href="mailto:contacto@solware.com" 
+                  <a href="mailto:solwareve@gmail.com" 
                     className="ml-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 
                       dark:hover:text-blue-400 transition-colors">
-                    contacto@solware.com
+                    solwareve@gmail.com
                   </a>
                 </div>
                 
@@ -337,7 +337,7 @@ const Contact: React.FC = () => {
                 <div className="flex items-center">
                   <Instagram className="h-5 w-5 text-blue-600 dark:text-blue-400" />
                   <a
-                    href="https://instagram.com/solware"
+                    href="https://www.instagram.com/solware_?igsh=MTg4OTdwM3k3d2o4cA=="
                     target="_blank"
                     rel="noopener noreferrer"
                     className="ml-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 

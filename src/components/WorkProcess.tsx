@@ -135,33 +135,120 @@ const WorkProcess: React.FC = () => {
               preserveAspectRatio="xMidYMid meet"
               xmlns="http://www.w3.org/2000/svg"
             >
+              <defs>
+                <linearGradient id="gradientLine" x1="0%" y1="0%" x2="100%" y2="0%">
+                  <stop offset="0%" stopColor="#3B82F6">
+                    <animate
+                      attributeName="stop-color"
+                      values="#3B82F6; #10B981; #F59E0B; #EC4899; #8B5CF6"
+                      dur="4s"
+                      repeatCount="1"
+                    />
+                  </stop>
+                  <stop offset="100%" stopColor="#8B5CF6">
+                    <animate
+                      attributeName="stop-color"
+                      values="#8B5CF6; #EC4899; #F59E0B; #10B981; #3B82F6"
+                      dur="4s"
+                      repeatCount="1"
+                    />
+                  </stop>
+                </linearGradient>
+                
+                <filter id="glow" x="-20%" y="-20%" width="140%" height="140%">
+                  <feGaussianBlur stdDeviation="2" result="coloredBlur"/>
+                  <feMerge>
+                    <feMergeNode in="coloredBlur"/>
+                    <feMergeNode in="SourceGraphic"/>
+                  </feMerge>
+                </filter>
+              </defs>
+
+              {/* Background path */}
               <path
-                d="M100,150 C250,150 300,50 450,50 S600,250 750,250 S900,50 1100,50"
+                d="M100,150 C250,150 300,50 450,50 S650,250 800,250 S1000,50 1100,50"
                 stroke="currentColor"
                 className="text-gray-200 dark:text-gray-700"
                 strokeWidth="4"
                 fill="none"
               />
+
+              {/* Animated path */}
               <path
-                d="M100,150 C250,150 300,50 450,50 S600,250 750,250 S900,50 1100,50"
+                d="M100,150 C250,150 300,50 450,50 S650,250 800,250 S1000,50 1100,50"
                 stroke="url(#gradientLine)"
                 strokeWidth="4"
                 fill="none"
                 strokeLinecap="round"
-                className={`path-animation ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+                filter="url(#glow)"
+                className={isVisible ? 'animate-draw-line' : 'opacity-0'}
                 style={{ 
-                  animationDelay: '0.5s',
-                  animationPlayState: isVisible ? 'running' : 'paused'
+                  strokeDasharray: '2000',
+                  strokeDashoffset: '2000'
                 }}
               />
-              <defs>
-                <linearGradient id="gradientLine" x1="0%" y1="0%" x2="100%" y2="0%">
-                  <stop offset="0%" className="text-blue-600" stopColor="currentColor" />
-                  <stop offset="50%" className="text-purple-600" stopColor="currentColor" />
-                  <stop offset="100%" className="text-pink-600" stopColor="currentColor" />
-                </linearGradient>
-              </defs>
             </svg>
+
+            <style>{`
+              @keyframes drawLine {
+                to {
+                  stroke-dashoffset: 0;
+                }
+              }
+
+              .animate-draw-line {
+                animation: drawLine 4s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+              }
+
+              @keyframes pulse {
+                0% {
+                  transform: scale(1);
+                  opacity: 0.8;
+                }
+                50% {
+                  transform: scale(1.1);
+                  opacity: 1;
+                }
+                100% {
+                  transform: scale(1);
+                  opacity: 0.8;
+                }
+              }
+
+              .step-highlight {
+                animation: pulse 2s ease-in-out infinite;
+              }
+
+              @keyframes success {
+                0% {
+                  transform: scale(1);
+                  box-shadow: 0 0 0 0 rgba(139, 92, 246, 0.4);
+                }
+                50% {
+                  transform: scale(1.1);
+                  box-shadow: 0 0 0 10px rgba(139, 92, 246, 0);
+                }
+                100% {
+                  transform: scale(1);
+                  box-shadow: 0 0 0 0 rgba(139, 92, 246, 0);
+                }
+              }
+
+              .animate-success {
+                animation: success 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+                animation-delay: 3.5s;
+              }
+
+              .animate-success-icon {
+                animation: success 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+                animation-delay: 3.7s;
+              }
+
+              .animate-success-text {
+                animation: success 2s cubic-bezier(0.4, 0, 0.2, 1) infinite;
+                animation-delay: 3.9s;
+              }
+            `}</style>
           </div>
 
           {/* Pasos del proceso */}
@@ -179,7 +266,8 @@ const WorkProcess: React.FC = () => {
                   className={`relative w-16 h-16 rounded-full ${step.bgColor} flex items-center justify-center mb-8 
                     transform transition-all duration-300 hover:scale-110 cursor-pointer
                     border-2 border-white dark:border-gray-800 shadow-md group z-20
-                    ${selectedStep === index ? 'ring-4 ring-blue-500 ring-opacity-50' : ''}`}
+                    ${selectedStep === index ? 'ring-4 ring-blue-500 ring-opacity-50' : ''}
+                    ${index === 4 && isVisible ? 'animate-success' : ''}`}
                   aria-expanded={selectedStep === index}
                 >
                   <span className="text-2xl font-bold text-gray-800 dark:text-white group-hover:scale-110 transition-transform">
@@ -192,15 +280,17 @@ const WorkProcess: React.FC = () => {
                 {/* Icono */}
                 <div className={`w-12 h-12 rounded-full ${step.bgColor} flex items-center justify-center mb-6 
                   transform transition-all duration-300 hover:rotate-12 hover:scale-110 hover:shadow-md
-                  border border-white/50 dark:border-gray-700/50`}>
+                  border border-white/50 dark:border-gray-700/50
+                  ${index === 4 && isVisible ? 'animate-success-icon' : ''}`}>
                   {React.cloneElement(step.icon, {
                     className: `h-6 w-6 ${step.iconColor}`
                   })}
                 </div>
 
                 {/* Título */}
-                <div className="bg-white dark:bg-gray-800 rounded-xl p-3 shadow-lg transform hover:scale-105 
-                  transition-all duration-300 hover:shadow-xl max-w-[200px] cursor-pointer"
+                <div className={`bg-white dark:bg-gray-800 rounded-xl p-3 shadow-lg transform hover:scale-105 
+                  transition-all duration-300 hover:shadow-xl max-w-[200px] cursor-pointer
+                  ${index === 4 && isVisible ? 'animate-success-text' : ''}`}
                   onClick={() => handleStepClick(index)}
                 >
                   <h3 className="text-center text-lg font-semibold text-gray-800 dark:text-white whitespace-normal transition-colors duration-300">

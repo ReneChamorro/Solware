@@ -34,7 +34,7 @@ const Footer: React.FC = () => {
             </a>
             
             <a
-              href="mailto:contacto@solware.com"
+              href="mailto:solwareve@gmail.com"
               className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 
                 transition-colors p-2 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-full"
               aria-label="Enviar correo"
@@ -43,7 +43,7 @@ const Footer: React.FC = () => {
             </a>
             
             <a
-              href="https://instagram.com/solware"
+              href="https://www.instagram.com/solware_?igsh=MTg4OTdwM3k3d2o4cA=="
               target="_blank"
               rel="noopener noreferrer"
               className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 

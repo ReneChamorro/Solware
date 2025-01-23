@@ -101,10 +101,10 @@ const PrivacyPolicy: React.FC = () => {
                 <li>
                   <span className="font-medium">Correo electrónico:</span>{' '}
                   <a 
-                    href="mailto:privacidad@solware.com"
+                    href="mailto:solwareve@gmail.com"
                     className="text-blue-600 dark:text-blue-400 hover:underline"
                   >
-                    privacidad@solware.com
+                    solwareve@gmail.com
                   </a>
                 </li>
                 <li>

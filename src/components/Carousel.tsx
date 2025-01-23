@@ -6,7 +6,8 @@ interface CarouselProps {
     id: number;
     title: string;
     description: string;
-    image: string;
+    image?: string;
+    CustomImage?: React.ComponentType;
     icon?: React.ReactNode;
   }[];
   autoPlay?: boolean;
@@ -160,13 +161,17 @@ const Carousel: React.FC<CarouselProps> = ({
                 transition-all duration-275 ease-out hover:shadow-xl
                 transform hover:translate-y-[-2px]">
                 <div className="relative aspect-[3/2] overflow-hidden">
-                  <img
-                    src={item.image}
-                    alt={item.title}
-                    className="w-full h-full object-cover transform transition-transform 
-                      duration-275 ease-out group-hover:scale-105"
-                    loading="lazy"
-                  />
+                  {item.CustomImage ? (
+                    <item.CustomImage />
+                  ) : (
+                    <img
+                      src={item.image}
+                      alt={item.title}
+                      className="w-full h-full object-cover transform transition-transform 
+                        duration-275 ease-out group-hover:scale-105"
+                      loading="lazy"
+                    />
+                  )}
                   {item.icon && (
                     <div className="absolute bottom-2 left-2 sm:bottom-3 sm:left-3">
                       <div className="bg-blue-600/90 dark:bg-blue-500/90 p-1.5 rounded-lg 

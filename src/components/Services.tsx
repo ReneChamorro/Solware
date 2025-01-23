@@ -1,33 +1,9 @@
 import React, { useState } from 'react';
-import { Settings, Code2, Users, Server, Megaphone, Cuboid as Cube } from 'lucide-react';
+import { Settings, Code2, Users, Bot, BarChart2, Cuboid as Cube } from 'lucide-react';
 import ServiceCard from './ServiceCard';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 const services = [
-  {
-    icon: <Cube className="h-6 w-6 text-white" />,
-    title: "Digitalización 3D y Capturas 360°",
-    description: "Creamos experiencias inmersivas y visualizaciones interactivas de alta calidad.",
-    image: "https://images.unsplash.com/photo-1626544827763-d516dce335e2?auto=format&fit=crop&q=80&w=800",
-    details: [
-      {
-        title: "Modelado 3D Profesional",
-        description: "Creación de modelos tridimensionales detallados para productos y espacios."
-      },
-      {
-        title: "Tours Virtuales 360°",
-        description: "Experiencias interactivas que permiten explorar espacios desde cualquier lugar."
-      },
-      {
-        title: "Visualización Arquitectónica",
-        description: "Transformación de planos en visualizaciones 3D impactantes."
-      },
-      {
-        title: "Renderizado en 4K",
-        description: "Imágenes de alta resolución que destacan cada detalle."
-      }
-    ]
-  },
   {
     icon: <Settings className="h-6 w-6 text-white" />,
     title: "Automatización de Procesos",
@@ -49,6 +25,30 @@ const services = [
       {
         title: "Análisis y Optimización",
         description: "Monitoreamos y optimizamos continuamente los procesos automatizados."
+      }
+    ]
+  },
+  {
+    icon: <Bot className="h-6 w-6 text-white" />,
+    title: "Agentes AI",
+    description: "Integra agentes inteligentes que optimizan procesos y mejoran la experiencia del cliente.",
+    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800",
+    details: [
+      {
+        title: "Asistentes Virtuales",
+        description: "Implementación de chatbots y asistentes AI para atención al cliente 24/7."
+      },
+      {
+        title: "Automatización Inteligente",
+        description: "Agentes AI que aprenden y mejoran continuamente sus respuestas y acciones."
+      },
+      {
+        title: "Procesamiento de Lenguaje Natural",
+        description: "Comprensión avanzada del lenguaje para interacciones más naturales y efectivas."
+      },
+      {
+        title: "Integración Multicanal",
+        description: "Presencia consistente en todos los canales de comunicación con el cliente."
       }
     ]
   },
@@ -78,73 +78,73 @@ const services = [
   },
   {
     icon: <Users className="h-6 w-6 text-white" />,
-    title: "CRM y Gestión",
-    description: "Gestiona tus relaciones con clientes de manera efectiva.",
-    image: "https://images.unsplash.com/photo-1552581234-26160f608093?auto=format&fit=crop&q=80&w=800",
+    title: "CRM & Business Intelligence",
+    description: "Potencia la toma de decisiones estratégicas con herramientas avanzadas de CRM y análisis inteligente de datos.",
+    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
     details: [
       {
-        title: "Seguimiento de Clientes",
-        description: "Sistema integral para seguimiento y gestión de las interacciones con clientes."
+        title: "Análisis Predictivo de Clientes",
+        description: "Anticipamos comportamientos y necesidades de clientes mediante modelos avanzados de análisis."
       },
       {
-        title: "Automatización de Marketing",
-        description: "Herramientas para automatizar campañas de marketing y nutrir leads de manera efectiva."
+        title: "Dashboards Personalizados",
+        description: "Visualizaciones interactivas que muestran KPIs clave y métricas de negocio en tiempo real."
       },
       {
-        title: "Análisis de Datos",
-        description: "Insights detallados sobre el comportamiento de clientes para tomar decisiones informadas."
+        title: "Segmentación Inteligente",
+        description: "Clasificación automática de clientes basada en patrones de comportamiento y datos históricos."
       },
       {
-        title: "Reportes Personalizados",
-        description: "Generación de informes adaptados a tus necesidades específicas de negocio."
+        title: "Automatización de Insights",
+        description: "Generación automática de reportes y alertas basadas en análisis de datos del CRM."
       }
     ]
   },
   {
-    icon: <Server className="h-6 w-6 text-white" />,
-    title: "Infraestructura Cloud",
-    description: "Moderniza tu infraestructura tecnológica en la nube.",
-    image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800",
+    icon: <Cube className="h-6 w-6 text-white" />,
+    title: "Digitalización 3D y Capturas 360°",
+    description: "Creamos experiencias inmersivas y visualizaciones interactivas de alta calidad.",
+    image: "https://images.unsplash.com/photo-1626544827763-d516dce335e2?auto=format&fit=crop&q=80&w=800",
     details: [
       {
-        title: "Migración a la Nube",
-        description: "Transición suave y segura de sistemas locales a infraestructura cloud moderna."
+        title: "Modelado 3D Profesional",
+        description: "Creación de modelos tridimensionales detallados para productos y espacios."
       },
       {
-        title: "Escalabilidad Automática",
-        description: "Configuración de recursos que se adaptan automáticamente a la demanda."
+        title: "Tours Virtuales 360°",
+        description: "Experiencias interactivas que permiten explorar espacios desde cualquier lugar."
       },
       {
-        title: "Seguridad Avanzada",
-        description: "Implementación de múltiples capas de seguridad para proteger datos y aplicaciones."
+        title: "Visualización Arquitectónica",
+        description: "Transformación de planos en visualizaciones 3D impactantes."
       },
       {
-        title: "Respaldos Automáticos",
-        description: "Sistema de copias de seguridad automatizadas para garantizar la continuidad."
+        title: "Renderizado en 4K",
+        description: "Imágenes de alta resolución que destacan cada detalle."
       }
     ]
   },
   {
-    icon: <Megaphone className="h-6 w-6 text-white" />,
-    title: "Marketing Digital",
-    description: "Impulsa tu presencia online y alcanza más clientes.",
+    icon: <BarChart2 className="h-6 w-6 text-white" />,
+    title: "Reportes y Análisis de Data",
+    description: "Obtén insights clave para tomar decisiones informadas y mejorar tus resultados.",
     image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
     details: [
       {
-        title: "Estrategias SEO/SEM",
-        description: "Optimización para motores de búsqueda y gestión de campañas publicitarias efectivas."
+        title: "Análisis Predictivo",
+        description: "Utilización de modelos avanzados para predecir tendencias y comportamientos."
       },
       {
-        title: "Marketing de Contenidos",
-        description: "Creación y distribución de contenido relevante que atrae y retiene a tu audiencia."
+        title: "Dashboards Interactivos",
+        description: "Visualizaciones dinámicas que permiten explorar y comprender los datos fácilmente."
       },
       {
-        title: "Gestión de Redes Sociales",
-        description: "Administración profesional de tus perfiles sociales para maximizar el engagement."
+        title: "Reportes Automatizados",
+        description: "Generación y distribución automática de informes personalizados."
       },
       {
-        title: "Análisis y Reportes",
-        description: "Seguimiento detallado de métricas y KPIs para optimizar resultados."
+        title: "Integración de Fuentes",
+        description: "Consolidación de datos de múltiples fuentes para un análisis completo."
       }
     ]
   }

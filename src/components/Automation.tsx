@@ -2,6 +2,7 @@ import React from 'react';
 import { Bot, Zap, BarChart2, FileSpreadsheet, Clock, Database } from 'lucide-react';
 import Carousel from './Carousel';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import MarketingAutomationIllustration from './MarketingAutomationIllustration';
 
 const Automation = () => {
   const titleRef = useScrollReveal({ variant: 'fade-up', delay: 100 });
@@ -34,22 +35,22 @@ const Automation = () => {
       id: 4,
       title: "Automatización de Marketing",
       description: "Campañas personalizadas que se adaptan automáticamente según el comportamiento del usuario y métricas en tiempo real.",
-      image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+      CustomImage: MarketingAutomationIllustration,
       icon: <BarChart2 className="h-6 w-6 text-white" />
     },
     {
       id: 5,
-      title: "Procesos de RR.HH.",
-      description: "Simplificación de reclutamiento, onboarding y gestión de personal mediante flujos de trabajo automatizados.",
-      image: "https://images.unsplash.com/photo-1521737604893-d14cc237f11d?auto=format&fit=crop&q=80&w=800",
-      icon: <Clock className="h-6 w-6 text-white" />
+      title: "Soporte Técnico Automatizado",
+      description: "Resuelve incidencias de forma más eficiente con flujos de soporte técnico automatizados y seguimiento inteligente.",
+      image: "https://images.unsplash.com/photo-1549923746-c502d488b3ea?auto=format&fit=crop&q=80&w=800",
+      icon: <Zap className="h-6 w-6 text-white" />
     },
     {
       id: 6,
-      title: "Integración de Sistemas",
-      description: "Conectamos y sincronizamos automáticamente diferentes plataformas y aplicaciones empresariales para un flujo de datos perfecto.",
-      image: "https://images.unsplash.com/photo-1451187580459-43490279c0fa?auto=format&fit=crop&q=80&w=800",
-      icon: <Zap className="h-6 w-6 text-white" />
+      title: "Automatización Financiera",
+      description: "Simplifica la gestión de presupuestos, pagos y reportes financieros con flujos automatizados que garantizan precisión y eficiencia.",
+      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800",
+      icon: <Clock className="h-6 w-6 text-white" />
     }
   ];
 
