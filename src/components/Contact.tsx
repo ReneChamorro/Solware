@@ -1,5 +1,5 @@
 import React, { useState, useRef } from 'react';
-import { Mail, Phone, Clock, Send, ChevronDown, MessageCircle } from 'lucide-react';
+import { Mail, Phone, Clock, Send, ChevronDown, MessageCircle, Instagram } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
 
 interface FormData {
@@ -131,6 +131,15 @@ const Contact: React.FC = () => {
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
           <div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
+            <div className="mb-8">
+              <h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">
+                Formulario de Contacto
+              </h3>
+              <p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">
+                Completa la información para que podamos responder a tu consulta de manera personalizada
+              </p>
+            </div>
+
             <form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
               <div>
                 <label htmlFor="name" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
@@ -325,16 +334,31 @@ const Contact: React.FC = () => {
                   </span>
                 </div>
 
-                <button
-                  onClick={openWhatsApp}
-                  className="w-full mt-4 flex items-center justify-center px-6 py-3 
-                    bg-green-500 dark:bg-green-600 text-white rounded-full 
-                    hover:bg-green-600 dark:hover:bg-green-700 
-                    transition-all duration-300 shadow-lg hover:shadow-xl"
-                >
-                  <MessageCircle className="h-5 w-5 mr-2" />
-                  Chatear por WhatsApp
-                </button>
+                <div className="flex items-center">
+                  <Instagram className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+                  <a
+                    href="https://instagram.com/solware"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ml-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 
+                      dark:hover:text-blue-400 transition-colors"
+                  >
+                    Síguenos en Instagram
+                  </a>
+                </div>
+
+                <div className="pt-4">
+                  <button
+                    onClick={openWhatsApp}
+                    className="w-full flex items-center justify-center px-6 py-3 
+                      bg-green-500 dark:bg-green-600 text-white rounded-full 
+                      hover:bg-green-600 dark:hover:bg-green-700 
+                      transition-all duration-300 shadow-lg hover:shadow-xl"
+                  >
+                    <MessageCircle className="h-5 w-5 mr-2" />
+                    Chatear por WhatsApp
+                  </button>
+                </div>
               </div>
             </div>
 
@@ -388,20 +412,20 @@ const faqs = [
     answer: "Solware puede ayudar a tu empresa a aumentar la eficiencia operativa, reducir costos, mejorar la experiencia del cliente y facilitar la adopción de nuevas tecnologías para mantenerte competitivo en el mercado."
   },
   {
-    question: "¿Qué es la transformación digital?",
-    answer: "La transformación digital es el proceso de integrar tecnologías digitales en todas las áreas de una empresa para mejorar su funcionamiento y ofrecer un mejor valor a los clientes."
+    question: "¿Qué nos hace diferentes de otras empresas de tecnología?",
+    answer: "Nos distinguimos por nuestro enfoque personalizado, experiencia comprobada y compromiso con resultados medibles. Combinamos conocimiento técnico profundo con una comprensión única de las necesidades empresariales, ofreciendo soluciones adaptadas y soporte continuo."
   },
   {
-    question: "¿Cómo se inicia un proyecto con Solware?",
-    answer: "Iniciamos con un diagnóstico inicial para entender las necesidades de tu empresa, seguido del diseño de soluciones personalizadas y la implementación de las herramientas necesarias."
-  },
-  {
-    question: "¿Ofrecen soporte post-implementación?",
-    answer: "Sí, ofrecemos soporte continuo y seguimiento para garantizar que las soluciones implementadas funcionen correctamente y se ajusten a las necesidades cambiantes de tu negocio."
+    question: "¿Cómo garantizamos resultados medibles en cada proyecto?",
+    answer: "Implementamos un sistema riguroso de KPIs y métricas desde el inicio, estableciendo objetivos claros y medibles. Realizamos seguimiento continuo, proporcionamos informes detallados y ajustamos estrategias según sea necesario para asegurar el éxito del proyecto."
   },
   {
     question: "¿Puedo contactar a Solware para una consulta gratuita?",
-    answer: "Sí, puedes contactarnos a través de nuestro formulario en la sección de contacto y estaremos encantados de ofrecerte una consulta inicial sin compromiso."
+    answer: "¡Por supuesto! Ofrecemos consultas iniciales sin costo donde analizamos tus necesidades y te presentamos soluciones personalizadas. Puedes contactarnos a través de nuestro formulario, WhatsApp o correo electrónico."
+  },
+  {
+    question: "¿Qué beneficios obtendré al automatizar procesos con Solware?",
+    answer: "Al automatizar tus procesos con Solware, obtendrás reducción de costos operativos, eliminación de errores manuales, mayor productividad, mejor experiencia del cliente, datos en tiempo real para toma de decisiones y escalabilidad para tu negocio."
   }
 ];
 

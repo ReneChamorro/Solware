@@ -4,6 +4,7 @@ import Hero from './components/Hero';
 import Services from './components/Services';
 import WorkProcess from './components/WorkProcess';
 import Automation from './components/Automation';
+import ValuesMission from './components/ValuesMission';
 import Contact from './components/Contact';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
@@ -17,6 +18,7 @@ function App() {
         <Services />
         <WorkProcess />
         <Automation />
+        <ValuesMission />
         <Contact />
       </main>
       <Footer />
