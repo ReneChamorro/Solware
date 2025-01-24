@@ -77,7 +77,7 @@ const Contact: React.FC = () => {
       const response = await fetch(scriptUrl, {
         method: 'POST',
         headers: {
-          'Content-Type': 'application/x-www-form-urlencoded'
+          'Content-Type': 'application/json'
         },
         body: new URLSearchParams(formDataToSend).toString()
       });

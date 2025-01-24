@@ -34,6 +34,17 @@ export default {
         },
         darkBorder: '#C8D0DA',
       },
+      animation: {
+        'spin-slow': 'spin 3s linear infinite',
+        'progress': 'progress 2.5s ease-in-out forwards',
+        'bounce': 'bounce 1s infinite',
+      },
+      keyframes: {
+        progress: {
+          '0%': { transform: 'translateX(-100%)' },
+          '100%': { transform: 'translateX(0)' }
+        }
+      }
     },
   },
   plugins: [],
