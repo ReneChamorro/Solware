@@ -20,24 +20,20 @@ function App() {
       setIsLoading(false);
     }, 3000);
 
-    // Manejador del evento scroll
     const handleScroll = () => {
       if (!isScrolling) {
         document.documentElement.classList.add('scrolling');
         setIsScrolling(true);
       }
 
-      // Limpiar el timeout anterior
       clearTimeout(scrollTimeout);
 
-      // Establecer nuevo timeout
       scrollTimeout = setTimeout(() => {
         document.documentElement.classList.remove('scrolling');
         setIsScrolling(false);
-      }, 150); // Duración después de que el usuario deja de hacer scroll
+      }, 150);
     };
 
-    // Agregar event listener
     window.addEventListener('scroll', handleScroll, { passive: true });
 
     return () => {

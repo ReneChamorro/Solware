@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { Phone, Mail, Instagram, Shield } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
-const Footer: React.FC = () => {
+const Footer = memo(() => {
   return (
     <footer className="bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700 py-6 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -57,6 +57,6 @@ const Footer: React.FC = () => {
       </div>
     </footer>
   );
-};
+});
 
 export default Footer;

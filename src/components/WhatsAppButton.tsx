@@ -1,11 +1,11 @@
-import React from 'react';
+import React, { memo, useCallback } from 'react';
 import { MessageCircle } from 'lucide-react';
 
-const WhatsAppButton: React.FC = () => {
-  const openWhatsApp = () => {
+const WhatsAppButton = memo(() => {
+  const openWhatsApp = useCallback(() => {
     const message = encodeURIComponent('Hola, me gustaría obtener más información sobre sus servicios.');
     window.open(`https://wa.me/584126652245?text=${message}`, '_blank');
-  };
+  }, []);
 
   return (
     <button
@@ -19,6 +19,6 @@ const WhatsAppButton: React.FC = () => {
       <MessageCircle className="w-7 h-7 text-white" />
     </button>
   );
-};
+});
 
 export default WhatsAppButton;

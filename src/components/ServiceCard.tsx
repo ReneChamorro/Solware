@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { ChevronRight, ArrowLeft } from 'lucide-react';
 
 interface ServiceCardProps {
@@ -14,7 +14,7 @@ interface ServiceCardProps {
   onFlip: () => void;
 }
 
-const ServiceCard: React.FC<ServiceCardProps> = ({
+const ServiceCard = memo(({
   title,
   description,
   icon,
@@ -22,7 +22,7 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
   details,
   isFlipped,
   onFlip
-}) => {
+}: ServiceCardProps) => {
   return (
     <div className="perspective-1000 w-full h-[28rem] sm:h-[32rem]">
       <div
@@ -104,6 +104,12 @@ const ServiceCard: React.FC<ServiceCardProps> = ({
       </div>
     </div>
   );
-};
+}, (prevProps, nextProps) => {
+  return (
+    prevProps.isFlipped === nextProps.isFlipped &&
+    prevProps.title === nextProps.title &&
+    prevProps.description === nextProps.description
+  );
+});
 
 export default ServiceCard;

@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, useCallback } from 'react';
 import { Settings, Code2, Users, Bot, BarChart2, Cuboid as Cube } from 'lucide-react';
 import ServiceCard from './ServiceCard';
 import { useScrollReveal } from '../hooks/useScrollReveal';
@@ -41,7 +41,7 @@ const services = [
       {
         title: "Soporte Multicanal Inteligente",
         description: "Centraliza tu comunicación con agentes AI capaces de gestionar en diversos canales."
-      },
+      }
     ]
   },
   {
@@ -67,7 +67,7 @@ const services = [
   {
     icon: <Users className="h-6 w-6 text-white" />,
     title: "CRM & Business Intelligence",
-    description: "Toma de decisiones estratégicas basadas en  análisis inteligente de datos.",
+    description: "Toma de decisiones estratégicas basadas en análisis inteligente de datos.",
     image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
     details: [
       {
@@ -101,7 +101,7 @@ const services = [
       {
         title: "Visualización Arquitectónica",
         description: "Transformación de planos en visualizaciones 3D impactantes."
-      },
+      }
     ]
   },
   {
@@ -126,25 +126,25 @@ const services = [
   }
 ];
 
-const Services: React.FC = () => {
+const Services = () => {
   const [flippedCard, setFlippedCard] = useState<number | null>(null);
   const titleRef = useScrollReveal({ variant: 'fade-up', delay: 100 });
   const descriptionRef = useScrollReveal({ variant: 'fade-up', delay: 200 });
   const cardsContainerRef = useScrollReveal({ variant: 'fade-up', delay: 300 });
 
-  const handleFlip = (index: number) => {
-    setFlippedCard(flippedCard === index ? null : index);
-  };
+  const handleFlip = useCallback((index: number) => {
+    setFlippedCard(prev => prev === index ? null : index);
+  }, []);
 
   return (
     <section className="py-24 bg-white dark:bg-gray-900 transition-colors duration-300" id="servicios">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 ref={titleRef} className="text-4xl font-bold text-gray-900 dark:text-white mb-4 relative transition-colors duration-300">
+          <h2 ref={titleRef} className="text-4xl font-bold text-gray-900 dark:text-white mb-4 relative">
             Soluciones Digitales Integrales
             <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 dark:bg-blue-500 rounded-full"></span>
           </h2>
-          <p ref={descriptionRef} className="text-xl text-gray-600 dark:text-gray-300 transition-colors duration-300">
+          <p ref={descriptionRef} className="text-xl text-gray-600 dark:text-gray-300">
             Transformamos tu negocio con tecnología de vanguardia y soluciones personalizadas
           </p>
         </div>

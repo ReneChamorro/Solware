@@ -1,6 +1,6 @@
-import React from 'react';
+import React, { memo } from 'react';
 
-const MarketingAutomationIllustration: React.FC = () => {
+const MarketingAutomationIllustration = memo(() => {
   return (
     <svg
       viewBox="0 0 1600 900"
@@ -227,6 +227,6 @@ const MarketingAutomationIllustration: React.FC = () => {
       </g>
     </svg>
   );
-};
+});
 
 export default MarketingAutomationIllustration;

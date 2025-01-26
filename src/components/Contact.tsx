@@ -1,6 +1,7 @@
-import React, { useState, useRef } from 'react';
+import React, { useState, useRef, useCallback } from 'react';
 import { Mail, Phone, Clock, Send, ChevronDown, MessageCircle, Instagram } from 'lucide-react';
 import { useScrollReveal } from '../hooks/useScrollReveal';
+import { supabase } from '../lib/supabase';
 
 interface FormData {
   name: string;
@@ -35,24 +36,24 @@ const Contact: React.FC = () => {
     areas: []
   });
 
-  const handleChange = (e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
+  const handleChange = useCallback((e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
     const { name, value } = e.target;
     setFormData(prev => ({
       ...prev,
       [name]: value
     }));
-  };
+  }, []);
 
-  const handleAreaChange = (areaId: string) => {
+  const handleAreaChange = useCallback((areaId: string) => {
     setFormData(prev => {
       const areas = prev.areas.includes(areaId)
         ? prev.areas.filter(id => id !== areaId)
         : [...prev.areas, areaId];
       return { ...prev, areas };
     });
-  };
+  }, []);
 
-  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = useCallback(async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     
     if (!formRef.current || isSubmitting) return;
@@ -60,30 +61,23 @@ const Contact: React.FC = () => {
     setIsSubmitting(true);
 
     try {
-      const scriptUrl = 'https://script.google.com/macros/s/AKfycbyr7P6y5kf4cmzuG7jzgCqX2JxYGoNTCXd9BE1LHfU-hmUCA3pE9kB0Q-PSQbtgcq8Cww/exec';
-      
-      const formDataToSend = {
-        nombreCompleto: formData.name,
-        correoElectronico: formData.email,
-        telefono: formData.phone,
-        empresa: formData.company,
-        sector: formData.sector,
-        areasInteres: formData.areas.map(id => 
-          areasDeInteres.find(area => area.id === id)?.label || id
-        ).join(', '),
-        mensaje: formData.message
-      };
+      // Insert data into Supabase
+      const { error } = await supabase
+        .from('contact_submissions')
+        .insert([{
+          name: formData.name,
+          email: formData.email,
+          phone: formData.phone,
+          company: formData.company,
+          sector: formData.sector,
+          areas: formData.areas.map(id => 
+            areasDeInteres.find(area => area.id === id)?.label || id
+          ),
+          message: formData.message
+        }]);
 
-      const response = await fetch(scriptUrl, {
-        method: 'POST',
-        headers: {
-          'Content-Type': 'application/json'
-        },
-        body: new URLSearchParams(formDataToSend).toString()
-      });
-
-      if (!response.ok) {
-        throw new Error('Error en la respuesta del servidor');
+      if (error) {
+        throw error;
       }
 
       alert('¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.');
@@ -104,16 +98,16 @@ const Contact: React.FC = () => {
     } finally {
       setIsSubmitting(false);
     }
-  };
+  }, [formRef, isSubmitting, formData]);
 
-  const openWhatsApp = () => {
+  const openWhatsApp = useCallback(() => {
     const message = encodeURIComponent('Hola, me gustaría obtener más información sobre sus servicios.');
     window.open(`https://wa.me/584126652245?text=${message}`, '_blank');
-  };
+  }, []);
 
-  const handleFaqClick = (index: number) => {
-    setOpenFaqIndex(openFaqIndex === index ? null : index);
-  };
+  const handleFaqClick = useCallback((index: number) => {
+    setOpenFaqIndex(prev => prev === index ? null : index);
+  }, []);
 
   return (
     <section className="py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300" id="contacto">

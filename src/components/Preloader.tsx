@@ -1,7 +1,7 @@
-import React, { useEffect, useState } from 'react';
+import React, { memo, useEffect, useState } from 'react';
 import { Code2 } from 'lucide-react';
 
-const Preloader: React.FC = () => {
+const Preloader = memo(() => {
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
@@ -83,6 +83,6 @@ const Preloader: React.FC = () => {
       </div>
     </div>
   );
-};
+});
 
 export default Preloader;

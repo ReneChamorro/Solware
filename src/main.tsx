@@ -3,7 +3,9 @@ import { createRoot } from 'react-dom/client';
 import { 
   BrowserRouter, 
   Routes, 
-  Route 
+  Route,
+  UNSAFE_UNSAFE_useScrollRestoration,
+  UNSAFE_enhanceManualRouteObjects
 } from 'react-router-dom';
 import App from './App';
 import NotFound from './components/NotFound';
@@ -19,6 +21,14 @@ if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
   document.documentElement.classList.remove('dark');
 }
 
+// Configuración de future flags para React Router v7
+const routerOptions = {
+  future: {
+    v7_startTransition: true,    // Habilita el uso de startTransition para actualizaciones de ruta
+    v7_relativeSplatPath: true,  // Habilita el manejo relativo de rutas splat
+  }
+};
+
 const rootElement = document.getElementById('root');
 if (!rootElement) throw new Error('Failed to find the root element');
 
@@ -26,7 +36,7 @@ const root = createRoot(rootElement);
 
 root.render(
   <StrictMode>
-    <BrowserRouter>
+    <BrowserRouter {...routerOptions}>
       <Routes>
         <Route path="/" element={<App />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />

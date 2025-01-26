@@ -1,8 +1,8 @@
-import React from 'react';
+import React, { memo } from 'react';
 import { ArrowLeft } from 'lucide-react';
 import { useNavigate } from 'react-router-dom';
 
-const NotFound: React.FC = () => {
+const NotFound = memo(() => {
   const navigate = useNavigate();
 
   return (
@@ -27,6 +27,6 @@ const NotFound: React.FC = () => {
       </div>
     </div>
   );
-};
+});
 
 export default NotFound;
