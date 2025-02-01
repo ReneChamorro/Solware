@@ -1,5 +1,6 @@
 import React from 'react';
-import { ArrowRight, Zap, Shield, Clock } from 'lucide-react';
+import { ArrowRight, Zap, Shield, Clock, Play } from 'lucide-react';
+import { Link } from 'react-router-dom';
 
 export default function Hero() {
   const scrollToContact = (e: React.MouseEvent<HTMLButtonElement>) => {
@@ -53,26 +54,24 @@ export default function Hero() {
             </p>
 
             <div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-delay-2">
-              <button 
+              <button
                 onClick={scrollToContact}
-                className="group px-6 sm:px-8 py-3 sm:py-4 bg-white dark:bg-blue-500 text-blue-600 
-                  dark:text-white rounded-full font-medium text-sm sm:text-base
-                  hover:bg-blue-50 dark:hover:bg-blue-400 transition-all duration-300 
-                  flex items-center justify-center shadow-lg hover:shadow-xl 
-                  hover:-translate-y-0.5 active:translate-y-0 active:shadow-md 
-                  dark:shadow-blue-500/50 dark:hover:shadow-blue-400/50">
-                Comenzar ahora
-                <ArrowRight className="ml-2 h-4 sm:h-5 w-4 sm:w-5 transform group-hover:translate-x-1 transition-transform" />
+                className="px-8 py-4 bg-white text-blue-600 rounded-full font-semibold 
+                  hover:bg-blue-50 transition-colors duration-300 shadow-lg hover:shadow-xl
+                  transform hover:-translate-y-0.5 active:translate-y-0"
+              >
+                Consulta Gratis
               </button>
               
-              <button className="group px-6 sm:px-8 py-3 sm:py-4 bg-transparent border-2 border-white 
-                dark:border-blue-400 text-white rounded-full font-medium text-sm sm:text-base
-                hover:bg-white/10 dark:hover:bg-blue-400/10 transition-all duration-300
-                flex items-center justify-center backdrop-blur-sm
-                hover:shadow-[0_0_15px_rgba(255,255,255,0.3)] dark:hover:shadow-[0_0_25px_rgba(96,165,250,0.4)]
-                active:shadow-[0_0_5px_rgba(255,255,255,0.2)] dark:active:shadow-[0_0_15px_rgba(96,165,250,0.3)]">
+              <Link
+                to="/demo"
+                className="px-8 py-4 bg-blue-600 text-white rounded-full font-semibold 
+                  hover:bg-blue-700 transition-colors duration-300 shadow-lg hover:shadow-xl
+                  transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center"
+              >
+                <Play className="h-5 w-5 mr-2" />
                 Ver demostración
-              </button>
+              </Link>
             </div>
           </div>
 

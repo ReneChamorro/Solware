@@ -10,6 +10,7 @@ import {
 import App from './App';
 import NotFound from './components/NotFound';
 import PrivacyPolicy from './components/PrivacyPolicy';
+import Demonstration from './components/Demonstration';
 import './index.css';
 
 // Inicializar el tema oscuro antes de renderizar
@@ -39,6 +40,7 @@ root.render(
     <BrowserRouter {...routerOptions}>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/demo" element={<Demonstration />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
