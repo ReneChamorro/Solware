@@ -8,7 +8,7 @@ const services = [
     icon: <Settings className="h-6 w-6 text-white" />,
     title: "Automatización de Procesos",
     description: "Optimiza tus operaciones con soluciones automatizadas inteligentes.",
-    image: "https://images.unsplash.com/photo-1518432031352-d6fc5c10da5a?auto=format&fit=crop&q=80&w=800",
+    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/1.avif",
     details: [
       {
         title: "Flujos de Trabajo Automatizados",
@@ -28,7 +28,7 @@ const services = [
     icon: <Bot className="h-6 w-6 text-white" />,
     title: "Agentes AI",
     description: "Integra agentes inteligentes que optimizan procesos y mejoran la experiencia del cliente.",
-    image: "https://images.unsplash.com/photo-1485827404703-89b55fcc595e?auto=format&fit=crop&q=80&w=800",
+    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/2.avif",
     details: [
       {
         title: "Asistentes Virtuales",
@@ -48,7 +48,7 @@ const services = [
     icon: <Code2 className="h-6 w-6 text-white" />,
     title: "Desarrollo Web y Móvil",
     description: "Creamos aplicaciones modernas y responsivas para tu negocio.",
-    image: "https://images.unsplash.com/photo-1517694712202-14dd9538aa97?auto=format&fit=crop&q=80&w=800",
+    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/3.avif",
     details: [
       {
         title: "Diseño UX/UI Intuitivo",
@@ -68,7 +68,7 @@ const services = [
     icon: <Users className="h-6 w-6 text-white" />,
     title: "CRM & Business Intelligence",
     description: "Toma de decisiones estratégicas basadas en análisis inteligente de datos.",
-    image: "https://images.unsplash.com/photo-1551288049-bebda4e38f71?auto=format&fit=crop&q=80&w=800",
+    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/4.avif",
     details: [
       {
         title: "Análisis Predictivo de Clientes",
@@ -88,7 +88,7 @@ const services = [
     icon: <Cube className="h-6 w-6 text-white" />,
     title: "Digitalización 3D y Capturas 360°",
     description: "Creamos experiencias inmersivas y visualizaciones interactivas de alta calidad.",
-    image: "https://images.unsplash.com/photo-1626544827763-d516dce335e2?auto=format&fit=crop&q=80&w=800",
+    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/5.avif",
     details: [
       {
         title: "Modelado 3D Profesional",
@@ -108,7 +108,7 @@ const services = [
     icon: <BarChart2 className="h-6 w-6 text-white" />,
     title: "Reportes y Análisis de Data",
     description: "Obtén insights clave para tomar decisiones informadas y mejorar tus resultados.",
-    image: "https://images.unsplash.com/photo-1460925895917-afdab827c52f?auto=format&fit=crop&q=80&w=800",
+    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/6.avif",
     details: [
       {
         title: "Dashboards Interactivos",

@@ -14,14 +14,14 @@ const Automation = () => {
       id: 1,
       title: "Facturación Inteligente",
       description: "Sistema inteligente que automatiza la generación, envío, y reduciendo errores y ahorrando tiempo valioso.",
-      image: "https://images.unsplash.com/photo-1450101499163-c8848c66ca85?auto=format&fit=crop&q=80&w=800",
+      image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Carrusel/9.avif",
       icon: <FileSpreadsheet className="h-6 w-6 text-white" />
     },
     {
       id: 2,
       title: "Inventario Predictivo",
       description: "IA que predice niveles óptimos de inventario y automatiza pedidos basándose en patrones históricos.",
-      image: "https://images.unsplash.com/photo-1586528116311-ad8dd3c8310d?auto=format&fit=crop&q=80&w=800",
+      image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Carrusel/8.png",
       icon: <Database className="h-6 w-6 text-white" />
     },
     {
@@ -49,7 +49,7 @@ const Automation = () => {
       id: 6,
       title: "Gestión Financiera",
       description: "Simplifica la gestión de presupuestos, pagos y reportes financieros con flujos automatizados que garantizan precisión.",
-      image: "https://images.unsplash.com/photo-1554224155-6726b3ff858f?auto=format&fit=crop&q=80&w=800",
+      image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Carrusel/7.avif",
       icon: <Clock className="h-6 w-6 text-white" />
     }
   ];
