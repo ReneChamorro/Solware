@@ -28,21 +28,21 @@ const Automation = () => {
       id: 3,
       title: "Asistentes Virtuales Inteligentes",
       description: "Asistentes virtuales que manejan consultas de clientes, proporcionando respuestas inteligentes e instantáneas.",
-      image: "https://images.unsplash.com/photo-1531746790731-6c087fecd65a?auto=format&fit=crop&q=80&w=800",
+      image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Carrusel/5.png",
       icon: <Bot className="h-6 w-6 text-white" />
     },
     {
       id: 4,
       title: "Automatización de Marketing",
       description: "Campañas personalizadas que se adaptan en tiempo real al comportamiento del usuario.",
-      CustomImage: MarketingAutomationIllustration,
+      image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Carrusel/1.png",
       icon: <BarChart2 className="h-6 w-6 text-white" />
     },
     {
       id: 5,
       title: "Soporte Inteligente",
       description: "Resuelve incidencias de forma más eficiente con flujos de soporte técnico automatizados y seguimiento inteligente.",
-      image: "https://images.unsplash.com/photo-1549923746-c502d488b3ea?auto=format&fit=crop&q=80&w=800",
+      image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Carrusel/4.png",
       icon: <Zap className="h-6 w-6 text-white" />
     },
     {

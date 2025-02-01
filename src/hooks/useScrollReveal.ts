@@ -16,52 +16,46 @@ export const useScrollReveal = (options: ScrollRevealOptions = {}) => {
   useEffect(() => {
     const {
       threshold = 0.1,
-      rootMargin = '-50px',
+      rootMargin = '-5%',
       once = true,
       delay = 0,
       variant = 'fade-up',
       duration = 600,
-      distance = '30px'
+      distance = '20px'
     } = options;
 
     const element = elementRef.current;
     if (!element) return;
 
-    // Configurar estilos iniciales
-    element.style.visibility = 'hidden';
-    element.style.opacity = '0';
-    element.style.willChange = 'opacity, transform';
-    element.style.transition = `
-      opacity ${duration}ms cubic-bezier(0.4, 0, 0.2, 1),
-      transform ${duration}ms cubic-bezier(0.4, 0, 0.2, 1)
+    // Use transform3d for better performance
+    element.style.cssText = `
+      visibility: hidden;
+      opacity: 0;
+      will-change: transform, opacity;
+      transform: translate3d(0, 0, 0);
+      backface-visibility: hidden;
+      perspective: 1000px;
+      transition: opacity ${duration}ms cubic-bezier(0.4, 0, 0.2, 1),
+                 transform ${duration}ms cubic-bezier(0.4, 0, 0.2, 1)
+                 ${delay ? `, ${delay}ms` : ''};
     `;
 
-    if (delay) {
-      element.style.transitionDelay = `${delay}ms`;
-    }
+    // Apply initial transform with hardware acceleration
+    const initialTransform = (() => {
+      switch (variant) {
+        case 'fade-up': return `translate3d(0, ${distance}, 0)`;
+        case 'fade-down': return `translate3d(0, -${distance}, 0)`;
+        case 'fade-left': return `translate3d(${distance}, 0, 0)`;
+        case 'fade-right': return `translate3d(-${distance}, 0, 0)`;
+        case 'zoom': return 'scale3d(0.98, 0.98, 1)';
+        case 'scale': return 'scale3d(0.95, 0.95, 1)';
+        default: return 'translate3d(0, 0, 0)';
+      }
+    })();
+    
+    element.style.transform = initialTransform;
 
-    // Aplicar transformación inicial según la variante
-    switch (variant) {
-      case 'fade-up':
-        element.style.transform = `translateY(${distance})`;
-        break;
-      case 'fade-down':
-        element.style.transform = `translateY(-${distance})`;
-        break;
-      case 'fade-left':
-        element.style.transform = `translateX(${distance})`;
-        break;
-      case 'fade-right':
-        element.style.transform = `translateX(-${distance})`;
-        break;
-      case 'zoom':
-        element.style.transform = 'scale(0.95)';
-        break;
-      case 'scale':
-        element.style.transform = 'scale(0.9)';
-        break;
-    }
-
+    // Use IntersectionObserver with a lower update threshold
     const observer = new IntersectionObserver(
       (entries) => {
         entries.forEach((entry) => {
@@ -69,54 +63,21 @@ export const useScrollReveal = (options: ScrollRevealOptions = {}) => {
             requestAnimationFrame(() => {
               element.style.visibility = 'visible';
               element.style.opacity = '1';
-              element.style.transform = 'none';
-            });
-            
-            if (once) {
-              observer.unobserve(entry.target);
-            }
-          } else if (!once) {
-            requestAnimationFrame(() => {
-              element.style.visibility = 'hidden';
-              element.style.opacity = '0';
-              switch (variant) {
-                case 'fade-up':
-                  element.style.transform = `translateY(${distance})`;
-                  break;
-                case 'fade-down':
-                  element.style.transform = `translateY(-${distance})`;
-                  break;
-                case 'fade-left':
-                  element.style.transform = `translateX(${distance})`;
-                  break;
-                case 'fade-right':
-                  element.style.transform = `translateX(-${distance})`;
-                  break;
-                case 'zoom':
-                  element.style.transform = 'scale(0.95)';
-                  break;
-                case 'scale':
-                  element.style.transform = 'scale(0.9)';
-                  break;
+              element.style.transform = 'translate3d(0, 0, 0) scale3d(1, 1, 1)';
+              
+              if (once) {
+                observer.unobserve(entry.target);
               }
             });
           }
         });
       },
-      { 
-        threshold, 
-        rootMargin,
-        root: null 
-      }
+      { threshold, rootMargin, root: null }
     );
 
     observer.observe(element);
 
-    return () => {
-      if (element) {
-        observer.unobserve(element);
-      }
-    };
+    return () => observer.disconnect();
   }, [options]);
 
   return elementRef;

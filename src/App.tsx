@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from 'react';
+import React, { useState, useEffect, useCallback } from 'react';
 import Header from './components/Header';
 import Hero from './components/Hero';
 import Services from './components/Services';
@@ -15,33 +15,50 @@ function App() {
   const [isScrolling, setIsScrolling] = useState(false);
   let scrollTimeout: NodeJS.Timeout;
 
+  const handleScroll = useCallback(() => {
+    // Skip if we're already in scrolling state
+    if (!isScrolling) {
+      document.documentElement.classList.add('scrolling');
+      setIsScrolling(true);
+    }
+
+    // Clear any existing timeout
+    if (scrollTimeout) {
+      clearTimeout(scrollTimeout);
+    }
+
+    // Set new timeout
+    scrollTimeout = setTimeout(() => {
+      document.documentElement.classList.remove('scrolling');
+      setIsScrolling(false);
+    }, 150);
+  }, [isScrolling]);
+
   useEffect(() => {
     const timer = setTimeout(() => {
       setIsLoading(false);
     }, 3000);
 
-    const handleScroll = () => {
-      if (!isScrolling) {
-        document.documentElement.classList.add('scrolling');
-        setIsScrolling(true);
+    // Use requestAnimationFrame to throttle scroll events
+    let ticking = false;
+    const scrollListener = () => {
+      if (!ticking) {
+        window.requestAnimationFrame(() => {
+          handleScroll();
+          ticking = false;
+        });
+        ticking = true;
       }
-
-      clearTimeout(scrollTimeout);
-
-      scrollTimeout = setTimeout(() => {
-        document.documentElement.classList.remove('scrolling');
-        setIsScrolling(false);
-      }, 150);
     };
 
-    window.addEventListener('scroll', handleScroll, { passive: true });
+    window.addEventListener('scroll', scrollListener, { passive: true });
 
     return () => {
       clearTimeout(timer);
       clearTimeout(scrollTimeout);
-      window.removeEventListener('scroll', handleScroll);
+      window.removeEventListener('scroll', scrollListener);
     };
-  }, [isScrolling]);
+  }, [handleScroll]);
 
   return (
     <>

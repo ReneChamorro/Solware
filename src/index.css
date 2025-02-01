@@ -89,6 +89,16 @@
     background: linear-gradient(90deg, #8C3FFF, #3FECFF);
     box-shadow: 0 0 20px rgba(106, 0, 255, 0.9);
   }
+
+  section {
+    content-visibility: auto;
+    contain-intrinsic-size: 0 500px;
+    contain: content;
+  }
+
+  .card, .carousel-item {
+    contain: layout style paint;
+  }
 }
 
 @layer components {
