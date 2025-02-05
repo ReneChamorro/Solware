@@ -49,14 +49,15 @@ const Demonstration = () => {
           ref={videoRef}
           className="max-w-full mx-auto bg-white dark:bg-gray-800 rounded-2xl shadow-xl overflow-hidden transition-all duration-300"
         >
-          <div className="aspect-w-16 aspect-h-9 relative group">
-            <iframe
-              src="https://www.youtube.com/embed/fU3YcK6qQXQ?si=9clJrDt-0GdEKPF5&autoplay=1"
-              title="Demostración de Automatización"
-              className="w-full h-[500px]"
-              allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-              allowFullScreen
-            ></iframe>
+          <div className="aspect-w-16 aspect-h-9 relative">
+            <video
+              src="https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/videos//Transforma%20Tu%20Empresa%20Con%20Solware-Veed.mp4" // Reemplaza con la URL de tu video en Supabase
+              className="w-full h-full object-cover"
+              autoPlay
+              loop
+              preload="metadata"
+              loading="lazy"
+            />
           </div>
 
           {/* Video Description */}
