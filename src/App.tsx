@@ -9,6 +9,7 @@ import Contact from './components/Contact';
 import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 import Preloader from './components/Preloader';
+import ChatBot from './components/ChatBot';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -77,6 +78,7 @@ function App() {
         </main>
         <Footer />
         <WhatsAppButton />
+        <ChatBot />
       </div>
     </>
   );

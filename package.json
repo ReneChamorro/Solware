@@ -10,6 +10,7 @@
     "preview": "vite preview"
   },
   "dependencies": {
+    "@botonic/react": "^0.31.1",
     "@emailjs/browser": "^4.3.3",
     "@supabase/supabase-js": "^2.39.7",
     "lucide-react": "^0.344.0",

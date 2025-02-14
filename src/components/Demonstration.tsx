@@ -51,12 +51,14 @@ const Demonstration = () => {
         >
           <div className="aspect-w-16 aspect-h-9 relative">
             <video
-              src="https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/videos//Video_Solware.mp4" // Reemplaza con la URL de tu video en Supabase
+              src="https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/videos//Video_Solware.mp4"
               className="w-full h-full object-cover"
-              autoPlay
-              loop
+              controls
               preload="metadata"
               loading="lazy"
+              playsInline
+              controlsList="nodownload"
+              poster="URL_DE_TU_THUMBNAIL"
             />
           </div>
 
