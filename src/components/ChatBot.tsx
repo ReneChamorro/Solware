@@ -65,6 +65,13 @@ const botResponses = {
   }
 };
 
+const contactoDetails = [
+  { icon: <FaEnvelope />, text: "ventas@solware.agency", link: "mailto:ventas@solware.agency" },
+  { icon: <FaWhatsapp />, text: "+58 412-9974533", link: "https://api.whatsapp.com/send/?phone=584129974533&text=Hola%2C+me+gustar%C3%ADa+obtener+m%C3%A1s+informaci%C3%B3n+sobre+sus+servicios.&type=phone_number&app_absent=0" },
+  { icon: <FaInstagram />, text: "@solware_", link: "https://www.instagram.com/solware_?igsh=MTg4OTdwM3k3d2o4cA==" },
+  { icon: <FaLinkedin />, text: "Agencia", link: "https://www.linkedin.com/company/agencia-solware/" }
+];
+
 const ChatBot = () => {
   const [isOpen, setIsOpen] = useState(false);
   const [messages, setMessages] = useState<Message[]>([
@@ -277,8 +284,12 @@ const ChatBot = () => {
                     <p className="text-sm whitespace-pre-line" dangerouslySetInnerHTML={{ __html: message.text }}></p>
                     {message.isBot && message.details && (
                       <div className="mt-2">
-                        {message.details.map((detail, index) => (
-                          <div key={index} className="text-sm" dangerouslySetInnerHTML={{ __html: detail }}></div>
+                        {contactoDetails.map((detail, index) => (
+                          <div key={index} className="text-sm">
+                            <span className="link">
+                              {detail.icon} <a href={detail.link} target="_blank" rel="noopener noreferrer">{detail.text}</a>
+                            </span>
+                          </div>
                         ))}
                       </div>
                     )}
