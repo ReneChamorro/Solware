@@ -55,9 +55,9 @@ const botResponses = {
     text: "Puedes contactarnos por varios medios:",
     details: [
       "📧 Email: ventas@solware.agency",
-      "📱 WhatsApp: [+58 412-9974533](https://api.whatsapp.com/send/?phone=584129974533&text=Hola%2C+me+gustar%C3%ADa+obtener+m%C3%A1s+informaci%C3%B3n+sobre+sus+servicios.&type=phone_number&app_absent=0)",
-      "🌐 Instagram: [@solware_](https://www.instagram.com/solware_?igsh=MTg4OTdwM3k3d2o4cA==)",
-      "👨‍💻 LinkedIn: [AgenciaSolware](https://www.linkedin.com/company/agencia-solware/)"
+      "📱 WhatsApp: +58 412-9974533",
+      "🌐 Instagram: @solware_",
+      "👨‍💻 LinkedIn: <a href='https://www.linkedin.com/company/agencia-solware/' target='_blank' rel='noopener noreferrer'>Agencia</a>"
     ],
     options: ["Enviar email", "Abrir WhatsApp", "Volver al menú"]
   }
