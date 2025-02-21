@@ -56,10 +56,10 @@ const botResponses = {
   contacto: {
     text: "Puedes contactarnos por varios medios:",
     details: [
-      `<span class='link'><FaEnvelope /> <a href='mailto:ventas@solware.agency'>ventas@solware.agency</a></span>`,
-      `<span class='link'><FaWhatsapp /> <a href='https://api.whatsapp.com/send/?phone=584129974533&text=Hola%2C+me+gustar%C3%ADa+obtener+m%C3%A1s+informaci%C3%B3n+sobre+sus+servicios.&type=phone_number&app_absent=0' target='_blank' rel='noopener noreferrer'>+58 412-9974533</a></span>`,
-      `<span class='link'><FaInstagram /> <a href='https://www.instagram.com/solware_?igsh=MTg4OTdwM3k3d2o4cA==' target='_blank' rel='noopener noreferrer'>@solware_</a></span>`,
-      `<span class='link'><FaLinkedin /> <a href='https://www.linkedin.com/company/agencia-solware/' target='_blank' rel='noopener noreferrer'>Agencia</a></span>`
+      `<span class='link'><i class='icon'><FaEnvelope /></i> <a href='mailto:ventas@solware.agency'>ventas@solware.agency</a></span>`,
+      `<span class='link'><i class='icon'><FaWhatsapp /></i> <a href='https://api.whatsapp.com/send/?phone=584129974533&text=Hola%2C+me+gustar%C3%ADa+obtener+m%C3%A1s+informaci%C3%B3n+sobre+sus+servicios.&type=phone_number&app_absent=0' target='_blank' rel='noopener noreferrer'>+58 412-9974533</a></span>`,
+      `<span class='link'><i class='icon'><FaInstagram /></i> <a href='https://www.instagram.com/solware_?igsh=MTg4OTdwM3k3d2o4cA==' target='_blank' rel='noopener noreferrer'>@solware_</a></span>`,
+      `<span class='link'><i class='icon'><FaLinkedin /></i> <a href='https://www.linkedin.com/company/agencia-solware/' target='_blank' rel='noopener noreferrer'>Agencia</a></span>`
     ],
     options: []
   }
