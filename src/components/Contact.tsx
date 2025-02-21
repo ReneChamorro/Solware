@@ -146,6 +146,7 @@ const Contact: React.FC = () => {
                   value={formData.name}
                   onChange={handleChange}
                   required
+                  placeholder="Ingresa tu nombre completo"
                   className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-600 
                     bg-gray-50 dark:bg-gray-700 px-3 py-2 text-gray-900 dark:text-white 
                     shadow-sm focus:border-blue-500 dark:focus:border-blue-400 
@@ -165,6 +166,7 @@ const Contact: React.FC = () => {
                   value={formData.email}
                   onChange={handleChange}
                   required
+                  placeholder="Ingresa tu correo electrónico"
                   className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-600 
                     bg-gray-50 dark:bg-gray-700 px-3 py-2 text-gray-900 dark:text-white 
                     shadow-sm focus:border-blue-500 dark:focus:border-blue-400 
@@ -183,6 +185,7 @@ const Contact: React.FC = () => {
                   name="phone"
                   value={formData.phone}
                   onChange={handleChange}
+                  placeholder="Ingresa tu número de teléfono"
                   className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-600 
                     bg-gray-50 dark:bg-gray-700 px-3 py-2 text-gray-900 dark:text-white 
                     shadow-sm focus:border-blue-500 dark:focus:border-blue-400 
@@ -201,6 +204,7 @@ const Contact: React.FC = () => {
                   name="company"
                   value={formData.company}
                   onChange={handleChange}
+                  placeholder="Ingresa el nombre de tu empresa"
                   className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-600 
                     bg-gray-50 dark:bg-gray-700 px-3 py-2 text-gray-900 dark:text-white 
                     shadow-sm focus:border-blue-500 dark:focus:border-blue-400 
@@ -272,6 +276,7 @@ const Contact: React.FC = () => {
                   value={formData.message}
                   onChange={handleChange}
                   required
+                  placeholder="Escribe tu mensaje aquí"
                   rows={4}
                   className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-600 
                     bg-gray-50 dark:bg-gray-700 px-3 py-2 text-gray-900 dark:text-white 
