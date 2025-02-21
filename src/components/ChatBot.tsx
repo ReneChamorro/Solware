@@ -7,6 +7,7 @@ interface Message {
   isBot: boolean;
   timestamp: Date;
   options?: string[]; // Agregamos opciones para respuestas sugeridas
+  details?: string[]; // Agregamos detalles para mensajes con múltiples líneas
 }
 
 // Definimos las respuestas del bot por categorías
@@ -59,7 +60,7 @@ const botResponses = {
       "🌐 Instagram: @solware_",
       "👨‍💻 LinkedIn: <a href='https://www.linkedin.com/company/agencia-solware/' target='_blank' rel='noopener noreferrer'>Agencia</a>"
     ],
-    options: ["Enviar email", "Abrir WhatsApp", "Volver al menú"]
+    options: []
   }
 };
 
@@ -272,7 +273,14 @@ const ChatBot = () => {
                       ? 'bg-gray-100 dark:bg-gray-700 text-gray-800 dark:text-gray-200'
                       : 'bg-blue-600 text-white'
                   }`}>
-                    <p className="text-sm whitespace-pre-line">{message.text}</p>
+                    <p className="text-sm whitespace-pre-line" dangerouslySetInnerHTML={{ __html: message.text }}></p>
+                    {message.isBot && message.details && (
+                      <div className="mt-2">
+                        {message.details.map((detail, index) => (
+                          <p key={index} className="text-sm" dangerouslySetInnerHTML={{ __html: detail }}></p>
+                        ))}
+                      </div>
+                    )}
                     <span className="text-xs opacity-70 mt-1 block">
                       {message.timestamp.toLocaleTimeString([], { 
                         hour: '2-digit', 
