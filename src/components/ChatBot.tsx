@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MessageCircle, X, Send } from 'lucide-react';
+import { FaEnvelope, FaWhatsapp, FaInstagram, FaLinkedin } from 'react-icons/fa';
 
 interface Message {
   id: number;
@@ -55,10 +56,10 @@ const botResponses = {
   contacto: {
     text: "Puedes contactarnos por varios medios:",
     details: [
-      "📧 Email: <a href='mailto:ventas@solware.agency' class='link'>ventas@solware.agency</a>",
-      "📱 WhatsApp: <a href='https://api.whatsapp.com/send/?phone=584129974533&text=Hola%2C+me+gustar%C3%ADa+obtener+m%C3%A1s+informaci%C3%B3n+sobre+sus+servicios.&type=phone_number&app_absent=0' target='_blank' rel='noopener noreferrer' class='link'>+58 412-9974533</a>",
-      "🌐 Instagram: <a href='https://www.instagram.com/solware_?igsh=MTg4OTdwM3k3d2o4cA==' target='_blank' rel='noopener noreferrer' class='link'>@solware_</a>",
-      "👨‍💻 LinkedIn: <a href='https://www.linkedin.com/company/agencia-solware/' target='_blank' rel='noopener noreferrer' class='link'>Agencia</a>"
+      `<FaEnvelope /> Email: <a href='mailto:ventas@solware.agency' class='link'>ventas@solware.agency</a>`,
+      `<FaWhatsapp /> WhatsApp: <a href='https://api.whatsapp.com/send/?phone=584129974533&text=Hola%2C+me+gustar%C3%ADa+obtener+m%C3%A1s+informaci%C3%B3n+sobre+sus+servicios.&type=phone_number&app_absent=0' target='_blank' rel='noopener noreferrer' class='link'>+58 412-9974533</a>`,
+      `<FaInstagram /> Instagram: <a href='https://www.instagram.com/solware_?igsh=MTg4OTdwM3k3d2o4cA==' target='_blank' rel='noopener noreferrer' class='link'>@solware_</a>`,
+      `<FaLinkedin /> LinkedIn: <a href='https://www.linkedin.com/company/agencia-solware/' target='_blank' rel='noopener noreferrer' class='link'>Agencia</a>`
     ],
     options: []
   }
