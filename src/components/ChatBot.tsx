@@ -56,7 +56,8 @@ const botResponses = {
     details: [
       "📧 Email: ventas@solware.agency",
       "📱 WhatsApp: +58 412-9974533",
-      "🌐 Redes sociales: @solware_"
+      "🌐 Instagram: @solware_",
+      "👨‍💻 LinkedIn: https://www.linkedin.com/company/agencia-solware/"
     ],
     options: ["Enviar email", "Abrir WhatsApp", "Volver al menú"]
   }

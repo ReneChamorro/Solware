@@ -1,5 +1,5 @@
 import React, { memo } from 'react';
-import { Phone, Mail, Instagram, Shield } from 'lucide-react';
+import { Phone, Mail, Instagram, Shield, Linkedin } from 'lucide-react';
 import { Link } from 'react-router-dom';
 
 const Footer = memo(() => {
@@ -51,6 +51,17 @@ const Footer = memo(() => {
               aria-label="Seguir en Instagram"
             >
               <Instagram className="h-5 w-5" />
+            </a>
+            
+            <a
+              href="https://www.linkedin.com/company/agencia-solware/"
+              target="_blank"
+              rel="noopener noreferrer"
+              className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 
+                transition-colors p-2 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-full"
+              aria-label="Seguir en LinkedIn"
+            >
+              <Linkedin className="h-5 w-5" />
             </a>
           </div>
         </div>
