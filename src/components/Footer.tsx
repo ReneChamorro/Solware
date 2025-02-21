@@ -25,7 +25,7 @@ const Footer = memo(() => {
           
           <div className="flex items-center space-x-6">
             <a
-              href="tel:+584126652245"
+              href="tel:+584129974533"
               className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 
                 transition-colors p-2 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-full"
               aria-label="Llamar"
@@ -34,7 +34,7 @@ const Footer = memo(() => {
             </a>
             
             <a
-              href="mailto:solwareve@gmail.com"
+              href="mailto:ventas@solware.agency"
               className="text-gray-600 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400 
                 transition-colors p-2 hover:bg-blue-50 dark:hover:bg-blue-900/30 rounded-full"
               aria-label="Enviar correo"

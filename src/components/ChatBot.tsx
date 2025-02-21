@@ -54,8 +54,8 @@ const botResponses = {
   contacto: {
     text: "Puedes contactarnos por varios medios:",
     details: [
-      "📧 Email: solwareve@gmail.com",
-      "📱 WhatsApp: +58 412-6652245",
+      "📧 Email: ventas@solware.agency",
+      "📱 WhatsApp: +58 412-9974533",
       "🌐 Redes sociales: @solware_"
     ],
     options: ["Enviar email", "Abrir WhatsApp", "Volver al menú"]

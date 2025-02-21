@@ -4,7 +4,7 @@ import { MessageCircle } from 'lucide-react';
 const WhatsAppButton = memo(() => {
   const openWhatsApp = useCallback(() => {
     const message = encodeURIComponent('Hola, me gustaría obtener más información sobre sus servicios.');
-    window.open(`https://wa.me/584126652245?text=${message}`, '_blank');
+    window.open(`https://wa.me/584129974533?text=${message}`, '_blank');
   }, []);
 
   return (

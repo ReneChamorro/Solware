@@ -102,7 +102,7 @@ const Contact: React.FC = () => {
 
   const openWhatsApp = useCallback(() => {
     const message = encodeURIComponent('Hola, me gustaría obtener más información sobre sus servicios.');
-    window.open(`https://wa.me/584126652245?text=${message}`, '_blank');
+    window.open(`https://wa.me/584129974533?text=${message}`, '_blank');
   }, []);
 
   const handleFaqClick = useCallback((index: number) => {
@@ -305,19 +305,19 @@ const Contact: React.FC = () => {
               <div className="space-y-4">
                 <div className="flex items-center">
                   <Mail className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                  <a href="mailto:solwareve@gmail.com" 
+                  <a href="mailto:ventas@solware.agency" 
                     className="ml-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 
                       dark:hover:text-blue-400 transition-colors">
-                    solwareve@gmail.com
+                    ventas@solware.agency
                   </a>
                 </div>
                 
                 <div className="flex items-center">
                   <Phone className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-                  <a href="tel:+584126652245" 
+                  <a href="tel:+584129974533" 
                     className="ml-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 
                       dark:hover:text-blue-400 transition-colors">
-                    +58 412-6652245
+                    +58 412-9974533
                   </a>
                 </div>
                 
@@ -338,6 +338,21 @@ const Contact: React.FC = () => {
                       dark:hover:text-blue-400 transition-colors"
                   >
                     Síguenos en Instagram
+                  </a>
+                </div>
+
+                <div className="flex items-center">
+                  <svg className="h-5 w-5 text-blue-600 dark:text-blue-400" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="currentColor">
+                    <path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.5c0-1.379-1.121-2.5-2.5-2.5s-2.5 1.121-2.5 2.5v5.5h-3v-10h3v1.5c.69-.69 1.79-1.5 3-1.5 2.209 0 4 1.791 4 4v6z"/>
+                  </svg>
+                  <a
+                    href="https://www.linkedin.com/company/agencia-solware/"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                    className="ml-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 
+                      dark:hover:text-blue-400 transition-colors"
+                  >
+                    Síguenos en LinkedIn
                   </a>
                 </div>
 
