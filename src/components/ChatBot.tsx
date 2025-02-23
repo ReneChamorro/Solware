@@ -7,7 +7,7 @@ interface Message {
   text: string;
   isBot: boolean;
   timestamp: Date;
-  options?: string[]; // Agregamos opciones para respuestas sugeridas
+  options?: (string | { text: string; icon: JSX.Element })[]; // Updated to accept both strings and objects
   details?: string[]; // Agregamos detalles para mensajes con múltiples líneas
 }
 
@@ -55,13 +55,12 @@ const botResponses = {
   },
   contacto: {
     text: "Puedes contactarnos por varios medios:",
-    details: [
-      `<span class='link'><i class='icon'><FaEnvelope /></i> <a href='mailto:ventas@solware.agency'>ventas@solware.agency</a></span>`,
-      `<span class='link'><i class='icon'><FaWhatsapp /></i> <a href='https://api.whatsapp.com/send/?phone=584129974533&text=Hola%2C+me+gustar%C3%ADa+obtener+m%C3%A1s+informaci%C3%B3n+sobre+sus+servicios.&type=phone_number&app_absent=0' target='_blank' rel='noopener noreferrer'>+58 412-9974533</a></span>`,
-      `<span class='link'><i class='icon'><FaInstagram /></i> <a href='https://www.instagram.com/solware_?igsh=MTg4OTdwM3k3d2o4cA==' target='_blank' rel='noopener noreferrer'>@solware_</a></span>`,
-      `<span class='link'><i class='icon'><FaLinkedin /></i> <a href='https://www.linkedin.com/company/agencia-solware/' target='_blank' rel='noopener noreferrer'>Agencia</a></span>`
-    ],
-    options: []
+    options: [
+      { text: "Enviar email", icon: <FaEnvelope /> },
+      { text: "Abrir WhatsApp", icon: <FaWhatsapp /> },
+      { text: "Abrir Instagram", icon: <FaInstagram /> },
+      { text: "Abrir LinkedIn", icon: <FaLinkedin /> }
+    ]
   }
 };
 
@@ -141,7 +140,7 @@ const ChatBot = () => {
     } else if (input.includes('contacto')) {
       response = {
         id: messages.length + 2,
-        text: botResponses.contacto.text + '\n\n' + botResponses.contacto.details.join('\n'),
+        text: botResponses.contacto.text,
         isBot: true,
         timestamp: new Date(),
         options: botResponses.contacto.options
@@ -221,6 +220,12 @@ const ChatBot = () => {
       } else if (option === "Abrir WhatsApp") {
         const message = encodeURIComponent('Hola, me gustaría obtener más información sobre sus servicios.');
         window.open(`https://wa.me/584126652245?text=${message}`, '_blank'); // Abrir WhatsApp
+        return; // Salir para no agregar un mensaje del bot
+      } else if (option === "Abrir Instagram") {
+        window.open('https://www.instagram.com/solware_?igsh=MTg4OTdwM3k3d2o4cA==', '_blank'); // Abrir Instagram
+        return; // Salir para no agregar un mensaje del bot
+      } else if (option === "Abrir LinkedIn") {
+        window.open('https://www.linkedin.com/company/agencia-solware/', '_blank'); // Abrir LinkedIn
         return; // Salir para no agregar un mensaje del bot
       } else {
         botResponse = handleBotResponse(option);
@@ -306,12 +311,16 @@ const ChatBot = () => {
                     {message.options.map((option, index) => (
                       <button
                         key={index}
-                        onClick={() => handleOptionClick(option)}
+                        onClick={() => handleOptionClick(typeof option === 'string' ? option : option.text)}
                         className="text-sm px-3 py-1 bg-blue-100 dark:bg-blue-900 text-blue-600 
                           dark:text-blue-300 rounded-full hover:bg-blue-200 dark:hover:bg-blue-800 
                           transition-colors"
                       >
-                        {option}
+                        {typeof option === 'string' ? option : (
+                          <span className="flex items-center gap-2">
+                            {option.icon} {option.text}
+                          </span>
+                        )}
                       </button>
                     ))}
                   </div>
