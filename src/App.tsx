@@ -10,6 +10,7 @@ import Footer from './components/Footer';
 import WhatsAppButton from './components/WhatsAppButton';
 import Preloader from './components/Preloader';
 import ChatBot from './components/ChatBot';
+import AboutUs from './components/AboutUs';
 
 function App() {
   const [isLoading, setIsLoading] = useState(true);
@@ -70,6 +71,7 @@ function App() {
         <Header />
         <main>
           <Hero />
+          <AboutUs />
           <Services />
           <WorkProcess />
           <Automation />

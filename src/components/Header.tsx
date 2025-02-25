@@ -5,6 +5,7 @@ import { useDarkMode } from '../hooks/useDarkMode';
 
 const navItems = [
   { href: '#inicio', label: 'Inicio' },
+  { href: '#quienes-somos', label: 'Quiénes Somos' },
   { href: '#servicios', label: 'Servicios' },
   { href: '#proceso', label: 'Workflow' },
   { href: '#automatizacion', label: 'Automatización' },
@@ -64,10 +65,16 @@ export default function Header() {
           <a 
             href="#inicio" 
             onClick={handleNavClick}
-            className="flex items-center space-x-2 hover:opacity-80 transition-opacity"
+            className={`flex items-center space-x-2 hover:opacity-80 transition-opacity ${
+              isScrolled ? '' : 'text-white'
+            }`}
           >
-            <Code2 className="h-7 w-7 sm:h-8 sm:w-8 text-blue-600 dark:text-blue-400" />
-            <span className="text-xl sm:text-2xl font-bold text-gray-900 dark:text-white">
+            <Code2 className={`h-7 w-7 sm:h-8 sm:w-8 ${
+              isScrolled ? 'text-blue-600 dark:text-blue-400' : 'text-white'
+            }`} />
+            <span className={`text-xl sm:text-2xl font-bold ${
+              isScrolled ? 'text-gray-900 dark:text-white' : 'text-white'
+            }`}>
               Solware
             </span>
           </a>
@@ -79,9 +86,11 @@ export default function Header() {
                 href={href}
                 onClick={handleNavClick}
                 className={`px-3 py-2 rounded-md text-sm lg:text-base transition-colors duration-200 ${
-                  activeSection === href.replace('#', '')
-                    ? 'text-blue-600 dark:text-blue-400 font-medium'
-                    : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
+                  isScrolled
+                    ? activeSection === href.replace('#', '')
+                      ? 'text-blue-600 dark:text-blue-400 font-medium'
+                      : 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
+                    : 'text-white hover:text-blue-200 font-medium'
                 }`}
               >
                 {label}
@@ -92,24 +101,34 @@ export default function Header() {
           <div className="hidden md:flex items-center space-x-4">
             <button
               onClick={toggleDarkMode}
-              className="p-2 rounded-full hover:bg-gray-100 dark:hover:bg-gray-800 
-                transition-colors duration-300 focus:outline-none focus:ring-2 
-                focus:ring-blue-500 dark:focus:ring-blue-400"
+              className={`p-2 rounded-full transition-colors duration-300 
+                focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 ${
+                isScrolled 
+                  ? 'hover:bg-gray-100 dark:hover:bg-gray-800' 
+                  : 'hover:bg-white/10'
+              }`}
               aria-label={isDark ? 'Activar modo claro' : 'Activar modo oscuro'}
             >
               {isDark ? (
-                <Sun className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+                <Sun className={`h-5 w-5 ${
+                  isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'
+                }`} />
               ) : (
-                <Moon className="h-5 w-5 text-gray-700 dark:text-gray-300" />
+                <Moon className={`h-5 w-5 ${
+                  isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'
+                }`} />
               )}
             </button>
 
             <a 
               href="#contacto"
               onClick={handleNavClick}
-              className="bg-blue-600 dark:bg-blue-500 text-white px-4 sm:px-6 py-2 
-                rounded-full text-sm sm:text-base hover:bg-blue-700 dark:hover:bg-blue-600 
-                transition-colors duration-300 whitespace-nowrap"
+              className={`px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base 
+                transition-colors duration-300 whitespace-nowrap ${
+                isScrolled
+                  ? 'bg-blue-600 dark:bg-blue-500 text-white hover:bg-blue-700 dark:hover:bg-blue-600'
+                  : 'bg-white/10 text-white hover:bg-white/20'
+              }`}
             >
               Consulta Gratis
             </a>

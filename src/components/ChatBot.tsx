@@ -254,11 +254,14 @@ const ChatBot = () => {
       {/* Ventana del chat */}
       <div
         className={`fixed bottom-0 right-0 z-50 w-full sm:w-96 h-[600px] bg-white dark:bg-gray-800 
-          shadow-2xl transition-transform duration-300 transform 
+          shadow-[0_-8px_32px_rgba(0,0,0,0.15),_-5px_0_15px_rgba(0,0,0,0.1),_5px_0_15px_rgba(0,0,0,0.1)]
+          dark:shadow-[0_-8px_32px_rgba(0,0,0,0.3),_-5px_0_15px_rgba(0,0,0,0.2),_5px_0_15px_rgba(0,0,0,0.2)]
+          transition-transform duration-300 transform 
+          sm:rounded-t-2xl
           ${isOpen ? 'translate-y-0' : 'translate-y-full'}`}
       >
         {/* Header */}
-        <div className="flex items-center justify-between p-4 bg-blue-600 text-white">
+        <div className="flex items-center justify-between p-4 bg-blue-600 text-white sm:rounded-t-2xl">
           <div className="flex items-center">
             <img 
               src="https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Chatbot/robot.gif"
