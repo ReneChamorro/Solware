@@ -240,7 +240,7 @@ const ChatBot = () => {
       {/* Botón flotante del chat */}
       <button
         onClick={() => setIsOpen(true)}
-        className={`fixed bottom-6 right-6 z-40 p-3 bg-blue-600 text-white rounded-full 
+        className={`fixed bottom-4 right-6 z-40 p-3 bg-blue-600 text-white rounded-full 
           shadow-lg hover:bg-blue-700 transition-all duration-300 ${isOpen ? 'hidden' : ''}`}
         title="Chatbot"
       >
