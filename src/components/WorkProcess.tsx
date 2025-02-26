@@ -82,6 +82,7 @@ const steps = [
 const WorkProcess: React.FC = () => {
   const [selectedStep, setSelectedStep] = useState<number | null>(null);
   const [isVisible, setIsVisible] = useState(false);
+  const [key, setKey] = useState(0);
   const sectionRef = useRef<HTMLElement>(null);
 
   useEffect(() => {
@@ -89,7 +90,9 @@ const WorkProcess: React.FC = () => {
       ([entry]) => {
         if (entry.isIntersecting) {
           setIsVisible(true);
-          observer.unobserve(entry.target);
+          setKey(prev => prev + 1);
+        } else {
+          setIsVisible(false);
         }
       },
       {
@@ -113,10 +116,18 @@ const WorkProcess: React.FC = () => {
     setSelectedStep(selectedStep === index ? null : index);
   };
 
+  const handleReplayAnimation = () => {
+    setIsVisible(false);
+    setTimeout(() => {
+      setIsVisible(true);
+      setKey(prev => prev + 1);
+    }, 100);
+  };
+
   return (
     <section ref={sectionRef} className="py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300" id="proceso">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
+        <div className="text-center max-w-3xl mx-auto mb-16 relative">
           <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 relative transition-colors duration-300">
             El camino para alcanzar tus metas profesionales
             <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 dark:bg-blue-500 rounded-full"></span>
@@ -124,12 +135,36 @@ const WorkProcess: React.FC = () => {
           <p className="text-xl text-gray-600 dark:text-gray-300 transition-colors duration-300">
             Un proceso estructurado para garantizar el éxito de tu transformación digital
           </p>
+          
+          {/* Botón de replay sutil */}
+          <button
+            onClick={handleReplayAnimation}
+            className="absolute -right-12 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-blue-600 
+              dark:text-gray-500 dark:hover:text-blue-400 transition-colors duration-300 opacity-60 
+              hover:opacity-100 group"
+            aria-label="Repetir animación"
+          >
+            <svg
+              className="w-5 h-5 transform rotate-0 group-hover:rotate-180 transition-transform duration-500"
+              fill="none"
+              viewBox="0 0 24 24"
+              stroke="currentColor"
+            >
+              <path
+                strokeLinecap="round"
+                strokeLinejoin="round"
+                strokeWidth={2}
+                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
+              />
+            </svg>
+          </button>
         </div>
 
         <div className="relative pt-32 pb-40">
-          {/* Líneas conectoras (solo visibles en desktop) */}
+          {/* Líneas conectoras */}
           <div className="hidden lg:block absolute inset-0 pointer-events-none">
             <svg 
+              key={key}
               className="w-full h-full" 
               viewBox="0 0 1200 600"
               preserveAspectRatio="xMidYMid meet"
@@ -166,13 +201,7 @@ const WorkProcess: React.FC = () => {
 
               {/* Animated path with smooth curves through all points */}
               <path
-                d="M 200 150 
-                C 300 150 350 250 400 300 
-                C 450 350 500 350 600 300 
-                C 700 250 750 150 800 150 
-                C 850 150 900 250 950 300 
-                C 1000 350 1050 350 1097 295 
-                C 1135 252 1145 205 1148 155"
+                d="M 116 154 C 314 941 490 355 508 312 C 544 197 599 96 638 204 C 765 756 1004 671 1106 157"
                 stroke="url(#gradientLine)"
                 strokeWidth="4"
                 fill="none"
@@ -303,8 +332,9 @@ const WorkProcess: React.FC = () => {
 
                 {/* Title */}
                 <div 
-                  className={`bg-white dark:bg-gray-800 rounded-xl p-3 shadow-lg transform hover:scale-105 
+                  className={`bg-blue-600 dark:bg-blue-600 rounded-xl p-3 shadow-lg transform hover:scale-105 
                     transition-all duration-300 hover:shadow-xl max-w-[200px] cursor-pointer
+                    border border-blue-500 dark:border-blue-700
                     ${isVisible ? 'animate-box-pulse' : ''}`}
                   style={{ 
                     animationDelay: `${index * 0.3 + 0.2}s`,
@@ -312,7 +342,7 @@ const WorkProcess: React.FC = () => {
                   }}
                   onClick={() => handleStepClick(index)}
                 >
-                  <h3 className="text-center text-lg font-semibold text-gray-800 dark:text-white whitespace-normal transition-colors duration-300">
+                  <h3 className="text-center text-lg font-semibold text-white whitespace-normal transition-colors duration-300">
                     {step.title}
                   </h3>
                 </div>
@@ -320,8 +350,9 @@ const WorkProcess: React.FC = () => {
                 {/* Modal con detalles */}
                 {selectedStep === index && (
                   <div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
-                    <div className="bg-white dark:bg-gray-800 rounded-2xl p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto
-                      shadow-2xl transform transition-all duration-300 animate-fade-in">
+                    <div className="bg-blue-600 dark:bg-blue-600 rounded-2xl p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto
+                      shadow-2xl transform transition-all duration-300 animate-fade-in
+                      border border-blue-500 dark:border-blue-700">
                       <div className="flex justify-between items-start mb-4">
                         <div className="flex items-center">
                           <div className={`w-10 h-10 rounded-full ${step.bgColor} flex items-center justify-center mr-3`}>
@@ -329,19 +360,19 @@ const WorkProcess: React.FC = () => {
                               className: `h-5 w-5 ${step.iconColor}`
                             })}
                           </div>
-                          <h3 className="text-xl font-bold text-gray-900 dark:text-white">
+                          <h3 className="text-xl font-bold text-white">
                             {step.title}
                           </h3>
                         </div>
                         <button
                           onClick={() => setSelectedStep(null)}
-                          className="p-1 hover:bg-gray-100 dark:hover:bg-gray-700 rounded-full transition-colors"
+                          className="p-1 hover:bg-blue-700 rounded-full transition-colors"
                         >
-                          <X className="h-6 w-6 text-gray-500 dark:text-gray-400" />
+                          <X className="h-6 w-6 text-white" />
                         </button>
                       </div>
                       
-                      <p className="text-gray-600 dark:text-gray-300 mb-6">
+                      <p className="text-white/90 mb-6">
                         {step.description}
                       </p>
 
@@ -349,10 +380,10 @@ const WorkProcess: React.FC = () => {
                         {step.details.map((detail, detailIndex) => (
                           <div
                             key={detailIndex}
-                            className="flex items-start space-x-3 p-3 bg-gray-50 dark:bg-gray-700/50 rounded-lg"
+                            className="flex items-start space-x-3 p-3 bg-blue-700/50 rounded-lg"
                           >
-                            <div className="flex-shrink-0 w-1.5 h-1.5 mt-2 rounded-full bg-blue-500"></div>
-                            <p className="text-gray-700 dark:text-gray-200">{detail}</p>
+                            <div className="flex-shrink-0 w-1.5 h-1.5 mt-2 rounded-full bg-white"></div>
+                            <p className="text-white">{detail}</p>
                           </div>
                         ))}
                       </div>

@@ -1,6 +1,5 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { Mail, Phone, Clock, Send, ChevronDown, MessageCircle, Instagram } from 'lucide-react';
-import { useScrollReveal } from '../hooks/useScrollReveal';
 import { supabase } from '../lib/supabase';
 
 interface FormData {

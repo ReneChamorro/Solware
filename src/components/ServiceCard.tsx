@@ -32,7 +32,7 @@ const ServiceCard = memo(({
       >
         {/* Front of card */}
         <div className="absolute w-full h-full backface-hidden">
-          <div className="h-full bg-white dark:bg-gray-800 rounded-2xl shadow-lg overflow-hidden group 
+          <div className="h-full bg-blue-600 dark:bg-blue-600 rounded-2xl shadow-lg overflow-hidden group 
             hover:shadow-xl transition-all duration-300">
             <div className="relative h-40 sm:h-48 overflow-hidden">
               <img
@@ -42,24 +42,26 @@ const ServiceCard = memo(({
               />
               <div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
               <div className="absolute bottom-4 left-4">
-                <div className="bg-blue-600/90 dark:bg-blue-500/90 p-2 rounded-lg backdrop-blur-sm">
-                  {icon}
+                <div className="bg-white/90 dark:bg-white/90 p-2 rounded-lg backdrop-blur-sm">
+                  {React.cloneElement(icon, {
+                    className: "h-6 w-6 text-blue-600"
+                  })}
                 </div>
               </div>
             </div>
 
             <div className="p-4 sm:p-6">
-              <h3 className="text-lg sm:text-xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">
+              <h3 className="text-lg sm:text-xl font-bold text-white mb-2 transition-colors duration-300">
                 {title}
               </h3>
-              <p className="text-sm sm:text-base text-gray-600 dark:text-gray-300 mb-4 transition-colors duration-300">
+              <p className="text-sm sm:text-base text-white/90 mb-4 transition-colors duration-300">
                 {description}
               </p>
               
               <button
                 onClick={onFlip}
-                className="inline-flex items-center text-blue-600 dark:text-blue-400 font-medium 
-                  hover:text-blue-700 dark:hover:text-blue-300 transition-colors group/btn text-sm sm:text-base"
+                className="inline-flex items-center text-white font-medium 
+                  hover:text-white/80 transition-colors group/btn text-sm sm:text-base"
               >
                 Saber más
                 <ChevronRight className="ml-2 h-4 w-4 transform group-hover/btn:translate-x-1 transition-transform" />
@@ -70,20 +72,20 @@ const ServiceCard = memo(({
 
         {/* Back of card */}
         <div className="absolute w-full h-full backface-hidden rotate-y-180">
-          <div className="h-full bg-white dark:bg-gray-800 rounded-2xl shadow-lg p-4 sm:p-6 flex flex-col">
-            <h3 className="text-base sm:text-lg font-bold text-gray-900 dark:text-white mb-4 sm:mb-6 transition-colors duration-300">
+          <div className="h-full bg-blue-600 dark:bg-blue-600 rounded-2xl shadow-lg p-4 sm:p-6 flex flex-col">
+            <h3 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-6 transition-colors duration-300">
               Detalles del Servicio
             </h3>
 
             <div className="flex-grow space-y-4 sm:space-y-6 overflow-y-auto scrollbar-hide">
               {details.map((detail, index) => (
                 <div key={index} className="group">
-                  <h4 className="text-sm sm:text-base font-semibold text-blue-600 dark:text-blue-400 mb-1 sm:mb-2 
-                    transition-colors duration-300 group-hover:text-blue-700 dark:group-hover:text-blue-300">
+                  <h4 className="text-sm sm:text-base font-semibold text-white mb-1 sm:mb-2 
+                    transition-colors duration-300 group-hover:text-white/90">
                     {detail.title}
                   </h4>
-                  <p className="text-xs sm:text-sm text-gray-600 dark:text-gray-300 transition-colors duration-300 
-                    leading-relaxed group-hover:text-gray-900 dark:group-hover:text-gray-200">
+                  <p className="text-xs sm:text-sm text-white/80 transition-colors duration-300 
+                    leading-relaxed group-hover:text-white/90">
                     {detail.description}
                   </p>
                 </div>
@@ -92,8 +94,8 @@ const ServiceCard = memo(({
 
             <button
               onClick={onFlip}
-              className="mt-4 sm:mt-6 inline-flex items-center text-blue-600 dark:text-blue-400 
-                font-medium hover:text-blue-700 dark:hover:text-blue-300 transition-colors 
+              className="mt-4 sm:mt-6 inline-flex items-center text-white 
+                font-medium hover:text-white/80 transition-colors 
                 group/btn text-sm sm:text-base"
             >
               <ArrowLeft className="mr-2 h-4 w-4 transform group-hover/btn:-translate-x-1 transition-transform" />
