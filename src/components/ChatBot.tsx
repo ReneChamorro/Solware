@@ -147,21 +147,14 @@ const ChatBot = () => {
         options: botResponses.contacto.options
       };
     } else {
-      // Llamada a la API de ChatGPT
+      // Llamada a la API de tu servidor proxy usando una URL relativa
       const context = "Eres un asistente virtual de Solware, que ofrece servicios de transformación digital.";
       const prompt = `${context}\nUsuario: ${userInput}\nAsistente:`;
 
       try {
-        const apiKey = process.env.OPENAI_API_KEY; // Obtener la API Key de las variables de entorno
-        const result = await axios.post('https://api.openai.com/v1/chat/completions', {
-          model: 'gpt-3.5-turbo', // O el modelo que prefieras
+        const result = await axios.post('/backend/openai-proxy', { // URL relativa
           messages: [{ role: 'user', content: prompt }],
-          max_tokens: 100, // Limitar los tokens
-        }, {
-          headers: {
-            'Authorization': `Bearer ${apiKey}`,
-            'Content-Type': 'application/json',
-          },
+          max_tokens: 100,
         });
 
         const botMessage = result.data.choices[0].message.content;
