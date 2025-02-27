@@ -1,7 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react';
 import { MessageCircle, X, Send } from 'lucide-react';
 import { FaEnvelope, FaWhatsapp, FaInstagram, FaLinkedin } from 'react-icons/fa';
-import axios from 'axios';
 
 interface Message {
   id: number;
@@ -94,7 +93,7 @@ const ChatBot = () => {
     scrollToBottom();
   }, [messages]);
 
-  const handleBotResponse = async (userInput: string) => {
+  const handleBotResponse = (userInput: string) => {
     const input = userInput.toLowerCase();
     let response: Message;
 
@@ -147,42 +146,14 @@ const ChatBot = () => {
         options: botResponses.contacto.options
       };
     } else {
-      // Llamada a la API de ChatGPT
-      const context = "Eres un asistente virtual de Solware, que ofrece servicios de transformación digital.";
-      const prompt = `${context}\nUsuario: ${userInput}\nAsistente:`;
-
-      try {
-        const apiKey = process.env.OPENAI_API_KEY; // Obtener la API Key de las variables de entorno
-        const result = await axios.post('https://api.openai.com/v1/chat/completions', {
-          model: 'gpt-3.5-turbo', // O el modelo que prefieras
-          messages: [{ role: 'user', content: prompt }],
-          max_tokens: 100, // Limitar los tokens
-        }, {
-          headers: {
-            'Authorization': `Bearer ${apiKey}`,
-            'Content-Type': 'application/json',
-          },
-        });
-
-        const botMessage = result.data.choices[0].message.content;
-
-        response = {
-          id: messages.length + 2,
-          text: botMessage,
-          isBot: true,
-          timestamp: new Date(),
-          options: botResponses.initial.options // Puedes ajustar esto según sea necesario
-        };
-      } catch (error) {
-        console.error("Error al comunicarse con la API de OpenAI:", error);
-        response = {
-          id: messages.length + 2,
-          text: "Lo siento, hubo un problema al obtener una respuesta. Intenta de nuevo más tarde.",
-          isBot: true,
-          timestamp: new Date(),
-          options: botResponses.initial.options
-        };
-      }
+      // Respuesta por defecto si no se reconoce el input
+      response = {
+        id: messages.length + 2,
+        text: "No estoy seguro de entender tu pregunta. ¿Podrías seleccionar una de estas opciones?",
+        isBot: true,
+        timestamp: new Date(),
+        options: botResponses.initial.options
+      };
     }
 
     return response;
@@ -204,8 +175,8 @@ const ChatBot = () => {
     setInputMessage('');
 
     // Respuesta del bot
-    setTimeout(async () => {
-      const botResponse = await handleBotResponse(userMessage.text);
+    setTimeout(() => {
+      const botResponse = handleBotResponse(userMessage.text);
       setMessages(prev => [...prev, botResponse]);
     }, 1000);
   };
@@ -222,7 +193,7 @@ const ChatBot = () => {
     setMessages(prev => [...prev, userMessage]);
 
     // Respuesta del bot
-    setTimeout(async () => {
+    setTimeout(() => {
       let botResponse: Message;
 
       if (option === "Volver al menú") {
@@ -257,7 +228,7 @@ const ChatBot = () => {
         window.open('https://www.linkedin.com/company/agencia-solware/', '_blank'); // Abrir LinkedIn
         return; // Salir para no agregar un mensaje del bot
       } else {
-        botResponse = await handleBotResponse(option);
+        botResponse = handleBotResponse(option);
       }
 
       setMessages(prev => [...prev, botResponse]);

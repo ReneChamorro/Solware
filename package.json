@@ -13,7 +13,6 @@
     "@botonic/react": "^0.31.1",
     "@emailjs/browser": "^4.3.3",
     "@supabase/supabase-js": "^2.39.7",
-    "axios": "^1.8.1",
     "lucide-react": "^0.344.0",
     "react": "^18.3.1",
     "react-dom": "^18.3.1",
