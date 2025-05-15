@@ -135,29 +135,6 @@ const WorkProcess: React.FC = () => {
           <p className="text-xl text-gray-600 dark:text-gray-300 transition-colors duration-300">
             Un proceso estructurado para garantizar el éxito de tu transformación digital
           </p>
-          
-          {/* Botón de replay sutil */}
-          <button
-            onClick={handleReplayAnimation}
-            className="absolute -right-12 top-1/2 -translate-y-1/2 p-2 text-gray-400 hover:text-blue-600 
-              dark:text-gray-500 dark:hover:text-blue-400 transition-colors duration-300 opacity-60 
-              hover:opacity-100 group"
-            aria-label="Repetir animación"
-          >
-            <svg
-              className="w-5 h-5 transform rotate-0 group-hover:rotate-180 transition-transform duration-500"
-              fill="none"
-              viewBox="0 0 24 24"
-              stroke="currentColor"
-            >
-              <path
-                strokeLinecap="round"
-                strokeLinejoin="round"
-                strokeWidth={2}
-                d="M4 4v5h.582m15.356 2A8.001 8.001 0 004.582 9m0 0H9m11 11v-5h-.581m0 0a8.003 8.003 0 01-15.357-2m15.357 2H15"
-              />
-            </svg>
-          </button>
         </div>
 
         <div className="relative pt-32 pb-40">
