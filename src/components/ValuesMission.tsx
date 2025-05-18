@@ -68,7 +68,7 @@ const ValuesMission: React.FC = () => {
             className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 
               rounded-2xl p-8 sm:p-10 shadow-lg transform hover:scale-[1.02] transition-all duration-300"
           >
-            <div className="prose prose-lg dark:prose-invert max-w-none">
+            <div className="prose prose-lg dark:prose-invert max-w-none text-justify">
               <p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">
                 En Solware, creemos en el poder de la tecnología para transformar negocios y mejorar vidas. 
                 Nuestra misión es empoderar a empresas de todas las industrias a través de soluciones 
