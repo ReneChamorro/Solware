@@ -90,6 +90,7 @@ const ChatBot = () => {
 	])
 	const [inputMessage, setInputMessage] = useState('')
 	const messagesEndRef = useRef<HTMLDivElement | null>(null)
+	const chatRef = useRef<HTMLDivElement | null>(null)
 
 	const scrollToBottom = () => {
 		messagesEndRef.current?.scrollIntoView({ behavior: 'smooth' })
@@ -98,6 +99,21 @@ const ChatBot = () => {
 	useEffect(() => {
 		scrollToBottom()
 	}, [messages])
+
+	useEffect(() => {
+		if (!isOpen) return
+
+		const handleClickOutside = (event: MouseEvent) => {
+			if (chatRef.current && !chatRef.current.contains(event.target as Node)) {
+				setIsOpen(false)
+			}
+		}
+
+		document.addEventListener('mousedown', handleClickOutside)
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside)
+		}
+	}, [isOpen])
 
 	const handleBotResponse = (userInput: string) => {
 		const input = userInput.toLowerCase()
@@ -125,7 +141,7 @@ const ChatBot = () => {
 			input.includes('movil') ||
 			input.includes('telefono') ||
 			input.includes('celular') ||
-			input.includes('CRM')
+			input.includes('crm')
 		) {
 			response = {
 				id: messages.length + 2,
@@ -273,6 +289,7 @@ const ChatBot = () => {
           transition-transform duration-300 transform 
           sm:rounded-t-2xl
           ${isOpen ? 'translate-y-0' : 'translate-y-full'}`}
+				ref={chatRef}
 			>
 				{/* Header */}
 				<div className="flex items-center justify-between p-4 bg-blue-600 text-white sm:rounded-t-2xl">

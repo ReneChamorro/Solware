@@ -6,7 +6,7 @@ const PrivacyPolicy: React.FC = () => {
   const navigate = useNavigate();
 
   return (
-    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-20 pb-12 transition-colors duration-300">
+    <div className="min-h-screen bg-gray-50 dark:bg-gray-900 pt-20 pb-12 transition-colors duration-300 text-justify">
       <div className="max-w-4xl mx-auto px-4 sm:px-6 lg:px-8">
         <button
           onClick={() => navigate('/')}
@@ -101,19 +101,19 @@ const PrivacyPolicy: React.FC = () => {
                 <li>
                   <span className="font-medium">Correo electrónico:</span>{' '}
                   <a 
-                    href="mailto:solwareve@gmail.com"
+                    href="mailto:ventas@solware.agency"
                     className="text-blue-600 dark:text-blue-400 hover:underline"
                   >
-                    solwareve@gmail.com
+                    ventas@solware.agency
                   </a>
                 </li>
                 <li>
                   <span className="font-medium">Teléfono:</span>{' '}
                   <a 
-                    href="tel:+584126652245"
+                    href="tel:+584129974533"
                     className="text-blue-600 dark:text-blue-400 hover:underline"
                   >
-                    +58 412-6652245
+                    +58 412-9974533
                   </a>
                 </li>
               </ul>
