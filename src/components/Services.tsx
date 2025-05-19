@@ -1,4 +1,3 @@
-import React, { useState, useCallback } from 'react';
 import { Settings, Code2, Users, Bot, BarChart2, Cuboid as Cube } from 'lucide-react';
 import ServiceCard from './ServiceCard';
 import { useScrollReveal } from '../hooks/useScrollReveal';
@@ -127,41 +126,31 @@ const services = [
 ];
 
 const Services = () => {
-  const [flippedCard, setFlippedCard] = useState<number | null>(null);
   const titleRef = useScrollReveal({ variant: 'fade-up', delay: 100 });
   const descriptionRef = useScrollReveal({ variant: 'fade-up', delay: 200 });
   const cardsContainerRef = useScrollReveal({ variant: 'fade-up', delay: 300 });
 
-  const handleFlip = useCallback((index: number) => {
-    setFlippedCard(prev => prev === index ? null : index);
-  }, []);
-
   return (
-    <section className="py-24 bg-white dark:bg-gray-900 transition-colors duration-300" id="servicios">
-      <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 ref={titleRef} className="text-4xl font-bold text-gray-900 dark:text-white mb-4 relative">
-            Soluciones Digitales Integrales
-            <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 dark:bg-blue-500 rounded-full"></span>
-          </h2>
-          <p ref={descriptionRef} className="text-xl text-gray-600 dark:text-gray-300">
-            Transformamos tu negocio con tecnología de vanguardia y soluciones personalizadas
-          </p>
-        </div>
+		<section className="py-24 bg-white dark:bg-gray-900 transition-colors duration-300" id="servicios">
+			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
+				<div className="text-center max-w-3xl mx-auto mb-16">
+					<h2 ref={titleRef} className="text-4xl font-bold text-gray-900 dark:text-white mb-4 relative">
+						Soluciones Digitales Integrales
+						<span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 dark:bg-blue-500 rounded-full"></span>
+					</h2>
+					<p ref={descriptionRef} className="text-xl text-gray-600 dark:text-gray-300">
+						Transformamos tu negocio con tecnología de vanguardia y soluciones personalizadas
+					</p>
+				</div>
 
-        <div ref={cardsContainerRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
-          {services.map((service, index) => (
-            <ServiceCard
-              key={index}
-              {...service}
-              isFlipped={flippedCard === index}
-              onFlip={() => handleFlip(index)}
-            />
-          ))}
-        </div>
-      </div>
-    </section>
-  );
+				<div ref={cardsContainerRef} className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
+					{services.map((service, index) => (
+						<ServiceCard key={index} {...service} />
+					))}
+				</div>
+			</div>
+		</section>
+	)
 };
 
 export default Services;

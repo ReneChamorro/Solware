@@ -3,7 +3,7 @@ import { Users, Rocket, Heart } from 'lucide-react';
 
 const AboutUs = () => {
   return (
-    <section id="quienes-somos" className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-dark">
+    <section id="quienes-somos" className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-dark text-justify">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
           <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
@@ -20,7 +20,7 @@ const AboutUs = () => {
             <h3 className="text-2xl font-bold text-gray-900 dark:text-white">
               Nuestra Historia
             </h3>
-            <p className="text-gray-600 dark:text-gray-300">
+            <p className="text-gray-600 dark:text-gray-300 text-justify">
               Nacimos de la visión de un grupo de profesionales venezolanos que identificaron 
               la necesidad de las empresas por adaptarse al mundo digital. Entendemos los 
               desafíos únicos que enfrentan los negocios en Latinoamérica y trabajamos 
