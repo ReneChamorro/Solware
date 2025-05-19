@@ -38,7 +38,7 @@ const ServiceCard = memo(
 					{/* Front of card */}
 					<div className="absolute w-full h-full backface-hidden" onClick={() => setIsFlipped((f) => !f)}>
 						<div
-							className="h-full bg-blue-600 dark:bg-blue-600 rounded-2xl shadow-lg overflow-hidden group 
+							className="h-full bg-blue-600 rounded-2xl shadow-lg overflow-hidden group 
             hover:shadow-xl transition-all duration-300"
 						>
 							<div className="relative h-40 sm:h-48 overflow-hidden">
