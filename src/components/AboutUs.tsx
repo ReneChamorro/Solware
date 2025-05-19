@@ -10,7 +10,7 @@ const AboutUs = () => {
             ¿Quiénes Somos?
           </h2>
           <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Somos un emprendimiento venezolano comprometido con la transformación digital 
+            Somos un emprendimiento latinoamericano comprometido con la transformación digital 
             de las empresas latinoamericanas.
           </p>
         </div>

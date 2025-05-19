@@ -274,8 +274,7 @@ const ChatBot = () => {
 			{/* Botón flotante del chat */}
 			<button
 				onClick={() => setIsOpen(true)}
-				className={`fixed bottom-4 right-6 z-40 p-3 text-whit bg-blue-600 text-white rounded-full 
-          shadow-lg hover:bg-blue-700 transition-all duration-300 ${isOpen ? 'hidden' : ''}`}
+				className={`p-3 pl-0 text-white rounded-full transition-all duration-300 ${isOpen ? 'hidden' : ''}`}
 				title="Chatbot"
 			>
 				<RobotTraking />
