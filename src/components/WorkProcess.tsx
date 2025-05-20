@@ -86,6 +86,7 @@ const WorkProcess: React.FC = () => {
 	const [isVisible, setIsVisible] = useState(false)
 	const [key, setKey] = useState(0)
 	const sectionRef = useRef<HTMLElement>(null)
+	const stepRefs = useRef<(HTMLDivElement | null)[]>([])
 
 	useEffect(() => {
 		const observer = new IntersectionObserver(
@@ -122,6 +123,23 @@ const WorkProcess: React.FC = () => {
 
 		return () => clearInterval(interval)
 	}, [])
+
+	useEffect(() => {
+		if (selectedStep !== null) {
+			document.body.classList.add('overflow-hidden')
+		} else {
+			document.body.classList.remove('overflow-hidden')
+		}
+		return () => {
+			document.body.classList.remove('overflow-hidden')
+		}
+	}, [selectedStep])
+
+	useEffect(() => {
+		if (selectedStep !== null && stepRefs.current[selectedStep]) {
+			stepRefs.current[selectedStep]?.scrollIntoView({ behavior: 'smooth', block: 'center' })
+		}
+	}, [selectedStep])
 
 	const handleStepClick = (index: number) => {
 		setSelectedStep(selectedStep === index ? null : index)
@@ -331,7 +349,13 @@ const WorkProcess: React.FC = () => {
 
 								{/* Modal con detalles */}
 								{selectedStep === index && (
-									<div className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50">
+									<div
+										className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50"
+										onClick={(e) => {
+											if (e.target === e.currentTarget) setSelectedStep(null)
+										}}
+										ref={(el) => (stepRefs.current[index] = el)}
+									>
 										<div
 											className="bg-blue-600 dark:bg-blue-600 rounded-2xl p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto
                       shadow-2xl transform transition-all duration-300 animate-fade-in
