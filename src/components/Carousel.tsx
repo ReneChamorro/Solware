@@ -8,7 +8,7 @@ interface CarouselProps {
 		description: string
 		image?: string
 		CustomImage?: React.ComponentType
-		icon?: React.ReactNode
+		icon?: React.ReactElement
 	}[]
 	autoPlay?: boolean
 	autoPlayInterval?: number
@@ -122,13 +122,13 @@ const Carousel: React.FC<CarouselProps> = ({ items, autoPlay = true, autoPlayInt
 
 	return (
 		<div
-			className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 overflow-hidden"
+			className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 md:overflow-hidden"
 			onMouseEnter={() => setIsHovered(true)}
 			onMouseLeave={() => setIsHovered(false)}
 			ref={containerRef}
 		>
 			<div
-				className="overflow-hidden touch-pan-x"
+				className="md:overflow-hidden touch-pan-x"
 				onTouchStart={handleTouchStart}
 				onTouchMove={handleTouchMove}
 				onTouchEnd={handleTouchEnd}
@@ -150,15 +150,25 @@ const Carousel: React.FC<CarouselProps> = ({ items, autoPlay = true, autoPlayInt
 								opacity: index === currentIndex ? 1 : 0.7,
 								transition: 'all 275ms cubic-bezier(0.4, 0, 0.2, 1)',
 								willChange: 'transform, opacity',
+								cursor: index !== currentIndex ? 'pointer' : 'default',
 							}}
 							aria-hidden={index !== currentIndex}
+							onClick={() => {
+								if (!isTransitioning && index !== currentIndex) {
+									if (index < currentIndex) {
+										handlePrevious()
+									} else {
+										handleNext()
+									}
+								}
+							}}
 						>
 							<div
 								className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg 
                 transition-all duration-275 ease-out hover:shadow-xl
-                transform hover:-translate-y-1"
+                transform hover:-translate-y-1 mt-2"
 							>
-								<div className="relative aspect-[3/2] overflow-hidden">
+								<div className="relative aspect-[3/2] md:overflow-hidden">
 									{item.CustomImage ? (
 										<item.CustomImage />
 									) : (
@@ -170,14 +180,14 @@ const Carousel: React.FC<CarouselProps> = ({ items, autoPlay = true, autoPlayInt
 											loading="lazy"
 										/>
 									)}
-									{item.icon && (
+									{item.icon && React.isValidElement(item.icon) && (
 										<div className="absolute bottom-3 left-3">
 											<div
 												className="bg-blue-600/90 dark:bg-blue-500/90 p-2 rounded-lg 
                         backdrop-blur-sm transition-transform duration-275 ease-out 
                         hover:scale-105"
 											>
-												{React.cloneElement(item.icon, {
+												{React.cloneElement(item.icon as React.ReactElement<{ className?: string }>, {
 													className: 'h-5 w-5 text-white',
 												})}
 											</div>
@@ -227,13 +237,13 @@ const Carousel: React.FC<CarouselProps> = ({ items, autoPlay = true, autoPlayInt
 				<ChevronRight className="w-5 h-5 text-gray-800 dark:text-gray-200" />
 			</button>
 
-			<div className="flex justify-center items-center gap-2 mt-4">
+			<div className="flex justify-center items-center gap-2 mt-4 mb-4">
 				{items.map((_, index) => (
 					<button
 						key={index}
 						onClick={() => !isTransitioning && setCurrentIndex(index + 1)}
 						className={`w-2 h-2 rounded-full transition-all duration-275 ease-out 
-              transform hover:scale-110 ${
+              transform hover:scale-110${
 								index === currentIndex - 1
 									? 'bg-blue-600 dark:bg-blue-500 scale-125'
 									: 'bg-gray-300 dark:bg-gray-600 hover:bg-blue-400 dark:hover:bg-blue-400'
