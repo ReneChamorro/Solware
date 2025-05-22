@@ -159,7 +159,7 @@ const WorkProcess: React.FC = () => {
 				</div>
 
 				<div className="relative pt-32 pb-40">
-					{/* Líneas conectoras */}
+					{/* Líneas conectoras - Desktop */}
 					<div className="hidden lg:block absolute inset-0 pointer-events-none">
 						<svg
 							key={key}
@@ -197,7 +197,6 @@ const WorkProcess: React.FC = () => {
 								</filter>
 							</defs>
 
-							{/* Animated path with smooth curves through all points */}
 							<path
 								d="m 89.96,196.29 c 0,0 103.25,300.56 261.71,301.59 158.46,1.02 90.99,-296.47 256.6,-296.47 144.15,0 54.17,302.11 235.13,302.61 142.18,0.39 264.78,-303.63 264.78,-303.63"
 								stroke="url(#gradientLine)"
@@ -205,82 +204,156 @@ const WorkProcess: React.FC = () => {
 								fill="none"
 								strokeLinecap="round"
 								filter="url(#glow)"
-								className={`path-animation ${isVisible ? 'opacity-100' : 'opacity-0'}`}
+								className="desktop-path-animation"
 								style={{
 									animationDelay: '0.5s',
 									animationPlayState: isVisible ? 'running' : 'paused',
 								}}
 							/>
 						</svg>
-
-						<style>{`
-                @keyframes drawLine {
-                  0% {
-                    stroke-dasharray: 3000;
-                    stroke-dashoffset: 3000;
-                  }
-                  100% {
-                    stroke-dasharray: 3000;
-                    stroke-dashoffset: 0;
-                  }
-                }
-
-                .path-animation {
-                  animation: drawLine 3s cubic-bezier(0.4, 0, 0.2, 1) forwards;
-                }
-
-                @keyframes pulse {
-                  0% {
-                    transform: scale(1);
-                    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5);
-                  }
-                  70% {
-                    transform: scale(1.05);
-                    box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
-                  }
-                  100% {
-                    transform: scale(1);
-                    box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
-                  }
-                }
-
-                @keyframes iconPulse {
-                  0% {
-                    transform: scale(1);
-                  }
-                  50% {
-                    transform: scale(1.1) rotate(5deg);
-                  }
-                  100% {
-                    transform: scale(1);
-                  }
-                }
-
-                @keyframes boxPulse {
-                  0% {
-                    transform: translateY(0);
-                  }
-                  50% {
-                    transform: translateY(-5px);
-                  }
-                  100% {
-                    transform: translateY(0);
-                  }
-                }
-
-                .animate-pulse {
-                  animation: pulse 2s infinite;
-                }
-
-                .animate-icon-pulse {
-                  animation: iconPulse 2s infinite;
-                }
-
-                .animate-box-pulse {
-                  animation: boxPulse 2s infinite;
-                }
-              `}</style>
 					</div>
+
+					{/* Líneas conectoras - Mobile */}
+					<div
+						className="md:hidden absolute inset-0 pointer-events-none"
+						style={{ height: '100%', width: '100%', zIndex: 1 }}
+					>
+						<svg
+							key={`mobile-${key}`}
+							className="w-full h-full"
+							viewBox="0 0 150 600"
+							preserveAspectRatio="xMidYMid meet"
+							xmlns="http://www.w3.org/2000/svg"
+							style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+						>
+							<defs>
+								<linearGradient id="gradientLineMobile" x1="0%" y1="0%" x2="0%" y2="100%">
+									<stop offset="0%" stopColor="#3B82F6">
+										<animate
+											attributeName="stop-color"
+											values="#3B82F6; #10B981; #F59E0B; #EC4899; #8B5CF6"
+											dur="4s"
+											repeatCount="infinite"
+										/>
+									</stop>
+									<stop offset="100%" stopColor="#8B5CF6">
+										<animate
+											attributeName="stop-color"
+											values="#8B5CF6; #EC4899; #F59E0B; #10B981; #3B82F6"
+											dur="4s"
+											repeatCount="infinite"
+										/>
+									</stop>
+								</linearGradient>
+
+								<filter id="glowMobile" x="-20%" y="-20%" width="140%" height="140%">
+									<feGaussianBlur stdDeviation="4" result="coloredBlur" />
+									<feMerge>
+										<feMergeNode in="coloredBlur" />
+										<feMergeNode in="SourceGraphic" />
+									</feMerge>
+								</filter>
+							</defs>
+
+							<path
+								d="m 75.963856,119.39759 c 0,0 24.365654,14.69372 25.060244,49.15663 1.08387,53.77764 -53.827579,48.21148 -52.048197,107.9518 1.694272,56.88285 57.005597,58.79872 56.867457,109.87953 -0.16421,60.72561 -62.514568,67.47362 -61.686733,109.87952 0.550265,28.1874 33.73494,45.3012 33.73494,45.3012"
+								stroke="url(#gradientLineMobile)"
+								strokeWidth="2"
+								fill="none"
+								strokeLinecap="round"
+								filter="url(#glowMobile)"
+								className="mobile-path-animation"
+								style={{
+									animationDelay: '0.5s',
+									strokeDasharray: 1700,
+									strokeDashoffset: 1700,
+								}}
+							/>
+						</svg>
+					</div>
+
+					<style>{`
+						@keyframes drawLineDesktop {
+							0% {
+								stroke-dasharray: 3000;
+								stroke-dashoffset: 3000;
+							}
+							100% {
+								stroke-dasharray: 3000;
+								stroke-dashoffset: 0;
+							}
+						}
+
+						@keyframes drawLineMobile {
+							0% {
+								stroke-dasharray: 1700;
+								stroke-dashoffset: 1700;
+							}
+							100% {
+								stroke-dasharray: 1700;
+								stroke-dashoffset: 0;
+							}
+						}
+
+						.desktop-path-animation {
+							animation: drawLineDesktop 3s cubic-bezier(0.5, 0, 0.2, 1) forwards;
+						}
+
+						.mobile-path-animation {
+							animation: drawLineMobile 2.5s cubic-bezier(0.4, 0, 0.2, 1) forwards;
+						}
+
+						@keyframes pulse {
+							0% {
+								transform: scale(1);
+								box-shadow: 0 0 0 0 rgba(59, 130, 246, 0.5);
+							}
+							70% {
+								transform: scale(1.05);
+								box-shadow: 0 0 0 10px rgba(59, 130, 246, 0);
+							}
+							100% {
+								transform: scale(1);
+								box-shadow: 0 0 0 0 rgba(59, 130, 246, 0);
+							}
+						}
+
+						@keyframes iconPulse {
+							0% {
+								transform: scale(1);
+							}
+							50% {
+								transform: scale(1.1) rotate(5deg);
+							}
+							100% {
+								transform: scale(1);
+							}
+						}
+
+						@keyframes boxPulse {
+							0% {
+								transform: translateY(0);
+							}
+							50% {
+								transform: translateY(-5px);
+							}
+							100% {
+								transform: translateY(0);
+							}
+						}
+
+						.animate-pulse {
+							animation: pulse 2s infinite;
+						}
+
+						.animate-icon-pulse {
+							animation: iconPulse 2s infinite;
+						}
+
+						.animate-box-pulse {
+							animation: boxPulse 2s infinite;
+						}
+					`}</style>
 
 					{/* Steps grid */}
 					<div className="grid grid-cols-1 md:grid-cols-3 lg:grid-cols-5 gap-8 relative z-10">
