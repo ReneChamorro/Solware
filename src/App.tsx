@@ -1,66 +1,66 @@
 import { useState, useEffect, useCallback } from 'react';
-import Header from './components/Header';
-import Hero from './components/Hero';
-import Services from './components/Services';
-import WorkProcess from './components/WorkProcess';
-import Automation from './components/Automation';
-import ValuesMission from './components/ValuesMission';
-import Contact from './components/Contact';
-import Footer from './components/Footer';
-import WhatsAppButton from './components/WhatsAppButton';
-import Preloader from './components/Preloader';
-import ButtonMessageBot from './components/ButtonMessageBot';
-import AboutUs from './components/AboutUs';
+import Header from './components/Header'
+import Hero from './components/Hero'
+import Services from './components/Services'
+import WorkProcess from './components/WorkProcess'
+import Automation from './components/Automation'
+import ValuesMission from './components/ValuesMission'
+import Contact from './components/Contact'
+import Footer from './components/Footer'
+import WhatsAppButton from './components/WhatsAppButton'
+import Preloader from './components/Preloader'
+import ButtonMessageBot from './components/ButtonMessageBot'
+import AboutUs from './components/AboutUs'
 
 function App() {
-	const [isLoading, setIsLoading] = useState(true);
-	const [isScrolling, setIsScrolling] = useState(false);
-	let scrollTimeout: NodeJS.Timeout;
+	const [isLoading, setIsLoading] = useState(true)
+	const [isScrolling, setIsScrolling] = useState(false)
+	let scrollTimeout: NodeJS.Timeout
 
 	const handleScroll = useCallback(() => {
 		// Skip if we're already in scrolling state
 		if (!isScrolling) {
-			document.documentElement.classList.add('scrolling');
-			setIsScrolling(true);
+			document.documentElement.classList.add('scrolling')
+			setIsScrolling(true)
 		}
 
 		// Clear any existing timeout
 		if (scrollTimeout) {
-			clearTimeout(scrollTimeout);
+			clearTimeout(scrollTimeout)
 		}
 
 		// Set new timeout
 		scrollTimeout = setTimeout(() => {
-			document.documentElement.classList.remove('scrolling');
-			setIsScrolling(false);
-		}, 150);
-	}, [isScrolling]);
+			document.documentElement.classList.remove('scrolling')
+			setIsScrolling(false)
+		}, 150)
+	}, [isScrolling])
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
-			setIsLoading(false);
-		}, 3000);
+			setIsLoading(false)
+		}, 3000)
 
 		// Use requestAnimationFrame to throttle scroll events
-		let ticking = false;
+		let ticking = false
 		const scrollListener = () => {
 			if (!ticking) {
 				window.requestAnimationFrame(() => {
-					handleScroll();
-					ticking = false;
-				});
-				ticking = true;
+					handleScroll()
+					ticking = false
+				})
+				ticking = true
 			}
-		};
+		}
 
-		window.addEventListener('scroll', scrollListener, { passive: true });
+		window.addEventListener('scroll', scrollListener, { passive: true })
 
 		return () => {
-			clearTimeout(timer);
-			clearTimeout(scrollTimeout);
-			window.removeEventListener('scroll', scrollListener);
-		};
-	}, [handleScroll]);
+			clearTimeout(timer)
+			clearTimeout(scrollTimeout)
+			window.removeEventListener('scroll', scrollListener)
+		}
+	}, [handleScroll])
 
 	return (
 		<>
@@ -85,7 +85,7 @@ function App() {
 				<ButtonMessageBot />
 			</div>
 		</>
-	);
+	)
 }
 
 export default App;
