@@ -216,15 +216,25 @@ const WorkProcess: React.FC = () => {
 					{/* Líneas conectoras - Mobile */}
 					<div
 						className="md:hidden absolute inset-0 pointer-events-none"
-						style={{ height: '100%', width: '100%', zIndex: 1 }}
+						style={{
+							height: '2100px',
+							width: '100%',
+							zIndex: 1,
+						}}
 					>
 						<svg
 							key={`mobile-${key}`}
 							className="w-full h-full"
-							viewBox="0 0 150 600"
-							preserveAspectRatio="xMidYMid meet"
+							viewBox="0 0 150 800"
+							preserveAspectRatio="none"
 							xmlns="http://www.w3.org/2000/svg"
-							style={{ position: 'absolute', top: 0, left: 0, width: '100%', height: '100%' }}
+							style={{
+								position: 'absolute',
+								top: 0,
+								left: 0,
+								width: '100%',
+								height: '2100px',
+							}}
 						>
 							<defs>
 								<linearGradient id="gradientLineMobile" x1="0%" y1="0%" x2="0%" y2="100%">
