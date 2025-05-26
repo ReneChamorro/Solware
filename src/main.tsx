@@ -2,7 +2,6 @@ import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
 import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ClerkProvider, SignedIn, SignedOut, RedirectToSignIn } from '@clerk/clerk-react'
-import { dark } from '@clerk/themes'
 import App from './App'
 import NotFound from './components/NotFound'
 import PrivacyPolicy from './components/PrivacyPolicy'
@@ -42,19 +41,7 @@ const root = createRoot(rootElement)
 root.render(
 	<StrictMode>
 		<ClerkProvider
-			publishableKey={PUBLISHABLE_KEY}
-			// appearance={{
-			// 	baseTheme: dark,
-			// 	elements: {
-			// 		card: 'bg-white dark:bg-gray-900',
-			// 		formButtonPrimary: 'bg-blue-600 hover:bg-blue-700 text-white',
-			// 		formFieldInput: 'border border-gray-700 text-gray-900 dark:text-white bg-white dark:bg-gray-900',
-			// 		socialButtonsBlockButton:
-			// 			'bg-white dark:bg-gray-800 border border-gray-200 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-700',
-			// 		socialButtonsBlockButtonText: 'text-gray-700 dark:text-gray-300',
-			// 	},
-			// }}
-		>
+			publishableKey={PUBLISHABLE_KEY}>
 			<BrowserRouter {...routerOptions}>
 				<Routes>
 					<Route path="/" element={<App />} />
