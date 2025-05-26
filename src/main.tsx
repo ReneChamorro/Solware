@@ -1,6 +1,6 @@
-import { StrictMode } from 'react';
-import { createRoot } from 'react-dom/client';
-import { BrowserRouter, Routes, Route, UNSAFE_useScrollRestoration } from 'react-router-dom'
+import { StrictMode } from 'react'
+import { createRoot } from 'react-dom/client'
+import { BrowserRouter, Routes, Route } from 'react-router-dom'
 import { ClerkProvider, SignedIn, SignedOut, RedirectToSignIn } from '@clerk/clerk-react'
 import App from './App'
 import NotFound from './components/NotFound'
@@ -40,7 +40,8 @@ const root = createRoot(rootElement)
 
 root.render(
 	<StrictMode>
-		<ClerkProvider publishableKey={PUBLISHABLE_KEY}>
+		<ClerkProvider
+			publishableKey={PUBLISHABLE_KEY}>
 			<BrowserRouter {...routerOptions}>
 				<Routes>
 					<Route path="/" element={<App />} />

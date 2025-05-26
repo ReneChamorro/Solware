@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { MessageCircle, X, Send } from 'lucide-react'
+import { X, Send } from 'lucide-react'
 import { FaEnvelope, FaWhatsapp, FaInstagram, FaLinkedin } from 'react-icons/fa'
 import RobotTraking from './RobotTraking'
 import RobotTrackingChat from './RoboTrakChat'
@@ -277,7 +277,7 @@ const ChatBot = () => {
 				className={`p-3 pl-0 text-white rounded-full transition-all duration-300 ${isOpen ? 'hidden' : ''}`}
 				title="Chatbot"
 			>
-				<RobotTraking />
+				<RobotTraking className={'size-16 md:size-24'} />
 			</button>
 
 			{/* Ventana del chat */}

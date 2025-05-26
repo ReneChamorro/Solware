@@ -1,6 +1,10 @@
 import { useEffect, useRef } from 'react'
 
-const EyeTrackingComponent = () => {
+interface EyeTrackingComponentProps {
+	className?: string
+}
+
+const EyeTrackingComponent = ({ className = '' }: EyeTrackingComponentProps) => {
 	const eyeBallRef = useRef<SVGGElement>(null)
 	const lPupilRef = useRef<SVGGElement>(null)
 	const rPupilRef = useRef<SVGGElement>(null)
@@ -36,10 +40,10 @@ const EyeTrackingComponent = () => {
 				margin: 0,
 				padding: 0,
 				display: 'flex',
-				width: '100%'
+				width: '100%',
 			}}
 		>
-			<svg style={{ margin: 'auto' }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" className='size-16 md:size-24'>
+			<svg style={{ margin: 'auto' }} xmlns="http://www.w3.org/2000/svg" viewBox="0 0 500 500" className={className}>
 				<g ref={eyeBallRef} transform="matrix(1.084081, 0, 0, 1.081948, -12.577974, 19.817105)" className="eyeball">
 					{/* Todos los paths y elementos del SVG original */}
 					{/* ... (todo el contenido SVG que proporcionaste) ... */}
@@ -96,7 +100,10 @@ const EyeTrackingComponent = () => {
 							transformOrigin: '105px 78px',
 						}}
 					>
-						<path d="M 117.108 56.048 C 105.158 56.048 95.824 65.953 96.63 78.633 C 97.434 91.313 108.003 98.662 118.816 98.662 C 129.632 98.662 139.016 90.783 139.016 77.355 C 139.016 63.932 129.06 56.048 117.108 56.048 Z" fill="#ffffff"></path>
+						<path
+							d="M 117.108 56.048 C 105.158 56.048 95.824 65.953 96.63 78.633 C 97.434 91.313 108.003 98.662 118.816 98.662 C 129.632 98.662 139.016 90.783 139.016 77.355 C 139.016 63.932 129.06 56.048 117.108 56.048 Z"
+							fill="#ffffff"
+						></path>
 					</g>
 
 					<g
@@ -108,7 +115,10 @@ const EyeTrackingComponent = () => {
 							transformOrigin: '160px 78px',
 						}}
 					>
-						<path d="M 168.219 56.959 C 156.269 56.959 146.935 66.864 147.741 79.544 C 148.545 92.224 159.114 99.573 169.927 99.573 C 180.743 99.573 190.127 91.694 190.127 78.266 C 190.127 64.843 180.171 56.959 168.219 56.959 Z" fill="#ffffff"></path>
+						<path
+							d="M 168.219 56.959 C 156.269 56.959 146.935 66.864 147.741 79.544 C 148.545 92.224 159.114 99.573 169.927 99.573 C 180.743 99.573 190.127 91.694 190.127 78.266 C 190.127 64.843 180.171 56.959 168.219 56.959 Z"
+							fill="#ffffff"
+						></path>
 					</g>
 
 					<path
