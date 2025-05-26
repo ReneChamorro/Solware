@@ -253,7 +253,7 @@ const ChatBot = () => {
 				return // Salir para no agregar un mensaje del bot
 			} else if (option === 'Abrir WhatsApp') {
 				const message = encodeURIComponent('Hola, me gustaría obtener más información sobre sus servicios.')
-				window.open(`https://wa.me/584126652245?text=${message}`, '_blank') // Abrir WhatsApp
+				window.open(`https://wa.me/584129974533?text=${message}`, '_blank') // Abrir WhatsApp
 				return // Salir para no agregar un mensaje del bot
 			} else if (option === 'Abrir Instagram') {
 				window.open('https://www.instagram.com/solware_?igsh=MTg4OTdwM3k3d2o4cA==', '_blank') // Abrir Instagram
