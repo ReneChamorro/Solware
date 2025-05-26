@@ -144,7 +144,7 @@ export default function Header() {
 							</SignedIn>
 
 							<SignedOut>
-								<SignInButton mode="modal" redirectUrl="/dashboard">
+								<SignInButton mode="modal" redirectUrl="/dashboard" afterSignInUrl="/dashboard">
 									<button
 										className={`rounded-full text-sm sm:text-base 
 											transition-all duration-300 whitespace-nowrap hover:scale-125 ${
