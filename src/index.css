@@ -187,3 +187,7 @@
     animation: float linear infinite;
   }
 }
+
+.botonMorado {
+  background-color: purple;
+}

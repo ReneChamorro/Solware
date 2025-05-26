@@ -1,8 +1,9 @@
 import React, { useState, useEffect } from 'react'
-import { Menu, X, Code2, Moon, Sun, UserRound } from 'lucide-react'
+import { Menu, X, Code2, Moon, Sun, UserRound, LayoutDashboard } from 'lucide-react'
 import { useActiveSection } from '../hooks/useActiveSection'
 import { useDarkMode } from '../hooks/useDarkMode'
 import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react'
+import { Link } from 'react-router-dom'
 
 const navItems = [
 	{ href: '#inicio', label: 'Inicio' },
@@ -131,12 +132,21 @@ export default function Header() {
 								Consulta Gratis
 							</a>
 							<SignedIn>
+								<Link
+									to="/dashboard"
+									className={`transition-colors duration-300 whitespace-nowrap flex items-center gap-2 ${
+										isScrolled ? ' text-gray-700 dark:text-white' : ' text-white '
+									}`}
+								>
+									<LayoutDashboard className="w-5 h-5" />
+								</Link>
 								<UserButton afterSignOutUrl="/" />
 							</SignedIn>
+
 							<SignedOut>
 								<SignInButton mode="modal" redirectUrl="/dashboard">
 									<button
-										className={`px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base 
+										className={`rounded-full text-sm sm:text-base 
 											transition-all duration-300 whitespace-nowrap hover:scale-125 ${
 												isScrolled ? 'text-gray-700 dark:text-white' : 'text-white'
 											}`}
@@ -147,9 +157,17 @@ export default function Header() {
 							</SignedOut>
 						</div>
 
-						<div className="md:hidden flex gap-2">
+						<div className="md:hidden flex gap-2 items-center">
 							<SignedIn>
-								<div className="flex items-center justify-between mb-4">
+								<div className="flex items-center justify-between gap-3">
+									<Link
+										to="/dashboard"
+										className={`transition-colors duration-300 whitespace-nowrap flex items-center gap-2 ${
+											isScrolled ? ' text-gray-700 dark:text-white' : ' text-white '
+										}`}
+									>
+										<LayoutDashboard className="w-5 h-5" />
+									</Link>
 									<UserButton afterSignOutUrl="/" />
 								</div>
 							</SignedIn>
@@ -165,7 +183,7 @@ export default function Header() {
 								</SignInButton>
 							</SignedOut>
 							<button
-								className={`px-4 py-3 rounded-lg ${isScrolled ? 'text-gray-700 dark:text-white' : 'text-white'}`}
+								className={`px-1 rounded-lg ${isScrolled ? 'text-gray-700 dark:text-white' : 'text-white'}`}
 								onClick={() => setIsMenuOpen(!isMenuOpen)}
 								aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
 							>

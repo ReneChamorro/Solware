@@ -21,7 +21,7 @@ const AboutUs = () => {
               Nuestra Historia
             </h3>
             <p className="text-gray-600 dark:text-gray-300 text-justify">
-              Nacimos de la visión de un grupo de profesionales venezolanos que identificaron 
+              Nacimos de la visión de un grupo de profesionales que identificaron 
               la necesidad de las empresas por adaptarse al mundo digital. Entendemos los 
               desafíos únicos que enfrentan los negocios en Latinoamérica y trabajamos 
               incansablemente para ofrecer soluciones que impulsen su crecimiento.
@@ -37,7 +37,7 @@ const AboutUs = () => {
                     Equipo Local, Impacto Global
                   </h4>
                   <p className="text-gray-600 dark:text-gray-300">
-                    Nuestro equipo combina el talento venezolano con una visión internacional.
+                    Nuestro equipo combina el talento latinoamericano con una visión internacional.
                   </p>
                 </div>
               </div>

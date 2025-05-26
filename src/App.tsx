@@ -8,12 +8,12 @@ import ValuesMission from './components/ValuesMission'
 import Contact from './components/Contact'
 import Footer from './components/Footer'
 import WhatsAppButton from './components/WhatsAppButton'
-import Preloader from './components/Preloader'
+// import Preloader from './components/Preloader'
 import ButtonMessageBot from './components/ButtonMessageBot'
 import AboutUs from './components/AboutUs'
 
 function App() {
-	const [isLoading, setIsLoading] = useState(true)
+	// const [isLoading, setIsLoading] = useState(true)
 	const [isScrolling, setIsScrolling] = useState(false)
 	let scrollTimeout: NodeJS.Timeout
 
@@ -37,9 +37,9 @@ function App() {
 	}, [isScrolling])
 
 	useEffect(() => {
-		const timer = setTimeout(() => {
-			setIsLoading(false)
-		}, 3000)
+		// const timer = setTimeout(() => {
+		// 	setIsLoading(false)
+		// }, 3000)
 
 		// Use requestAnimationFrame to throttle scroll events
 		let ticking = false
@@ -56,7 +56,7 @@ function App() {
 		window.addEventListener('scroll', scrollListener, { passive: true })
 
 		return () => {
-			clearTimeout(timer)
+			// clearTimeout(timer)
 			clearTimeout(scrollTimeout)
 			window.removeEventListener('scroll', scrollListener)
 		}
@@ -64,12 +64,12 @@ function App() {
 
 	return (
 		<>
-			<Preloader />
+			{/* <Preloader />
 			<div
 				className={`min-h-screen bg-gray-50 dark:bg-dark transition-colors duration-300 ${
 					isLoading ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'
 				}`}
-			>
+			> */}
 				<Header />
 				<main>
 					<Hero />
@@ -83,7 +83,7 @@ function App() {
 				<Footer />
 				<WhatsAppButton />
 				<ButtonMessageBot />
-			</div>
+			{/* </div> */}
 		</>
 	)
 }
