@@ -40,8 +40,7 @@ const root = createRoot(rootElement)
 
 root.render(
 	<StrictMode>
-		<ClerkProvider
-			publishableKey={PUBLISHABLE_KEY}>
+		<ClerkProvider publishableKey={PUBLISHABLE_KEY}>
 			<BrowserRouter {...routerOptions}>
 				<Routes>
 					<Route path="/" element={<App />} />
@@ -55,7 +54,7 @@ root.render(
 									<Dashboard />
 								</SignedIn>
 								<SignedOut>
-									<RedirectToSignIn />
+									<RedirectToSignIn redirectUrl="/dashboard" />
 								</SignedOut>
 							</>
 						}
