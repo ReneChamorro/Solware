@@ -1,9 +1,12 @@
-import React, { createContext, useState, ReactNode } from 'react'
-import { Moon, Sun, Bell, Code2, Home, PieChart, Calendar as CalendarIcon, Settings, LogOut, Menu } from 'lucide-react'
+import React, { createContext, useState, ReactNode, useEffect } from 'react'
+import { Menu } from 'lucide-react'
 import { useDarkMode } from '../hooks/useDarkMode'
-import { UserButton, useUser } from '@clerk/clerk-react'
-import { Link } from 'react-router-dom'
+import { useUser } from '@clerk/clerk-react'
 import EyeTrackingComponent from './RobotTraking'
+import Header from './dashboardComponents/Header'
+import Sidebar from './dashboardComponents/Sidebar'
+import AddItemModal from './dashboardComponents/AddItemModal'
+import TaskList from './dashboardComponents/TaskList'
 
 interface ThemeContextProps {
 	theme: 'light' | 'dark'
@@ -29,108 +32,128 @@ const ThemeProvider = ({ children }: { children: ReactNode }) => {
 	return <ThemeContext.Provider value={{ theme, toggleTheme }}>{children}</ThemeContext.Provider>
 }
 
+interface Item {
+	id: string
+	title: string
+	description: string
+	assignedTo?: string
+	priority: 'low' | 'medium' | 'high'
+	completed: boolean
+	type: 'task' | 'project'
+	userId: string // ID del usuario que creó el item
+	assignedUserId?: string // ID del usuario asignado
+}
+
 const Dashboard: React.FC = () => {
 	const { isDark, setIsDark } = useDarkMode()
 	const { user } = useUser()
+	const [currentDate, setCurrentDate] = useState('')
+	const [isModalOpen, setIsModalOpen] = useState(false)
+	const [modalType, setModalType] = useState<'task' | 'project'>('task')
+	const [items, setItems] = useState<Item[]>(() => {
+		if (!user) return []
+		const savedItems = localStorage.getItem(`items_${user.id}`)
+		return savedItems ? JSON.parse(savedItems) : []
+	})
+
+	// Save items to localStorage whenever they change
+	useEffect(() => {
+		if (user) {
+			localStorage.setItem(`items_${user.id}`, JSON.stringify(items))
+		}
+	}, [items, user])
+
+	useEffect(() => {
+		const getCurrentDate = () => {
+			const now = new Date()
+			const months = [
+				'Enero',
+				'Febrero',
+				'Marzo',
+				'Abril',
+				'Mayo',
+				'Junio',
+				'Julio',
+				'Agosto',
+				'Septiembre',
+				'Octubre',
+				'Noviembre',
+				'Diciembre',
+			]
+			return `${months[now.getMonth()]} ${now.getDate()}`
+		}
+
+		setCurrentDate(getCurrentDate())
+
+		// Actualizar la fecha cada día a medianoche
+		const now = new Date()
+		const tomorrow = new Date(now.getFullYear(), now.getMonth(), now.getDate() + 1)
+		const timeUntilMidnight = tomorrow.getTime() - now.getTime()
+
+		const timer = setTimeout(() => {
+			setCurrentDate(getCurrentDate())
+		}, timeUntilMidnight)
+
+		return () => clearTimeout(timer)
+	}, [])
 
 	const toggleDarkMode = () => {
 		setIsDark(!isDark)
 	}
 
+	const handleAddItem = (data: {
+		title: string
+		description: string
+		assignedTo?: string
+		priority: 'low' | 'medium' | 'high'
+	}) => {
+		if (!user) return
+
+		const newItem: Item = {
+			id: Date.now().toString(),
+			title: data.title,
+			description: data.description,
+			assignedTo: data.assignedTo,
+			priority: data.priority,
+			completed: false,
+			type: modalType,
+			userId: user.id,
+			assignedUserId: data.assignedTo === 'me' ? user.id : data.assignedTo || undefined,
+		}
+		setItems((prevItems) => [...prevItems, newItem])
+	}
+
+	const handleItemToggle = (itemId: string) => {
+		setItems((prevItems) =>
+			prevItems.map((item) => (item.id === itemId ? { ...item, completed: !item.completed } : item)),
+		)
+	}
+
+	const handleItemDelete = (itemId: string) => {
+		setItems((prevItems) => prevItems.filter((item) => item.id !== itemId))
+	}
+
+	const openModal = (type: 'task' | 'project') => {
+		setModalType(type)
+		setIsModalOpen(true)
+	}
+
+	// Filtrar items según el usuario actual
+	const filteredItems = items.filter((item) => {
+		if (!user) return false
+		// Mostrar items creados por el usuario o asignados a él
+		return item.userId === user.id || item.assignedUserId === user.id
+	})
+
 	return (
 		<div className="flex h-screen bg-gradient-to-br from-[#3A71EC] via-[#6C5CEC] to-[#9949EC] dark:from-[#2F2E7B] dark:via-[#412982] dark:to-[#511F80] transition-colors duration-300">
 			{/* ASIDEBAR */}
-			<aside className="bg-white/80 dark:bg-gray-900/80 flex flex-col justify-between h-screen py-8 px-5 gap-4 w-64 border-gray-600 text-gray-700 dark:text-gray-300 transition-colors duration-300">
-				<div className="flex flex-col items-start gap-6">
-					<div className="flex justify-center items-center gap-3 mb-5">
-						<Code2 className="size-8" />
-						<p className="text-2xl font-bold">
-							Solware
-							{/* <span className="text-sx right-10 ml-1 font-light">Business</span> */}
-						</p>
-					</div>
-					<div className="flex justify-center items-center gap-3 cursor-pointer text-blue-500 border-l border-blue-500 pl-2 transition">
-						<Home className="stroke-2 size-5" />
-						<p className="text-md">Inicio</p>
-					</div>
-					<div className="flex justify-center items-center gap-3 cursor-pointer pl-2 hover:text-blue-500 transition">
-						<PieChart className="stroke-2 size-5" />
-						<p className="text-md">Estadisticas</p>
-					</div>
-					<div className="flex justify-center items-center gap-3 cursor-pointer pl-2 hover:text-blue-500 transition">
-						<CalendarIcon className="stroke-2 size-5" />
-						<p className="text-md">Calendario</p>
-					</div>
-				</div>
-				<div className="flex items-center gap-3 cursor-pointer pl-2 hover:text-blue-500 transition">
-					<Settings className="stroke-2 size-5" />
-					<p className="text-md">Configuraciones</p>
-				</div>
-			</aside>
+			<Sidebar />
 
 			{/* MAIN CONTENT */}
 			<div className="flex flex-col flex-1 h-screen overflow-hidden">
 				{/* HEADER */}
-				<div className="bg-white/80 dark:bg-gray-900/80 rounded-bl-xl transition-colors duration-300 ml-5">
-					<header className="flex justify-between items-center px-6 py-4 max-w-6xl mx-auto">
-						<form className="w-96">
-							<label
-								htmlFor="default-search"
-								className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white"
-							>
-								Search
-							</label>
-							<div className="relative">
-								<div className="absolute inset-y-0 start-0 flex items-center ps-3 pointer-events-none">
-									<svg
-										className="w-4 h-4 text-gray-400"
-										aria-hidden="true"
-										xmlns="http://www.w3.org/2000/svg"
-										fill="none"
-										viewBox="0 0 20 20"
-									>
-										<path
-											stroke="currentColor"
-											strokeLinecap="round"
-											strokeLinejoin="round"
-											strokeWidth="2"
-											d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z"
-										/>
-									</svg>
-								</div>
-								<input
-									type="search"
-									id="default-search"
-									className="block w-full p-2 ps-10 text-sm text-gray-200 border border-gray-500 dark:border-gray-700 rounded-lg bg-white/80 dark:bg-gray-800"
-									placeholder="Buscar..."
-									required
-								/>
-							</div>
-						</form>
-
-						<div className="flex items-center gap-4 text-gray-700 dark:text-gray-300">
-							<a href="#" className="text-sm hover:dark:text-white cursor-pointer">
-								December, 12
-							</a>
-							<button
-								onClick={toggleDarkMode}
-								className="p-2 transition-colors hover:dark:text-white"
-								aria-label={isDark ? 'Activar modo claro' : 'Activar modo oscuro'}
-							>
-								{isDark ? <Sun className="w-5 h-5" /> : <Moon className="w-5 h-5" />}
-							</button>
-							<button className="p-2 transition-colors hover:dark:text-white">
-								<Bell className="w-5 h-5" />
-							</button>
-							<div className="flex items-center gap-4">
-								<UserButton afterSignOutUrl="/" />
-								<Link to="/" className="p-2 transition-colors hover:dark:text-white">
-									<LogOut className="w-5 h-5" />
-								</Link>
-							</div>
-						</div>
-					</header>
-				</div>
+				<Header isDark={isDark} toggleDarkMode={toggleDarkMode} currentDate={currentDate} />
 
 				{/* MAIN */}
 				<main className="flex-1 overflow-auto grid grid-cols-3 grid-rows-3 gap-5 m-5">
@@ -144,10 +167,16 @@ const Dashboard: React.FC = () => {
 								<p>Recuerda revisar los proyectos pendientes y el calendario</p>
 							</div>
 							<div className="flex gap-4">
-								<button className="text-white bg-blue-600 hover:bg-blue-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 transition">
+								<button
+									onClick={() => openModal('project')}
+									className="text-white bg-blue-600 hover:bg-blue-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 transition"
+								>
 									Nuevo Proyecto
 								</button>
-								<button className="text-white bg-blue-600 hover:bg-blue-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 transition">
+								<button
+									onClick={() => openModal('task')}
+									className="text-white bg-blue-600 hover:bg-blue-500 font-medium rounded-lg text-sm px-5 py-2.5 text-center me-2 mb-2 transition"
+								>
 									Nueva Tarea
 								</button>
 							</div>
@@ -161,9 +190,9 @@ const Dashboard: React.FC = () => {
 					<div className="grid col-span-1 row-span-3 gap-5">
 						{/* CONTENEDOR DEL CALENDARIO */}
 						<div className="bg-white/80 dark:bg-gray-900/80 rounded-xl py-4 px-6 transition-colors duration-300"></div>
-						<div className="grid row-span-1 grid-rows-3 gap-5">
+						<div className="grid grid-rows-3 gap-5">
 							{/* CONTENEDOR DE TAREAS */}
-							<div className="bg-white/80 dark:bg-gray-900/80 rounded-xl row-span-2 py-4 px-6 transition-colors duration-300"></div>
+							<div className="bg-white/80 dark:bg-gray-900/80 rounded-xl py-4 px-6 transition-colors duration-300 relative row-span-2"></div>
 							{/* CONTENEDOR DE MIEMBROS */}
 							<div className="bg-white/80 dark:bg-gray-900/80 rounded-xl py-4 px-6 transition-colors duration-300"></div>
 						</div>
@@ -271,10 +300,22 @@ const Dashboard: React.FC = () => {
 							</div>
 						</div>
 					</div>
-					{/* CONTENEDOR DEL DIAGRAMA */}
-					<div className="col-span-2 bg-white/80 dark:bg-gray-900/80 rounded-xl py-4 px-6 transition-colors duration-300"></div>
+					{/* CONTENEDOR DE TAREAS */}
+					<div className="col-span-2 bg-white/80 dark:bg-gray-900/80 rounded-xl py-4 px-6 transition-colors duration-300 relative">
+						<h2 className="mb-2 font-medium text-2xl text-gray-700 dark:text-gray-300">Tareas y Proyectos</h2>
+						<div className="absolute inset-x-6 bottom-4 top-16 overflow-y-auto">
+							<TaskList tasks={filteredItems} onTaskToggle={handleItemToggle} onTaskDelete={handleItemDelete} />
+						</div>
+					</div>
 				</main>
 			</div>
+
+			<AddItemModal
+				isOpen={isModalOpen}
+				onClose={() => setIsModalOpen(false)}
+				type={modalType}
+				onSubmit={handleAddItem}
+			/>
 		</div>
 	)
 }
