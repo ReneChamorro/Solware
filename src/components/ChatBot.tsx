@@ -77,8 +77,12 @@ const contactoDetails = [
 	{ icon: <FaLinkedin />, text: 'Agencia', link: 'https://www.linkedin.com/company/agencia-solware/' },
 ]
 
-const ChatBot = () => {
-	const [isOpen, setIsOpen] = useState(false)
+interface ChatBotProps {
+	isOpen: boolean
+	setIsOpen: React.Dispatch<React.SetStateAction<boolean>>
+}
+
+const ChatBot: React.FC<ChatBotProps> = ({ isOpen, setIsOpen }) => {
 	const [messages, setMessages] = useState<Message[]>([
 		{
 			id: 1,
