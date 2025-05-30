@@ -162,7 +162,7 @@ export default function Header() {
 										</div>
 										<div
 											className={` opacity-0 transition-all -translate-y-20 duration-300 ${
-												openDropdown ? 'opacity-100 -translate-y-10' : 'opacity-0 -translate-y-20'
+												openDropdown ? 'opacity-100 -translate-y-9' : 'opacity-0 -translate-y-20'
 											}`}
 										>
 											{openDropdown && (
