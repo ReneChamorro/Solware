@@ -6,7 +6,6 @@ import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-reac
 import { Link } from 'react-router-dom'
 
 const navItems = [
-	{ href: '#inicio', label: 'Inicio' },
 	{ href: '#quienes-somos', label: 'Quiénes Somos' },
 	{
 		label: 'Servicios',
@@ -147,7 +146,7 @@ export default function Header() {
 											>
 												{item.label}
 												<svg
-													className="size-5"
+													className={`size-5 -rotate-90 transition-transform ${openDropdown ? 'rotate-0' : ''}`}
 													viewBox="0 0 20 20"
 													fill="currentColor"
 													aria-hidden="true"
@@ -161,34 +160,40 @@ export default function Header() {
 												</svg>
 											</button>
 										</div>
-										{openDropdown && (
-											<div
-												className={`absolute right-0 z-20 mt-2 w-48 origin-top-right rounded-md shadow-lg transition-all duration-300 bg-white/70 dark:bg-dark/70 backdrop-blur-md ${
-													isScrolled ? 'top-14' : 'top-10'
-												}`}
-												role="menu"
-												aria-orientation="vertical"
-												aria-labelledby="menu-button"
-												tabIndex={-1}
-											>
-												<div className="py-1" role="none">
-													{item.items.map((subItem) => (
-														<a
-															key={subItem.href}
-															href={subItem.href}
-															onClick={handleNavClick}
-															className={`block px-4 py-2 text-sm transition-colors duration-300 ${
-																isDark ? 'text-gray-300 hover:text-blue-400' : 'text-gray-700 hover:text-blue-600'
-															}`}
-															role="menuitem"
-															tabIndex={-1}
-														>
-															{subItem.label}
-														</a>
-													))}
+										<div
+											className={` opacity-0 transition-all -translate-y-20 duration-300 ${
+												openDropdown ? 'opacity-100 -translate-y-10' : 'opacity-0 -translate-y-20'
+											}`}
+										>
+											{openDropdown && (
+												<div
+													className={`absolute right-0 z-20 mt-2 w-48 origin-top-right rounded-md shadow-[0_0px_13px_1px] transition-all duration-300 bg-white dark:bg-dark ring-1 ring-dark-900/50 dark:ring-gray-800/50 shadow-dark-900/50 dark:shadow-dark-800/50 ${
+														isScrolled ? 'top-14' : 'top-10'
+													}`}
+													role="menu"
+													aria-orientation="vertical"
+													aria-labelledby="menu-button"
+													tabIndex={-1}
+												>
+													<div role="none">
+														{item.items.map((subItem) => (
+															<a
+																key={subItem.href}
+																href={subItem.href}
+																onClick={handleNavClick}
+																className={`block px-4 py-3 text-sm transition-all duration-300 hover:bg-gray-500/10 rounded-t-md last:rounded-b-md last:rounded-t-none ${
+																	isDark ? 'text-gray-300 hover:text-blue-400' : 'text-gray-700 hover:text-blue-600'
+																}`}
+																role="menuitem"
+																tabIndex={-1}
+															>
+																{subItem.label}
+															</a>
+														))}
+													</div>
 												</div>
-											</div>
-										)}
+											)}
+										</div>
 									</div>
 								) : (
 									<a
@@ -308,7 +313,7 @@ export default function Header() {
 					<div className="absolute inset-0 bg-black/50" onClick={() => setIsMenuOpen(false)} />
 
 					<div
-						className={`absolute right-0 top-0 h-full w-64 bg-white/80 dark:bg-dark/70 backdrop-blur-sm
+						className={`absolute right-0 top-0 h-full w-64 bg-white/80 dark:bg-dark/70 backdrop-blur-md
 							shadow-xl transition-transform duration-300 transform ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
 					>
 						<div className="flex flex-col h-full">
@@ -316,7 +321,7 @@ export default function Header() {
 								<button
 									onClick={() => setIsMenuOpen(false)}
 									className="p-2 rounded-lg text-gray-700 dark:text-gray-300
-										hover:bg-gray-100 dark:hover:bg-gray-800 transition-colors"
+										hover:bg-gray-100 dark:hover:bg-gray-500/30 transition-colors"
 								>
 									<X className="h-6 w-6" />
 								</button>
@@ -330,7 +335,7 @@ export default function Header() {
 												className={`w-full px-4 py-3 rounded-lg text-lg font-medium transition-colors duration-200 cursor-pointer ${
 													activeSection === 'servicios' || activeSection === 'automatizacion'
 														? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50'
-														: 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
+														: 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-500/30'
 												}`}
 												onClick={toggleDropdown}
 											>
@@ -343,7 +348,7 @@ export default function Header() {
 												>
 													<span>{item.label}</span>
 													<svg
-														className="size-5"
+														className={`size-5 -rotate-90 transition-transform ${openDropdown ? 'rotate-0' : ''}`}
 														viewBox="0 0 20 20"
 														fill="currentColor"
 														aria-hidden="true"
@@ -357,32 +362,38 @@ export default function Header() {
 													</svg>
 												</button>
 											</div>
-											{openDropdown && (
-												<div
-													className={`mt-2 w-full rounded-md shadow-lg ring-1 ring-black/30 dark:ring-gray-800 focus:outline-hidden transition-all duration-200 ease-out transform bg-white dark:bg-gray-900/0 backdrop-blur-sm`}
-													role="menu"
-													aria-orientation="vertical"
-													aria-labelledby="menu-button-mobile"
-													tabIndex={-1}
-												>
-													<div className="py-1" role="none">
-														{item.items.map((subItem) => (
-															<a
-																key={subItem.href}
-																href={subItem.href}
-																onClick={handleNavClick}
-																className={`block ml-4 py-2 text-sm transition-colors duration-300 ${
-																	isDark ? 'text-gray-300 hover:text-blue-400' : 'text-gray-700 hover:text-blue-600'
-																}`}
-																role="menuitem"
-																tabIndex={-1}
-															>
-																{subItem.label}
-															</a>
-														))}
+											<div
+												className={` opacity-0 transition-all -translate-y-5 duration-300 ${
+													openDropdown ? 'opacity-100 translate-y-1' : 'opacity-0 -translate-y-5'
+												}`}
+											>
+												{openDropdown && (
+													<div
+														className={`mt-2 w-full rounded-md focus:outline-hidden transition-all duration-200 ease-out transform bg-white dark:bg-dark ring-1 ring-dark-900/50 dark:ring-gray-800/50 shadow-dark-900/50 dark:shadow-dark-800/50 shadow-[0_0px_13px_1px]`}
+														role="menu"
+														aria-orientation="vertical"
+														aria-labelledby="menu-button-mobile"
+														tabIndex={-1}
+													>
+														<div className="py-1" role="none">
+															{item.items.map((subItem) => (
+																<a
+																	key={subItem.href}
+																	href={subItem.href}
+																	onClick={handleNavClick}
+																	className={`block ml-4 py-2 text-sm font-medium transition-colors duration-300 ${
+																		isDark ? 'text-gray-300 hover:text-blue-400' : 'text-gray-700 hover:text-blue-600'
+																	}`}
+																	role="menuitem"
+																	tabIndex={-1}
+																>
+																	{subItem.label}
+																</a>
+															))}
+														</div>
 													</div>
-												</div>
-											)}
+												)}
+											</div>
 										</div>
 									) : (
 										<a
@@ -392,7 +403,7 @@ export default function Header() {
 											className={`block px-4 py-3 rounded-lg text-lg font-medium transition-colors duration-200 ${
 												activeSection === (item.href ? item.href.replace('#', '') : '')
 													? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50'
-													: 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
+													: 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-500/30'
 											}`}
 										>
 											{item.label}
