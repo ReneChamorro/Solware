@@ -8,9 +8,15 @@ import { Link } from 'react-router-dom'
 const navItems = [
 	{ href: '#inicio', label: 'Inicio' },
 	{ href: '#quienes-somos', label: 'Quiénes Somos' },
-	{ href: '#servicios', label: 'Servicios' },
+	{
+		label: 'Servicios',
+		items: [
+			{ href: '#servicios', label: 'Servicios' },
+			{ href: '#automatizacion', label: 'Automatización' },
+		],
+	},
 	{ href: '#proceso', label: 'Workflow' },
-	{ href: '#automatizacion', label: 'Automatización' },
+	{ href: '#pricing', label: 'Pricing' },
 	{ href: '#contacto', label: 'Contacto' },
 ]
 
@@ -19,6 +25,8 @@ export default function Header() {
 	const [isScrolled, setIsScrolled] = useState(false)
 	const activeSection = useActiveSection()
 	const { isDark, setIsDark } = useDarkMode()
+	const [openDropdown, setOpenDropdown] = useState(false)
+	const [closeTimeout, setCloseTimeout] = useState<NodeJS.Timeout | null>(null)
 
 	useEffect(() => {
 		const handleScroll = () => {
@@ -27,6 +35,16 @@ export default function Header() {
 
 		window.addEventListener('scroll', handleScroll)
 		return () => window.removeEventListener('scroll', handleScroll)
+	}, [])
+
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			if (!(event.target as HTMLElement).closest('.dropdown')) {
+				setOpenDropdown(false)
+			}
+		}
+		document.addEventListener('click', handleClickOutside)
+		return () => document.removeEventListener('click', handleClickOutside)
 	}, [])
 
 	const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
@@ -52,6 +70,25 @@ export default function Header() {
 
 	const toggleDarkMode = () => {
 		setIsDark(!isDark)
+	}
+
+	const toggleDropdown = () => {
+		setOpenDropdown(!openDropdown)
+	}
+
+	const handleMouseEnter = () => {
+		if (closeTimeout) {
+			clearTimeout(closeTimeout)
+			setCloseTimeout(null)
+		}
+		setOpenDropdown(true)
+	}
+
+	const handleMouseLeave = () => {
+		const timeout = setTimeout(() => {
+			setOpenDropdown(false)
+		}, 200) // 200ms delay
+		setCloseTimeout(timeout)
 	}
 
 	return (
@@ -85,22 +122,91 @@ export default function Header() {
 						</a>
 
 						<nav className="hidden md:flex space-x-1 lg:space-x-8">
-							{navItems.map(({ href, label }) => (
-								<a
-									key={href}
-									href={href}
-									onClick={handleNavClick}
-									className={`px-3 py-2 rounded-md text-sm lg:text-base transition-colors font-medium duration-200 ${
-										isScrolled
-											? activeSection === href.replace('#', '')
-												? 'text-blue-600 dark:text-blue-400'
-												: 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
-											: 'text-white hover:text-blue-200'
-									}`}
-								>
-									{label}
-								</a>
-							))}
+							{navItems.map((item) =>
+								item.items ? (
+									<div
+										key={item.label}
+										className="relative inline-block text-left dropdown"
+										onMouseEnter={handleMouseEnter}
+										onMouseLeave={handleMouseLeave}
+									>
+										<div>
+											<button
+												type="button"
+												onClick={toggleDropdown}
+												className={`flex items-center w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm lg:text-base font-semibold shadow-xs transition-colors duration-300 ${
+													isScrolled
+														? activeSection === 'servicios' || activeSection === 'automatizacion'
+															? 'text-blue-600 dark:text-blue-400'
+															: 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
+														: 'text-white hover:text-blue-200'
+												}`}
+												id="menu-button"
+												aria-expanded={openDropdown}
+												aria-haspopup="true"
+											>
+												{item.label}
+												<svg
+													className="size-5"
+													viewBox="0 0 20 20"
+													fill="currentColor"
+													aria-hidden="true"
+													data-slot="icon"
+												>
+													<path
+														fillRule="evenodd"
+														d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+														clipRule="evenodd"
+													/>
+												</svg>
+											</button>
+										</div>
+										{openDropdown && (
+											<div
+												className={`absolute right-0 z-20 mt-2 w-48 origin-top-right rounded-md shadow-lg transition-all duration-300 bg-white/70 dark:bg-dark/70 backdrop-blur-md ${
+													isScrolled ? 'top-14' : 'top-10'
+												}`}
+												role="menu"
+												aria-orientation="vertical"
+												aria-labelledby="menu-button"
+												tabIndex={-1}
+											>
+												<div className="py-1" role="none">
+													{item.items.map((subItem) => (
+														<a
+															key={subItem.href}
+															href={subItem.href}
+															onClick={handleNavClick}
+															className={`block px-4 py-2 text-sm transition-colors duration-300 ${
+																isDark ? 'text-gray-300 hover:text-blue-400' : 'text-gray-700 hover:text-blue-600'
+															}`}
+															role="menuitem"
+															tabIndex={-1}
+														>
+															{subItem.label}
+														</a>
+													))}
+												</div>
+											</div>
+										)}
+									</div>
+								) : (
+									<a
+										key={item.href}
+										href={item.href}
+										onClick={handleNavClick}
+										className={`px-3 py-2 rounded-md text-sm lg:text-base transition-colors font-medium duration-200 ${
+											isScrolled
+												? activeSection === (item.href ? item.href.replace('#', '') : '')
+													? 'text-blue-600 dark:text-blue-400'
+													: 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
+												: 'text-white hover:text-blue-200'
+										}`}
+									>
+										{item.label}
+									</a>
+								),
+							)}
 						</nav>
 
 						<div className="hidden md:flex items-center space-x-4">
@@ -202,7 +308,7 @@ export default function Header() {
 					<div className="absolute inset-0 bg-black/50" onClick={() => setIsMenuOpen(false)} />
 
 					<div
-						className={`absolute right-0 top-0 h-full w-64 bg-white dark:bg-gray-900 
+						className={`absolute right-0 top-0 h-full w-64 bg-white/80 dark:bg-dark/70 backdrop-blur-sm
 							shadow-xl transition-transform duration-300 transform ${isMenuOpen ? 'translate-x-0' : 'translate-x-full'}`}
 					>
 						<div className="flex flex-col h-full">
@@ -217,20 +323,82 @@ export default function Header() {
 							</div>
 
 							<nav className="flex-1 px-4 pb-4 space-y-1">
-								{navItems.map(({ href, label }) => (
-									<a
-										key={href}
-										href={href}
-										onClick={handleNavClick}
-										className={`block px-4 py-3 rounded-lg text-lg font-medium transition-colors duration-200 ${
-											activeSection === href.replace('#', '')
-												? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50'
-												: 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
-										}`}
-									>
-										{label}
-									</a>
-								))}
+								{navItems.map((item) =>
+									item.items ? (
+										<div key={item.label} className="dropdown">
+											<div
+												className={`w-full px-4 py-3 rounded-lg text-lg font-medium transition-colors duration-200 cursor-pointer ${
+													activeSection === 'servicios' || activeSection === 'automatizacion'
+														? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50'
+														: 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
+												}`}
+												onClick={toggleDropdown}
+											>
+												<button
+													type="button"
+													className="flex items-center justify-between w-full"
+													id="menu-button-mobile"
+													aria-expanded={openDropdown}
+													aria-haspopup="true"
+												>
+													<span>{item.label}</span>
+													<svg
+														className="size-5"
+														viewBox="0 0 20 20"
+														fill="currentColor"
+														aria-hidden="true"
+														data-slot="icon"
+													>
+														<path
+															fillRule="evenodd"
+															d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+															clipRule="evenodd"
+														/>
+													</svg>
+												</button>
+											</div>
+											{openDropdown && (
+												<div
+													className={`mt-2 w-full rounded-md shadow-lg ring-1 ring-black/30 dark:ring-gray-800 focus:outline-hidden transition-all duration-200 ease-out transform bg-white dark:bg-gray-900/0 backdrop-blur-sm`}
+													role="menu"
+													aria-orientation="vertical"
+													aria-labelledby="menu-button-mobile"
+													tabIndex={-1}
+												>
+													<div className="py-1" role="none">
+														{item.items.map((subItem) => (
+															<a
+																key={subItem.href}
+																href={subItem.href}
+																onClick={handleNavClick}
+																className={`block ml-4 py-2 text-sm transition-colors duration-300 ${
+																	isDark ? 'text-gray-300 hover:text-blue-400' : 'text-gray-700 hover:text-blue-600'
+																}`}
+																role="menuitem"
+																tabIndex={-1}
+															>
+																{subItem.label}
+															</a>
+														))}
+													</div>
+												</div>
+											)}
+										</div>
+									) : (
+										<a
+											key={item.href}
+											href={item.href}
+											onClick={handleNavClick}
+											className={`block px-4 py-3 rounded-lg text-lg font-medium transition-colors duration-200 ${
+												activeSection === (item.href ? item.href.replace('#', '') : '')
+													? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50'
+													: 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-800'
+											}`}
+										>
+											{item.label}
+										</a>
+									),
+								)}
 							</nav>
 
 							<div className="p-4 border-t border-gray-200 dark:border-gray-800">

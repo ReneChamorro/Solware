@@ -11,7 +11,7 @@ import WhatsAppButton from './components/WhatsAppButton'
 import Preloader from './components/Preloader'
 import ButtonMessageBot from './components/ButtonMessageBot'
 import AboutUs from './components/AboutUs'
-
+import Pricing from './components/Pricing'
 function App() {
 	const [isLoading, setIsLoading] = useState(true)
 	const [isScrolling, setIsScrolling] = useState(false)
@@ -75,8 +75,9 @@ function App() {
 					<Hero />
 					<AboutUs />
 					<Services />
-					<WorkProcess />
 					<Automation />
+					<WorkProcess />
+					<Pricing />
 					<ValuesMission />
 					<Contact />
 				</main>
