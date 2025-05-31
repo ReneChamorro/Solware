@@ -116,11 +116,11 @@ export default function Pricing() {
 	const pricingData = [
 		{
 			id: 1,
-			icon: <Settings className="size-20 text-white" />,
+			icon: <Settings className="size-20 text-white group-hover:rotate-90 transition-all duration-300" />,
 			title: 'Automatización de Procesos',
 			advantage1: 'Flujos de Trabajo Automatizados.',
-			advantage2: 'Reducción de Errores.',
-			advantage3: 'Análisis y Optimización.',
+			advantage2: 'Reportes Automatizados.',
+			advantage3: 'Diagnóstico Inteligente.',
 			color: '#3b82f6', // Blue
 		},
 		{
@@ -134,7 +134,7 @@ export default function Pricing() {
 		},
 		{
 			id: 3,
-			icon: <Code2 className="size-20 text-white" />,
+			icon: <Code2 className="size-20 text-white group-hover:rotate-180 transition-all duration-300" />,
 			title: 'Desarrollo Web y Móvil',
 			advantage1: 'Diseño UX/UI Intuitivo.',
 			advantage2: 'Desarrollo Full-Stack.',
@@ -151,11 +151,7 @@ export default function Pricing() {
 					Explora nuestros planes de precios adaptados a tus necesidades.
 				</p>
 				{/* Particle Animation Background with theme support */}
-				<PricingParticles 
-					lightColor="#e5e7eb" 
-					darkColor="#222E3D" 
-					className="z[-1]" 
-				/>
+				<PricingParticles lightColor="#e5e7eb" darkColor="#222E3D" className="z[-1]" />
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 					{pricingData.map((plan) => (
 						<div className="group transform hover:scale-105 drop-shadow-[0px_0px_3px_rgba(29,78,216,0.5)] hover:drop-shadow-[0px_0px_10px_rgba(29,78,216,0.5)] transition duration-300 border border-[rgb(29,78,216)] rounded-2xl cursor-pointer flex flex-col">
@@ -187,9 +183,11 @@ export default function Pricing() {
 									<p className="text-gray-600 dark:text-gray-300 mb-4 flex items-center gap-3">
 										<Check className="size-4 text-green-400" /> <span className="font-bold">{plan.advantage3}</span>
 									</p>
-									<button className="mt-4 px-4 py-2 text-white rounded hover:opacity-90 bg-[#3b82f6] hover:scale-105 transition-all">
-										Cotizar
-									</button>
+									<a href="#contacto">
+										<button className="mt-4 px-4 py-2 text-white rounded hover:opacity-90 bg-[#3b82f6] hover:scale-105 transition-all">
+											Cotizar
+										</button>
+									</a>
 								</div>
 							</div>
 						</div>
