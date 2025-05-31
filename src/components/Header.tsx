@@ -7,6 +7,7 @@ import { Link } from 'react-router-dom'
 
 const navItems = [
 	{ href: '#quienes-somos', label: 'Quiénes Somos' },
+	{ href: '#proceso', label: 'Workflow' },
 	{
 		label: 'Servicios',
 		items: [
@@ -14,7 +15,6 @@ const navItems = [
 			{ href: '#automatizacion', label: 'Automatización' },
 		],
 	},
-	{ href: '#proceso', label: 'Workflow' },
 	{ href: '#pricing', label: 'Pricing' },
 	{ href: '#contacto', label: 'Contacto' },
 ]

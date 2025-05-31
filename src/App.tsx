@@ -74,9 +74,9 @@ function App() {
 				<main>
 					<Hero />
 					<AboutUs />
+					<WorkProcess />
 					<Services />
 					<Automation />
-					<WorkProcess />
 					<Pricing />
 					<ValuesMission />
 					<Contact />
