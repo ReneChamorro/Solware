@@ -1,18 +1,26 @@
 import React from 'react';
 import { Users, Rocket, Heart } from 'lucide-react';
+import BlurText from './BlurText';
 
 const AboutUs = () => {
   return (
     <section id="quienes-somos" className="py-20 bg-gradient-to-b from-gray-50 to-white dark:from-gray-900 dark:to-dark text-justify">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center mb-16">
-          <h2 className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4">
-            ¿Quiénes Somos?
-          </h2>
-          <p className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto">
-            Somos un emprendimiento latinoamericano comprometido con la transformación digital 
-            de las empresas latinoamericanas.
-          </p>
+          <BlurText
+            text="¿Quiénes Somos?"
+            delay={150}
+            animateBy="words"
+            direction="top"
+            className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
+          />
+          <BlurText
+            text="Somos un emprendimiento latinoamericano comprometido con la transformación digital de las empresas latinoamericanas."
+            delay={200}
+            animateBy="words"
+            direction="bottom"
+            className="text-lg text-gray-600 dark:text-gray-300 max-w-3xl mx-auto"
+          />
         </div>
 
         <div className="grid md:grid-cols-2 gap-12 items-center">
@@ -97,4 +105,4 @@ const AboutUs = () => {
   );
 };
 
-export default AboutUs; 
+export default AboutUs;
