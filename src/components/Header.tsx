@@ -243,9 +243,6 @@ export default function Header() {
 
               <a
                 href="/dashboard"
-                className={`transition-colors duration-300 whitespace-nowrap `${
-                  isScrolled ? 'text-gray-700 dark:text-white' : 'text-white'Add commentMore actions
-                }`}
               >
                 Dashboard
               </a>
