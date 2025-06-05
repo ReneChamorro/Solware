@@ -240,6 +240,15 @@ export default function Header() {
               >
                 Consulta Gratis
               </a>
+
+              <a
+                href="/dashboard"
+                className={`transition-colors duration-300 whitespace-nowrap ${
+                  isScrolled ? 'text-gray-700 dark:text-white' : 'text-white'Add commentMore actions
+                }`}
+              >
+                Dashboard
+              </a>
             </div>
 
             <div className="md:hidden flex gap-2 items-center">
