@@ -1,6 +1,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { Mail, Phone, Clock, Send, ChevronDown, MessageCircle, Instagram } from 'lucide-react';
 import { supabase } from '../lib/supabase';
+import BlurText from './BlurText';
 
 interface FormData {
   name: string;
@@ -112,14 +113,20 @@ const Contact: React.FC = () => {
     <section className="py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300" id="contacto">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 relative transition-colors duration-300">
-            ¡Conectemos! Tu éxito es nuestra prioridad
-            <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 dark:bg-blue-500 rounded-full"></span>
-          </h2>
-          <p className="text-xl text-gray-600 dark:text-gray-300 transition-colors duration-300">
-            Estamos listos para responder tus consultas y ayudarte a potenciar tu negocio 
-            con soluciones tecnológicas innovadoras
-          </p>
+          <BlurText
+            text="¡Conectemos! Tu éxito es nuestra prioridad"
+            delay={150}
+            animateBy="words"
+            direction="top"
+            className="text-4xl font-bold text-gray-900 dark:text-white mb-4"
+          />
+          <BlurText
+            text="Estamos listos para responder tus consultas y ayudarte a potenciar tu negocio con soluciones tecnológicas innovadoras"
+            delay={200}
+            animateBy="words"
+            direction="bottom"
+            className="text-xl text-gray-600 dark:text-gray-300"
+          />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
