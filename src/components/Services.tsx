@@ -127,7 +127,7 @@ const services = [
 
 const Services = () => {
   return (
-    <section className="py-24 bg-white dark:bg-gray-900 transition-colors duration-300" id="servicios">
+    <section className="py-24 bg-white dark:bg-gray-900 transition-colors duration-300\" id="servicios">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
           <BlurText
