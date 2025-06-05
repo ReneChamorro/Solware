@@ -46,20 +46,20 @@ const Automation = () => {
   return (
     <section className="py-24 bg-white dark:bg-gray-900 transition-colors duration-300\" id="automatizacion">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
-        <div className="flex flex-col items-center max-w-3xl mx-auto mb-16">
+        <div className="max-w-3xl mx-auto mb-16">
           <BlurText
             text="Automatización Empresarial"
             delay={150}
             animateBy="words"
             direction="top"
-            className="text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center"
+            className="text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center w-full"
           />
           <BlurText
             text="Transformamos procesos manuales en flujos de trabajo eficientes y automatizados"
             delay={200}
             animateBy="words"
             direction="bottom"
-            className="text-xl text-gray-600 dark:text-gray-300 text-center"
+            className="text-xl text-gray-600 dark:text-gray-300 text-center w-full"
           />
         </div>
 
