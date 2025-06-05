@@ -12,6 +12,7 @@ import Preloader from './components/Preloader'
 import ButtonMessageBot from './components/ButtonMessageBot'
 import AboutUs from './components/AboutUs'
 import Pricing from './components/Pricing'
+import SplashCursor from './components/SplashCursor'
 function App() {
 	const [isLoading, setIsLoading] = useState(true)
 	const [isScrolling, setIsScrolling] = useState(false)
@@ -70,6 +71,7 @@ function App() {
 					isLoading ? 'opacity-0' : 'opacity-100 transition-opacity duration-500'
 				}`}
 			>
+				<SplashCursor />
 				<Header />
 				<main>
 					<Hero />

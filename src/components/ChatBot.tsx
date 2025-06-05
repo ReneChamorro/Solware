@@ -297,7 +297,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ isOpen, setIsOpen }) => {
 				{/* Header */}
 				<div className="flex items-center justify-between p-4 bg-blue-600 text-white sm:rounded-t-2xl">
 					<div className="flex items-center">
-						<RobotTrackingChat />
+						<RobotTrackingChat className='size-10 md:size-12'/>
 						<h3 className="font-semibold ml-4">Solwy</h3>
 					</div>
 					<button onClick={() => setIsOpen(false)} className="p-1 hover:bg-blue-700 rounded-full transition-colors">
