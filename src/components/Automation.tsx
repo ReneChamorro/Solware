@@ -3,6 +3,45 @@ import { Bot, Zap, BarChart2, FileSpreadsheet, Clock, Database } from 'lucide-re
 import Carousel from './Carousel';
 import BlurText from './BlurText';
 
+const automations = [
+  {
+    id: 1,
+    title: "Automatización de Procesos",
+    description: "Optimizamos flujos de trabajo repetitivos para aumentar la eficiencia operativa",
+    icon: <Zap className="w-12 h-12 text-blue-500" />
+  },
+  {
+    id: 2,
+    title: "Análisis de Datos",
+    description: "Transformamos datos en insights accionables para mejor toma de decisiones",
+    icon: <BarChart2 className="w-12 h-12 text-green-500" />
+  },
+  {
+    id: 3,
+    title: "Gestión Documental",
+    description: "Digitalización y automatización de procesos documentales",
+    icon: <FileSpreadsheet className="w-12 h-12 text-purple-500" />
+  },
+  {
+    id: 4,
+    title: "Programación de Tareas",
+    description: "Automatización de tareas programadas y seguimiento en tiempo real",
+    icon: <Clock className="w-12 h-12 text-orange-500" />
+  },
+  {
+    id: 5,
+    title: "Integración de Sistemas",
+    description: "Conectamos sus sistemas existentes para un flujo de datos seamless",
+    icon: <Database className="w-12 h-12 text-red-500" />
+  },
+  {
+    id: 6,
+    title: "Asistentes Virtuales",
+    description: "Implementación de chatbots y asistentes automatizados",
+    icon: <Bot className="w-12 h-12 text-indigo-500" />
+  }
+];
+
 const Automation = () => {
   return (
     <section className="py-24 bg-white dark:bg-gray-900 transition-colors duration-300" id="automatizacion">
