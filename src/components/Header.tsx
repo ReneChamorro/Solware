@@ -240,25 +240,9 @@ export default function Header() {
               >
                 Consulta Gratis
               </a>
-              <a
-                href="/dashboard"
-                className={`transition-colors duration-300 whitespace-nowrap ${
-                  isScrolled ? 'text-gray-700 dark:text-white' : 'text-white'
-                }`}
-              >
-                Dashboard
-              </a>
             </div>
 
             <div className="md:hidden flex gap-2 items-center">
-              <a
-                href="/dashboard"
-                className={`transition-colors duration-300 whitespace-nowrap ${
-                  isScrolled ? 'text-gray-700 dark:text-white' : 'text-white'
-                }`}
-              >
-                Dashboard
-              </a>
               <button
                 className={`px-1 rounded-lg ${isScrolled ? 'text-gray-700 dark:text-white' : 'text-white'}`}
                 onClick={() => setIsMenuOpen(!isMenuOpen)}
