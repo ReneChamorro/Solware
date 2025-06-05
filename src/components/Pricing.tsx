@@ -4,46 +4,46 @@ import RobotEyeTracking from './RoboTrakChat'
 
 // PricingParticles component with theme support
 const PricingParticles = React.memo(({ lightColor = '#e5e7eb', darkColor = '#222E3D', className }: { lightColor?: string; darkColor?: string; className?: string }) => {
-	const [isDark, setIsDark] = useState(false)
+		const [isDark, setIsDark] = useState(false)
 
-	// Detect theme changes
-	useEffect(() => {
-		const checkTheme = () => {
-			setIsDark(document.documentElement.classList.contains('dark'))
-		}
-		
-		// Check initial theme
-		checkTheme()
-		
-		// Create observer to watch for theme changes
-		const observer = new MutationObserver(checkTheme)
-		observer.observe(document.documentElement, {
-			attributes: true,
+		// Detect theme changes
+		useEffect(() => {
+			const checkTheme = () => {
+				setIsDark(document.documentElement.classList.contains('dark'))
+			}
+
+			// Check initial theme
+			checkTheme()
+
+			// Create observer to watch for theme changes
+			const observer = new MutationObserver(checkTheme)
+			observer.observe(document.documentElement, {
+				attributes: true,
 			attributeFilter: ['class']
-		})
-		
-		return () => observer.disconnect()
-	}, [])
+			})
 
-	const bubbles = useMemo(
-		() =>
-			Array.from({ length: 120 }, (_, i) => ({
-				id: i,
-				size: `${2 + Math.random() * 0.5}rem`,
-				distance: `${6 + Math.random() * 50}rem`,
-				position: `${-5 + Math.random() * 110}%`,
-				time: `${2 + Math.random() * 8}s`,
-				delay: `${-1 * (2 + Math.random() * 8)}s`,
-			})),
-		[],
-	)
+			return () => observer.disconnect()
+		}, [])
 
-	const currentColor = isDark ? darkColor : lightColor
-	const filterId = useMemo(() => `blob-${currentColor.replace('#', '')}`, [currentColor])
+		const bubbles = useMemo(
+			() =>
+				Array.from({ length: 120 }, (_, i) => ({
+					id: i,
+					size: `${2 + Math.random() * 0.5}rem`,
+					distance: `${6 + Math.random() * 50}rem`,
+					position: `${-5 + Math.random() * 110}%`,
+					time: `${2 + Math.random() * 8}s`,
+					delay: `${-1 * (2 + Math.random() * 8)}s`,
+				})),
+			[],
+		)
 
-	return (
-		<>
-			<style>{`
+		const currentColor = isDark ? darkColor : lightColor
+		const filterId = useMemo(() => `blob-${currentColor.replace('#', '')}`, [currentColor])
+
+		return (
+			<>
+				<style>{`
         @keyframes bubble-size {
           0%, 75% {
             width: var(--size);
@@ -75,41 +75,41 @@ const PricingParticles = React.memo(({ lightColor = '#e5e7eb', darkColor = '#222
           transition: background-color 0.3s ease;
         }
       `}</style>
-			<div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
-				<svg className="absolute" style={{ position: 'fixed', top: '100vh' }}>
-					<defs>
-						<filter id={filterId}>
-							<feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
-							<feColorMatrix
-								in="blur"
-								mode="matrix"
-								values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
-								result="blob"
+				<div className={`absolute inset-0 overflow-hidden pointer-events-none ${className}`}>
+					<svg className="absolute" style={{ position: 'fixed', top: '100vh' }}>
+						<defs>
+							<filter id={filterId}>
+								<feGaussianBlur in="SourceGraphic" stdDeviation="10" result="blur" />
+								<feColorMatrix
+									in="blur"
+									mode="matrix"
+									values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 19 -9"
+									result="blob"
+								/>
+							</filter>
+						</defs>
+					</svg>
+					<div className="absolute inset-0" style={{ filter: `url(#${filterId})` }}>
+						{bubbles.map((bubble) => (
+							<div
+								key={bubble.id}
+								className="bubble"
+								style={
+									{
+										'--size': bubble.size,
+										'--distance': bubble.distance,
+										'--position': bubble.position,
+										'--time': bubble.time,
+										'--delay': bubble.delay,
+										'--color': currentColor,
+									} as React.CSSProperties & { [key: string]: string }
+								}
 							/>
-						</filter>
-					</defs>
-				</svg>
-				<div className="absolute inset-0" style={{ filter: `url(#${filterId})` }}>
-					{bubbles.map((bubble) => (
-						<div
-							key={bubble.id}
-							className="bubble"
-							style={
-								{
-									'--size': bubble.size,
-									'--distance': bubble.distance,
-									'--position': bubble.position,
-									'--time': bubble.time,
-									'--delay': bubble.delay,
-									'--color': currentColor,
-								} as React.CSSProperties & { [key: string]: string }
-							}
-						/>
-					))}
+						))}
+					</div>
 				</div>
-			</div>
-		</>
-	)
+			</>
+		)
 })
 
 export default function Pricing() {
@@ -146,13 +146,16 @@ export default function Pricing() {
 	return (
 		<section id="pricing" className="py-20 bg-white dark:bg-gray-900">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-				<h2 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-6">Pricing</h2>
-				<p className="text-lg text-gray-600 dark:text-gray-300 mb-16">
+				<h2 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-6 sm:text-2xl md:text-3xl lg:text-4xl relative">
+					Pricing
+					<span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 dark:bg-blue-500 rounded-full"></span>
+				</h2>
+				<p className="text-lg text-gray-600 dark:text-gray-300 mb-16 sm:text-base md:text-lg lg:text-xl">
 					Explora nuestros planes de precios adaptados a tus necesidades.
 				</p>
 				{/* Particle Animation Background with theme support */}
 				<PricingParticles lightColor="#e5e7eb" darkColor="#222E3D" className="z[-1]" />
-				<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
+				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 					{pricingData.map((plan) => (
 						<div
 							key={plan.id}
@@ -166,21 +169,26 @@ export default function Pricing() {
 									{plan.icon}
 								</div>
 							</div>
-							<div className="bg-gray-100 dark:bg-gray-800 pb-12 pt-8 px-12 text-center flex flex-col items-center justify-center rounded-b-2xl shadow-[inset_0_0px_20px_-10px_rgba(29,78,216,0.5),inset_0_-0px_20px_-10px_rgba(29,78,216,0.5)] group-hover:shadow-[inset_0_10px_20px_-8px_rgba(29,78,216,0.7),inset_0_-10px_20px_-8px_rgba(29,78,216,0.7)] transition-shadow duration-300 flex-1">
+							<div className="bg-gray-100 dark:bg-gray-800 pb-12 pt-8 px-12 text-center rounded-b-2xl shadow-[inset_0_0px_20px_-10px_rgba(29,78,216,0.5),inset_0_-0px_20px_-10px_rgba(29,78,216,0.5)] group-hover:shadow-[inset_0_10px_20px_-8px_rgba(29,78,216,0.7),inset_0_-10px_20px_-8px_rgba(29,78,216,0.7)] transition-shadow duration-300 flex-1">
 								{/* Card Content */}
-								<div className="z-10">
-									<h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{plan.title}</h3>
-									<p className="text-gray-600 dark:text-gray-300 mb-4 flex items-center gap-3">
-										<Check className="size-4 text-green-400" /> <span className="font-bold">{plan.advantage1}</span>
-									</p>
-									<p className="text-gray-600 dark:text-gray-300 mb-4 flex items-center gap-3">
-										<Check className="size-4 text-green-400" /> <span className="font-bold">{plan.advantage2}</span>
-									</p>
-									<p className="text-gray-600 dark:text-gray-300 mb-4 flex items-center gap-3">
-										<Check className="size-4 text-green-400" /> <span className="font-bold">{plan.advantage3}</span>
-									</p>
+								<div className="z-10 flex flex-col">
+									<h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 text-center">{plan.title}</h3>
+									<div className="flex flex-col items-start">
+										<p className="text-gray-600 dark:text-gray-300 mb-4 flex items-center gap-3 justify-start w-full text-sm sm:text-sm">
+											<Check className="size-4 text-green-400" />{' '}
+											<span className="font-bold text-center ">{plan.advantage1}</span>
+										</p>
+										<p className="text-gray-600 dark:text-gray-300 mb-4 flex items-center gap-3 justify-start w-full text-sm sm:text-sm">
+											<Check className="size-4 text-green-400" />{' '}
+											<span className="font-bold text-center ">{plan.advantage2}</span>
+										</p>
+										<p className="text-gray-600 dark:text-gray-300 mb-4 flex items-center gap-3 justify-start w-full text-sm sm:text-sm">
+											<Check className="size-4 text-green-400" />{' '}
+											<span className="font-bold text-center ">{plan.advantage3}</span>
+										</p>
+									</div>
 									<a href="#contacto">
-										<button className="mt-4 px-4 py-2 text-white rounded hover:opacity-90 bg-[#3b82f6] hover:scale-105 transition-all">
+										<button className="mt-4 px-4 py-2 text-white rounded hover:opacity-90 bg-[#3b82f6] hover:scale-105 transition-all text-sm sm:text-base md:text-lg">
 											Cotizar
 										</button>
 									</a>

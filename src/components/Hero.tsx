@@ -1,16 +1,28 @@
-import React from 'react';
-import { ArrowRight, Zap, Shield, Clock, Play } from 'lucide-react';
-import { Link } from 'react-router-dom';
-import Particles from './Particles';
+import React, { useState, useEffect } from 'react'
+import { ArrowRight, Zap, Shield, Clock, Play } from 'lucide-react'
+import { Link } from 'react-router-dom'
+import Particles from './Particles'
+import DecryptedText from './effectsComponents/DecryptedText'
 
 export default function Hero() {
+	const [isPreloadFinished, setIsPreloadFinished] = useState(false)
+
+	useEffect(() => {
+		// Simulate preload animation ending
+		const preloadTimer = setTimeout(() => {
+			setIsPreloadFinished(true)
+		}, 3000) // Adjust the time to match your preload animation duration
+
+		return () => clearTimeout(preloadTimer)
+	}, [])
+
 	const scrollToContact = (e: React.MouseEvent<HTMLButtonElement>) => {
-		e.preventDefault();
-		const contactSection = document.getElementById('contacto');
+		e.preventDefault()
+		const contactSection = document.getElementById('contacto')
 		if (contactSection) {
-			contactSection.scrollIntoView({ behavior: 'smooth' });
+			contactSection.scrollIntoView({ behavior: 'smooth' })
 		}
-	};
+	}
 
 	return (
 		<div className="relative min-h-[100svh] flex items-center" id="inicio">
@@ -26,13 +38,23 @@ export default function Hero() {
 			<div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-32">
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 					<div className="text-center lg:text-left">
-						<h1
+						{/* <h1
 							className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white dark:text-blue-100 
               mb-4 sm:mb-6 animate-fade-in leading-tight sm:leading-tight
               [text-shadow:_0_2px_10px_rgba(0,0,0,0.2)] dark:[text-shadow:_0_0_20px_rgba(147,197,253,0.5)]"
 						>
 							Transformación Digital para tu Empresa
-						</h1>
+						</h1> */}
+
+						<DecryptedText
+							text="Transformación Digital para tu Empresa"
+							speed={70}
+							className="revealed text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white dark:text-blue-100 
+              mb-4 sm:mb-6 animate-fade-in leading-tight sm:leading-tight"
+							animateOn={isPreloadFinished ? 'view' : 'hover'}
+							revealDirection="start"
+							sequential={true}
+						/>
 
 						<p
 							className="text-lg sm:text-xl text-white/90 dark:text-blue-200 mb-6 sm:mb-8 animate-fade-in-delay 
@@ -149,5 +171,5 @@ export default function Hero() {
 				</div>
 			</div>
 		</div>
-	);
+	)
 }
