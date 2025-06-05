@@ -126,9 +126,9 @@ const services = [
 ];
 
 const Services = () => {
-  const titleRef = useScrollReveal({ variant: 'fade-up', delay: 100 });
-  const descriptionRef = useScrollReveal({ variant: 'fade-up', delay: 200 });
-  const cardsContainerRef = useScrollReveal({ variant: 'fade-up', delay: 300 });
+  const titleRef = useScrollReveal({ variant: 'fade-up', delay: 100 }) as React.RefObject<HTMLHeadingElement>
+	const descriptionRef = useScrollReveal({ variant: 'fade-up', delay: 200 }) as React.RefObject<HTMLParagraphElement>
+	const cardsContainerRef = useScrollReveal({ variant: 'fade-up', delay: 300 }) as React.RefObject<HTMLDivElement>
 
   return (
 		<section className="py-24 bg-white dark:bg-gray-900 transition-colors duration-300" id="servicios">

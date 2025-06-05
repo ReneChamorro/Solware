@@ -116,7 +116,7 @@ export default function Pricing() {
 	const pricingData = [
 		{
 			id: 1,
-			icon: <Settings className="size-20 text-white group-hover:rotate-90 transition-all duration-300" />,
+			icon: <Settings className="size-20 text-white group-hover:rotate-90 transition-all duration-700 ease-in-out" />,
 			title: 'Automatización de Procesos',
 			advantage1: 'Flujos de Trabajo Automatizados.',
 			advantage2: 'Reportes Automatizados.',
@@ -134,7 +134,7 @@ export default function Pricing() {
 		},
 		{
 			id: 3,
-			icon: <Code2 className="size-20 text-white group-hover:rotate-180 transition-all duration-300" />,
+			icon: <Code2 className="size-20 text-white group-hover:rotate-180 transition-all duration-700 ease-in-out" />,
 			title: 'Desarrollo Web y Móvil',
 			advantage1: 'Diseño UX/UI Intuitivo.',
 			advantage2: 'Desarrollo Full-Stack.',
@@ -154,11 +154,11 @@ export default function Pricing() {
 				<PricingParticles lightColor="#e5e7eb" darkColor="#222E3D" className="z[-1]" />
 				<div className="grid grid-cols-1 md:grid-cols-3 gap-8">
 					{pricingData.map((plan) => (
-						<div className="group transform hover:scale-105 drop-shadow-[0px_0px_3px_rgba(29,78,216,0.5)] hover:drop-shadow-[0px_0px_10px_rgba(29,78,216,0.5)] transition duration-300 border border-[rgb(29,78,216)] rounded-2xl cursor-pointer flex flex-col">
-							<div
-								key={plan.id}
-								className="relative bg-gray-50 dark:bg-gray-700 p-16 text-center flex flex-col items-center justify-center rounded-t-2xl h-48 flex-shrink-0"
-							>
+						<div
+							key={plan.id}
+							className="group transform hover:scale-105 drop-shadow-[0px_0px_3px_rgba(29,78,216,0.5)] hover:drop-shadow-[0px_0px_10px_rgba(29,78,216,0.5)] transition duration-300 border border-[rgb(29,78,216)] rounded-2xl cursor-pointer flex flex-col"
+						>
+							<div className="relative bg-gray-50 dark:bg-gray-700 p-16 text-center flex flex-col items-center justify-center rounded-t-2xl h-48 flex-shrink-0">
 								<div
 									className="rounded-full z-50 p-5 drop-shadow-[0px_0px_3px_rgba(29,78,216,0.5)] group-hover:drop-shadow-[0px_0px_10px_rgba(29,78,216,0.8)] transition duration-300"
 									style={{ backgroundColor: plan.color }}
@@ -166,11 +166,7 @@ export default function Pricing() {
 									{plan.icon}
 								</div>
 							</div>
-							{/* DIV DE ABAJO */}
-							<div
-								key={plan.id}
-								className="bg-gray-100 dark:bg-gray-800 pb-12 pt-8 px-12 text-center flex flex-col items-center justify-center rounded-b-2xl shadow-[inset_0_0px_20px_-10px_rgba(29,78,216,0.5),inset_0_-0px_20px_-10px_rgba(29,78,216,0.5)] group-hover:shadow-[inset_0_10px_20px_-8px_rgba(29,78,216,0.7),inset_0_-10px_20px_-8px_rgba(29,78,216,0.7)] transition-shadow duration-300 flex-1"
-							>
+							<div className="bg-gray-100 dark:bg-gray-800 pb-12 pt-8 px-12 text-center flex flex-col items-center justify-center rounded-b-2xl shadow-[inset_0_0px_20px_-10px_rgba(29,78,216,0.5),inset_0_-0px_20px_-10px_rgba(29,78,216,0.5)] group-hover:shadow-[inset_0_10px_20px_-8px_rgba(29,78,216,0.7),inset_0_-10px_20px_-8px_rgba(29,78,216,0.7)] transition-shadow duration-300 flex-1">
 								{/* Card Content */}
 								<div className="z-10">
 									<h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4">{plan.title}</h3>
