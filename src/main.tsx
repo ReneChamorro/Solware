@@ -9,28 +9,26 @@ import Demonstration from './components/Demonstration'
 import Dashboard from './components/Dashboard'
 import './index.css'
 
-// Obtener la clave de Clerk desde las variables de entorno
 const PUBLISHABLE_KEY = import.meta.env.VITE_CLERK_PUBLISHABLE_KEY
 
 if (!PUBLISHABLE_KEY) {
-	throw new Error('Missing Publishable Key')
+  throw new Error('Missing Publishable Key')
 }
 
-// Inicializar el tema oscuro antes de renderizar
+// Initialize dark theme before rendering
 const savedTheme = localStorage.getItem('theme')
 const prefersDark = window.matchMedia('(prefers-color-scheme: dark)').matches
 if (savedTheme === 'dark' || (!savedTheme && prefersDark)) {
-	document.documentElement.classList.add('dark')
+  document.documentElement.classList.add('dark')
 } else {
-	document.documentElement.classList.remove('dark')
+  document.documentElement.classList.remove('dark')
 }
 
-// Configuración de future flags para React Router v7
 const routerOptions = {
-	future: {
-		v7_startTransition: true, // Habilita el uso de startTransition para actualizaciones de ruta
-		v7_relativeSplatPath: true, // Habilita el manejo relativo de rutas splat
-	},
+  future: {
+    v7_startTransition: true,
+    v7_relativeSplatPath: true,
+  },
 }
 
 const rootElement = document.getElementById('root')
@@ -39,29 +37,32 @@ if (!rootElement) throw new Error('Failed to find the root element')
 const root = createRoot(rootElement)
 
 root.render(
-	<StrictMode>
-		<ClerkProvider publishableKey={PUBLISHABLE_KEY} navigate={(to) => (window.location.href = to)}>
-			<BrowserRouter {...routerOptions}>
-				<Routes>
-					<Route path="/" element={<App />} />
-					<Route path="/demo" element={<Demonstration />} />
-					<Route path="/privacy" element={<PrivacyPolicy />} />
-					<Route
-						path="/dashboard"
-						element={
-							<>
-								<SignedIn>
-									<Dashboard />
-								</SignedIn>
-								<SignedOut>
-									<RedirectToSignIn redirectUrl={window.location.href} afterSignInUrl="/dashboard" />
-								</SignedOut>
-							</>
-						}
-					/>
-					<Route path="*" element={<NotFound />} />
-				</Routes>
-			</BrowserRouter>
-		</ClerkProvider>
-	</StrictMode>,
+  <StrictMode>
+    <ClerkProvider 
+      publishableKey={PUBLISHABLE_KEY}
+      navigate={(to) => window.location.href = to}
+    >
+      <BrowserRouter {...routerOptions}>
+        <Routes>
+          <Route path="/" element={<App />} />
+          <Route path="/demo" element={<Demonstration />} />
+          <Route path="/privacy" element={<PrivacyPolicy />} />
+          <Route
+            path="/dashboard"
+            element={
+              <>
+                <SignedIn>
+                  <Dashboard />
+                </SignedIn>
+                <SignedOut>
+                  <RedirectToSignIn />
+                </SignedOut>
+              </>
+            }
+          />
+          <Route path="*" element={<NotFound />} />
+        </Routes>
+      </BrowserRouter>
+    </ClerkProvider>
+  </StrictMode>
 )
