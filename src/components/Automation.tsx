@@ -52,14 +52,14 @@ const Automation = () => {
             delay={150}
             animateBy="words"
             direction="top"
-            className="text-4xl font-bold text-gray-900 dark:text-white mb-4"
+            className="text-4xl font-bold text-gray-900 dark:text-white mb-4 text-center"
           />
           <BlurText
             text="Transformamos procesos manuales en flujos de trabajo eficientes y automatizados"
             delay={200}
             animateBy="words"
             direction="bottom"
-            className="text-xl text-gray-600 dark:text-gray-300"
+            className="text-xl text-gray-600 dark:text-gray-300 text-center"
           />
         </div>
 
