@@ -1,5 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Target, Route, Lightbulb, Cog, ClipboardList, X } from 'lucide-react'
+import BlurText from './BlurText'
 
 const steps = [
 	{
@@ -149,13 +150,20 @@ const WorkProcess: React.FC = () => {
 		<section ref={sectionRef} className="py-24 bg-gray-50 dark:bg-gray-900 transition-colors duration-300" id="proceso">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="text-center max-w-3xl mx-auto mb-16 relative">
-					<h2 className="text-4xl font-bold text-gray-900 dark:text-white mb-4 relative transition-colors duration-300">
-						El camino para alcanzar tus metas profesionales
-						<span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 dark:bg-blue-500 rounded-full"></span>
-					</h2>
-					<p className="text-xl text-gray-600 dark:text-gray-300 transition-colors duration-300">
-						Un proceso estructurado para garantizar el éxito de tu transformación digital
-					</p>
+					<BlurText
+						text="El camino para alcanzar tus metas profesionales"
+						delay={150}
+						animateBy="words"
+						direction="top"
+						className="text-4xl font-bold text-gray-900 dark:text-white mb-4"
+					/>
+					<BlurText
+						text="Un proceso estructurado para garantizar el éxito de tu transformación digital"
+						delay={200}
+						animateBy="words"
+						direction="bottom"
+						className="text-xl text-gray-600 dark:text-gray-300"
+					/>
 				</div>
 
 				<div className="relative pt-32 pb-40">

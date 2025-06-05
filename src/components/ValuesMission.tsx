@@ -1,13 +1,8 @@
 import React from 'react';
 import { Lightbulb, Users, Target, Leaf } from 'lucide-react';
-import { useScrollReveal } from '../hooks/useScrollReveal';
+import BlurText from './BlurText';
 
 const ValuesMission: React.FC = () => {
-  const titleRef = useScrollReveal({ variant: 'fade-up', delay: 100 });
-  const subtitleRef = useScrollReveal({ variant: 'fade-up', delay: 200 });
-  const contentRef = useScrollReveal({ variant: 'fade-up', delay: 300 });
-  const valuesRef = useScrollReveal({ variant: 'fade-up', delay: 400 });
-
   const values = [
     {
       icon: <Lightbulb className="h-6 w-6" />,
@@ -47,24 +42,24 @@ const ValuesMission: React.FC = () => {
     <section className="py-24 bg-white dark:bg-gray-900 transition-colors duration-300">
       <div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
         <div className="text-center max-w-3xl mx-auto mb-16">
-          <h2 
-            ref={titleRef}
-            className="text-4xl font-bold text-gray-900 dark:text-white mb-4 relative transition-colors duration-300"
-          >
-            Nuestros Valores y Misión
-            <span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 dark:bg-blue-500 rounded-full"></span>
-          </h2>
-          <p 
-            ref={subtitleRef}
-            className="text-xl text-gray-600 dark:text-gray-300 transition-colors duration-300"
-          >
-            Impulsando tu transformación digital con propósito y excelencia
-          </p>
+          <BlurText
+            text="Nuestros Valores y Misión"
+            delay={150}
+            animateBy="words"
+            direction="top"
+            className="text-4xl font-bold text-gray-900 dark:text-white mb-4"
+          />
+          <BlurText
+            text="Impulsando tu transformación digital con propósito y excelencia"
+            delay={200}
+            animateBy="words"
+            direction="bottom"
+            className="text-xl text-gray-600 dark:text-gray-300"
+          />
         </div>
 
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
           <div 
-            ref={contentRef}
             className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 
               rounded-2xl p-8 sm:p-10 shadow-lg transform hover:scale-[1.02] transition-all duration-300"
           >
@@ -83,7 +78,6 @@ const ValuesMission: React.FC = () => {
           </div>
 
           <div 
-            ref={valuesRef}
             className="grid grid-cols-1 sm:grid-cols-2 gap-6"
           >
             {values.map((value, index) => (

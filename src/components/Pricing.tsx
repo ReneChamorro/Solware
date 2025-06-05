@@ -1,21 +1,18 @@
 import { Settings, Code2, Check } from 'lucide-react'
 import React, { useMemo, useEffect, useState } from 'react'
 import RobotEyeTracking from './RoboTrakChat'
+import BlurText from './BlurText'
 
-// PricingParticles component with theme support
 const PricingParticles = React.memo(({ lightColor = '#e5e7eb', darkColor = '#222E3D', className }: { lightColor?: string; darkColor?: string; className?: string }) => {
 		const [isDark, setIsDark] = useState(false)
 
-		// Detect theme changes
 		useEffect(() => {
 			const checkTheme = () => {
 				setIsDark(document.documentElement.classList.contains('dark'))
 			}
 
-			// Check initial theme
 			checkTheme()
 
-			// Create observer to watch for theme changes
 			const observer = new MutationObserver(checkTheme)
 			observer.observe(document.documentElement, {
 				attributes: true,
@@ -121,7 +118,7 @@ export default function Pricing() {
 			advantage1: 'Flujos de Trabajo Automatizados.',
 			advantage2: 'Reportes Automatizados.',
 			advantage3: 'Diagnóstico Inteligente.',
-			color: '#3b82f6', // Blue
+			color: '#3b82f6',
 		},
 		{
 			id: 2,
@@ -130,7 +127,7 @@ export default function Pricing() {
 			advantage1: 'Asistentes Virtuales.',
 			advantage2: 'Automatización Inteligente.',
 			advantage3: 'Soporte Multicanal Inteligente',
-			color: '', // Purple
+			color: '',
 		},
 		{
 			id: 3,
@@ -139,21 +136,27 @@ export default function Pricing() {
 			advantage1: 'Diseño UX/UI Intuitivo.',
 			advantage2: 'Desarrollo Full-Stack.',
 			advantage3: 'Optimización SEO',
-			color: '#3b82f6', // Blue
+			color: '#3b82f6',
 		},
 	]
 
 	return (
 		<section id="pricing" className="py-20 bg-white dark:bg-gray-900">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
-				<h2 className="text-3xl font-extrabold text-gray-900 dark:text-white mb-6 sm:text-2xl md:text-3xl lg:text-4xl relative">
-					Pricing
-					<span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 dark:bg-blue-500 rounded-full"></span>
-				</h2>
-				<p className="text-lg text-gray-600 dark:text-gray-300 mb-16 sm:text-base md:text-lg lg:text-xl">
-					Explora nuestros planes de precios adaptados a tus necesidades.
-				</p>
-				{/* Particle Animation Background with theme support */}
+				<BlurText
+					text="Pricing"
+					delay={150}
+					animateBy="words"
+					direction="top"
+					className="text-3xl font-extrabold text-gray-900 dark:text-white mb-6 sm:text-2xl md:text-3xl lg:text-4xl"
+				/>
+				<BlurText
+					text="Explora nuestros planes de precios adaptados a tus necesidades."
+					delay={200}
+					animateBy="words"
+					direction="bottom"
+					className="text-lg text-gray-600 dark:text-gray-300 mb-16 sm:text-base md:text-lg lg:text-xl"
+				/>
 				<PricingParticles lightColor="#e5e7eb" darkColor="#222E3D" className="z[-1]" />
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 					{pricingData.map((plan) => (
@@ -170,7 +173,6 @@ export default function Pricing() {
 								</div>
 							</div>
 							<div className="bg-gray-100 dark:bg-gray-800 pb-12 pt-8 px-12 text-center rounded-b-2xl shadow-[inset_0_0px_20px_-10px_rgba(29,78,216,0.5),inset_0_-0px_20px_-10px_rgba(29,78,216,0.5)] group-hover:shadow-[inset_0_10px_20px_-8px_rgba(29,78,216,0.7),inset_0_-10px_20px_-8px_rgba(29,78,216,0.7)] transition-shadow duration-300 flex-1">
-								{/* Card Content */}
 								<div className="z-10 flex flex-col">
 									<h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 text-center">{plan.title}</h3>
 									<div className="flex flex-col items-start">
