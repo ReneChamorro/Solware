@@ -1,6 +1,6 @@
 import React, { useState, useRef, useEffect, memo, ReactElement } from 'react'
 import { ChevronRight, ArrowLeft } from 'lucide-react'
-
+import GlareHover from './effectsComponents/GlareHover'
 interface ServiceCardProps {
 	title: string
 	description: string
@@ -37,6 +37,14 @@ const ServiceCard = memo(
 				>
 					{/* Front of card */}
 					<div className="absolute w-full h-full backface-hidden" onClick={() => setIsFlipped((f) => !f)}>
+						<GlareHover
+						glareColor="#ffffff"
+						glareOpacity={0.3}
+						glareAngle={-30}
+						glareSize={300}
+						transitionDuration={800}
+						playOnce={false}
+						>
 							<div
 								className="h-full w-full bg-blue-600 rounded-xl sm:rounded-2xl shadow-lg overflow-hidden group 
             hover:shadow-xl transition-all duration-300"
@@ -59,8 +67,12 @@ const ServiceCard = memo(
 								</div>
 
 								<div className="p-4 sm:p-6">
-								<h3 className="text-lg sm:text-xl font-bold text-white mb-2 transition-colors duration-300">{title}</h3>
-								<p className="text-sm sm:text-base text-white/90 mb-4 transition-colors duration-300">{description}</p>
+									<h3 className="text-lg sm:text-xl font-bold text-white mb-2 transition-colors duration-300">
+										{title}
+									</h3>
+									<p className="text-sm sm:text-base text-white/90 mb-4 transition-colors duration-300">
+										{description}
+									</p>
 
 									<button
 										className="inline-flex items-center text-white font-medium 
@@ -71,6 +83,7 @@ const ServiceCard = memo(
 									</button>
 								</div>
 							</div>
+						</GlareHover>
 					</div>
 
 					{/* Back of card */}

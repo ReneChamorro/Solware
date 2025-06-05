@@ -2,8 +2,8 @@ import React, { useState, useEffect } from 'react'
 import { Menu, X, Code2, Moon, Sun, UserRound, LayoutDashboard } from 'lucide-react'
 import { useActiveSection } from '../hooks/useActiveSection'
 import { useDarkMode } from '../hooks/useDarkMode'
-import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react'
-import { Link } from 'react-router-dom'
+// import { SignedIn, SignedOut, SignInButton, UserButton } from '@clerk/clerk-react'
+// import { Link } from 'react-router-dom'
 
 const navItems = [
 	{ href: '#quienes-somos', label: 'Quiénes Somos' },
@@ -242,7 +242,7 @@ export default function Header() {
 							>
 								Consulta Gratis
 							</a>
-							<SignedIn>
+							{/* <SignedIn>
 								<Link
 									to="/dashboard"
 									className={`transition-colors duration-300 whitespace-nowrap flex items-center gap-2 ${
@@ -252,9 +252,9 @@ export default function Header() {
 									<LayoutDashboard className="w-5 h-5" />
 								</Link>
 								<UserButton afterSignOutUrl="/" />
-							</SignedIn>
+							</SignedIn> */}
 
-							<SignedOut>
+							{/* <SignedOut>
 								<SignInButton mode="modal" redirectUrl={window.location.href} afterSignInUrl="/dashboard">
 									<button
 										className={`rounded-full text-sm sm:text-base 
@@ -265,11 +265,11 @@ export default function Header() {
 										<UserRound />
 									</button>
 								</SignInButton>
-							</SignedOut>
+							</SignedOut> */}
 						</div>
 
 						<div className="md:hidden flex gap-2 items-center">
-							<SignedIn>
+							{/* <SignedIn>
 								<div className="flex items-center justify-between gap-3">
 									<Link
 										to="/dashboard"
@@ -281,8 +281,8 @@ export default function Header() {
 									</Link>
 									<UserButton afterSignOutUrl="/" />
 								</div>
-							</SignedIn>
-							<SignedOut>
+							</SignedIn> */}
+							{/* <SignedOut>
 								<SignInButton mode="modal">
 									<button
 										className={`w-full px-4 py-3 rounded-lg text-lg font-medium transition-colors ${
@@ -292,7 +292,7 @@ export default function Header() {
 										<UserRound />
 									</button>
 								</SignInButton>
-							</SignedOut>
+							</SignedOut> */}
 							<button
 								className={`px-1 rounded-lg ${isScrolled ? 'text-gray-700 dark:text-white' : 'text-white'}`}
 								onClick={() => setIsMenuOpen(!isMenuOpen)}

@@ -1,4 +1,4 @@
-import { useState, useEffect, useCallback } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react'
 import Header from './components/Header'
 import Hero from './components/Hero'
 import Services from './components/Services'
@@ -12,30 +12,32 @@ import Preloader from './components/Preloader'
 import ButtonMessageBot from './components/ButtonMessageBot'
 import AboutUs from './components/AboutUs'
 import Pricing from './components/Pricing'
-import SplashCursor from './components/SplashCursor'
+import SplashCursor from './components/effectsComponents/SplashCursor'
+
 function App() {
 	const [isLoading, setIsLoading] = useState(true)
-	const [isScrolling, setIsScrolling] = useState(false)
-	let scrollTimeout: NodeJS.Timeout
+	const scrollTimeoutRef = useRef<ReturnType<typeof setTimeout> | null>(null)
+	const isScrollingRef = useRef(false)
 
+	// Memoizar el handleScroll sin dependencias que cambien
 	const handleScroll = useCallback(() => {
 		// Skip if we're already in scrolling state
-		if (!isScrolling) {
+		if (!isScrollingRef.current) {
 			document.documentElement.classList.add('scrolling')
-			setIsScrolling(true)
+			isScrollingRef.current = true
 		}
 
 		// Clear any existing timeout
-		if (scrollTimeout) {
-			clearTimeout(scrollTimeout)
+		if (scrollTimeoutRef.current) {
+			clearTimeout(scrollTimeoutRef.current)
 		}
 
 		// Set new timeout
-		scrollTimeout = setTimeout(() => {
+		scrollTimeoutRef.current = setTimeout(() => {
 			document.documentElement.classList.remove('scrolling')
-			setIsScrolling(false)
+			isScrollingRef.current = false
 		}, 150)
-	}, [isScrolling])
+	}, []) // Sin dependencias!
 
 	useEffect(() => {
 		const timer = setTimeout(() => {
@@ -58,7 +60,9 @@ function App() {
 
 		return () => {
 			clearTimeout(timer)
-			clearTimeout(scrollTimeout)
+			if (scrollTimeoutRef.current) {
+				clearTimeout(scrollTimeoutRef.current)
+			}
 			window.removeEventListener('scroll', scrollListener)
 		}
 	}, [handleScroll])
@@ -91,4 +95,4 @@ function App() {
 	)
 }
 
-export default App;
+export default App
