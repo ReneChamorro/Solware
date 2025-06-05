@@ -13,7 +13,7 @@ const Header: React.FC<HeaderProps> = ({ isDark, toggleDarkMode, currentDate }) 
     <div className="bg-white/80 dark:bg-gray-900/80 rounded-bl-xl transition-colors duration-300 ml-5">
       <header className="flex justify-between items-center px-6 py-4 max-w-6xl mx-auto">
         <form className="w-96">
-          <label htmlFor="default-search" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
+          <label htmlFor="default-search\" className="mb-2 text-sm font-medium text-gray-900 sr-only dark:text-white">
             Search
           </label>
           <div className="relative">
