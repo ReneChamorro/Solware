@@ -76,9 +76,7 @@ function App() {
 				}`}
 			>
 				<SplashCursor />
-				<Header toggleLogInVisibility={function (): void {
-					throw new Error('Function not implemented.')
-				} } />
+				<Header />
 				<main>
 					<Hero />
 					<AboutUs />

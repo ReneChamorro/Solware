@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { Menu, X, Code2, Moon, Sun, UserRound } from 'lucide-react'
+import { Menu, X, Code2, Moon, Sun } from 'lucide-react'
 import { useActiveSection } from '../hooks/useActiveSection'
 import { useDarkMode } from '../hooks/useDarkMode'
 
@@ -17,11 +17,7 @@ const navItems = [
 	{ href: '#contacto', label: 'Contacto' },
 ]
 
-type HeaderProps = {
-	toggleLogInVisibility: () => void
-}
-
-export default function Header({ toggleLogInVisibility }: HeaderProps) {
+export default function Header() {
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
 	const [isScrolled, setIsScrolled] = useState(false)
 	const activeSection = useActiveSection()
@@ -244,12 +240,6 @@ export default function Header({ toggleLogInVisibility }: HeaderProps) {
 							>
 								Consulta Gratis
 							</a>
-							<button
-								onClick={toggleLogInVisibility}
-								className="p-2 rounded-full transition-colors duration-300 focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400"
-							>
-								<UserRound className="size-6" />
-							</button>
 						</div>
 
 						<div className="md:hidden flex gap-2 items-center">
