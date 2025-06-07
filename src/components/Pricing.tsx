@@ -154,14 +154,14 @@ export default function Pricing() {
 		<section id="pricing" className="py-20 bg-white dark:bg-gray-900">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 				<BlurText
-					text="Pricing"
+					text="Más vendidos"
 					delay={150}
 					animateBy="words"
 					direction="top"
 					className="text-3xl font-extrabold text-gray-900 dark:text-white mb-6 sm:text-2xl md:text-3xl lg:text-4xl"
 				/>
 				<BlurText
-					text="Explora nuestros planes de precios adaptados a tus necesidades."
+					text="Explora nuestros servicios más vendidos y adaptados a tus necesidades."
 					delay={200}
 					animateBy="words"
 					direction="bottom"
