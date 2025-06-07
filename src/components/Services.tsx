@@ -7,7 +7,7 @@ const services = [
     icon: <Settings className="h-6 w-6 text-white" />,
     title: "Automatización de Procesos",
     description: "Optimiza tus operaciones con soluciones automatizadas inteligentes.",
-    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/1.avif",
+    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/automatizacion.webp",
     details: [
       {
         title: "Flujos de Trabajo Automatizados",
@@ -27,7 +27,7 @@ const services = [
     icon: <Bot className="h-6 w-6 text-white" />,
     title: "Agentes AI",
     description: "Integra agentes inteligentes que optimizan procesos y mejoran la experiencia del cliente.",
-    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/2.avif",
+    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/Agentes%20ia2.webp",
     details: [
       {
         title: "Asistentes Virtuales",
@@ -47,7 +47,7 @@ const services = [
     icon: <Code2 className="h-6 w-6 text-white" />,
     title: "Desarrollo Web y Móvil",
     description: "Creamos aplicaciones modernas y responsivas para tu negocio.",
-    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/3.avif",
+    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/desarrollo.webp",
     details: [
       {
         title: "Diseño UX/UI Intuitivo",
@@ -67,7 +67,7 @@ const services = [
     icon: <Users className="h-6 w-6 text-white" />,
     title: "CRM & Business Intelligence",
     description: "Toma de decisiones estratégicas basadas en análisis inteligente de datos.",
-    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/4.avif",
+    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/crm.webp",
     details: [
       {
         title: "Análisis Predictivo de Clientes",
@@ -87,7 +87,7 @@ const services = [
     icon: <Cube className="h-6 w-6 text-white" />,
     title: "Digitalización 3D y Capturas 360°",
     description: "Creamos experiencias inmersivas y visualizaciones interactivas de alta calidad.",
-    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/5.avif",
+    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/digitalizacion%20(2).webp",
     details: [
       {
         title: "Modelado 3D Profesional",
@@ -107,7 +107,7 @@ const services = [
     icon: <BarChart2 className="h-6 w-6 text-white" />,
     title: "Reportes y Análisis de Data",
     description: "Obtén insights clave para tomar decisiones informadas y mejorar tus resultados.",
-    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/6.avif",
+    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/soporte.webp",
     details: [
       {
         title: "Dashboards Interactivos",
