@@ -3,7 +3,16 @@ import React, { useMemo, useEffect, useState } from 'react'
 import RobotEyeTracking from './RoboTrakChat'
 import BlurText from './BlurText'
 
-const PricingParticles = React.memo(({ lightColor = '#e5e7eb', darkColor = '#222E3D', className }: { lightColor?: string; darkColor?: string; className?: string }) => {
+const PricingParticles = React.memo(
+	({
+		lightColor = '#e5e7eb',
+		darkColor = '#222E3D',
+		className,
+	}: {
+		lightColor?: string
+		darkColor?: string
+		className?: string
+	}) => {
 		const [isDark, setIsDark] = useState(false)
 
 		useEffect(() => {
@@ -16,7 +25,7 @@ const PricingParticles = React.memo(({ lightColor = '#e5e7eb', darkColor = '#222
 			const observer = new MutationObserver(checkTheme)
 			observer.observe(document.documentElement, {
 				attributes: true,
-			attributeFilter: ['class']
+				attributeFilter: ['class'],
 			})
 
 			return () => observer.disconnect()
@@ -24,7 +33,7 @@ const PricingParticles = React.memo(({ lightColor = '#e5e7eb', darkColor = '#222
 
 		const bubbles = useMemo(
 			() =>
-				Array.from({ length: 120 }, (_, i) => ({
+				Array.from({ length: 60 }, (_, i) => ({
 					id: i,
 					size: `${2 + Math.random() * 0.5}rem`,
 					distance: `${6 + Math.random() * 50}rem`,
@@ -107,7 +116,8 @@ const PricingParticles = React.memo(({ lightColor = '#e5e7eb', darkColor = '#222
 				</div>
 			</>
 		)
-})
+	},
+)
 
 export default function Pricing() {
 	const pricingData = [
@@ -157,7 +167,7 @@ export default function Pricing() {
 					direction="bottom"
 					className="text-lg text-gray-600 dark:text-gray-300 mb-16 sm:text-base md:text-lg lg:text-xl"
 				/>
-				<PricingParticles lightColor="#e5e7eb" darkColor="#222E3D" className="z[-1]" />
+				<PricingParticles lightColor="#e5e7eb" darkColor="#222E3D" className="z[-1] hidden lg:block" />
 				<div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8">
 					{pricingData.map((plan) => (
 						<div

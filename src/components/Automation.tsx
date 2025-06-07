@@ -1,4 +1,3 @@
-import React from 'react';
 import { Bot, Zap, BarChart2, FileSpreadsheet, Clock, Database } from 'lucide-react';
 import Carousel from './Carousel';
 import BlurText from './BlurText';
@@ -7,36 +6,42 @@ const automations = [
   {
     id: 1,
     title: "Automatización de Procesos",
+    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/automatizacion.webp",
     description: "Optimizamos flujos de trabajo repetitivos para aumentar la eficiencia operativa",
     icon: <Zap className="w-12 h-12 text-blue-500" />
   },
   {
     id: 2,
     title: "Análisis de Datos",
+    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/soporte.webp",
     description: "Transformamos datos en insights accionables para mejor toma de decisiones",
     icon: <BarChart2 className="w-12 h-12 text-green-500" />
   },
   {
     id: 3,
     title: "Gestión Documental",
+    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/crm.webp",
     description: "Digitalización y automatización de procesos documentales",
     icon: <FileSpreadsheet className="w-12 h-12 text-purple-500" />
   },
   {
     id: 4,
-    title: "Programación de Tareas",
+    title: "Programación de Tareas",  
+    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/desarrollo.webp",
     description: "Automatización de tareas programadas y seguimiento en tiempo real",
     icon: <Clock className="w-12 h-12 text-orange-500" />
   },
   {
     id: 5,
     title: "Integración de Sistemas",
+    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/digitalizacion%20(2).webp",
     description: "Conectamos sus sistemas existentes para un flujo de datos seamless",
     icon: <Database className="w-12 h-12 text-red-500" />
   },
   {
     id: 6,
     title: "Asistentes Virtuales",
+    image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/Agentes%20ia2.webp",
     description: "Implementación de chatbots y asistentes automatizados",
     icon: <Bot className="w-12 h-12 text-indigo-500" />
   }
