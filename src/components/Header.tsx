@@ -13,7 +13,7 @@ const navItems = [
 			{ href: '#automatizacion', label: 'Automatización' },
 		],
 	},
-	{ href: '#pricing', label: 'Pricing' },
+	{ href: '#pricing', label: 'Más vendidos' },
 	{ href: '#contacto', label: 'Contacto' },
 ]
 
