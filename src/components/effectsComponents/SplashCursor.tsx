@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useRef, memo } from 'react'
+import { useEffect, useRef, memo } from 'react'
 
 interface ColorRGB {
 	r: number

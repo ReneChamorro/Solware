@@ -1,4 +1,4 @@
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { Phone, Mail, Instagram, Shield, Linkedin } from 'lucide-react'
 import { Link } from 'react-router-dom'
 

@@ -1,6 +1,6 @@
 import React from 'react';
 import { Lightbulb, Users, Target, Leaf } from 'lucide-react';
-import BlurText from './BlurText';
+import BlurText from './effectsComponents/BlurText'
 
 const ValuesMission: React.FC = () => {
   const values = [

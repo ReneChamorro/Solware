@@ -1,7 +1,7 @@
 import { Settings, Code2, Check } from 'lucide-react'
 import React, { useMemo, useEffect, useState } from 'react'
 import RobotEyeTracking from './RoboTrakChat'
-import BlurText from './BlurText'
+import BlurText from './effectsComponents/BlurText'
 
 const PricingParticles = React.memo(
 	({

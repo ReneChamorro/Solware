@@ -1,6 +1,6 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Target, Route, Lightbulb, Cog, ClipboardList, X } from 'lucide-react'
-import BlurText from './BlurText'
+import BlurText from './effectsComponents/BlurText'
 
 const steps = [
 	{

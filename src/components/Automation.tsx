@@ -1,6 +1,6 @@
 import { Bot, Zap, BarChart2, FileSpreadsheet, Clock, Database } from 'lucide-react';
 import Carousel from './Carousel';
-import BlurText from './BlurText';
+import BlurText from './effectsComponents/BlurText'
 
 const automations = [
   {

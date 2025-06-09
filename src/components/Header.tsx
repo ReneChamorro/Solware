@@ -11,9 +11,9 @@ const navItems = [
 		items: [
 			{ href: '#servicios', label: 'Servicios' },
 			{ href: '#automatizacion', label: 'Automatización' },
+			{ href: '#pricing', label: 'Más vendidos' },
 		],
 	},
-	{ href: '#pricing', label: 'Más vendidos' },
 	{ href: '#contacto', label: 'Contacto' },
 ]
 
@@ -165,9 +165,7 @@ export default function Header() {
 										>
 											{openDropdown && (
 												<div
-													className={`absolute right-0 z-20 mt-2 w-48 origin-top-right rounded-md shadow-[0_0px_13px_1px] transition-all duration-300 bg-white dark:bg-dark ring-1 ring-dark-900/50 dark:ring-gray-800/50 shadow-dark-900/50 dark:shadow-dark-800/50 ${
-														isScrolled ? 'top-14' : 'top-10'
-													}`}
+													className={`absolute right-0 z-20 mt-2 w-48 origin-top-right rounded-md shadow-[0_0px_13px_1px] transition-all duration-300 bg-white dark:bg-dark ring-1 ring-dark-900/50 dark:ring-gray-800/50 shadow-dark-900/50 dark:shadow-dark-800/50 top-14`}
 													role="menu"
 													aria-orientation="vertical"
 													aria-labelledby="menu-button"

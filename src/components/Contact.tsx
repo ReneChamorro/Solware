@@ -1,7 +1,7 @@
 import React, { useState, useRef, useCallback } from 'react';
 import { Mail, Phone, Clock, Send, ChevronDown, MessageCircle, Instagram } from 'lucide-react';
 import { supabase } from '../lib/supabase';
-import BlurText from './BlurText';
+import BlurText from './effectsComponents/BlurText'
 
 interface FormData {
   name: string;

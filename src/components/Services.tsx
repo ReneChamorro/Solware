@@ -1,6 +1,6 @@
 import { Settings, Code2, Users, Bot, BarChart2, Cuboid as Cube } from 'lucide-react';
 import ServiceCard from './ServiceCard';
-import BlurText from './BlurText';
+import BlurText from './effectsComponents/BlurText'
 
 const services = [
   {

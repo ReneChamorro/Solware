@@ -166,7 +166,7 @@ const Carousel: React.FC<CarouselProps> = ({ items, autoPlay = true, autoPlayInt
 							<div
 								className="bg-white dark:bg-gray-800 rounded-xl overflow-hidden shadow-lg 
                 transition-all duration-275 ease-out hover:shadow-xl
-                transform hover:-translate-y-1 mt-2"
+                transform hover:-translate-y-1 my-5"
 							>
 								<div className="relative aspect-[3/2] md:overflow-hidden">
 									{item.CustomImage ? (
