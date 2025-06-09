@@ -5,7 +5,6 @@ import App from './App'
 import NotFound from './components/NotFound'
 import PrivacyPolicy from './components/PrivacyPolicy'
 import Demonstration from './components/Demonstration'
-import Dashboard from './components/Dashboard'
 import './index.css'
 
 // Inicializar el tema oscuro antes de renderizar
@@ -37,7 +36,6 @@ root.render(
         <Route path="/" element={<App />} />
         <Route path="/demo" element={<Demonstration />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
-        <Route path="/dashboard" element={<Dashboard />} />
         <Route path="*" element={<NotFound />} />
       </Routes>
     </BrowserRouter>
