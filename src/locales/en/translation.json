@@ -457,5 +457,106 @@
   "footer": {
     "privacy": "Privacy Policy",
     "copyright": "© {{year}} Solware. All rights reserved."
+  },
+  "chatbot": {
+    "responses": {
+      "initial": {
+        "text": "Hi! I'm Solwy, Solware's virtual assistant. What would you like to learn more about?",
+        "options": {
+          "servicios": "Services",
+          "precios": "Prices",
+          "proceso": "Work process",
+          "contacto": "Contact"
+        }
+      },
+      "services": {
+        "text": "We offer various digital transformation services. Which one are you interested in?",
+        "options": {
+          "automatizacion": "Process automation",
+          "desarrollo": "Web/mobile development",
+          "crm": "CRM and management",
+          "marketing": "Digital marketing",
+          "consultoria": "Technology consulting"
+        },
+        "automatizacion": {
+          "title": "process automation",
+          "text": "We optimize and automate business processes to increase efficiency and reduce costs. This includes:\n• Invoice automation\n• Inventory management\n• Workflow automation\n• System integration"
+        },
+        "desarrollo": {
+          "title": "web/mobile development",
+          "text": "We develop custom web and mobile solutions using the latest technologies:\n• Responsive websites\n• Progressive web apps\n• Native mobile apps\n• Enterprise platforms"
+        },
+        "crm": {
+          "title": "crm and management",
+          "text": "We implement CRM systems to improve customer management:\n• Lead tracking\n• Marketing automation\n• Sales management\n• Data analysis"
+        },
+        "marketing": {
+          "title": "digital marketing",
+          "text": "We offer digital marketing strategies to increase your business's visibility and reach:\n• SEO and SEM\n• Social media advertising\n• Email marketing\n• Content creation"
+        },
+        "consultoria": {
+          "title": "technology consulting",
+          "text": "We provide technology consulting to optimize your processes and adopt new technologies:\n• Evaluation of existing systems\n• Software recommendations\n• Implementation of tech solutions\n• Training and support"
+        }
+      },
+      "pricing": {
+        "text": "Our prices vary depending on the project and your specific needs. Would you like us to contact you for a personalized quote?",
+        "options": [
+          "Yes, I want a quote",
+          "Back to menu"
+        ]
+      },
+      "process": {
+        "text": "Our work process consists of 4 main phases:",
+        "details": [
+          "1. Analysis and Planning: We evaluate your needs and define objectives",
+          "2. Solution Design: We create a customized proposal",
+          "3. Implementation: We develop and deploy the solution",
+          "4. Monitoring: We monitor and optimize results"
+        ],
+        "options": [
+          "Start project",
+          "Back to menu"
+        ]
+      },
+      "contact": {
+        "text": "You can contact us through several channels:",
+        "options": {
+          "enviar_email": "Send email",
+          "abrir_whatsapp": "Open WhatsApp",
+          "abrir_instagram": "Open Instagram",
+          "abrir_linkedin": "Open LinkedIn"
+        }
+      },
+      "userInputs": {
+        "hola": "hello",
+        "saludos": "greetings",
+        "como_estas": "how are you",
+        "ayuda": "help",
+        "servicio": "service",
+        "web": "web",
+        "marketing": "marketing",
+        "aplicacion": "application",
+        "movil": "mobile",
+        "telefono": "phone",
+        "celular": "cellphone",
+        "crm": "crm",
+        "precio": "price",
+        "costo": "cost",
+        "dinero": "money",
+        "cuanto_cuesta": "how much",
+        "proceso": "process",
+        "trabajo": "work",
+        "contacto": "contact"
+      },
+      "default": {
+        "text": "I'm not sure I understand your question. Could you please select one of these options?"
+      },
+      "options": {
+        "volver_al_menu": "Back to menu",
+        "comenzar_proyecto": "Start project",
+        "si_quiero_una_cotizacion": "Yes, I want a quote"
+      }
+    }
   }
 }

@@ -461,5 +461,106 @@
   "footer": {
     "privacy": "Política de Privacidad",
     "copyright": "© {{year}} Solware. Todos los derechos reservados."
+  },
+  "chatbot": {
+    "responses": {
+      "initial": {
+        "text": "¡Hola! Soy Solwy, el asistente virtual de Solware. ¿Sobre qué te gustaría saber más?",
+        "options": {
+          "servicios": "Servicios",
+          "precios": "Precios",
+          "proceso": "Proceso de trabajo",
+          "contacto": "Contacto"
+        }
+      },
+      "services": {
+        "text": "Ofrecemos varios servicios de transformación digital. ¿Cuál te interesa conocer?",
+        "options": {
+          "automatizacion": "Automatización de procesos",
+          "desarrollo": "Desarrollo web/móvil",
+          "crm": "CRM y gestión",
+          "marketing": "Marketing digital",
+          "consultoria": "Consultoría tecnológica"
+        },
+        "automatizacion": {
+          "title": "automatización de procesos",
+          "text": "Optimizamos y automatizamos procesos empresariales para aumentar la eficiencia y reducir costos. Esto incluye:\n• Automatización de facturación\n• Gestión de inventario\n• Flujos de trabajo\n• Integración de sistemas"
+        },
+        "desarrollo": {
+          "title": "desarrollo web/móvil",
+          "text": "Desarrollamos soluciones web y móviles personalizadas usando las últimas tecnologías:\n• Sitios web responsivos\n• Aplicaciones web progresivas\n• Apps móviles nativas\n• Plataformas empresariales"
+        },
+        "crm": {
+          "title": "crm y gestión",
+          "text": "Implementamos sistemas CRM para mejorar la gestión de clientes:\n• Seguimiento de leads\n• Automatización de marketing\n• Gestión de ventas\n• Análisis de datos"
+        },
+        "marketing": {
+          "title": "marketing digital",
+          "text": "Ofrecemos estrategias de marketing digital para aumentar la visibilidad y el alcance de tu negocio:\n• SEO y SEM\n• Publicidad en redes sociales\n• Email marketing\n• Creación de contenido"
+        },
+        "consultoria": {
+          "title": "consultoría tecnológica",
+          "text": "Brindamos consultoría tecnológica para optimizar tus procesos y adoptar nuevas tecnologías:\n• Evaluación de sistemas existentes\n• Recomendaciones de software\n• Implementación de soluciones tecnológicas\n• Capacitación y soporte"
+        }
+      },
+      "pricing": {
+        "text": "Nuestros precios varían según el proyecto y sus necesidades específicas. ¿Te gustaría que te contactemos para una cotización personalizada?",
+        "options": [
+          "Sí, quiero una cotización",
+          "Volver al menú"
+        ]
+      },
+      "process": {
+        "text": "Nuestro proceso de trabajo consta de 4 fases principales:",
+        "details": [
+          "1. Análisis y Planificación: Evaluamos tus necesidades y definimos objetivos",
+          "2. Diseño de Solución: Creamos una propuesta personalizada",
+          "3. Implementación: Desarrollamos e implementamos la solución",
+          "4. Seguimiento: Monitoreamos y optimizamos resultados"
+        ],
+        "options": [
+          "Comenzar proyecto",
+          "Volver al menú"
+        ]
+      },
+      "contact": {
+        "text": "Puedes contactarnos por varios medios:",
+        "options": {
+          "enviar_email": "Enviar email",
+          "abrir_whatsapp": "Abrir WhatsApp",
+          "abrir_instagram": "Abrir Instagram",
+          "abrir_linkedin": "Abrir LinkedIn"
+        }
+      },
+      "userInputs": {
+        "hola": "hola",
+        "saludos": "saludos",
+        "como_estas": "como estás",
+        "ayuda": "ayuda",
+        "servicio": "servicio",
+        "web": "web",
+        "marketing": "marketing",
+        "aplicacion": "aplicacion",
+        "movil": "movil",
+        "telefono": "telefono",
+        "celular": "celular",
+        "crm": "crm",
+        "precio": "precio",
+        "costo": "costo",
+        "dinero": "dinero",
+        "cuanto_cuesta": "cuanto cuesta",
+        "proceso": "proceso",
+        "trabajo": "trabajo",
+        "contacto": "contacto"
+      },
+      "default": {
+        "text": "No estoy seguro de entender tu pregunta. ¿Podrías seleccionar una de estas opciones?"
+      },
+      "options": {
+        "volver_al_menu": "Volver al menú",
+        "comenzar_proyecto": "Comenzar proyecto",
+        "si_quiero_una_cotizacion": "Sí, quiero una cotización"
+      }
+    }
   }
 }

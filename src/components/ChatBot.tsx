@@ -3,6 +3,7 @@ import { X, Send } from 'lucide-react'
 import { FaEnvelope, FaWhatsapp, FaInstagram, FaLinkedin } from 'react-icons/fa'
 import RobotTraking from './RobotTraking'
 import RobotTrackingChat from './RoboTrakChat'
+import { useTranslation } from 'react-i18next'
 
 interface Message {
 	id: number
@@ -14,68 +15,6 @@ interface Message {
 }
 
 // Definimos las respuestas del bot por categorías
-const botResponses = {
-	initial: {
-		text: '¡Hola! Soy Solwy, el asistente virtual de Solware. ¿Sobre qué te gustaría saber más?',
-		options: ['Servicios', 'Precios', 'Proceso de trabajo', 'Contacto'],
-	},
-	servicios: {
-		text: 'Ofrecemos varios servicios de transformación digital. ¿Cuál te interesa conocer?',
-		options: [
-			'Automatización de procesos',
-			'Desarrollo web/móvil',
-			'CRM y gestión',
-			'Marketing digital',
-			'Consultoría tecnológica',
-		],
-		responses: {
-			'automatización de procesos':
-				'Optimizamos y automatizamos procesos empresariales para aumentar la eficiencia y reducir costos. Esto incluye:\n• Automatización de facturación\n• Gestión de inventario\n• Flujos de trabajo\n• Integración de sistemas',
-			'desarrollo web/móvil':
-				'Desarrollamos soluciones web y móviles personalizadas usando las últimas tecnologías:\n• Sitios web responsivos\n• Aplicaciones web progresivas\n• Apps móviles nativas\n• Plataformas empresariales',
-			'crm y gestión':
-				'Implementamos sistemas CRM para mejorar la gestión de clientes:\n• Seguimiento de leads\n• Automatización de marketing\n• Gestión de ventas\n• Análisis de datos',
-			'marketing digital':
-				'Ofrecemos estrategias de marketing digital para aumentar la visibilidad y el alcance de tu negocio:\n• SEO y SEM\n• Publicidad en redes sociales\n• Email marketing\n• Creación de contenido',
-			'consultoría tecnológica':
-				'Brindamos consultoría tecnológica para optimizar tus procesos y adoptar nuevas tecnologías:\n• Evaluación de sistemas existentes\n• Recomendaciones de software\n• Implementación de soluciones tecnológicas\n• Capacitación y soporte',
-		},
-	},
-	precios: {
-		text: 'Nuestros precios varían según el proyecto y sus necesidades específicas. ¿Te gustaría que te contactemos para una cotización personalizada?',
-		options: ['Sí, quiero una cotización', 'Volver al menú'],
-	},
-	proceso: {
-		text: 'Nuestro proceso de trabajo consta de 4 fases principales:',
-		details: [
-			'1. Análisis y Planificación: Evaluamos tus necesidades y definimos objetivos',
-			'2. Diseño de Solución: Creamos una propuesta personalizada',
-			'3. Implementación: Desarrollamos e implementamos la solución',
-			'4. Seguimiento: Monitoreamos y optimizamos resultados',
-		],
-		options: ['Comenzar proyecto', 'Volver al menú'],
-	},
-	contacto: {
-		text: 'Puedes contactarnos por varios medios:',
-		options: [
-			{ text: 'Enviar email', icon: <FaEnvelope /> },
-			{ text: 'Abrir WhatsApp', icon: <FaWhatsapp /> },
-			{ text: 'Abrir Instagram', icon: <FaInstagram /> },
-			{ text: 'Abrir LinkedIn', icon: <FaLinkedin /> },
-		],
-	},
-}
-
-const contactoDetails = [
-	{ icon: <FaEnvelope />, text: 'ventas@solware.agency', link: 'mailto:ventas@solware.agency' },
-	{
-		icon: <FaWhatsapp />,
-		text: '+58 412-9974533',
-		link: 'https://api.whatsapp.com/send/?phone=584129974533&text=Hola%2C+me+gustar%C3%ADa+obtener+m%C3%A1s+informaci%C3%B3n+sobre+sus+servicios.&type=phone_number&app_absent=0',
-	},
-	{ icon: <FaInstagram />, text: '@solware_', link: 'https://www.instagram.com/solware_?igsh=MTg4OTdwM3k3d2o4cA==' },
-	{ icon: <FaLinkedin />, text: 'Agencia', link: 'https://www.linkedin.com/company/agencia-solware/' },
-]
 
 interface ChatBotProps {
 	isOpen: boolean
@@ -83,6 +22,64 @@ interface ChatBotProps {
 }
 
 const ChatBot: React.FC<ChatBotProps> = ({ isOpen, setIsOpen }) => {
+	const { t } = useTranslation()
+	const botResponses = {
+		initial: {
+			text: t('chatbot.responses.initial.text'),
+			options: [
+				t('chatbot.responses.initial.options.servicios'),
+				t('chatbot.responses.initial.options.precios'),
+				t('chatbot.responses.initial.options.proceso'),
+				t('chatbot.responses.initial.options.contacto'),
+			],
+		},
+		servicios: {
+			text: t('chatbot.responses.services.text'),
+			options: [
+				t('chatbot.responses.services.options.automatizacion'),
+				t('chatbot.responses.services.options.desarrollo'),
+				t('chatbot.responses.services.options.crm'),
+				t('chatbot.responses.services.options.marketing'),
+				t('chatbot.responses.services.options.consultoria'),
+			],
+			responses: {
+				[t('chatbot.responses.services.automatizacion.title')]: t('chatbot.responses.services.automatizacion.text'),
+				[t('chatbot.responses.services.desarrollo.title')]: t('chatbot.responses.services.desarrollo.text'),
+				[t('chatbot.responses.services.crm.title')]: t('chatbot.responses.services.crm.text'),
+				[t('chatbot.responses.services.marketing.title')]: t('chatbot.responses.services.marketing.text'),
+				[t('chatbot.responses.services.consultoria.title')]: t('chatbot.responses.services.consultoria.text'),
+			},
+		},
+		precios: {
+			text: t('chatbot.responses.pricing.text'),
+			options: t('chatbot.responses.pricing.options', { returnObjects: true }) as string[],
+		},
+		proceso: {
+			text: t('chatbot.responses.process.text'),
+			details: t('chatbot.responses.process.details', { returnObjects: true }) as string[],
+			options: t('chatbot.responses.process.options', { returnObjects: true }) as string[],
+		},
+		contacto: {
+			text: t('chatbot.responses.contact.text'),
+			options: [
+				{ text: t('chatbot.responses.contact.options.enviar_email'), icon: <FaEnvelope /> },
+				{ text: t('chatbot.responses.contact.options.abrir_whatsapp'), icon: <FaWhatsapp /> },
+				{ text: t('chatbot.responses.contact.options.abrir_instagram'), icon: <FaInstagram /> },
+				{ text: t('chatbot.responses.contact.options.abrir_linkedin'), icon: <FaLinkedin /> },
+			],
+		},
+	}
+
+	const contactoDetails = [
+		{ icon: <FaEnvelope />, text: 'ventas@solware.agency', link: 'mailto:ventas@solware.agency' },
+		{
+			icon: <FaWhatsapp />,
+			text: '+58 412-9974533',
+			link: 'https://api.whatsapp.com/send/?phone=584129974533&text=Hola%2C+me+gustar%C3%ADa+obtener+m%C3%A1s+informaci%C3%B3n+sobre+sus+servicios.&type=phone_number&app_absent=0',
+		},
+		{ icon: <FaInstagram />, text: '@solware_', link: 'https://www.instagram.com/solware_?igsh=MTg4OTdwM3k3d2o4cA==' },
+		{ icon: <FaLinkedin />, text: 'Agencia', link: 'https://www.linkedin.com/company/agencia-solware/' },
+	]
 	const [messages, setMessages] = useState<Message[]>([
 		{
 			id: 1,
@@ -125,10 +122,10 @@ const ChatBot: React.FC<ChatBotProps> = ({ isOpen, setIsOpen }) => {
 
 		// Lógica para determinar la respuesta según el input del usuario
 		if (
-			input.includes('hola') ||
-			input.includes('saludos') ||
-			input.includes('cómo estás') ||
-			input.includes('ayuda')
+			input.includes(t('chatbot.userInputs.hola')) ||
+			input.includes(t('chatbot.userInputs.saludos')) ||
+			input.includes(t('chatbot.userInputs.como_estas')) ||
+			input.includes(t('chatbot.userInputs.ayuda'))
 		) {
 			response = {
 				id: messages.length + 2,
@@ -138,14 +135,15 @@ const ChatBot: React.FC<ChatBotProps> = ({ isOpen, setIsOpen }) => {
 				options: botResponses.initial.options,
 			}
 		} else if (
-			input.includes('servicio') ||
-			input.includes('web') ||
-			input.includes('marketing') ||
-			input.includes('aplicacion') ||
-			input.includes('movil') ||
-			input.includes('telefono') ||
-			input.includes('celular') ||
-			input.includes('crm')
+			input === t('chatbot.responses.initial.options.servicios').toLowerCase() ||
+			input.includes(t('chatbot.userInputs.servicio')) ||
+			input.includes(t('chatbot.userInputs.web')) ||
+			input.includes(t('chatbot.userInputs.marketing')) ||
+			input.includes(t('chatbot.userInputs.aplicacion')) ||
+			input.includes(t('chatbot.userInputs.movil')) ||
+			input.includes(t('chatbot.userInputs.telefono')) ||
+			input.includes(t('chatbot.userInputs.celular')) ||
+			input.includes(t('chatbot.userInputs.crm'))
 		) {
 			response = {
 				id: messages.length + 2,
@@ -155,10 +153,11 @@ const ChatBot: React.FC<ChatBotProps> = ({ isOpen, setIsOpen }) => {
 				options: botResponses.servicios.options,
 			}
 		} else if (
-			input.includes('precio') ||
-			input.includes('costo') ||
-			input.includes('dinero') ||
-			input.includes('cuanto cuesta')
+			input === t('chatbot.responses.initial.options.precios').toLowerCase() ||
+			input.includes(t('chatbot.userInputs.precio')) ||
+			input.includes(t('chatbot.userInputs.costo')) ||
+			input.includes(t('chatbot.userInputs.dinero')) ||
+			input.includes(t('chatbot.userInputs.cuanto_cuesta'))
 		) {
 			response = {
 				id: messages.length + 2,
@@ -167,15 +166,22 @@ const ChatBot: React.FC<ChatBotProps> = ({ isOpen, setIsOpen }) => {
 				timestamp: new Date(),
 				options: botResponses.precios.options,
 			}
-		} else if (input.includes('proceso') || input.includes('trabajo')) {
+		} else if (
+			input === t('chatbot.responses.initial.options.proceso').toLowerCase() ||
+			input.includes(t('chatbot.userInputs.proceso')) ||
+			input.includes(t('chatbot.userInputs.trabajo'))
+		) {
 			response = {
 				id: messages.length + 2,
-				text: botResponses.proceso.text + '\n\n' + botResponses.proceso.details.join('\n'),
+				text: botResponses.proceso.text + '\n\n' + (botResponses.proceso.details as string[]).join('\n'),
 				isBot: true,
 				timestamp: new Date(),
 				options: botResponses.proceso.options,
 			}
-		} else if (input.includes('contacto')) {
+		} else if (
+			input === t('chatbot.responses.initial.options.contacto').toLowerCase() ||
+			input.includes(t('chatbot.userInputs.contacto'))
+		) {
 			response = {
 				id: messages.length + 2,
 				text: botResponses.contacto.text,
@@ -183,11 +189,34 @@ const ChatBot: React.FC<ChatBotProps> = ({ isOpen, setIsOpen }) => {
 				timestamp: new Date(),
 				options: botResponses.contacto.options,
 			}
+		} else if (
+			// Opciones de servicios específicos
+			input === t('chatbot.responses.services.options.automatizacion').toLowerCase() ||
+			input === t('chatbot.responses.services.options.desarrollo').toLowerCase() ||
+			input === t('chatbot.responses.services.options.crm').toLowerCase() ||
+			input === t('chatbot.responses.services.options.marketing').toLowerCase() ||
+			input === t('chatbot.responses.services.options.consultoria').toLowerCase()
+		) {
+			const serviceKey = Object.keys(botResponses.servicios.responses).find((key) => key.toLowerCase() === input)
+			response = {
+				id: messages.length + 2,
+				text: serviceKey ? botResponses.servicios.responses[serviceKey] : t('chatbot.responses.default.text'),
+				isBot: true,
+				timestamp: new Date(),
+				options: [
+					t('chatbot.responses.services.options.automatizacion'),
+					t('chatbot.responses.services.options.desarrollo'),
+					t('chatbot.responses.services.options.crm'),
+					t('chatbot.responses.services.options.marketing'),
+					t('chatbot.responses.services.options.consultoria'),
+					t('chatbot.responses.options.volver_al_menu'),
+				],
+			}
 		} else {
 			// Respuesta por defecto si no se reconoce el input
 			response = {
 				id: messages.length + 2,
-				text: 'No estoy seguro de entender tu pregunta. ¿Podrías seleccionar una de estas opciones?',
+				text: t('chatbot.responses.default.text'),
 				isBot: true,
 				timestamp: new Date(),
 				options: botResponses.initial.options,
@@ -234,7 +263,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ isOpen, setIsOpen }) => {
 		setTimeout(() => {
 			let botResponse: Message
 
-			if (option === 'Volver al menú') {
+			if (option === t('chatbot.responses.options.volver_al_menu')) {
 				// Regresar al mensaje inicial de saludo
 				botResponse = {
 					id: messages.length + 2,
@@ -243,7 +272,10 @@ const ChatBot: React.FC<ChatBotProps> = ({ isOpen, setIsOpen }) => {
 					timestamp: new Date(),
 					options: botResponses.initial.options,
 				}
-			} else if (option === 'Comenzar proyecto' || option === 'Sí, quiero una cotización') {
+			} else if (
+				option === t('chatbot.responses.options.comenzar_proyecto') ||
+				option === t('chatbot.responses.options.si_quiero_una_cotizacion')
+			) {
 				// Redirigir a la sección de contacto
 				botResponse = {
 					id: messages.length + 2,
@@ -252,17 +284,17 @@ const ChatBot: React.FC<ChatBotProps> = ({ isOpen, setIsOpen }) => {
 					timestamp: new Date(),
 					options: botResponses.contacto.options,
 				}
-			} else if (option === 'Enviar email') {
+			} else if (option === t('chatbot.responses.contact.options.enviar_email')) {
 				window.open('mailto:solwareve@gmail.com') // Abrir cliente de email
 				return // Salir para no agregar un mensaje del bot
-			} else if (option === 'Abrir WhatsApp') {
+			} else if (option === t('chatbot.responses.contact.options.abrir_whatsapp')) {
 				const message = encodeURIComponent('Hola, me gustaría obtener más información sobre sus servicios.')
 				window.open(`https://wa.me/584129974533?text=${message}`, '_blank') // Abrir WhatsApp
 				return // Salir para no agregar un mensaje del bot
-			} else if (option === 'Abrir Instagram') {
+			} else if (option === t('chatbot.responses.contact.options.abrir_instagram')) {
 				window.open('https://www.instagram.com/solware_?igsh=MTg4OTdwM3k3d2o4cA==', '_blank') // Abrir Instagram
 				return // Salir para no agregar un mensaje del bot
-			} else if (option === 'Abrir LinkedIn') {
+			} else if (option === t('chatbot.responses.contact.options.abrir_linkedin')) {
 				window.open('https://www.linkedin.com/company/agencia-solware/', '_blank') // Abrir LinkedIn
 				return // Salir para no agregar un mensaje del bot
 			} else {
@@ -297,7 +329,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ isOpen, setIsOpen }) => {
 				{/* Header */}
 				<div className="flex items-center justify-between p-4 bg-blue-600 text-white sm:rounded-t-2xl">
 					<div className="flex items-center">
-						<RobotTrackingChat className='size-10 md:size-12'/>
+						<RobotTrackingChat className="size-10 md:size-12" />
 						<h3 className="font-semibold ml-4">Solwy</h3>
 					</div>
 					<button onClick={() => setIsOpen(false)} className="p-1 hover:bg-blue-700 rounded-full transition-colors">
