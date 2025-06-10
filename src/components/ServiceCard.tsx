@@ -1,6 +1,7 @@
 import React, { useState, useRef, useEffect, memo, ReactElement } from 'react'
 import { ChevronRight, ArrowLeft } from 'lucide-react'
 import GlareHover from './effectsComponents/GlareHover'
+import { useTranslation } from 'react-i18next'
 interface ServiceCardProps {
 	title: string
 	description: string
@@ -14,6 +15,7 @@ interface ServiceCardProps {
 
 const ServiceCard = memo(
 	({ title, description, icon, image, details }: ServiceCardProps) => {
+		const { t } = useTranslation()
 		const [isFlipped, setIsFlipped] = useState(false)
 		const cardRef = useRef<HTMLDivElement | null>(null)
 
@@ -78,7 +80,7 @@ const ServiceCard = memo(
 										className="inline-flex items-center text-white font-medium 
                   hover:text-white/80 transition-colors group/btn text-sm sm:text-base"
 									>
-										Saber más
+										{t('services.button')}
 										<ChevronRight className="ml-2 h-4 w-4 transform group-hover/btn:translate-x-1 transition-transform" />
 									</button>
 								</div>
@@ -90,7 +92,7 @@ const ServiceCard = memo(
 					<div className="absolute w-full h-full backface-hidden rotate-y-180" onClick={() => setIsFlipped((f) => !f)}>
 						<div className="h-full w-full bg-blue-600 dark:bg-blue-600 rounded-2xl shadow-lg p-4 sm:p-6 flex flex-col">
 							<h3 className="text-base sm:text-lg font-bold text-white mb-4 sm:mb-6 transition-colors duration-300">
-								Detalles del Servicio
+								{t('services.details')}
 							</h3>
 
 							<div className="flex-grow space-y-3 sm:space-y-4 lg:space-y-6 overflow-y-auto scrollbar-hide">
@@ -118,7 +120,7 @@ const ServiceCard = memo(
                 group/btn text-xs sm:text-sm lg:text-base"
 							>
 								<ArrowLeft className="mr-1 sm:mr-2 h-3 w-3 sm:h-4 sm:w-4 transform group-hover/btn:-translate-x-1 transition-transform" />
-								Volver
+								{t('services.back')}
 							</button>
 						</div>
 					</div>

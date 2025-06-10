@@ -6,6 +6,7 @@ import NotFound from './components/NotFound'
 import PrivacyPolicy from './components/PrivacyPolicy'
 import Demonstration from './components/Demonstration'
 import './index.css'
+import './i18n'
 
 // Inicializar el tema oscuro antes de renderizar
 const savedTheme = localStorage.getItem('theme')

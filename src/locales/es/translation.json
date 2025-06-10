@@ -1,0 +1,465 @@
+{
+  "header": {
+    "navItems": {
+      "quienesSomos": "Quiénes Somos",
+      "workflow": "Workflow",
+      "servicios": "Servicios",
+      "automatizacion": "Automatización",
+      "masVendidos": "Más vendidos",
+      "contacto": "Contacto"
+    },
+    "consulta": "Consulta Gratis",
+    "darkMode": "Modo oscuro",
+    "lightMode": "Modo claro",
+    "language": {
+      "es": "Español",
+      "en": "English"
+    }
+  },
+  "hero": {
+    "title": "Transformación Digital para tu Empresa",
+    "subtitle": "Automatizamos tus procesos empresariales y potenciamos tu negocio con soluciones tecnológicas innovadoras y personalizadas.",
+    "demo": "Ver demostración",
+    "automation": "Automatización",
+    "efficiency": "más eficiencia",
+    "security": "Seguridad",
+    "activeTime": "tiempo activo",
+    "savings": "Ahorro",
+    "costs": "en costos",
+    "limits": "sin límites",
+    "scalability": "Escalabilidad"
+  },
+  "about": {
+    "title": "¿Quiénes Somos?",
+    "subtitle": "Somos un emprendimiento latinoamericano comprometido con la transformación digital de las empresas latinoamericanas.",
+    "story": {
+      "title": "Nuestra Historia",
+      "text": "Nacimos de la visión de un grupo de profesionales que identificaron la necesidad de las empresas por adaptarse al mundo digital. Entendemos los desafíos únicos que enfrentan los negocios en Latinoamérica y trabajamos incansablemente para ofrecer soluciones que impulsen su crecimiento."
+    },
+    "points": {
+      "local": {
+        "title": "Equipo Local, Impacto Global",
+        "text": "Nuestro equipo combina el talento latinoamericano con una visión internacional."
+      },
+      "innovation": {
+        "title": "Innovación Constante",
+        "text": "Nos mantenemos a la vanguardia de las últimas tecnologías para ofrecer soluciones innovadoras."
+      },
+      "commitment": {
+        "title": "Compromiso con el Cliente",
+        "text": "Tu éxito es nuestro éxito. Trabajamos en estrecha colaboración con cada cliente para garantizar resultados excepcionales."
+      }
+    }
+  },
+  "workProcess": {
+    "title": "El camino para alcanzar tus metas profesionales",
+    "subtitle": "Un proceso estructurado para garantizar el éxito de tu transformación digital",
+    "steps": {
+      "1": {
+        "title": "Establecer metas claras",
+        "description": "Definimos objetivos específicos, medibles y alcanzables para tu transformación digital.",
+        "details": {
+          "0": "Detección de oportunidades y puntos críticos",
+          "1": "Diagnóstico completo de tu situación actual",
+          "2": "Definición de KPIs clave para medir el éxito",
+          "3": "Alineación con objetivos empresariales",
+          "4": "Creación de un roadmap con plazos alcanzables"
+        }
+      },
+      "2": {
+        "title": "Crear plan de acción",
+        "description": "Desarrollamos una estrategia detallada con pasos concretos para alcanzar los objetivos.",
+        "details": {
+          "0": "Mapeo de procesos actuales",
+          "1": "Diseño de flujos de trabajo optimizados",
+          "2": "Establecimiento de hitos y checkpoints",
+          "3": "Implementación de soluciones efectivas",
+          "4": "Asignación de recursos y responsabilidades"
+        }
+      },
+      "3": {
+        "title": "Desarrollar habilidades",
+        "description": "Capacitamos a tu equipo en las nuevas tecnologías y metodologías.",
+        "details": {
+          "0": "Talleres inmersivos y prácticos",
+          "1": "Programas personalizados para tu negocio",
+          "2": "Soporte experto en tiempo real",
+          "3": "Documentación y recursos de aprendizaje",
+          "4": "Certificaciones y evaluación continua"
+        }
+      },
+      "4": {
+        "title": "Implementar soluciones",
+        "description": "Ponemos en marcha las soluciones diseñadas de manera gradual y controlada.",
+        "details": {
+          "0": "Despliegue por fases estratégicas",
+          "1": "Pruebas y validación en tiempo real",
+          "2": "Optimización y mejora continua",
+          "3": "Supervisión de rendimiento inteligente",
+          "4": "Gestión del cambio organizacional"
+        }
+      },
+      "5": {
+        "title": "Evaluar el progreso",
+        "description": "Medimos y analizamos los resultados para garantizar el éxito del proceso.",
+        "details": {
+          "0": "Seguimiento detallado de KPIs clave",
+          "1": "Análisis estratégico de feedback de usuarios",
+          "2": "Detección proactiva de áreas críticas",
+          "3": "Reportes dinámicos de progreso",
+          "4": "Ajustes estratégicos basados en resultados"
+        }
+      }
+    }
+  },
+  "services": {
+    "title": "Soluciones Digitales Integrales ",
+    "description": "Transformamos tu negocio con tecnología de vanguardia y soluciones personalizadas.",
+    "details": "Detalles del Servicio",
+    "button": "Saber más",
+    "back": "Volver",
+    "automatizacion": {
+      "title": "Automatización de Procesos",
+      "description": "Optimiza tus operaciones con soluciones automatizadas inteligentes.",
+      "details": {
+        "0": {
+          "title": "Flujos de Trabajo Automatizados",
+          "description": "Diseñamos y configuramos flujos de trabajo que automatizan tareas repetitivas."
+        },
+        "1": {
+          "title": "Reducción de Errores",
+          "description": "Minimizamos errores humanos mediante la automatización de procesos críticos."
+        },
+        "2": {
+          "title": "Análisis y Optimización",
+          "description": "Monitoreamos y optimizamos continuamente los procesos automatizados."
+        }
+      }
+    },
+    "agentes": {
+      "title": "Agentes IA",
+      "description": "Integra agentes inteligentes que optimizan procesos y mejoran la experiencia del cliente.",
+      "details": {
+        "0": {
+          "title": "Asistentes Virtuales",
+          "description": "Implementación de chatbots y asistentes AI para atención al cliente 24/7."
+        },
+        "1": {
+          "title": "Automatización Inteligente",
+          "description": "Agentes AI que aprenden y mejoran continuamente sus respuestas y acciones."
+        },
+        "2": {
+          "title": "Soporte Multicanal Inteligente",
+          "description": "Centraliza tu comunicación con agentes AI capaces de gestionar en diversos canales."
+        }
+      }
+    },
+    "desarrollo": {
+      "title": "Desarrollo Web y Móvil",
+      "description": "Creamos aplicaciones modernas y responsivas para tu negocio.",
+      "details": {
+        "0": {
+          "title": "Diseño UX/UI Intuitivo",
+          "description": "Creamos interfaces atractivas y fáciles de usar que mejoran la experiencia del usuario."
+        },
+        "1": {
+          "title": "Desarrollo Full-Stack",
+          "description": "Implementamos soluciones que integran front-end y back-end de manera eficiente."
+        },
+        "2": {
+          "title": "Optimización SEO",
+          "description": "Tu Web y aplicaciones serán visibles en motores de búsqueda."
+        }
+      }
+    },
+    "crm": {
+      "title": "CRM & Business Intelligence",
+      "description": "Toma de decisiones estratégicas basadas en análisis inteligente de datos.",
+      "details": {
+        "0": {
+          "title": "Análisis Predictivo de Clientes",
+          "description": "Anticipamos comportamientos y necesidades de clientes mediante modelos de análisis."
+        },
+        "1": {
+          "title": "Segmentación Inteligente",
+          "description": "Clasificación automática de clientes basada en patrones de comportamiento."
+        },
+        "2": {
+          "title": "Automatización de Insights",
+          "description": "Generación automática de reportes y alertas basadas en análisis de datos del CRM."
+        }
+      }
+    },
+    "digitalizacion": {
+      "title": "Digitalización 3D y Capturas 360°",
+      "description": "Creamos experiencias inmersivas y visualizaciones interactivas de alta calidad.",
+      "details": {
+        "0": {
+          "title": "Modelado 3D Profesional",
+          "description": "Creación de modelos tridimensionales detallados para productos y espacios."
+        },
+        "1": {
+          "title": "Tours Virtuales 360°",
+          "description": "Experiencias interactivas que permiten explorar espacios desde cualquier lugar."
+        },
+        "2": {
+          "title": "Visualización Arquitectónica",
+          "description": "Transformación de planos en visualizaciones 3D impactantes."
+        }
+      }
+    },
+    "soporte": {
+      "title": "Reportes y Análisis de Data",
+      "description": "Obtén insights clave para tomar decisiones informadas y mejorar tus resultados.",
+      "details": {
+        "0": {
+          "title": "Dashboards Interactivos",
+          "description": "Visualizaciones dinámicas que permiten explorar y comprender los datos fácilmente."
+        },
+        "1": {
+          "title": "Reportes Automatizados",
+          "description": "Generación y distribución automática de informes personalizados."
+        },
+        "2": {
+          "title": "Integración de Fuentes",
+          "description": "Consolidación de datos de múltiples fuentes para un análisis completo."
+        }
+      }
+    }
+  },
+  "automation": {
+    "title": "Automatización Empresarial",
+    "description": "Transformamos procesos manuales en flujos de trabajo eficientes y automatizados",
+    "automatizacion": {
+      "title": "Automatización de Procesos",
+      "description": "Optimizamos flujos de trabajo repetitivos para aumentar la eficiencia operativa"
+    },
+    "analisis": {
+      "title": "Análisis de Datos",
+      "description": "Transformamos datos en insights accionables para mejor toma de decisiones"
+    },
+    "gestion": {
+      "title": "Gestión Documental",
+      "description": "Digitalización y automatización de procesos documentales"
+    },
+    "tareas": {
+      "title": "Programación de Tareas",
+      "description": "Automatización de tareas programadas y seguimiento en tiempo real"
+    },
+    "integracion": {
+      "title": "Integración de Sistemas",
+      "description": "Conectamos sus sistemas existentes para un flujo de datos seamless"
+    },
+    "asistentes": {
+      "title": "Asistentes Virtuales",
+      "description": "Implementación de chatbots y asistentes automatizados"
+    }
+  },
+  "pricing": {
+    "title": "Más vendidos",
+    "description": "Explora nuestros servicios más vendidos y adaptados a tus necesidades.",
+    "button": "Cotizar",
+    "details": {
+      "0": {
+        "title": "Automatización de Procesos",
+        "advantage1": "Flujos de Trabajo Automatizados.",
+        "advantage2": "Reportes Automatizados.",
+        "advantage3": "Diagnóstico Inteligente."
+      },
+      "1": {
+        "title": "Agentes IA",
+        "advantage1": "Asistentes Virtuales.",
+        "advantage2": "Automatización Inteligente.",
+        "advantage3": "Soporte Multicanal Inteligente."
+      },
+      "2": {
+        "title": "Desarrollo Web y Móvil",
+        "advantage1": "Diseño UX/UI Intuitivo.",
+        "advantage2": "Desarrollo Full-Stack.",
+        "advantage3": "Optimización SEO"
+      }
+    }
+  },
+  "valuesMission": {
+    "title": "Nuestros Valores y Misión",
+    "description": "Impulsando tu transformación digital con propósito y excelencia",
+    "paragraph1": "En Solware, creemos en el poder de la tecnología para transformar negocios y mejorar vidas. Nuestra misión es empoderar a empresas de todas las industrias a través de soluciones innovadoras, accesibles y sostenibles, adaptadas a sus necesidades específicas.",
+    "paragraph2": "Nos guiamos por valores como la confianza, la colaboración y la excelencia, asegurando que cada proyecto no solo cumpla, sino que supere tus expectativas. Juntos, construimos un futuro digital donde la tecnología se convierte en el motor de tu éxito.",
+    "values": {
+      "innovation": {
+        "title": "Innovación",
+        "description": "Buscamos constantemente nuevas formas de resolver desafíos tecnológicos"
+      },
+      "commitment": {
+        "title": "Compromiso",
+        "description": "Nos esforzamos por cumplir nuestras promesas y superar las expectativas de nuestros clientes"
+      },
+      "adaptability": {
+        "title": "Adaptabilidad",
+        "description": "Nos adaptamos rápidamente a los cambios para ofrecer soluciones óptimas y personalizadas"
+      },
+      "sustainability": {
+        "title": "Sostenibilidad",
+        "description": "Creamos soluciones duraderas y responsables con el futuro"
+      }
+    }
+  },
+  "contact": {
+    "title": "¡Conectemos! Tu éxito es nuestra prioridad",
+    "description": "Estamos listos para responder tus consultas y ayudarte a potenciar tu negocio con soluciones tecnológicas innovadoras",
+    "form": {
+      "title": "Formulario de Contacto",
+      "description": "Completa la información para que podamos responder a tu consulta de manera personalizada",
+      "name": {
+        "title": "Nombre completo",
+        "placeholder": "Ingresa tu nombre completo"
+      },
+      "email": {
+        "title": "Correo electrónico",
+        "placeholder": "Ingresa tu correo electrónico"
+      },
+      "phone": {
+        "title": "Teléfono",
+        "placeholder": "Ingresa tu número de teléfono"
+      },
+      "company": {
+        "title": "Empresa",
+        "placeholder": "Ingresa el nombre de tu empresa"
+      },
+      "sector": {
+        "title": "Sector",
+        "options": {
+          "default": "Selecciona un sector",
+          "tecnologia": "Tecnología",
+          "salud": "Salud",
+          "educacion": "Educación",
+          "comercio": "Comercio",
+          "servicios": "Servicios",
+          "otro": "Otro"
+        }
+      },
+      "areas": {
+        "title": "Áreas de interés",
+        "options": {
+          "automatizacion": "Automatización de Procesos",
+          "desarrollo": "Desarrollo Web/Móvil",
+          "crm": "CRM y Gestión de Clientes",
+          "marketing": "Marketing Digital",
+          "infraestructura": "Infraestructura Cloud",
+          "consultoria": "Consultoría Digital"
+        }
+      },
+      "whatsapp": {
+        "message": "Hola, me gustaría obtener más información sobre sus servicios."
+      },
+      "success": "¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.",
+      "error": "Error al enviar el mensaje. Por favor, intente nuevamente.",
+      "message": {
+        "title": "Mensaje",
+        "placeholder": "Escribe tu mensaje aquí"
+      },
+      "button": {
+        "submitting": "Enviando...",
+        "send": "Enviar mensaje"
+      }
+    },
+    "contactInf": {
+      "title": "Información de Contacto",
+      "days": "Lunes a Viernes",
+      "ig": "Síguenos en Instagram",
+      "linkedin": "Síguenos en LinkedIn"
+    },
+    "faq": {
+      "title": "Preguntas Frecuentes",
+      "faqs": {
+        "0": {
+          "question": "¿Cómo puede Solware ayudar a mi empresa?",
+          "answer": "Solware puede ayudar a tu empresa a aumentar la eficiencia operativa, reducir costos, mejorar la experiencia del cliente y facilitar la adopción de nuevas tecnologías para mantenerte competitivo en el mercado."
+        },
+        "1": {
+          "question": "¿Qué nos hace diferentes de otras empresas de tecnología?",
+          "answer": "Nos distinguimos por nuestro enfoque personalizado, experiencia comprobada y compromiso con resultados medibles. Combinamos conocimiento técnico profundo con una comprensión única de las necesidades empresariales, ofreciendo soluciones adaptadas y soporte continuo."
+        },
+        "2": {
+          "question": "¿Cómo garantizamos resultados medibles en cada proyecto?",
+          "answer": "Implementamos un sistema riguroso de KPIs y métricas desde el inicio, estableciendo objetivos claros y medibles. Realizamos seguimiento continuo, proporcionamos informes detallados y ajustamos estrategias según sea necesario para asegurar el éxito del proyecto."
+        },
+        "3": {
+          "question": "¿Puedo contactar a Solware para una consulta gratuita?",
+          "answer": "¡Por supuesto! Ofrecemos consultas iniciales sin costo donde analizamos tus necesidades y te presentamos soluciones personalizadas. Puedes contactarnos a través de nuestro formulario, WhatsApp o correo electrónico."
+        },
+        "4": {
+          "question": "¿Qué beneficios obtendré al automatizar procesos con Solware?",
+          "answer": "Al automatizar tus procesos con Solware, obtendrás reducción de costos operativos, eliminación de errores manuales, mayor productividad, mejor experiencia del cliente, datos en tiempo real para toma de decisiones y escalabilidad para tu negocio."
+        }
+      }
+    },
+    "button": "Enviar",
+    "wspButton": "Chatear por WhatsApp"
+  },
+  "demonstration": {
+    "title": "Descubre el Poder de la Automatización",
+    "description": "Mira cómo transformamos procesos manuales en flujos de trabajo eficientes y automatizados",
+    "button": "Volver al inicio",
+    "video": {
+      "title": "Proceso de Automatización",
+      "description": "En este video, te mostramos paso a paso cómo implementamos soluciones de automatización que transforman la manera en que las empresas operan. Desde la identificación de procesos manuales hasta la implementación de flujos de trabajo automatizados.",
+      "points": {
+        "0": "Identificación de procesos manuales",
+        "1": "Diseño de flujos automatizados",
+        "2": "Implementación y pruebas",
+        "3": "Monitoreo y optimización continua"
+      }
+    }
+  },
+  "privacyPolicy": {
+    "title": "Política de Privacidad de Solware",
+    "back": "Volver al inicio",
+    "paragraph1": "Tu privacidad es importante para nosotros. En Solware, respetamos tu privacidad y cumplimos con cualquier ley y regulación aplicable respecto a la información personal que podamos recopilar sobre ti, ya sea a través de nuestro sitio web, aplicaciones o servicios asociados.",
+    "paragraph2": "Información personal se refiere a cualquier dato que pueda ser usado para identificarte como individuo, incluyendo nombre, dirección, correo electrónico, detalles de dispositivos, información de pago y cómo interactúas con nuestras plataformas digitales.",
+    "paragraph3": "Si nuestro sitio contiene enlaces a servicios de terceros, te recordamos que dichos servicios tienen sus propias políticas de privacidad. Te recomendamos leer sus políticas antes de proporcionarles tu información. Esta Política de Privacidad no cubre actividades realizadas fuera de nuestras plataformas.",
+    "paragraph4": "Esta política es efectiva a partir de: 01/03/2024",
+    "paragraph5": "Última actualización: 01/03/2024",
+    "paragraph6": "Información que Recopilamos",
+    "paragraph7": "La información que recopilamos se clasifica en dos categorías principales:",
+    "infoRec": {
+      "bold": "Información proporcionada voluntariamente:",
+      "paragraph1": "Datos que nos proporcionas de forma consciente al utilizar nuestros servicios, como formularios de contacto o registros."
+    },
+    "infoRec2": {
+      "bold": "Información recopilada automáticamente:",
+      "paragraph1": "Datos que se envían automáticamente desde tus dispositivos cuando accedes a nuestras plataformas, como dirección IP, tipo de navegador, y datos de uso."
+    },
+    "finality": {
+      "title": "Finalidad de la Información",
+      "paragraph1": "Usamos la información para:",
+      "paragraph2": "Mejorar nuestros servicios.",
+      "paragraph3": "Comunicarnos contigo en respuesta a consultas.",
+      "paragraph4": "Proteger la seguridad de nuestras plataformas."
+    },
+    "protection": {
+      "title": "Protección de Datos",
+      "paragraph1": "Implementamos medidas técnicas y organizativas para proteger tu información contra accesos no autorizados, pérdida o divulgación."
+    },
+    "rights": {
+      "title": "Derechos del Usuario",
+      "paragraph1": "Tienes derecho a:",
+      "paragraph2": "Acceder, corregir o eliminar tus datos personales.",
+      "paragraph3": "Revocar el consentimiento para el uso de tus datos.",
+      "paragraph4": "Presentar quejas ante autoridades de protección de datos."
+    },
+    "contact": {
+      "title": "Contacto",
+      "paragraph1": "Si tienes preguntas o deseas ejercer tus derechos, puedes contactarnos en:",
+      "email": "Correo electrónico:",
+      "phone": "Teléfono:"
+    }
+  },
+  "robotButton": {
+    "title": "Soy Solwy. ¡Chatea conmigo!"
+  },
+  "footer": {
+    "privacy": "Política de Privacidad",
+    "copyright": "© {{year}} Solware. Todos los derechos reservados."
+  }
+}

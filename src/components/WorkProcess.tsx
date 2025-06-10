@@ -1,88 +1,89 @@
 import React, { useState, useEffect, useRef } from 'react'
 import { Target, Route, Lightbulb, Cog, ClipboardList, X } from 'lucide-react'
 import BlurText from './effectsComponents/BlurText'
-
-const steps = [
-	{
-		number: '1',
-		title: 'Establecer metas claras',
-		icon: <Target className="h-6 w-6" />,
-		bgColor: 'bg-blue-100 dark:bg-blue-900/30',
-		iconColor: 'text-blue-600 dark:text-blue-400',
-		description: 'Definimos objetivos específicos, medibles y alcanzables para tu transformación digital.',
-		details: [
-			'Detección de oportunidades y puntos críticos',
-			'Diagnóstico completo de tu situación actual',
-			'Definición de KPIs clave para medir el éxito',
-			'Alineación con objetivos empresariales',
-			'Creación de un roadmap con plazos alcanzables',
-		],
-	},
-	{
-		number: '2',
-		title: 'Crear plan de acción',
-		wLimit: 'w-none lg:w-28',
-		icon: <Route className="h-6 w-6" />,
-		bgColor: 'bg-green-100 dark:bg-green-900/30',
-		iconColor: 'text-green-600 dark:text-green-400',
-		description: 'Desarrollamos una estrategia detallada con pasos concretos para alcanzar los objetivos.',
-		details: [
-			'Mapeo de procesos actuales',
-			'Diseño de flujos de trabajo optimizados',
-			'Establecimiento de hitos y checkpoints',
-			'Implementación de soluciones efectivas',
-			'Asignación de recursos y responsabilidades',
-		],
-	},
-	{
-		number: '3',
-		title: 'Desarrollar habilidades',
-		icon: <Lightbulb className="h-6 w-6" />,
-		bgColor: 'bg-yellow-100 dark:bg-yellow-900/30',
-		iconColor: 'text-yellow-600 dark:text-yellow-400',
-		description: 'Capacitamos a tu equipo en las nuevas tecnologías y metodologías.',
-		details: [
-			'Talleres inmersivos y prácticos',
-			'Programas personalizados para tu negocio',
-			'Soporte experto en tiempo real',
-			'Documentación y recursos de aprendizaje',
-			'Certificaciones y evaluación continua',
-		],
-	},
-	{
-		number: '4',
-		title: 'Implementar soluciones',
-		icon: <Cog className="h-6 w-6" />,
-		bgColor: 'bg-pink-100 dark:bg-pink-900/30',
-		iconColor: 'text-pink-600 dark:text-pink-400',
-		description: 'Ponemos en marcha las soluciones diseñadas de manera gradual y controlada.',
-		details: [
-			'Despliegue por fases estratégicas',
-			'Pruebas y validación en tiempo real',
-			'Optimización y mejora continua',
-			'Supervisión de rendimiento inteligente',
-			'Gestión del cambio organizacional',
-		],
-	},
-	{
-		number: '5',
-		title: 'Evaluar el progreso',
-		icon: <ClipboardList className="h-6 w-6" />,
-		wLimit: 'w-none lg:w-28',
-		bgColor: 'bg-purple-100 dark:bg-purple-900/30',
-		iconColor: 'text-purple-600 dark:text-purple-400',
-		description: 'Medimos y analizamos los resultados para garantizar el éxito del proceso.',
-		details: [
-			'Seguimiento detallado de KPIs clave',
-			'Análisis estratégico de feedback de usuarios',
-			'Detección proactiva de áreas críticas',
-			'Reportes dinámicos de progreso',
-			'Ajustes estratégicos basados en resultados',
-		],
-	},
-]
+import { useTranslation } from 'react-i18next'
 
 const WorkProcess: React.FC = () => {
+	const { t } = useTranslation()
+	const steps = [
+		{
+			number: '1',
+			title: t('workProcess.steps.1.title'),
+			icon: <Target className="h-6 w-6" />,
+			bgColor: 'bg-blue-100 dark:bg-blue-900/30',
+			iconColor: 'text-blue-600 dark:text-blue-400',
+			description: t('workProcess.steps.1.description'),
+			details: [
+				t('workProcess.steps.1.details.0'),
+				t('workProcess.steps.1.details.1'),
+				t('workProcess.steps.1.details.2'),
+				t('workProcess.steps.1.details.3'),
+				t('workProcess.steps.1.details.4'),
+			],
+		},
+		{
+			number: '2',
+			title: t('workProcess.steps.2.title'),
+			wLimit: 'w-none lg:w-28',
+			icon: <Route className="h-6 w-6" />,
+			bgColor: 'bg-green-100 dark:bg-green-900/30',
+			iconColor: 'text-green-600 dark:text-green-400',
+			description: t('workProcess.steps.2.description'),
+			details: [
+				t('workProcess.steps.2.details.0'),
+				t('workProcess.steps.2.details.1'),
+				t('workProcess.steps.2.details.2'),
+				t('workProcess.steps.2.details.3'),
+				t('workProcess.steps.2.details.4'),
+			],
+		},
+		{
+			number: '3',
+			title: t('workProcess.steps.3.title'),
+			icon: <Lightbulb className="h-6 w-6" />,
+			bgColor: 'bg-yellow-100 dark:bg-yellow-900/30',
+			iconColor: 'text-yellow-600 dark:text-yellow-400',
+			description: t('workProcess.steps.3.description'),
+			details: [
+				t('workProcess.steps.3.details.0'),
+				t('workProcess.steps.3.details.1'),
+				t('workProcess.steps.3.details.2'),
+				t('workProcess.steps.3.details.3'),
+				t('workProcess.steps.3.details.4'),
+			],
+		},
+		{
+			number: '4',
+			title: t('workProcess.steps.4.title'),
+			icon: <Cog className="h-6 w-6" />,
+			bgColor: 'bg-pink-100 dark:bg-pink-900/30',
+			iconColor: 'text-pink-600 dark:text-pink-400',
+			description: t('workProcess.steps.4.description'),
+			details: [
+				t('workProcess.steps.4.details.0'),
+				t('workProcess.steps.4.details.1'),
+				t('workProcess.steps.4.details.2'),
+				t('workProcess.steps.4.details.3'),
+				t('workProcess.steps.4.details.4'),
+			],
+		},
+		{
+			number: '5',
+			title: t('workProcess.steps.5.title'),
+			icon: <ClipboardList className="h-6 w-6" />,
+			wLimit: 'w-none lg:w-28',
+			bgColor: 'bg-purple-100 dark:bg-purple-900/30',
+			iconColor: 'text-purple-600 dark:text-purple-400',
+			description: t('workProcess.steps.5.description'),
+			details: [
+				t('workProcess.steps.5.details.0'),
+				t('workProcess.steps.5.details.1'),
+				t('workProcess.steps.5.details.2'),
+				t('workProcess.steps.5.details.3'),
+				t('workProcess.steps.5.details.4'),
+			],
+		},
+	]
 	const [selectedStep, setSelectedStep] = useState<number | null>(null)
 	const [isVisible, setIsVisible] = useState(false)
 	const [key, setKey] = useState(0)
@@ -151,14 +152,14 @@ const WorkProcess: React.FC = () => {
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="text-center max-w-3xl mx-auto mb-16 relative">
 					<BlurText
-						text="El camino para alcanzar tus metas profesionales"
+						text={t('workProcess.title')}
 						delay={150}
 						animateBy="words"
 						direction="top"
 						className="text-4xl font-bold text-gray-900 dark:text-white mb-4"
 					/>
 					<BlurText
-						text="Un proceso estructurado para garantizar el éxito de tu transformación digital"
+						text={t('workProcess.subtitle')}
 						delay={200}
 						animateBy="words"
 						direction="bottom"

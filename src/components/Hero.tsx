@@ -3,8 +3,10 @@ import { ArrowRight, Zap, Shield, Clock, Play } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Particles from './Particles'
 import DecryptedText from './effectsComponents/DecryptedText'
+import { useTranslation } from 'react-i18next'
 
 export default function Hero() {
+	const { t, i18n } = useTranslation()
 	const [isPreloadFinished, setIsPreloadFinished] = useState(false)
 
 	useEffect(() => {
@@ -38,16 +40,9 @@ export default function Hero() {
 			<div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-32">
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 					<div className="text-center lg:text-left">
-						{/* <h1
-							className="text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white dark:text-blue-100 
-              mb-4 sm:mb-6 animate-fade-in leading-tight sm:leading-tight
-              [text-shadow:_0_2px_10px_rgba(0,0,0,0.2)] dark:[text-shadow:_0_0_20px_rgba(147,197,253,0.5)]"
-						>
-							Transformación Digital para tu Empresa
-						</h1> */}
-
 						<DecryptedText
-							text="Transformación Digital para tu Empresa"
+							key={`hero-title-${i18n.language}`} // Fuerza re-render cuando cambia el idioma
+							text={t('hero.title')}
 							speed={70}
 							className="revealed text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white dark:text-blue-100 
               mb-4 sm:mb-6 animate-fade-in leading-tight sm:leading-tight"
@@ -61,8 +56,7 @@ export default function Hero() {
               [text-shadow:_0_1px_5px_rgba(0,0,0,0.1)] dark:[text-shadow:_0_0_15px_rgba(147,197,253,0.3)]
               max-w-2xl mx-auto lg:mx-0"
 						>
-							Automatizamos tus procesos empresariales y potenciamos tu negocio con soluciones tecnológicas innovadoras
-							y personalizadas.
+							{t('hero.subtitle')}
 						</p>
 
 						<div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-delay-2">
@@ -72,7 +66,7 @@ export default function Hero() {
                   hover:bg-blue-50 transition-colors duration-300 shadow-lg hover:shadow-xl
                   transform hover:-translate-y-0.5 active:translate-y-0"
 							>
-								Consulta Gratis
+								{t('header.consulta')}
 							</button>
 
 							<Link
@@ -82,7 +76,7 @@ export default function Hero() {
                   transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center"
 							>
 								<Play className="h-5 w-5 mr-2" />
-								Ver demostración
+								{t('hero.demo')}
 							</Link>
 						</div>
 					</div>
@@ -98,33 +92,33 @@ export default function Hero() {
 								{[
 									{
 										icon: <Zap className="h-6 w-6 sm:h-8 sm:w-8" />,
-										title: 'Automatización',
+										title: t('hero.automation'),
 										value: '+60%',
-										label: 'más eficiencia',
+										label: t('hero.efficiency'),
 										hoverColor: 'group-hover:text-yellow-400 dark:group-hover:text-yellow-300',
 										glowColor: 'dark:group-hover:shadow-[0_0_15px_rgba(250,204,21,0.5)]',
 									},
 									{
 										icon: <Shield className="h-6 w-6 sm:h-8 sm:w-8" />,
-										title: 'Seguridad',
+										title: t('hero.security'),
 										value: '99.9%',
-										label: 'tiempo activo',
+										label: t('hero.activeTime'),
 										hoverColor: 'group-hover:text-green-400 dark:group-hover:text-green-300',
 										glowColor: 'dark:group-hover:shadow-[0_0_15px_rgba(74,222,128,0.5)]',
 									},
 									{
 										icon: <Clock className="h-6 w-6 sm:h-8 sm:w-8" />,
-										title: 'Ahorro',
+										title: t('hero.savings'),
 										value: '-40%',
-										label: 'en costos',
+										label: t('hero.costs'),
 										hoverColor: 'group-hover:text-orange-400 dark:group-hover:text-orange-300',
 										glowColor: 'dark:group-hover:shadow-[0_0_15px_rgba(251,146,60,0.5)]',
 									},
 									{
 										icon: <ArrowRight className="h-6 w-6 sm:h-8 sm:w-8" />,
-										title: 'Escalabilidad',
+										title: t('hero.scalability'),
 										value: '∞',
-										label: 'sin límites',
+										label: t('hero.limits'),
 										hoverColor: 'group-hover:text-blue-400 dark:group-hover:text-blue-300',
 										glowColor: 'dark:group-hover:shadow-[0_0_15px_rgba(96,165,250,0.5)]',
 									},

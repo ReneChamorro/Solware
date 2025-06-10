@@ -1,8 +1,10 @@
 import { ChevronLeft } from 'lucide-react'
 import { useNavigate } from 'react-router-dom'
 import { useScrollReveal } from '../hooks/useScrollReveal'
+import { useTranslation } from 'react-i18next'
 
 const Demonstration = () => {
+	const { t } = useTranslation()
 	const navigate = useNavigate()
 	const titleRef = useScrollReveal({ variant: 'fade-up', delay: 100 }) as React.RefObject<HTMLHeadingElement>
 	const descriptionRef = useScrollReveal({ variant: 'fade-up', delay: 200 }) as React.RefObject<HTMLParagraphElement>
@@ -18,7 +20,7 @@ const Demonstration = () => {
             hover:text-blue-600 dark:hover:text-blue-400 transition-colors group"
 				>
 					<ChevronLeft className="h-5 w-5 mr-2 transform group-hover:-translate-x-1 transition-transform" />
-					Volver al inicio
+					{t('demonstration.button')}
 				</button>
 
 				{/* Title Section */}
@@ -27,11 +29,11 @@ const Demonstration = () => {
 						ref={titleRef}
 						className="text-4xl font-bold text-gray-900 dark:text-white mb-4 relative transition-colors duration-300"
 					>
-						Descubre el Poder de la Automatización
+						{t('demonstration.title')}
 						<span className="absolute -bottom-2 left-1/2 transform -translate-x-1/2 w-20 h-1 bg-blue-600 dark:bg-blue-500 rounded-full"></span>
 					</h1>
 					<p ref={descriptionRef} className="text-xl text-gray-600 dark:text-gray-300 transition-colors duration-300">
-						Mira cómo transformamos procesos manuales en flujos de trabajo eficientes y automatizados
+						{t('demonstration.description')}
 					</p>
 				</div>
 
@@ -55,21 +57,19 @@ const Demonstration = () => {
 					{/* Video Description */}
 					<div className="p-6 sm:p-8">
 						<h2 className="text-2xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">
-							Proceso de Automatización
+							{t('demonstration.video.title')}
 						</h2>
 						<p className="text-gray-600 dark:text-gray-300 mb-6 transition-colors duration-300">
-							En este video, te mostramos paso a paso cómo implementamos soluciones de automatización que transforman la
-							manera en que las empresas operan. Desde la identificación de procesos manuales hasta la implementación de
-							flujos de trabajo automatizados.
+							{t('demonstration.video.description')}
 						</p>
 
 						{/* Key Points */}
 						<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
 							{[
-								'Identificación de procesos manuales',
-								'Diseño de flujos automatizados',
-								'Implementación y pruebas',
-								'Monitoreo y optimización continua',
+								t('demonstration.video.points.0'),
+								t('demonstration.video.points.1'),
+								t('demonstration.video.points.2'),
+								t('demonstration.video.points.3'),
 							].map((point, index) => (
 								<div key={index} className="flex items-center space-x-2 text-gray-600 dark:text-gray-300">
 									<div className="h-2 w-2 rounded-full bg-blue-600 dark:bg-blue-500" />

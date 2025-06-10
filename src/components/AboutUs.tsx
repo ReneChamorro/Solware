@@ -1,7 +1,11 @@
 import { Users, Rocket, Heart } from 'lucide-react'
 import BlurText from './effectsComponents/BlurText'
+import { useTranslation } from 'react-i18next'
+
 
 const AboutUs = () => {
+	const { t } = useTranslation()
+
 	return (
 		<section
 			id="quienes-somos"
@@ -10,14 +14,14 @@ const AboutUs = () => {
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="text-center mb-16">
 					<BlurText
-						text="¿Quiénes Somos?"
+						text={t('about.title')}
 						delay={150}
 						animateBy="words"
 						direction="top"
 						className="text-3xl md:text-4xl font-bold text-gray-900 dark:text-white mb-4"
 					/>
 					<BlurText
-						text="Somos un emprendimiento latinoamericano comprometido con la transformación digital de las empresas latinoamericanas."
+						text={t('about.subtitle')}
 						delay={200}
 						animateBy="words"
 						direction="bottom"
@@ -27,12 +31,8 @@ const AboutUs = () => {
 
 				<div className="grid md:grid-cols-2 gap-12 items-center">
 					<div className="space-y-6">
-						<h3 className="text-2xl font-bold text-gray-900 dark:text-white">Nuestra Historia</h3>
-						<p className="text-gray-600 dark:text-gray-300 text-justify">
-							Nacimos de la visión de un grupo de profesionales que identificaron la necesidad de las empresas por
-							adaptarse al mundo digital. Entendemos los desafíos únicos que enfrentan los negocios en Latinoamérica y
-							trabajamos incansablemente para ofrecer soluciones que impulsen su crecimiento.
-						</p>
+						<h3 className="text-2xl font-bold text-gray-900 dark:text-white">{t('about.story.title')}</h3>
+						<p className="text-gray-600 dark:text-gray-300 text-justify">{t('about.story.text')}</p>
 
 						<div className="space-y-4">
 							<div className="flex items-start space-x-4">
@@ -40,10 +40,8 @@ const AboutUs = () => {
 									<Users className="h-6 w-6 text-blue-600 dark:text-blue-400" />
 								</div>
 								<div>
-									<h4 className="text-lg font-semibold text-gray-900 dark:text-white">Equipo Local, Impacto Global</h4>
-									<p className="text-gray-600 dark:text-gray-300">
-										Nuestro equipo combina el talento latinoamericano con una visión internacional.
-									</p>
+									<h4 className="text-lg font-semibold text-gray-900 dark:text-white">{t('about.points.local.title')}</h4>
+									<p className="text-gray-600 dark:text-gray-300">{t('about.points.local.text')}</p>
 								</div>
 							</div>
 
@@ -52,10 +50,8 @@ const AboutUs = () => {
 									<Rocket className="h-6 w-6 text-blue-600 dark:text-blue-400" />
 								</div>
 								<div>
-									<h4 className="text-lg font-semibold text-gray-900 dark:text-white">Innovación Constante</h4>
-									<p className="text-gray-600 dark:text-gray-300">
-										Nos mantenemos a la vanguardia de las últimas tecnologías para ofrecer soluciones innovadoras.
-									</p>
+									<h4 className="text-lg font-semibold text-gray-900 dark:text-white">{t('about.points.innovation.title')}</h4>
+									<p className="text-gray-600 dark:text-gray-300">{t('about.points.innovation.text')}</p>
 								</div>
 							</div>
 
@@ -64,11 +60,8 @@ const AboutUs = () => {
 									<Heart className="h-6 w-6 text-blue-600 dark:text-blue-400" />
 								</div>
 								<div>
-									<h4 className="text-lg font-semibold text-gray-900 dark:text-white">Compromiso con el Cliente</h4>
-									<p className="text-gray-600 dark:text-gray-300">
-										Tu éxito es nuestro éxito. Trabajamos en estrecha colaboración con cada cliente para garantizar
-										resultados excepcionales.
-									</p>
+									<h4 className="text-lg font-semibold text-gray-900 dark:text-white">{t('about.points.commitment.title')}</h4>
+									<p className="text-gray-600 dark:text-gray-300">{t('about.points.commitment.text')}</p>
 								</div>
 							</div>
 						</div>

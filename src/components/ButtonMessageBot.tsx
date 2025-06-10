@@ -1,10 +1,11 @@
 import { useEffect, useState } from 'react'
 import ChatBot from './ChatBot'
+import { useTranslation } from 'react-i18next'
 
 function ButtonMessageBot() {
 	const [showMessage, setShowMessage] = useState(true)
 	const [isChatBotOpen, setIsChatBotOpen] = useState(false)
-
+	const { t } = useTranslation()
 	useEffect(() => {
 		let showTimeout: NodeJS.Timeout
 		let interval: NodeJS.Timeout
@@ -31,7 +32,7 @@ function ButtonMessageBot() {
 						onClick={() => setIsChatBotOpen(true)}
 						className={`sticky bottom-96 flex items-center bg-blue-600/80 dark:bg-white/20 backdrop-blur-2xl px-4 py-2 rounded-full shadow-lg transition-all duration-300 font-semibold text-white animate-bounce opacity-100 scale-100`}
 					>
-						<span className="text-xs md:text-sm">Soy Solwy. ¡Chatea conmigo!</span>
+						<span className="text-xs md:text-sm">{t('robotButton.title')}</span>
 					</button>
 				)}
 				<ChatBot isOpen={isChatBotOpen} setIsOpen={setIsChatBotOpen} />

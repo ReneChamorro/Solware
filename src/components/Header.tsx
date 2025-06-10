@@ -2,22 +2,25 @@ import React, { useState, useEffect } from 'react'
 import { Menu, X, Code2, Moon, Sun } from 'lucide-react'
 import { useActiveSection } from '../hooks/useActiveSection'
 import { useDarkMode } from '../hooks/useDarkMode'
-
-const navItems = [
-	{ href: '#quienes-somos', label: 'Quiénes Somos' },
-	{ href: '#proceso', label: 'Workflow' },
-	{
-		label: 'Servicios',
-		items: [
-			{ href: '#servicios', label: 'Servicios' },
-			{ href: '#automatizacion', label: 'Automatización' },
-			{ href: '#pricing', label: 'Más vendidos' },
-		],
-	},
-	{ href: '#contacto', label: 'Contacto' },
-]
+import { useTranslation } from 'react-i18next'
+import LanguageDropdown from './LanguageDropdown'
 
 export default function Header() {
+	const { t } = useTranslation()
+	const navItems = [
+		{ href: '#quienes-somos', label: t('header.navItems.quienesSomos') },
+		{ href: '#proceso', label: t('header.navItems.workflow') },
+		{
+			label: t('header.navItems.servicios'),
+			items: [
+				{ href: '#servicios', label: t('header.navItems.servicios') },
+				{ href: '#automatizacion', label: t('header.navItems.automatizacion') },
+				{ href: '#pricing', label: t('header.navItems.masVendidos') },
+			],
+		},
+		{ href: '#contacto', label: t('header.navItems.contacto') },
+	]
+
 	const [isMenuOpen, setIsMenuOpen] = useState(false)
 	const [isScrolled, setIsScrolled] = useState(false)
 	const activeSection = useActiveSection()
@@ -84,7 +87,7 @@ export default function Header() {
 	const handleMouseLeave = () => {
 		const timeout = setTimeout(() => {
 			setOpenDropdown(false)
-		}, 200)
+		}, 300)
 		setCloseTimeout(timeout)
 	}
 
@@ -117,7 +120,6 @@ export default function Header() {
 								Solware
 							</span>
 						</a>
-
 						<nav className="hidden md:flex space-x-1 lg:space-x-8">
 							{navItems.map((item) =>
 								item.items ? (
@@ -209,7 +211,6 @@ export default function Header() {
 								),
 							)}
 						</nav>
-
 						<div className="hidden md:flex items-center space-x-4">
 							<button
 								onClick={toggleDarkMode}
@@ -236,11 +237,16 @@ export default function Header() {
 											: 'bg-white/10 text-white hover:bg-white/20'
 									}`}
 							>
-								Consulta Gratis
+								{t('header.consulta')}
 							</a>
+							<LanguageDropdown />
 						</div>
 
+						{/* Menu mobile */}
+
 						<div className="md:hidden flex gap-2 items-center">
+							<LanguageDropdown />
+
 							<button
 								className={`px-1 rounded-lg ${isScrolled ? 'text-gray-700 dark:text-white' : 'text-white'}`}
 								onClick={() => setIsMenuOpen(!isMenuOpen)}
@@ -371,12 +377,12 @@ export default function Header() {
 										{isDark ? (
 											<>
 												<Sun className="h-5 w-5" />
-												<span>Modo claro</span>
+												<span>{t('header.lightMode')}</span>
 											</>
 										) : (
 											<>
 												<Moon className="h-5 w-5" />
-												<span>Modo oscuro</span>
+												<span>{t('header.darkMode')}</span>
 											</>
 										)}
 									</button>
@@ -389,7 +395,7 @@ export default function Header() {
                     bg-blue-600 dark:bg-blue-500 text-white hover:bg-blue-700 dark:hover:bg-blue-600
                     transition-colors"
 								>
-									Consulta Gratis
+									{t('header.consulta')}
 								</a>
 							</div>
 						</div>
