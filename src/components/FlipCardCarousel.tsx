@@ -1,5 +1,5 @@
 import React, { useState } from 'react';
-import { ArrowLeft, ArrowRight, Bot, Zap, BarChart2, FileSpreadsheet, Clock } from 'lucide-react';
+import { ArrowLeft, ArrowRight, Bot, BarChart2, FileSpreadsheet, Clock } from 'lucide-react';
 
 interface Card {
   id: number;

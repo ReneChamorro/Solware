@@ -1,8 +1,10 @@
-import React, { memo } from 'react'
+import { memo } from 'react'
 import { Phone, Mail, Instagram, Shield, Linkedin } from 'lucide-react'
 import { Link } from 'react-router-dom'
+import { useTranslation } from 'react-i18next'
 
 const Footer = memo(() => {
+	const { t } = useTranslation()
 	return (
 		<footer className="bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700 py-6 transition-colors duration-300">
 			<div className="max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
@@ -15,12 +17,12 @@ const Footer = memo(() => {
                 dark:hover:bg-blue-900/30 rounded-lg"
 						>
 							<Shield className="h-5 w-5 mr-2" />
-							<span>Política de Privacidad</span>
+							<span>{t('footer.privacy')}</span>
 						</Link>
 					</div>
 
 					<div className="text-gray-600 dark:text-gray-300 text-sm transition-colors duration-300 w-2/4 text-center">
-						© {new Date().getFullYear()} Solware. Todos los derechos reservados.
+						{t('footer.copyright', { year: new Date().getFullYear() })}
 					</div>
 
 					<div className="flex items-center gap-4 justify-center">

@@ -1,8 +1,8 @@
 import { Settings, Code2, Check } from 'lucide-react'
 import React, { useMemo, useEffect, useState } from 'react'
 import RobotEyeTracking from './RoboTrakChat'
-import BlurText from './BlurText'
-
+import BlurText from './effectsComponents/BlurText'
+import { useTranslation } from 'react-i18next'
 const PricingParticles = React.memo(
 	({
 		lightColor = '#e5e7eb',
@@ -120,32 +120,33 @@ const PricingParticles = React.memo(
 )
 
 export default function Pricing() {
+	const { t } = useTranslation()
 	const pricingData = [
 		{
 			id: 1,
 			icon: <Settings className="size-20 text-white group-hover:rotate-90 transition-all duration-700 ease-in-out" />,
-			title: 'Automatización de Procesos',
-			advantage1: 'Flujos de Trabajo Automatizados.',
-			advantage2: 'Reportes Automatizados.',
-			advantage3: 'Diagnóstico Inteligente.',
+			title: t("pricing.details.0.title"),
+			advantage1: t("pricing.details.0.advantage1"),
+			advantage2: t("pricing.details.0.advantage2"),
+			advantage3: t("pricing.details.0.advantage3"),
 			color: '#3b82f6',
 		},
 		{
 			id: 2,
 			icon: <RobotEyeTracking className="size-32 text-white" />,
-			title: 'Agentes IA',
-			advantage1: 'Asistentes Virtuales.',
-			advantage2: 'Automatización Inteligente.',
-			advantage3: 'Soporte Multicanal Inteligente',
+			title: t("pricing.details.1.title"),
+			advantage1: t("pricing.details.1.advantage1"),
+			advantage2: t("pricing.details.1.advantage2"),
+			advantage3: t("pricing.details.1.advantage3"),
 			color: '',
 		},
 		{
 			id: 3,
 			icon: <Code2 className="size-20 text-white group-hover:rotate-180 transition-all duration-700 ease-in-out" />,
-			title: 'Desarrollo Web y Móvil',
-			advantage1: 'Diseño UX/UI Intuitivo.',
-			advantage2: 'Desarrollo Full-Stack.',
-			advantage3: 'Optimización SEO',
+			title: t("pricing.details.2.title"),
+			advantage1: t("pricing.details.2.advantage1"),
+			advantage2: t("pricing.details.2.advantage2"),
+			advantage3: t("pricing.details.2.advantage3"),
 			color: '#3b82f6',
 		},
 	]
@@ -154,14 +155,14 @@ export default function Pricing() {
 		<section id="pricing" className="py-20 bg-white dark:bg-gray-900">
 			<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 text-center">
 				<BlurText
-					text="Más vendidos"
+					text={t("pricing.title")}
 					delay={150}
 					animateBy="words"
 					direction="top"
 					className="text-3xl font-extrabold text-gray-900 dark:text-white mb-6 sm:text-2xl md:text-3xl lg:text-4xl"
 				/>
 				<BlurText
-					text="Explora nuestros servicios más vendidos y adaptados a tus necesidades."
+					text={t("pricing.description")}
 					delay={200}
 					animateBy="words"
 					direction="bottom"
@@ -201,7 +202,7 @@ export default function Pricing() {
 									</div>
 									<a href="#contacto">
 										<button className="mt-4 px-4 py-2 text-white rounded hover:opacity-90 bg-[#3b82f6] hover:scale-105 transition-all text-sm sm:text-base md:text-lg">
-											Cotizar
+											{t("pricing.button")}
 										</button>
 									</a>
 								</div>
