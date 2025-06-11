@@ -135,7 +135,7 @@ export default function Header() {
 												onClick={toggleDropdown}
 												className={`flex items-center w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm lg:text-base font-semibold shadow-xs transition-colors duration-300 ${
 													isScrolled
-														? activeSection === 'servicios' || activeSection === 'automatizacion'
+														? activeSection === 'servicios' || activeSection === 'automatizacion' || activeSection === 'pricing'
 															? 'text-blue-600 dark:text-blue-400'
 															: 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
 														: 'text-white hover:text-blue-200'
