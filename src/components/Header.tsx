@@ -228,8 +228,8 @@ export default function Header() {
 							</button>
 
 							<a
-								href="#contacto"
-								onClick={handleNavClick}
+								href="https://calendar.app.google/EYruMbWpJwJ82gHr6"
+								target="_blank"
 								className={`px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base 
                   transition-colors duration-300 whitespace-nowrap ${
 										isScrolled
@@ -389,8 +389,8 @@ export default function Header() {
 								</div>
 
 								<a
-									href="#contacto"
-									onClick={handleNavClick}
+									href="https://calendar.app.google/EYruMbWpJwJ82gHr6"
+									target="_blank"
 									className="block w-full px-4 py-3 rounded-lg text-lg font-medium text-center
                     bg-blue-600 dark:bg-blue-500 text-white hover:bg-blue-700 dark:hover:bg-blue-600
                     transition-colors"

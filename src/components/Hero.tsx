@@ -18,14 +18,6 @@ export default function Hero() {
 		return () => clearTimeout(preloadTimer)
 	}, [])
 
-	const scrollToContact = (e: React.MouseEvent<HTMLButtonElement>) => {
-		e.preventDefault()
-		const contactSection = document.getElementById('contacto')
-		if (contactSection) {
-			contactSection.scrollIntoView({ behavior: 'smooth' })
-		}
-	}
-
 	return (
 		<div className="relative min-h-[100svh] flex items-center" id="inicio">
 			{/* Background with gradient overlay and animated particles */}
@@ -60,14 +52,15 @@ export default function Hero() {
 						</p>
 
 						<div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-delay-2">
-							<button
-								onClick={scrollToContact}
+							<a
+								href="https://calendar.app.google/EYruMbWpJwJ82gHr6"
+								target="_blank"
 								className="px-8 py-4 bg-white text-blue-600 rounded-full font-semibold 
                   hover:bg-blue-50 transition-colors duration-300 shadow-lg hover:shadow-xl
                   transform hover:-translate-y-0.5 active:translate-y-0"
 							>
 								{t('header.consulta')}
-							</button>
+							</a>
 
 							<Link
 								to="/demo"
