@@ -173,7 +173,7 @@ export default function Pricing() {
 					{pricingData.map((plan) => (
 						<div
 							key={plan.id}
-							className="group transform hover:scale-105 drop-shadow-[0px_0px_3px_rgba(29,78,216,0.5)] hover:drop-shadow-[0px_0px_10px_rgba(29,78,216,0.5)] transition duration-300 border border-[rgb(29,78,216)] rounded-2xl cursor-pointer flex flex-col"
+							className="group group rounded-2xl border-2 relative flex flex-col justify-between h-full transition-all duration-300 hover:-translate-y-1 border-[#0099ff]/20 hover:border-[#0099ff]/70 hover:shadow-[0_0_30px_-5px_rgba(0,153,255,0.1)] cursor-pointer"
 						>
 							<div className="relative bg-gray-50 dark:bg-gray-700 p-16 text-center flex flex-col items-center justify-center rounded-t-2xl h-48 flex-shrink-0">
 								<div
@@ -183,7 +183,7 @@ export default function Pricing() {
 									{plan.icon}
 								</div>
 							</div>
-							<div className="bg-gray-100 dark:bg-gray-800 pb-12 pt-8 px-12 text-center rounded-b-2xl shadow-[inset_0_0px_20px_-10px_rgba(29,78,216,0.5),inset_0_-0px_20px_-10px_rgba(29,78,216,0.5)] group-hover:shadow-[inset_0_10px_20px_-8px_rgba(29,78,216,0.7),inset_0_-10px_20px_-8px_rgba(29,78,216,0.7)] transition-shadow duration-300 flex-1">
+							<div className="bg-gray-100 dark:bg-gray-800 pb-12 pt-8 px-12 text-center rounded-b-2xl shadow-[inset_0_0px_20px_-10px_rgba(29,78,216,0.5),inset_0_-0px_20px_-10px_rgba(0,153,255,0.2)] group-hover:shadow-[inset_0_10px_20px_-8px_rgba(0,153,255,0.3),inset_0_-10px_20px_-8px_rgba(0,153,255,0.3)] transition-shadow duration-300 flex-1">
 								<div className="z-10 flex flex-col">
 									<h3 className="text-xl font-bold text-gray-900 dark:text-white mb-4 text-center">{plan.title}</h3>
 									<div className="flex flex-col items-start">
