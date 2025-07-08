@@ -1,0 +1,32 @@
+User-agent: *
+Allow: /
+
+# Permitir acceso a recursos estáticos
+Allow: /assets/
+Allow: /src/
+Allow: *.css
+Allow: *.js
+Allow: *.png
+Allow: *.jpg
+Allow: *.jpeg
+Allow: *.gif
+Allow: *.svg
+Allow: *.ico
+Allow: *.webp
+
+# Bloquear archivos de desarrollo
+Disallow: /node_modules/
+Disallow: /.git/
+Disallow: /dist/
+Disallow: /build/
+Disallow: *.map
+Disallow: /package.json
+Disallow: /pnpm-lock.yaml
+Disallow: /tsconfig.json
+Disallow: /vite.config.ts
+
+# Sitemap
+Sitemap: https://www.solware.agency/sitemap.xml
+
+# Crawl delay
+Crawl-delay: 1 
