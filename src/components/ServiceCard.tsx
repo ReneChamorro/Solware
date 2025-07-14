@@ -58,14 +58,6 @@ const ServiceCard = memo(
 										className="w-full h-full object-cover transform group-hover:scale-105 transition-transform duration-300"
 									/>
 									<div className="absolute inset-0 bg-gradient-to-t from-black/60 to-transparent" />
-									<div className="absolute bottom-3 sm:bottom-4 left-3 sm:left-4">
-										<div className="bg-white/90 dark:bg-white/90 p-1.5 sm:p-2 rounded-lg backdrop-blur-sm">
-											{React.isValidElement(icon) &&
-												React.cloneElement(icon, {
-													className: 'h-4 w-4 sm:h-6 sm:w-6 text-blue-600',
-												})}
-										</div>
-									</div>
 								</div>
 
 								<div className="p-4 sm:p-6">

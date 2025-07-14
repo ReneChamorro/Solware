@@ -6,7 +6,7 @@ import { useTranslation } from 'react-i18next'
 const Footer = memo(() => {
 	const { t } = useTranslation()
 	return (
-		<footer className="bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700 py-6 transition-colors duration-300">
+		<footer className="bg-white dark:bg-gray-800 border-t border-gray-100 dark:border-gray-700 py-12 transition-colors duration-300">
 			<div className="max-w-3xl lg:max-w-5xl xl:max-w-6xl mx-auto px-4 sm:px-6 lg:px-8">
 				<div className="flex flex-col sm:flex-row items-center justify-between gap-5">
 					<div className="flex items-center">
