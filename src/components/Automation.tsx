@@ -8,45 +8,45 @@ const Automation = () => {
   const automations = [
     {
       id: 1,
+      title: t("automation.integracion.title"),
+      image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/integ%20de%20sist.webp",
+      description: t("automation.integracion.description"),
+      icon: <Database className="w-12 h-12 text-red-500" />
+    },
+    {
+      id: 2,
       title: t("automation.automatizacion.title"),
-      image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/automatizacion.webp",
+      image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/automat%20proce.webp",
       description: t("automation.automatizacion.description"),
       icon: <Zap className="w-12 h-12 text-blue-500" />
     },
     {
-      id: 2,
-      title: t("automation.analisis.title"),
-      image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/soporte.webp",
-      description: t("automation.analisis.description"),
-      icon: <BarChart2 className="w-12 h-12 text-green-500" />
-    },
-    {
       id: 3,
       title: t("automation.gestion.title"),
-      image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/crm.webp",
+      image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/gestion%20documental.webp",
       description: t("automation.gestion.description"),
       icon: <FileSpreadsheet className="w-12 h-12 text-purple-500" />
     },
     {
       id: 4,
-      title: t("automation.tareas.title"),  
-      image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/desarrollo.webp",
-      description: t("automation.tareas.description"),
-      icon: <Clock className="w-12 h-12 text-orange-500" />
+      title: t("automation.asistentes.title"),
+      image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/asistentes%20virt.webp",
+      description: t("automation.asistentes.description"),
+      icon: <Bot className="w-12 h-12 text-indigo-500" />
     },
     {
       id: 5,
-      title: t("automation.integracion.title"),
-      image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/digitalizacion%20(2).webp",
-      description: t("automation.integracion.description"),
-      icon: <Database className="w-12 h-12 text-red-500" />
+      title: t("automation.analisis.title"),
+      image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/analisis%20datos.webp",
+      description: t("automation.analisis.description"),
+      icon: <BarChart2 className="w-12 h-12 text-green-500" />
     },
     {
       id: 6,
-      title: t("automation.asistentes.title"),
-      image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/Agentes%20ia2.webp",
-      description: t("automation.asistentes.description"),
-      icon: <Bot className="w-12 h-12 text-indigo-500" />
+      title: t("automation.tareas.title"),
+      image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/prog%20tareas.webp",
+      description: t("automation.tareas.description"),
+      icon: <Clock className="w-12 h-12 text-orange-500" />
     }
   ];
   return (
