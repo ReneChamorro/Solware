@@ -10,7 +10,7 @@ const WorkProcess: React.FC = () => {
 			number: '1',
 			title: t('workProcess.steps.1.title'),
 			icon: <Target className="h-6 w-6" />,
-			bgColor: 'bg-blue-100 dark:bg-blue-900/30',
+			bgColor: 'bg-blue-500/20 dark:bg-blue-400/20 backdrop-blur-sm border border-blue-200/30 dark:border-blue-600/30',
 			iconColor: 'text-blue-600 dark:text-blue-400',
 			description: t('workProcess.steps.1.description'),
 			details: [
@@ -26,7 +26,7 @@ const WorkProcess: React.FC = () => {
 			title: t('workProcess.steps.2.title'),
 			wLimit: 'w-none lg:w-28',
 			icon: <Route className="h-6 w-6" />,
-			bgColor: 'bg-green-100 dark:bg-green-900/30',
+			bgColor: 'bg-green-500/20 dark:bg-green-400/20 backdrop-blur-sm border border-green-200/30 dark:border-green-600/30',
 			iconColor: 'text-green-600 dark:text-green-400',
 			description: t('workProcess.steps.2.description'),
 			details: [
@@ -41,7 +41,7 @@ const WorkProcess: React.FC = () => {
 			number: '3',
 			title: t('workProcess.steps.3.title'),
 			icon: <Lightbulb className="h-6 w-6" />,
-			bgColor: 'bg-yellow-100 dark:bg-yellow-900/30',
+			bgColor: 'bg-yellow-500/20 dark:bg-yellow-400/20 backdrop-blur-sm border border-yellow-200/30 dark:border-yellow-600/30',
 			iconColor: 'text-yellow-600 dark:text-yellow-400',
 			description: t('workProcess.steps.3.description'),
 			details: [
@@ -56,7 +56,7 @@ const WorkProcess: React.FC = () => {
 			number: '4',
 			title: t('workProcess.steps.4.title'),
 			icon: <Cog className="h-6 w-6" />,
-			bgColor: 'bg-pink-100 dark:bg-pink-900/30',
+			bgColor: 'bg-pink-500/20 dark:bg-pink-400/20 backdrop-blur-sm border border-pink-200/30 dark:border-pink-600/30',
 			iconColor: 'text-pink-600 dark:text-pink-400',
 			description: t('workProcess.steps.4.description'),
 			details: [
@@ -72,7 +72,7 @@ const WorkProcess: React.FC = () => {
 			title: t('workProcess.steps.5.title'),
 			icon: <ClipboardList className="h-6 w-6" />,
 			wLimit: 'w-none lg:w-28',
-			bgColor: 'bg-purple-100 dark:bg-purple-900/30',
+			bgColor: 'bg-purple-500/20 dark:bg-purple-400/20 backdrop-blur-sm border border-purple-200/30 dark:border-purple-600/30',
 			iconColor: 'text-purple-600 dark:text-purple-400',
 			description: t('workProcess.steps.5.description'),
 			details: [
@@ -385,8 +385,8 @@ const WorkProcess: React.FC = () => {
 								<button
 									onClick={() => handleStepClick(index)}
 									className={`relative w-16 h-16 rounded-full ${step.bgColor} flex items-center justify-center mb-8 
-                    transform transition-all duration-300 hover:scale-110 cursor-pointer
-                    border-2 border-white dark:border-gray-800 shadow-md group z-20
+                    transform transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30 hover:brightness-110 cursor-pointer
+                    shadow-md group z-20
                     ${selectedStep === index ? 'ring-4 ring-blue-500 ring-opacity-50' : ''}
                     ${isVisible ? 'animate-pulse' : ''}`}
 									style={{
@@ -407,8 +407,7 @@ const WorkProcess: React.FC = () => {
 								{/* Icon */}
 								<div
 									className={`w-12 h-12 rounded-full ${step.bgColor} flex items-center justify-center mb-6 
-                    transform transition-all duration-300 hover:rotate-12 hover:scale-110 hover:shadow-md
-                    border border-white/50 dark:border-gray-700/50
+                    transform transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30 hover:brightness-110
                     ${isVisible ? 'animate-icon-pulse' : ''}`}
 									style={{
 										animationDelay: `${index * 0.3 + 0.1}s`,
@@ -422,9 +421,9 @@ const WorkProcess: React.FC = () => {
 
 								{/* Title */}
 								<div
-									className={`bg-blue-600 dark:bg-blue-600 rounded-xl p-3 shadow-lg transform hover:scale-105 
-                    transition-all duration-300 hover:shadow-xl max-w-[200px] cursor-pointer
-                    border border-blue-500 dark:border-blue-700
+									className={`bg-blue-500/30 dark:bg-blue-400/30 backdrop-blur-md rounded-xl p-3 shadow-lg transform 
+                    transition-all duration-300 hover:bg-blue-500/40 hover:dark:bg-blue-400/40 hover:shadow-xl hover:shadow-blue-500/20 max-w-[200px] cursor-pointer
+                    border border-blue-200/50 dark:border-blue-600/50 hover:border-blue-300/70 hover:dark:border-blue-500/70
                     ${isVisible ? 'animate-box-pulse' : ''}`}
 									style={{
 										animationDelay: `${index * 0.3 + 0.2}s`,
@@ -442,16 +441,16 @@ const WorkProcess: React.FC = () => {
 								{/* Modal con detalles */}
 								{selectedStep === index && (
 									<div
-										className="fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50"
+										className="fixed inset-0 bg-black/40 backdrop-blur-sm flex items-center justify-center p-4 z-50"
 										onClick={(e) => {
 											if (e.target === e.currentTarget) setSelectedStep(null)
 										}}
 										ref={(el) => (stepRefs.current[index] = el)}
 									>
 										<div
-											className="bg-blue-600 dark:bg-blue-600 rounded-2xl p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto
+											className="bg-blue-500/40 dark:bg-blue-400/40 backdrop-blur-xl rounded-2xl p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto
                       shadow-2xl transform transition-all duration-300 animate-fade-in
-                      border border-blue-500 dark:border-blue-700"
+                      border border-blue-200/60 dark:border-blue-600/60"
 										>
 											<div className="flex justify-between items-start mb-4">
 												<div className="flex items-center">
@@ -466,7 +465,7 @@ const WorkProcess: React.FC = () => {
 												</div>
 												<button
 													onClick={() => setSelectedStep(null)}
-													className="p-1 hover:bg-blue-700 rounded-full transition-colors"
+													className="p-1 hover:bg-white/20 dark:hover:bg-black/20 rounded-full transition-colors backdrop-blur-sm"
 												>
 													<X className="h-6 w-6 text-white" />
 												</button>
@@ -476,7 +475,7 @@ const WorkProcess: React.FC = () => {
 
 											<div className="space-y-4">
 												{step.details.map((detail, detailIndex) => (
-													<div key={detailIndex} className="flex items-start space-x-3 p-3 bg-blue-700/50 rounded-lg">
+													<div key={detailIndex} className="flex items-start space-x-3 p-3 bg-white/10 dark:bg-black/20 backdrop-blur-sm rounded-lg border border-white/20 dark:border-gray-600/30">
 														<div className="flex-shrink-0 w-1.5 h-1.5 mt-2 rounded-full bg-white"></div>
 														<p className="text-white">{detail}</p>
 													</div>
