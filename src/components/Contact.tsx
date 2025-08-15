@@ -8,7 +8,6 @@ interface FormData {
 	name: string
 	email: string
 	phone: string
-	company: string
 	sector: string
 	message: string
 	areas: string[]
@@ -53,7 +52,6 @@ const Contact: React.FC = () => {
 		name: '',
 		email: '',
 		phone: '',
-		company: '',
 		sector: '',
 		message: '',
 		areas: [],
@@ -92,7 +90,6 @@ const Contact: React.FC = () => {
 						name: formData.name,
 						email: formData.email,
 						phone: formData.phone,
-						company: formData.company,
 						sector: formData.sector,
 						areas: formData.areas.map((id) => areasDeInteres.find((area) => area.id === id)?.label || id),
 						message: formData.message,
@@ -109,7 +106,6 @@ const Contact: React.FC = () => {
 					name: '',
 					email: '',
 					phone: '',
-					company: '',
 					sector: '',
 					message: '',
 					areas: [],
@@ -159,9 +155,6 @@ const Contact: React.FC = () => {
 							<h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">
 								{t('contact.form.title')}
 							</h3>
-							<p className="text-gray-600 dark:text-gray-300 transition-colors duration-300">
-								{t('contact.form.description')}
-							</p>
 						</div>
 
 						<form ref={formRef} onSubmit={handleSubmit} className="space-y-6">
@@ -224,24 +217,7 @@ const Contact: React.FC = () => {
 								/>
 							</div>
 
-							<div>
-								<label htmlFor="company" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-									{t('contact.form.company.title')}
-								</label>
-								<input
-									type="text"
-									id="company"
-									name="company"
-									value={formData.company}
-									onChange={handleChange}
-									placeholder={t('contact.form.company.placeholder')}
-									className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-600 
-                    bg-gray-50 dark:bg-gray-700 px-3 py-2 text-gray-900 dark:text-white 
-                    shadow-sm focus:border-blue-500 dark:focus:border-blue-400 
-                    focus:ring-blue-500 dark:focus:ring-blue-400 
-                    focus:bg-white dark:focus:bg-gray-600 transition-colors duration-300"
-								/>
-							</div>
+
 
 							<div>
 								<label htmlFor="sector" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
