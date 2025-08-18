@@ -11,7 +11,7 @@ export default function Header() {
 		{ href: '#quienes-somos', label: t('header.navItems.quienesSomos') },
 		{ href: '#proceso', label: t('header.navItems.workflow') },
 		{
-			label: t('header.navItems.servicios'),
+			label: t('header.navItems.soluciones'),
 			items: [
 				{ href: '#servicios', label: t('header.navItems.servicios') },
 				{ href: '#automatizacion', label: t('header.navItems.automatizacion') },
