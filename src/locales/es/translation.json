@@ -18,24 +18,30 @@
     }
   },
   "hero": {
-    "title": "Transformación Digital para tu Negocio",
-    "subtitle": "Automatizamos los procesos de tu negocio y potenciamos tu empresa con soluciones tecnológicas innovadoras.",
-    "demo": "Demo",
+
+    "title": "Transformación Digital para tu Empresa",
+    "subtitle": "Automatizamos tus procesos empresariales y potenciamos tu negocio con el uso de Inteligencia Artificial, y con soluciones tecnológicas innovadoras.",
+    "demo": "Ver demostración",
+
     "automation": "Automatización",
     "efficiency": "más eficiencia",
-    "security": "Seguridad",
+    "security": "Hiperpersonalización",
     "activeTime": "tiempo activo",
-    "savings": "Ahorro",
-    "costs": "en costos",
+    "savings": "Inteligencia Artificial",
+    "costs": "Procesos inteligentes",
     "limits": "sin límites",
-    "scalability": "Escalabilidad"
+    "scalability": "Dashboards"
   },
   "about": {
-    "title": "Acerca de Solware",
-    "subtitle": "Somos una startup comprometida con la transformación digital de las empresas latinoamericanas.",
+
+    "title": "¿Quiénes Somos?",
+    "subtitle": "Somos un emprendimiento latinoamericano comprometido con la transformación de procesos digitales de empresas a nivel mundial.",
     "story": {
       "title": "Nuestra Historia",
-      "text": "Nacimos de la visión de un grupo de profesionales que identificó la necesidad de las empresas de adaptarse al mundo digital. Entendemos los desafíos únicos que enfrentan las empresas en América Latina y trabajamos incansablemente para ofrecer soluciones que impulsen el crecimiento."
+      "paragraph1": "Todo comenzó con un favor entre panas. Un amigo nos pidió ayuda con un Excel que se había convertido en un dolor de cabeza. Empezamos creando fórmulas, optimizando su formato y organizando datos para que fuera más fácil de manejar.",
+      "paragraph2": "Lo que parecía un pequeño arreglo se convirtió en algo mucho más grande: le hicimos una página web, comenzamos a automatizar procesos y a ahorrarle horas de trabajo. El resultado fue una web app que cambió la manera en que gestionaba su negocio.",
+      "paragraph3": "De ser solo dos personas curiosas y autodidactas, pasamos a formar un equipo de profesionales en distintas áreas. Nos enseñamos mutuamente, compartimos conocimientos y mantenemos viva esa esencia colaborativa que nos llevó a donde estamos hoy."
+
     },
     "points": {
       "local": {
@@ -60,55 +66,66 @@
         "title": "Establecer objetivos claros",
         "description": "Definimos metas específicas, medibles y alcanzables para tu transformación digital.",
         "details": {
-          "0": "Detección de oportunidades y puntos críticos",
-          "1": "Diagnóstico completo de tu situación actual",
-          "2": "Definición de KPIs clave para medir el éxito",
-          "3": "Alineación con objetivos empresariales",
-          "4": "Creación de una hoja de ruta con plazos alcanzables"
+
+          "0": "Detección de cuellos de botella y oportunidades.",
+          "1": "Diagnóstico completo de tu situación actual.",
+          "2": "KPIs + línea base para comparar mejoras.",
+          "3": "Alineación con objetivos y restricciones reales del negocio.",
+          "4": "Roadmap inicial con quick wins."
+
         }
       },
       "2": {
         "title": "Crear un plan de acción",
         "description": "Desarrollamos una estrategia detallada con pasos concretos para alcanzar los objetivos.",
         "details": {
-          "0": "Mapeo de procesos actuales",
-          "1": "Diseño de flujos de trabajo optimizados",
-          "2": "Implementación efectiva de soluciones",
-          "3": "Asignación de recursos y responsabilidades",
-          "4": "Establecimiento de hitos y puntos de control"
+
+          "0": "Mapeo de procesos actuales.",
+          "1": "Diseño de flujos automatizados.",
+          "2": "Hitos y checkpoints con fechas.",
+          "3": "Backlog priorizado por impacto/viabilidad.",
+          "4": "Asignación de responsables, plazos y stack."
+
+
         }
       },
       "3": {
         "title": "Desarrollar habilidades",
         "description": "Capacitamos a tu equipo en las últimas tecnologías y metodologías.",
         "details": {
-          "0": "Talleres inmersivos y prácticos",
-          "1": "Programas personalizados para tu negocio",
-          "2": "Soporte de expertos en tiempo real",
-          "3": "Documentación y recursos de aprendizaje",
-          "4": "Certificaciones y evaluación continua"
+
+          "0": "Talleres prácticos sobre tus procesos.",
+          "1": "Programas personalizados para tu negocio.",
+          "2": "Soporte experto en tiempo real.",
+          "3": "Guías paso a paso y micro‑videos.",
+          "4": "Acompañamiento durante la curva de adopción."
+
         }
       },
       "4": {
         "title": "Implementar soluciones",
         "description": "Ponemos en funcionamiento las soluciones diseñadas de manera gradual y controlada.",
         "details": {
-          "0": "Despliegue estratégico por fases",
-          "1": "Pruebas y validación en tiempo real",
-          "2": "Optimización y mejora continua",
-          "3": "Monitoreo inteligente del rendimiento",
-          "4": "Gestión del cambio organizacional"
+
+          "0": "Despliegue por fases estratégicas.",
+          "1": "Pruebas y validación en tiempo real.",
+          "2": "Integraciones con tu CRM, web y bases de datos.",
+          "3": "Monitoreo en tiempo real y alertas.",
+          "4": "Gestión del cambio organizacional."
+
         }
       },
       "5": {
         "title": "Evaluar el progreso",
         "description": "Medimos y analizamos los resultados para asegurar el éxito del proceso.",
         "details": {
-          "0": "Seguimiento detallado de KPIs clave",
-          "1": "Análisis estratégico de retroalimentación del usuario",
-          "2": "Detección proactiva de áreas críticas",
-          "3": "Reportes dinámicos de progreso",
-          "4": "Ajustes estratégicos basados en resultados"
+
+          "0": "Seguimiento detallado de KPIs clave.",
+          "1": "Análisis estratégico de feedback de usuarios.",
+          "2": "Detección proactiva de áreas críticas.",
+          "3": "Reportes dinámicos de progreso.",
+          "4": "Ajustes estratégicos basados en resultados."
+
         }
       }
     }
@@ -284,24 +301,28 @@
   "valuesMission": {
     "title": "Nuestros Valores y Misión",
     "description": "Impulsando tu transformación digital con propósito y excelencia",
-    "paragraph1": "En Solware, creemos en el poder de la tecnología para transformar empresas y mejorar vidas. Nuestra misión es empoderar a empresas de todas las industrias a través de soluciones innovadoras, accesibles y sostenibles adaptadas a sus necesidades específicas.",
-    "paragraph2": "Nos guiamos por valores como la confianza, colaboración y excelencia, asegurando que cada proyecto no solo cumpla sino que supere tus expectativas. Juntos, construimos un futuro digital donde la tecnología se convierte en el motor de tu éxito.",
+
+    "paragraph1": "En Solware transformamos negocios y mejoramos vidas usando tecnología como motor de cambio. Nuestra misión es impulsar empresas de cualquier industria con soluciones innovadoras, accesibles y sostenibles, adaptadas a cada necesidad.",
+    "paragraph2": "Creemos en la confianza, la colaboración y la excelencia.\nCada proyecto no solo debe cumplirse, sino superar expectativas.\nJuntos, construimos un futuro digital donde tu éxito es nuestro objetivo.",
+
     "values": {
       "innovation": {
         "title": "Innovación",
-        "description": "Buscamos constantemente nuevas formas de resolver desafíos tecnológicos"
+        "description": "Creamos y aplicamos nuevas ideas para resolver desafíos tecnológicos reales."
       },
       "commitment": {
         "title": "Compromiso",
-        "description": "Nos esforzamos por cumplir nuestras promesas y superar las expectativas de nuestros clientes"
+        "description": "Cumplimos lo que prometemos y superamos lo que esperas."
       },
       "adaptability": {
         "title": "Adaptabilidad",
-        "description": "Nos adaptamos rápidamente al cambio para entregar soluciones óptimas y personalizadas"
+
+        "description": "Nos ajustamos rápido a los cambios para darte soluciones efectivas y a medida."
+
       },
       "sustainability": {
         "title": "Sostenibilidad",
-        "description": "Creamos soluciones duraderas y responsables con el futuro"
+        "description": "Diseñamos soluciones responsables que perduran en el tiempo."
       }
     }
   },

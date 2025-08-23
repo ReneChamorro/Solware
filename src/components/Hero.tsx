@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ArrowRight, Zap, Shield, Clock, Play } from 'lucide-react'
+import { ArrowRight, Zap, Shield, Clock, Play, BarChart3, Bot, Paintbrush } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Particles from './Particles'
 import DecryptedText from './effectsComponents/DecryptedText'
@@ -35,9 +35,9 @@ export default function Hero() {
 						<DecryptedText
 							key={`hero-title-${i18n.language}`} // Fuerza re-render cuando cambia el idioma
 							text={t('hero.title')}
-							speed={70}
+							speed={50}
 							className="revealed text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white dark:text-blue-100 
-              mb-4 sm:mb-6 animate-fade-in leading-tight sm:leading-tight"
+              mb-12 sm:mb-15 lg:mb-24 animate-fade-in leading-tight sm:leading-tight"
 							animateOn={isPreloadFinished ? 'view' : 'hover'}
 							revealDirection="start"
 							sequential={true}
@@ -46,7 +46,7 @@ export default function Hero() {
 						<p
 							className="text-lg sm:text-xl text-white/90 dark:text-blue-200 mb-6 sm:mb-8 animate-fade-in-delay 
               [text-shadow:_0_1px_5px_rgba(0,0,0,0.1)] dark:[text-shadow:_0_0_15px_rgba(147,197,253,0.3)]
-              max-w-2xl mx-auto lg:mx-0"
+              max-w-2xl mx-auto lg:mx-0 pt-6 sm:pt-8 lg:pt-10"
 						>
 							{t('hero.subtitle')}
 						</p>
@@ -86,31 +86,27 @@ export default function Hero() {
 									{
 										icon: <Zap className="h-6 w-6 sm:h-8 sm:w-8" />,
 										title: t('hero.automation'),
-										value: '+60%',
 										label: t('hero.efficiency'),
 										hoverColor: 'group-hover:text-yellow-400 dark:group-hover:text-yellow-300',
 										glowColor: 'dark:group-hover:shadow-[0_0_15px_rgba(250,204,21,0.5)]',
 									},
 									{
-										icon: <Shield className="h-6 w-6 sm:h-8 sm:w-8" />,
+										icon: <Paintbrush className="h-6 w-6 sm:h-8 sm:w-8" />,
 										title: t('hero.security'),
-										value: '99.9%',
 										label: t('hero.activeTime'),
 										hoverColor: 'group-hover:text-green-400 dark:group-hover:text-green-300',
 										glowColor: 'dark:group-hover:shadow-[0_0_15px_rgba(74,222,128,0.5)]',
 									},
 									{
-										icon: <Clock className="h-6 w-6 sm:h-8 sm:w-8" />,
+										icon: <Bot className="h-6 w-6 sm:h-8 sm:w-8" />,
 										title: t('hero.savings'),
-										value: '-40%',
 										label: t('hero.costs'),
 										hoverColor: 'group-hover:text-orange-400 dark:group-hover:text-orange-300',
 										glowColor: 'dark:group-hover:shadow-[0_0_15px_rgba(251,146,60,0.5)]',
 									},
 									{
-										icon: <ArrowRight className="h-6 w-6 sm:h-8 sm:w-8" />,
+										icon: <BarChart3 className="h-6 w-6 sm:h-8 sm:w-8" />,
 										title: t('hero.scalability'),
-										value: '∞',
 										label: t('hero.limits'),
 										hoverColor: 'group-hover:text-blue-400 dark:group-hover:text-blue-300',
 										glowColor: 'dark:group-hover:shadow-[0_0_15px_rgba(96,165,250,0.5)]',
@@ -139,14 +135,8 @@ export default function Hero() {
 											{stat.title}
 										</h3>
 										<p
-											className="text-xl sm:text-2xl font-bold text-white dark:text-blue-200 mb-1 
-                      transition-transform duration-300 group-hover:scale-110"
-										>
-											{stat.value}
-										</p>
-										<p
-											className="text-xs sm:text-sm text-white/80 dark:text-blue-200/80 
-                      transition-colors duration-300 group-hover:text-white/90"
+											className="text-sm sm:text-base text-white/80 dark:text-blue-200/80 
+                      transition-colors duration-300 group-hover:text-white/90 font-medium"
 										>
 											{stat.label}
 										</p>

@@ -19,23 +19,25 @@
   },
   "hero": {
     "title": "Digital Transformation for Your Business",
-    "subtitle": "We automate your business processes and enhance your business with innovative technological solutions.",
+    "subtitle": "We automate your business processes and enhance your business with the use of Artificial Intelligence, and with innovative technological solutions.",
     "demo": "Demo",
     "automation": "Automation",
     "efficiency": "more efficiency",
-    "security": "Security",
+    "security": "Hyperpersonalization",
     "activeTime": "active time",
-    "savings": "Savings",
-    "costs": "in costs",
+    "savings": "Artificial Intelligence",
+    "costs": "Intelligent processes",
     "limits": "without limits",
-    "scalability": "Scalability"
+    "scalability": "Dashboards"
   },
   "about": {
     "title": "About Solware",
-    "subtitle": "We are a startup committed to the digital transformation of Latin American businesses.",
+    "subtitle": "We are a Latin American startup committed to transforming digital processes for companies worldwide.",
     "story": {
       "title": "Our Story",
-      "text": "We were born from the vision of a group of professionals who identified the need for companies to adapt to the digital world. We understand the unique challenges that businesses in Latin America face and work tirelessly to offer solutions that drive growth."
+      "paragraph1": "It all started with a favor between friends. A buddy asked us for help with an Excel spreadsheet that had become a real headache. We began creating formulas, optimizing its format, and organizing data to make it easier to manage.",
+      "paragraph2": "What seemed like a small fix turned into something much bigger: we built him a website, started automating processes, and saved him hours of work. The result was a web app that changed the way he managed his business.",
+      "paragraph3": "From being just two curious, self-taught people, we grew into a team of professionals from different areas. We teach each other, share knowledge, and keep alive that collaborative spirit that brought us to where we are today."
     },
     "points": {
       "local": {
@@ -60,55 +62,55 @@
         "title": "Set clear goals",
         "description": "We define specific, measurable, and achievable goals for your digital transformation.",
         "details": {
-          "0": "Opportunity and critical point detection",
-          "1": "Complete diagnosis of your current situation",
-          "2": "Definition of key KPIs to measure success",
-          "3": "Alignment with business objectives",
-          "4": "Creation of a roadmap with achievable deadlines"
+          "0": "Detection of bottlenecks and opportunities.",
+          "1": "Complete diagnosis of your current situation.",
+          "2": "KPIs + baseline to compare improvements.",
+          "3": "Alignment with business objectives and real constraints.",
+          "4": "Initial roadmap with quick wins."
         }
       },
       "2": {
         "title": "Create an action plan",
         "description": "We develop a detailed strategy with concrete steps to achieve the objectives.",
         "details": {
-          "0": "Current process mapping",
-          "1": "Design of optimized workflows",
-          "2": "Effective solution implementation",
-          "3": "Resource allocation and responsibilities",
-          "4": "Setting milestones and checkpoints"
+          "0": "Current process mapping.",
+          "1": "Design of automated workflows.",
+          "2": "Milestones and checkpoints with dates.",
+          "3": "Backlog prioritized by impact/feasibility.",
+          "4": "Assignment of owners, deadlines, and tech stack."
         }
       },
       "3": {
         "title": "Develop skills",
         "description": "We train your team in the latest technologies and methodologies.",
         "details": {
-          "0": "Immersive and practical workshops",
-          "1": "Custom programs for your business",
-          "2": "Expert support in real time",
-          "3": "Learning documentation and resources",
-          "4": "Certifications and continuous evaluation"
+          "0": "Immersive and practical workshops.",
+          "1": "Hands-on workshops on your processes.",
+          "2": "Expert support in real time.",
+          "3": "Step-by-step guides and micro-videos.",
+          "4": "Support during the adoption curve."
         }
       },
       "4": {
         "title": "Implement solutions",
         "description": "We put into operation the solutions designed gradually and controlled.",
         "details": {
-          "0": "Strategic deployment by phases",
-          "1": "Real-time testing and validation",
-          "2": "Continuous optimization and improvement",
-          "3": "Intelligent performance monitoring",
-          "4": "Organizational change management"
+          "0": "Strategic deployment by phases.",
+          "1": "Real-time testing and validation.",
+          "2": "Integrations with your CRM, website, and databases.",
+          "3": "Real-time monitoring and alerts.",
+          "4": "Organizational change management."
         }
       },
       "5": {
         "title": "Evaluate progress",
         "description": "We measure and analyze the results to ensure the success of the process.",
         "details": {
-          "0": "Detailed tracking of key KPIs",
-          "1": "Strategic analysis of user feedback",
-          "2": "Proactive detection of critical areas",
-          "3": "Dynamic progress reports",
-          "4": "Strategic adjustments based on results"
+          "0": "Detailed tracking of key KPIs.",
+          "1": "Strategic analysis of user feedback.",
+          "2": "Proactive detection of critical areas.",
+          "3": "Dynamic progress reports.",
+          "4": "Strategic adjustments based on results."
         }
       }
     }
@@ -284,24 +286,24 @@
   "valuesMission": {
     "title": "Our Values and Mission",
     "description": "Driving your digital transformation with purpose and excellence",
-    "paragraph1": "At Solware, we believe in the power of technology to transform businesses and improve lives. Our mission is to empower companies across all industries through innovative, accessible, and sustainable solutions tailored to their specific needs.",
-    "paragraph2": "We are guided by values such as trust, collaboration, and excellence, ensuring that every project not only meets but exceeds your expectations. Together, we build a digital future where technology becomes the engine of your success.",
+    "paragraph1": "At Solware, we transform businesses and improve lives using technology as an engine of change. Our mission is to drive companies from any industry with innovative, accessible, and sustainable solutions, tailored to each specific need.",
+    "paragraph2": "We believe in trust, collaboration, and excellence.\nEvery project should not only be completed, but exceed expectations.\nTogether, we build a digital future where your success is our goal.",
     "values": {
       "innovation": {
         "title": "Innovation",
-        "description": "We constantly seek new ways to solve technological challenges"
+        "description": "We create and apply new ideas to solve real technological challenges."
       },
       "commitment": {
         "title": "Commitment",
-        "description": "We strive to keep our promises and exceed our clients’ expectations"
+        "description": "We deliver what we promise and exceed what you expect."
       },
       "adaptability": {
         "title": "Adaptability",
-        "description": "We quickly adapt to change to deliver optimal, personalized solutions"
+        "description": "We quickly adjust to changes to provide you with effective, tailored solutions."
       },
       "sustainability": {
         "title": "Sustainability",
-        "description": "We create lasting and future-responsible solutions"
+        "description": "We design responsible solutions that endure over time."
       }
     }
   },

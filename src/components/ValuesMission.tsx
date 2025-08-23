@@ -67,7 +67,11 @@ const ValuesMission: React.FC = () => {
 					>
 						<div className="prose prose-lg dark:prose-invert max-w-none text-justify">
 							<p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">{t('valuesMission.paragraph1')}</p>
-							<p className="text-gray-700 dark:text-gray-300 leading-relaxed">{t('valuesMission.paragraph2')}</p>
+							<div className="text-gray-700 dark:text-gray-300 leading-relaxed">
+								{t('valuesMission.paragraph2').split('\n').map((line, index) => (
+									<p key={index} className="mb-2 last:mb-0">{line}</p>
+								))}
+							</div>
 						</div>
 					</div>
 

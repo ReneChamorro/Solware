@@ -30,10 +30,65 @@ const AboutUs = () => {
 				</div>
 
 				<div className="grid md:grid-cols-2 gap-12 items-center">
+					{/* Timeline/Comic Style Story */}
 					<div className="space-y-6">
 						<h3 className="text-2xl font-bold text-gray-900 dark:text-white">{t('about.story.title')}</h3>
-						<p className="text-gray-600 dark:text-gray-300 text-justify">{t('about.story.text')}</p>
+						
+						{/* Comic-style timeline */}
+						<div className="relative">
+							{/* Timeline line without pulse animation */}
+							<div className="absolute left-4 top-0 bottom-0 w-0.5 bg-gradient-to-b from-pink-600 via-purple-500 to-blue-500"></div>
+							
+							{/* Story panels */}
+							<div className="space-y-6">
+								{/* Panel 1 */}
+								<div className="relative pl-12">
+									<div 
+										className="absolute left-0 w-8 h-8 bg-pink-600 rounded-full flex items-center justify-center shadow-lg transform transition-transform duration-300 hover:scale-110 animate-bounce" 
+										style={{ 
+											top: '8px',
+											animationDelay: '0s',
+											animationDuration: '2s'
+										}}>
+									</div>
+									<div className="bg-pink-100 dark:bg-pink-900/30 rounded-lg p-4 border-l-4 border-pink-600 transform transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:-translate-y-3 shadow-md" style={{ marginTop: '8px' }}>
+										<p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{t('about.story.paragraph1')}</p>
+									</div>
+								</div>
+								
+								{/* Panel 2 */}
+								<div className="relative pl-12">
+									<div 
+										className="absolute left-0 w-8 h-8 bg-purple-500 rounded-full flex items-center justify-center shadow-lg transform transition-transform duration-300 hover:scale-110 animate-bounce" 
+										style={{ 
+											top: '8px',
+											animationDelay: '0.7s',
+											animationDuration: '2s'
+										}}>
+									</div>
+									<div className="bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-lg p-4 border-l-4 border-purple-500 transform transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:-translate-y-3 shadow-md" style={{ marginTop: '8px' }}>
+										<p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{t('about.story.paragraph2')}</p>
+									</div>
+								</div>
+								
+								{/* Panel 3 */}
+								<div className="relative pl-12">
+									<div 
+										className="absolute left-0 w-8 h-8 bg-blue-500 rounded-full flex items-center justify-center shadow-lg transform transition-transform duration-300 hover:scale-110 animate-bounce" 
+										style={{ 
+											top: '8px',
+											animationDelay: '1.4s',
+											animationDuration: '2s'
+										}}>
+									</div>
+									<div className="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg p-4 border-l-4 border-blue-500 transform transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:-translate-y-3 shadow-md" style={{ marginTop: '8px' }}>
+										<p className="text-gray-700 dark:text-gray-300 text-sm leading-relaxed">{t('about.story.paragraph3')}</p>
+									</div>
+								</div>
+							</div>
+						</div>
 
+						{/* Points section */}
 						<div className="space-y-4">
 							<div className="flex items-start space-x-4">
 								<div className="flex-shrink-0">

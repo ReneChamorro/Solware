@@ -10,8 +10,10 @@ const WorkProcess: React.FC = () => {
 			number: '1',
 			title: t('workProcess.steps.1.title'),
 			icon: <Target className="h-6 w-6" />,
-			bgColor: 'bg-blue-500/20 dark:bg-blue-400/20 backdrop-blur-sm border border-blue-200/30 dark:border-blue-600/30',
-			iconColor: 'text-blue-600 dark:text-blue-400',
+
+			bgColor: 'bg-blue-500 dark:bg-blue-900/30',
+			iconColor: 'text-white dark:text-blue-400',
+
 			description: t('workProcess.steps.1.description'),
 			details: [
 				t('workProcess.steps.1.details.0'),
@@ -26,8 +28,10 @@ const WorkProcess: React.FC = () => {
 			title: t('workProcess.steps.2.title'),
 			wLimit: 'w-none lg:w-28',
 			icon: <Route className="h-6 w-6" />,
-			bgColor: 'bg-green-500/20 dark:bg-green-400/20 backdrop-blur-sm border border-green-200/30 dark:border-green-600/30',
-			iconColor: 'text-green-600 dark:text-green-400',
+
+			bgColor: 'bg-green-500 dark:bg-green-900/30',
+			iconColor: 'text-white dark:text-green-400',
+
 			description: t('workProcess.steps.2.description'),
 			details: [
 				t('workProcess.steps.2.details.0'),
@@ -41,8 +45,10 @@ const WorkProcess: React.FC = () => {
 			number: '3',
 			title: t('workProcess.steps.3.title'),
 			icon: <Lightbulb className="h-6 w-6" />,
-			bgColor: 'bg-yellow-500/20 dark:bg-yellow-400/20 backdrop-blur-sm border border-yellow-200/30 dark:border-yellow-600/30',
-			iconColor: 'text-yellow-600 dark:text-yellow-400',
+
+			bgColor: 'bg-yellow-500 dark:bg-yellow-900/30',
+			iconColor: 'text-white dark:text-yellow-400',
+
 			description: t('workProcess.steps.3.description'),
 			details: [
 				t('workProcess.steps.3.details.0'),
@@ -56,8 +62,10 @@ const WorkProcess: React.FC = () => {
 			number: '4',
 			title: t('workProcess.steps.4.title'),
 			icon: <Cog className="h-6 w-6" />,
-			bgColor: 'bg-pink-500/20 dark:bg-pink-400/20 backdrop-blur-sm border border-pink-200/30 dark:border-pink-600/30',
-			iconColor: 'text-pink-600 dark:text-pink-400',
+
+			bgColor: 'bg-pink-500 dark:bg-pink-900/30',
+			iconColor: 'text-white dark:text-pink-400',
+
 			description: t('workProcess.steps.4.description'),
 			details: [
 				t('workProcess.steps.4.details.0'),
@@ -72,8 +80,10 @@ const WorkProcess: React.FC = () => {
 			title: t('workProcess.steps.5.title'),
 			icon: <ClipboardList className="h-6 w-6" />,
 			wLimit: 'w-none lg:w-28',
-			bgColor: 'bg-purple-500/20 dark:bg-purple-400/20 backdrop-blur-sm border border-purple-200/30 dark:border-purple-600/30',
-			iconColor: 'text-purple-600 dark:text-purple-400',
+
+			bgColor: 'bg-purple-500 dark:bg-purple-900/30',
+			iconColor: 'text-white dark:text-purple-400',
+
 			description: t('workProcess.steps.5.description'),
 			details: [
 				t('workProcess.steps.5.details.0'),
