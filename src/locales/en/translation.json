@@ -3,14 +3,19 @@
     "navItems": {
       "quienesSomos": "About Us",
       "workflow": "Workflow",
-      "servicios": "Services",
+      "servicios": "Solutions",
+      "soluciones": "Services",
       "automatizacion": "Automation",
       "masVendidos": "Best Sellers",
       "contacto": "Contact"
     },
     "consulta": "Schedule your appointment",
     "darkMode": "Dark Mode",
-    "lightMode": "Light Mode"
+    "lightMode": "Light Mode",
+    "language": {
+      "es": "Spanish",
+      "en": "English"
+    }
   },
   "hero": {
     "title": "Digital Transformation for Your Business",
@@ -307,7 +312,6 @@
     "description": "We're ready to answer your questions and help you boost your business with innovative tech solutions",
     "form": {
       "title": "Contact Form",
-      "description": "Fill out the information so we can respond to your inquiry in a personalized way",
       "name": {
         "title": "Full Name",
         "placeholder": "Enter your full name"
@@ -320,10 +324,7 @@
         "title": "Phone",
         "placeholder": "Enter your phone number"
       },
-      "company": {
-        "title": "Company",
-        "placeholder": "Enter your company's name"
-      },
+
       "sector": {
         "title": "Sector",
         "options": {
@@ -465,7 +466,7 @@
       "initial": {
         "text": "Hi! I'm Solwy, Solware's virtual assistant. What would you like to learn more about?",
         "options": {
-          "servicios": "Services",
+          "servicios": "Solutions",
           "precios": "Prices",
           "proceso": "Work process",
           "contacto": "Contact"
