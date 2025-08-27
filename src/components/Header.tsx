@@ -248,6 +248,21 @@ export default function Header() {
 							<LanguageDropdown />
 
 							<button
+								onClick={toggleDarkMode}
+								className={`p-2 rounded-full transition-colors duration-300 
+                  focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 ${
+										isScrolled ? 'hover:bg-gray-100 dark:hover:bg-gray-800' : 'hover:bg-white/10'
+									}`}
+								aria-label={isDark ? 'Activar modo claro' : 'Activar modo oscuro'}
+							>
+								{isDark ? (
+									<Sun className={`h-5 w-5 ${isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'}`} />
+								) : (
+									<Moon className={`h-5 w-5 ${isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'}`} />
+								)}
+							</button>
+
+							<button
 								className={`px-1 rounded-lg ${isScrolled ? 'text-gray-700 dark:text-white' : 'text-white'}`}
 								onClick={() => setIsMenuOpen(!isMenuOpen)}
 								aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
@@ -368,23 +383,6 @@ export default function Header() {
 							</nav>
 
 							<div className="p-4 border-t border-gray-200 dark:border-gray-800">
-								<div className="flex items-center justify-between mb-4">
-									<button
-										onClick={toggleDarkMode}
-										className="p-2 rounded-full transition-colors duration-300 
-                      focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 
-                      hover:bg-gray-100 dark:hover:bg-gray-800 text-gray-700 dark:text-gray-300
-                      hover:text-blue-600 dark:hover:text-blue-400"
-										aria-label={isDark ? 'Activar modo claro' : 'Activar modo oscuro'}
-									>
-										{isDark ? (
-											<Sun className="h-5 w-5" />
-										) : (
-											<Moon className="h-5 w-5" />
-										)}
-									</button>
-								</div>
-
 								<a
 									href="https://calendar.app.google/EYruMbWpJwJ82gHr6"
 									target="_blank"
