@@ -13,6 +13,7 @@ const ValuesMission: React.FC = () => {
 			color: 'bg-amber-100 dark:bg-amber-900/30',
 			iconColor: 'text-amber-600 dark:text-amber-400',
 			hoverColor: 'group-hover:text-amber-500 dark:group-hover:text-amber-300',
+			cardHover: 'hover:shadow-amber-500/20 dark:hover:shadow-amber-500/20',
 		},
 		{
 			icon: <Users className="h-6 w-6" />,
@@ -21,6 +22,7 @@ const ValuesMission: React.FC = () => {
 			color: 'bg-blue-100 dark:bg-blue-900/30',
 			iconColor: 'text-blue-600 dark:text-blue-400',
 			hoverColor: 'group-hover:text-blue-500 dark:group-hover:text-blue-300',
+			cardHover: 'hover:shadow-blue-500/20 dark:hover:shadow-blue-500/20',
 		},
 		{
 			icon: <Target className="h-6 w-6" />,
@@ -29,6 +31,7 @@ const ValuesMission: React.FC = () => {
 			color: 'bg-purple-100 dark:bg-purple-900/30',
 			iconColor: 'text-purple-600 dark:text-purple-400',
 			hoverColor: 'group-hover:text-purple-500 dark:group-hover:text-purple-300',
+			cardHover: 'hover:shadow-purple-500/20 dark:hover:shadow-purple-500/20',
 		},
 		{
 			icon: <Leaf className="h-6 w-6" />,
@@ -37,6 +40,7 @@ const ValuesMission: React.FC = () => {
 			color: 'bg-green-100 dark:bg-green-900/30',
 			iconColor: 'text-green-600 dark:text-green-400',
 			hoverColor: 'group-hover:text-green-500 dark:group-hover:text-green-300',
+			cardHover: 'hover:shadow-green-500/20 dark:hover:shadow-green-500/20',
 		},
 	]
 
@@ -80,7 +84,7 @@ const ValuesMission: React.FC = () => {
 							<div
 								key={index}
 								className={`group bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 
-                  rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1`}
+                  rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${value.cardHover}`}
 							>
 								<div
 									className={`w-12 h-12 ${value.color} rounded-lg flex items-center justify-center 

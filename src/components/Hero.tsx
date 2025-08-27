@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ArrowRight, Zap, Shield, Clock, Play, BarChart3, Bot, Paintbrush } from 'lucide-react'
+import { Zap, Play, Bot, Paintbrush, LayoutDashboard } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Particles from './Particles'
 import DecryptedText from './effectsComponents/DecryptedText'
@@ -8,6 +8,7 @@ import { useTranslation } from 'react-i18next'
 export default function Hero() {
 	const { t, i18n } = useTranslation()
 	const [isPreloadFinished, setIsPreloadFinished] = useState(false)
+	const [animationKey, setAnimationKey] = useState(0)
 
 	useEffect(() => {
 		// Simulate preload animation ending
@@ -16,6 +17,15 @@ export default function Hero() {
 		}, 3000) // Adjust the time to match your preload animation duration
 
 		return () => clearTimeout(preloadTimer)
+	}, [])
+
+	useEffect(() => {
+		// Restart title animation every 15 seconds
+		const animationInterval = setInterval(() => {
+			setAnimationKey(prev => prev + 1)
+		}, 15000) // 15 seconds
+
+		return () => clearInterval(animationInterval)
 	}, [])
 
 	return (
@@ -33,7 +43,7 @@ export default function Hero() {
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 					<div className="text-center lg:text-left">
 						<DecryptedText
-							key={`hero-title-${i18n.language}`} // Fuerza re-render cuando cambia el idioma
+							key={`hero-title-${i18n.language}-${animationKey}`} // Fuerza re-render cuando cambia el idioma o la animación
 							text={t('hero.title')}
 							speed={50}
 							className="revealed text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white dark:text-blue-100 
@@ -78,8 +88,11 @@ export default function Hero() {
 						<div
 							className="bg-white/10 dark:bg-blue-900/20 backdrop-blur-lg rounded-2xl p-6 sm:p-8 
               shadow-2xl dark:shadow-blue-500/20 animate-fade-in-delay 
-              hover:shadow-[0_0_30px_rgba(255,255,255,0.2)] dark:hover:shadow-[0_0_40px_rgba(96,165,250,0.3)]
-              transition-all duration-500"
+              transition-all duration-500 
+              has-[.card-amber:hover]:!shadow-[0_0_40px_rgba(245,158,11,0.4)]
+              has-[.card-blue:hover]:!shadow-[0_0_40px_rgba(59,130,246,0.4)]
+              has-[.card-purple:hover]:!shadow-[0_0_40px_rgba(168,85,247,0.4)]
+              has-[.card-green:hover]:!shadow-[0_0_40px_rgba(34,197,94,0.4)]"
 						>
 							<div className="grid grid-cols-2 gap-4 sm:gap-6">
 								{[
@@ -87,37 +100,45 @@ export default function Hero() {
 										icon: <Zap className="h-6 w-6 sm:h-8 sm:w-8" />,
 										title: t('hero.automation'),
 										label: t('hero.efficiency'),
-										hoverColor: 'group-hover:text-yellow-400 dark:group-hover:text-yellow-300',
-										glowColor: 'dark:group-hover:shadow-[0_0_15px_rgba(250,204,21,0.5)]',
+										hoverColor: 'group-hover:text-amber-400 dark:group-hover:text-amber-300',
+										glowColor: 'dark:group-hover:shadow-[0_0_15px_rgba(245,158,11,0.5)]',
+										cardHover: 'hover:shadow-amber-500/20 dark:hover:shadow-amber-500/20',
+										cardClass: 'card-amber',
 									},
 									{
 										icon: <Paintbrush className="h-6 w-6 sm:h-8 sm:w-8" />,
 										title: t('hero.security'),
 										label: t('hero.activeTime'),
-										hoverColor: 'group-hover:text-green-400 dark:group-hover:text-green-300',
-										glowColor: 'dark:group-hover:shadow-[0_0_15px_rgba(74,222,128,0.5)]',
+										hoverColor: 'group-hover:text-blue-400 dark:group-hover:text-blue-300',
+										glowColor: 'dark:group-hover:shadow-[0_0_15px_rgba(59,130,246,0.5)]',
+										cardHover: 'hover:shadow-blue-500/20 dark:hover:shadow-blue-500/20',
+										cardClass: 'card-blue',
 									},
 									{
 										icon: <Bot className="h-6 w-6 sm:h-8 sm:w-8" />,
 										title: t('hero.savings'),
 										label: t('hero.costs'),
-										hoverColor: 'group-hover:text-orange-400 dark:group-hover:text-orange-300',
-										glowColor: 'dark:group-hover:shadow-[0_0_15px_rgba(251,146,60,0.5)]',
+										hoverColor: 'group-hover:text-purple-400 dark:group-hover:text-purple-300',
+										glowColor: 'dark:group-hover:shadow-[0_0_15px_rgba(196,181,253,0.5)]',
+										cardHover: 'hover:shadow-purple-500/20 dark:hover:shadow-purple-500/20',
+										cardClass: 'card-purple',
 									},
 									{
-										icon: <BarChart3 className="h-6 w-6 sm:h-8 sm:w-8" />,
+										icon: <LayoutDashboard className="h-6 w-6 sm:h-8 sm:w-8" />,
 										title: t('hero.scalability'),
 										label: t('hero.limits'),
-										hoverColor: 'group-hover:text-blue-400 dark:group-hover:text-blue-300',
-										glowColor: 'dark:group-hover:shadow-[0_0_15px_rgba(96,165,250,0.5)]',
+										hoverColor: 'group-hover:text-green-400 dark:group-hover:text-green-300',
+										glowColor: 'dark:group-hover:shadow-[0_0_15px_rgba(34,197,94,0.5)]',
+										cardHover: 'hover:shadow-green-500/20 dark:hover:shadow-green-500/20',
+										cardClass: 'card-green',
 									},
 								].map((stat, index) => (
 									<div
 										key={index}
-										className="group text-center p-3 sm:p-4 rounded-xl bg-white/5 dark:bg-blue-900/30 
+										className={`${stat.cardClass} group text-center p-3 sm:p-4 rounded-xl bg-white/5 dark:bg-blue-900/30 
                       hover:bg-white/10 dark:hover:bg-blue-800/40 
                       transform hover:-translate-y-1 transition-all duration-300
-                      hover:shadow-lg hover:shadow-white/10 dark:hover:shadow-blue-500/20"
+                      hover:shadow-lg ${stat.cardHover}`}
 									>
 										<div
 											className={`inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 

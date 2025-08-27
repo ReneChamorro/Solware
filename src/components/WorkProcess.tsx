@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { Target, Route, Lightbulb, Cog, ClipboardList, X } from 'lucide-react'
+import { X, Target, Route, Lightbulb, Cog, ClipboardList } from 'lucide-react'
 import BlurText from './effectsComponents/BlurText'
 import { useTranslation } from 'react-i18next'
 
@@ -9,11 +9,9 @@ const WorkProcess: React.FC = () => {
 		{
 			number: '1',
 			title: t('workProcess.steps.1.title'),
-			icon: <Target className="h-6 w-6" />,
-
 			bgColor: 'bg-blue-500 dark:bg-blue-900/30',
+			icon: Target,
 			iconColor: 'text-white dark:text-blue-400',
-
 			description: t('workProcess.steps.1.description'),
 			details: [
 				t('workProcess.steps.1.details.0'),
@@ -27,11 +25,9 @@ const WorkProcess: React.FC = () => {
 			number: '2',
 			title: t('workProcess.steps.2.title'),
 			wLimit: 'w-none lg:w-28',
-			icon: <Route className="h-6 w-6" />,
-
 			bgColor: 'bg-green-500 dark:bg-green-900/30',
+			icon: Route,
 			iconColor: 'text-white dark:text-green-400',
-
 			description: t('workProcess.steps.2.description'),
 			details: [
 				t('workProcess.steps.2.details.0'),
@@ -44,11 +40,9 @@ const WorkProcess: React.FC = () => {
 		{
 			number: '3',
 			title: t('workProcess.steps.3.title'),
-			icon: <Lightbulb className="h-6 w-6" />,
-
 			bgColor: 'bg-yellow-500 dark:bg-yellow-900/30',
+			icon: Lightbulb,
 			iconColor: 'text-white dark:text-yellow-400',
-
 			description: t('workProcess.steps.3.description'),
 			details: [
 				t('workProcess.steps.3.details.0'),
@@ -61,11 +55,9 @@ const WorkProcess: React.FC = () => {
 		{
 			number: '4',
 			title: t('workProcess.steps.4.title'),
-			icon: <Cog className="h-6 w-6" />,
-
 			bgColor: 'bg-pink-500 dark:bg-pink-900/30',
+			icon: Cog,
 			iconColor: 'text-white dark:text-pink-400',
-
 			description: t('workProcess.steps.4.description'),
 			details: [
 				t('workProcess.steps.4.details.0'),
@@ -78,12 +70,10 @@ const WorkProcess: React.FC = () => {
 		{
 			number: '5',
 			title: t('workProcess.steps.5.title'),
-			icon: <ClipboardList className="h-6 w-6" />,
 			wLimit: 'w-none lg:w-28',
-
 			bgColor: 'bg-purple-500 dark:bg-purple-900/30',
+			icon: ClipboardList,
 			iconColor: 'text-white dark:text-purple-400',
-
 			description: t('workProcess.steps.5.description'),
 			details: [
 				t('workProcess.steps.5.details.0'),
@@ -405,7 +395,7 @@ const WorkProcess: React.FC = () => {
 									}}
 									aria-expanded={selectedStep === index}
 								>
-									<span className="text-2xl font-bold text-gray-800 dark:text-white group-hover:scale-110 transition-transform">
+									<span className="text-2xl font-bold text-white dark:text-white group-hover:scale-110 transition-transform">
 										{step.number}
 									</span>
 									<div
@@ -418,25 +408,24 @@ const WorkProcess: React.FC = () => {
 								<div
 									className={`w-12 h-12 rounded-full ${step.bgColor} flex items-center justify-center mb-6 
                     transform transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30 hover:brightness-110
+                    opacity-0 invisible
                     ${isVisible ? 'animate-icon-pulse' : ''}`}
 									style={{
 										animationDelay: `${index * 0.3 + 0.1}s`,
 										animationPlayState: isVisible ? 'running' : 'paused',
 									}}
 								>
-									{React.cloneElement(step.icon, {
-										className: `h-6 w-6 ${step.iconColor}`,
-									})}
+									<step.icon className={`h-6 w-6 ${step.iconColor}`} />
 								</div>
 
 								{/* Title */}
 								<div
-									className={`bg-blue-500/30 dark:bg-blue-400/30 backdrop-blur-md rounded-xl p-3 shadow-lg transform 
-                    transition-all duration-300 hover:bg-blue-500/40 hover:dark:bg-blue-400/40 hover:shadow-xl hover:shadow-blue-500/20 max-w-[200px] cursor-pointer
+									className={`bg-blue-700/70 dark:bg-blue-400/30 backdrop-blur-md rounded-xl p-3 shadow-lg transform 
+                    transition-all duration-300 hover:bg-blue-800/80 hover:dark:bg-blue-400/40 hover:shadow-xl hover:shadow-blue-500/20 max-w-[200px] cursor-pointer
                     border border-blue-200/50 dark:border-blue-600/50 hover:border-blue-300/70 hover:dark:border-blue-500/70
                     ${isVisible ? 'animate-box-pulse' : ''}`}
 									style={{
-										animationDelay: `${index * 0.3 + 0.2}s`,
+										animationDelay: `${index * 0.3 + 0.1}s`,
 										animationPlayState: isVisible ? 'running' : 'paused',
 									}}
 									onClick={() => handleStepClick(index)}
@@ -458,7 +447,7 @@ const WorkProcess: React.FC = () => {
 										ref={(el) => (stepRefs.current[index] = el)}
 									>
 										<div
-											className="bg-blue-500/40 dark:bg-blue-400/40 backdrop-blur-xl rounded-2xl p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto
+											className="bg-blue-800/80 dark:bg-blue-400/40 backdrop-blur-xl rounded-2xl p-6 max-w-lg w-full max-h-[90vh] overflow-y-auto
                       shadow-2xl transform transition-all duration-300 animate-fade-in
                       border border-blue-200/60 dark:border-blue-600/60"
 										>
@@ -467,9 +456,7 @@ const WorkProcess: React.FC = () => {
 													<div
 														className={`w-10 h-10 rounded-full ${step.bgColor} flex items-center justify-center mr-3`}
 													>
-														{React.cloneElement(step.icon, {
-															className: `h-5 w-5 ${step.iconColor}`,
-														})}
+														<span className="text-lg font-bold text-white">{step.number}</span>
 													</div>
 													<h3 className="text-xl font-bold text-white">{step.title}</h3>
 												</div>
