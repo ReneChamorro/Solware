@@ -1,5 +1,5 @@
 import React, { useState, useEffect, useRef } from 'react'
-import { X } from 'lucide-react'
+import { X, Target, Route, Lightbulb, Cog, ClipboardList } from 'lucide-react'
 import BlurText from './effectsComponents/BlurText'
 import { useTranslation } from 'react-i18next'
 
@@ -10,6 +10,8 @@ const WorkProcess: React.FC = () => {
 			number: '1',
 			title: t('workProcess.steps.1.title'),
 			bgColor: 'bg-blue-500 dark:bg-blue-900/30',
+			icon: Target,
+			iconColor: 'text-white dark:text-blue-400',
 			description: t('workProcess.steps.1.description'),
 			details: [
 				t('workProcess.steps.1.details.0'),
@@ -24,6 +26,8 @@ const WorkProcess: React.FC = () => {
 			title: t('workProcess.steps.2.title'),
 			wLimit: 'w-none lg:w-28',
 			bgColor: 'bg-green-500 dark:bg-green-900/30',
+			icon: Route,
+			iconColor: 'text-white dark:text-green-400',
 			description: t('workProcess.steps.2.description'),
 			details: [
 				t('workProcess.steps.2.details.0'),
@@ -37,6 +41,8 @@ const WorkProcess: React.FC = () => {
 			number: '3',
 			title: t('workProcess.steps.3.title'),
 			bgColor: 'bg-yellow-500 dark:bg-yellow-900/30',
+			icon: Lightbulb,
+			iconColor: 'text-white dark:text-yellow-400',
 			description: t('workProcess.steps.3.description'),
 			details: [
 				t('workProcess.steps.3.details.0'),
@@ -50,6 +56,8 @@ const WorkProcess: React.FC = () => {
 			number: '4',
 			title: t('workProcess.steps.4.title'),
 			bgColor: 'bg-pink-500 dark:bg-pink-900/30',
+			icon: Cog,
+			iconColor: 'text-white dark:text-pink-400',
 			description: t('workProcess.steps.4.description'),
 			details: [
 				t('workProcess.steps.4.details.0'),
@@ -64,6 +72,8 @@ const WorkProcess: React.FC = () => {
 			title: t('workProcess.steps.5.title'),
 			wLimit: 'w-none lg:w-28',
 			bgColor: 'bg-purple-500 dark:bg-purple-900/30',
+			icon: ClipboardList,
+			iconColor: 'text-white dark:text-purple-400',
 			description: t('workProcess.steps.5.description'),
 			details: [
 				t('workProcess.steps.5.details.0'),
@@ -385,7 +395,7 @@ const WorkProcess: React.FC = () => {
 									}}
 									aria-expanded={selectedStep === index}
 								>
-									<span className="text-2xl font-bold text-white group-hover:scale-110 transition-transform">
+									<span className="text-2xl font-bold text-white dark:text-white group-hover:scale-110 transition-transform">
 										{step.number}
 									</span>
 									<div
@@ -393,6 +403,20 @@ const WorkProcess: React.FC = () => {
                     group-hover:opacity-100 transition-opacity duration-300"
 									></div>
 								</button>
+
+								{/* Icon */}
+								<div
+									className={`w-12 h-12 rounded-full ${step.bgColor} flex items-center justify-center mb-6 
+                    transform transition-all duration-300 hover:shadow-lg hover:shadow-blue-500/30 hover:brightness-110
+                    opacity-0 invisible
+                    ${isVisible ? 'animate-icon-pulse' : ''}`}
+									style={{
+										animationDelay: `${index * 0.3 + 0.1}s`,
+										animationPlayState: isVisible ? 'running' : 'paused',
+									}}
+								>
+									<step.icon className={`h-6 w-6 ${step.iconColor}`} />
+								</div>
 
 								{/* Title */}
 								<div

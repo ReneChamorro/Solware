@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react'
-import { ArrowRight, Zap, Shield, Clock, Play, Bot, Paintbrush, Boxes } from 'lucide-react'
+import { Zap, Play, Bot, Paintbrush, LayoutDashboard } from 'lucide-react'
 import { Link } from 'react-router-dom'
 import Particles from './Particles'
 import DecryptedText from './effectsComponents/DecryptedText'
@@ -124,7 +124,7 @@ export default function Hero() {
 										cardClass: 'card-purple',
 									},
 									{
-										icon: <Boxes className="h-6 w-6 sm:h-8 sm:w-8" />,
+										icon: <LayoutDashboard className="h-6 w-6 sm:h-8 sm:w-8" />,
 										title: t('hero.scalability'),
 										label: t('hero.limits'),
 										hoverColor: 'group-hover:text-green-400 dark:group-hover:text-green-300',
