@@ -96,7 +96,7 @@ export default function Header() {
 			<header
 				className={`fixed w-full z-50 transition-all duration-300 ${
 					isScrolled
-						? 'bg-white/70 dark:bg-gray-900/70 backdrop-blur-md shadow-sm'
+						? 'bg-white dark:bg-gray-900 shadow-sm md:bg-white/70 md:dark:bg-gray-900/70 md:backdrop-blur-md'
 						: 'bg-transparent'
 				}`}
 			>
@@ -259,14 +259,14 @@ export default function Header() {
 				</div>
 
 				<div
-					className={`md:hidden fixed inset-0 z-50 transition-all duration-300 ${
+					className={`md:hidden fixed inset-0 z-[60] transition-all duration-300 ${
 						isMenuOpen ? 'opacity-100 pointer-events-auto' : 'opacity-0 pointer-events-none'
 					}`}
 				>
 					<div className="absolute inset-0 bg-black/50" onClick={() => setIsMenuOpen(false)} />
 
 					<div
-						className={`absolute right-0 top-0 h-full w-64 bg-white/80 dark:bg-dark/70 backdrop-blur-md
+						className={`absolute right-0 top-0 h-full w-64 bg-white dark:bg-gray-900
               shadow-xl transition-transform duration-300 transform ${
 								isMenuOpen ? 'translate-x-0' : 'translate-x-full'
 							}`}
