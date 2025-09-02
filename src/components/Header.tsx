@@ -105,7 +105,7 @@ export default function Header() {
 						<a
 							href="#inicio"
 							onClick={handleNavClick}
-							className={`flex items-center space-x-2 hover:opacity-80 transition-opacity ${
+							className={`flex items-center space-x-2 hover:opacity-90 transition-opacity ${
 								isScrolled ? '' : 'text-white'
 							}`}
 						>

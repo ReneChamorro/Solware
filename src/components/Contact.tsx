@@ -8,7 +8,6 @@ interface FormData {
 	name: string
 	email: string
 	phone: string
-	sector: string
 	message: string
 	areas: string[]
 }
@@ -52,7 +51,6 @@ const Contact: React.FC = () => {
 		name: '',
 		email: '',
 		phone: '',
-		sector: '',
 		message: '',
 		areas: [],
 	})
@@ -90,7 +88,6 @@ const Contact: React.FC = () => {
 						name: formData.name,
 						email: formData.email,
 						phone: formData.phone,
-						sector: formData.sector,
 						areas: formData.areas.map((id) => areasDeInteres.find((area) => area.id === id)?.label || id),
 						message: formData.message,
 					},
@@ -106,7 +103,6 @@ const Contact: React.FC = () => {
 					name: '',
 					email: '',
 					phone: '',
-					sector: '',
 					message: '',
 					areas: [],
 				})
@@ -217,35 +213,6 @@ const Contact: React.FC = () => {
 								/>
 							</div>
 
-
-
-							<div>
-								<label htmlFor="sector" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
-									{t('contact.form.sector.title')}
-								</label>
-								<select
-									id="sector"
-									name="sector"
-									value={formData.sector}
-									onChange={handleChange}
-									required
-									className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-600 
-                    bg-gray-50 dark:bg-gray-700 px-3 py-2 text-gray-900 dark:text-white 
-                    shadow-sm focus:border-blue-500 dark:focus:border-blue-400 
-                    focus:ring-blue-500 dark:focus:ring-blue-400 
-                    focus:bg-white dark:focus:bg-gray-600 transition-colors duration-300 
-                    appearance-none pr-10"
-								>
-									<option value="">{t('contact.form.sector.options.default')}</option>
-									<option value="tecnologia">{t('contact.form.sector.options.tecnologia')}</option>
-									<option value="salud">{t('contact.form.sector.options.salud')}</option>
-									<option value="educacion">{t('contact.form.sector.options.educacion')}</option>
-									<option value="comercio">{t('contact.form.sector.options.comercio')}</option>
-									<option value="servicios">{t('contact.form.sector.options.servicios')}</option>
-									<option value="otro">{t('contact.form.sector.options.otro')}</option>
-								</select>
-							</div>
-
 							<div>
 								<label className="block text-sm font-medium text-gray-700 dark:text-gray-300 mb-2">
 									{t('contact.form.areas.title')}
@@ -295,11 +262,19 @@ const Contact: React.FC = () => {
 							<button
 								type="submit"
 								disabled={isSubmitting}
-								className="w-full flex items-center justify-center px-6 py-3 border border-transparent 
+								className="w-full flex items-center justify-center px-6 py-3 relative
                   text-base font-medium rounded-full text-white bg-blue-600 dark:bg-blue-500 
-                  hover:bg-blue-700 dark:hover:bg-blue-600 
+                  hover:bg-blue-700 dark:hover:bg-blue-600 hover:scale-105 hover:shadow-2xl
+                  border border-blue-400/30 dark:border-blue-300/20
                   focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 
-                  transition-colors duration-300 disabled:opacity-50 disabled:cursor-not-allowed"
+                  transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed
+                  active:scale-95 transform hover:-translate-y-1
+                  before:absolute before:inset-0 before:rounded-full before:border 
+                  before:border-blue-300/40 dark:before:border-blue-400/30 before:opacity-0 
+                  hover:before:opacity-100 before:transition-opacity before:duration-300
+                  after:absolute after:inset-[-2px] after:rounded-full after:border 
+                  after:border-blue-200/30 dark:after:border-blue-500/20 after:opacity-0 
+                  hover:after:opacity-100 after:transition-opacity after:duration-500"
 							>
 								<Send className="h-5 w-5 mr-2" />
 								{isSubmitting ? t('contact.form.button.submitting') : t('contact.form.button.send')}
@@ -379,10 +354,18 @@ const Contact: React.FC = () => {
 								<div className="pt-4">
 									<button
 										onClick={openWhatsApp}
-										className="w-full flex items-center justify-center px-6 py-3 
+										className="w-full flex items-center justify-center px-6 py-3 relative
                       bg-green-500 dark:bg-green-600 text-white rounded-full 
-                      hover:bg-green-600 dark:hover:bg-green-700 
-                      transition-all duration-300 shadow-lg hover:shadow-xl"
+                      hover:bg-green-600 dark:hover:bg-green-700 hover:scale-105 hover:shadow-2xl
+                      border border-green-400/30 dark:border-green-300/20
+                      transition-all duration-300 shadow-lg hover:-translate-y-1
+                      active:scale-95 transform
+                      before:absolute before:inset-0 before:rounded-full before:border 
+                      before:border-green-300/40 dark:before:border-green-400/30 before:opacity-0 
+                      hover:before:opacity-100 before:transition-opacity before:duration-300
+                      after:absolute after:inset-[-2px] after:rounded-full after:border 
+                      after:border-green-200/30 dark:after:border-green-500/20 after:opacity-0 
+                      hover:after:opacity-100 after:transition-opacity after:duration-500"
 									>
 										<svg 
 											className="h-5 w-5 mr-2" 

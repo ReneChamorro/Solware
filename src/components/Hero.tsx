@@ -66,8 +66,8 @@ export default function Hero() {
 								href="https://calendar.app.google/EYruMbWpJwJ82gHr6"
 								target="_blank"
 								className="px-8 py-4 bg-white text-blue-600 rounded-full font-semibold 
-                  hover:bg-blue-50 transition-colors duration-300 shadow-lg hover:shadow-xl
-                  transform hover:-translate-y-0.5 active:translate-y-0"
+                  hover:bg-blue-50 transition-all duration-300 shadow-lg hover:shadow-2xl
+                  transform hover:-translate-y-1 hover:scale-105 active:scale-95"
 							>
 								{t('header.consulta')}
 							</a>
@@ -75,8 +75,8 @@ export default function Hero() {
 							<Link
 								to="/demo"
 								className="px-8 py-4 bg-blue-600 text-white rounded-full font-semibold 
-                  hover:bg-blue-700 transition-colors duration-300 shadow-lg hover:shadow-xl
-                  transform hover:-translate-y-0.5 active:translate-y-0 flex items-center justify-center"
+                  hover:bg-blue-700 transition-all duration-300 shadow-lg hover:shadow-2xl
+                  transform hover:-translate-y-1 hover:scale-105 active:scale-95 flex items-center justify-center"
 							>
 								<Play className="h-5 w-5 mr-2" />
 								{t('hero.demo')}
@@ -100,50 +100,51 @@ export default function Hero() {
 										icon: <Zap className="h-6 w-6 sm:h-8 sm:w-8" />,
 										title: t('hero.automation'),
 										label: t('hero.efficiency'),
-										hoverColor: 'group-hover:text-amber-400 dark:group-hover:text-amber-300',
-										glowColor: 'dark:group-hover:shadow-[0_0_15px_rgba(245,158,11,0.5)]',
-										cardHover: 'hover:shadow-amber-500/20 dark:hover:shadow-amber-500/20',
+										hoverColor: 'group-hover:text-yellow-300 dark:group-hover:text-yellow-300',
+										glowColor: 'group-hover:shadow-[0_0_25px_rgba(245,158,11,0.8)]',
+										cardHover: 'hover:shadow-amber-400/40 dark:hover:shadow-amber-400/40',
 										cardClass: 'card-amber',
 									},
 									{
 										icon: <Paintbrush className="h-6 w-6 sm:h-8 sm:w-8" />,
 										title: t('hero.security'),
 										label: t('hero.activeTime'),
-										hoverColor: 'group-hover:text-blue-400 dark:group-hover:text-blue-300',
-										glowColor: 'dark:group-hover:shadow-[0_0_15px_rgba(59,130,246,0.5)]',
-										cardHover: 'hover:shadow-blue-500/20 dark:hover:shadow-blue-500/20',
+										hoverColor: 'group-hover:text-blue-300 dark:group-hover:text-blue-300',
+										glowColor: 'group-hover:shadow-[0_0_25px_rgba(59,130,246,0.8)]',
+										cardHover: 'hover:shadow-blue-400/40 dark:hover:shadow-blue-400/40',
 										cardClass: 'card-blue',
 									},
 									{
 										icon: <Bot className="h-6 w-6 sm:h-8 sm:w-8" />,
 										title: t('hero.savings'),
 										label: t('hero.costs'),
-										hoverColor: 'group-hover:text-purple-400 dark:group-hover:text-purple-300',
-										glowColor: 'dark:group-hover:shadow-[0_0_15px_rgba(196,181,253,0.5)]',
-										cardHover: 'hover:shadow-purple-500/20 dark:hover:shadow-purple-500/20',
+										hoverColor: 'group-hover:text-purple-300 dark:group-hover:text-purple-300',
+										glowColor: 'group-hover:shadow-[0_0_25px_rgba(168,85,247,0.8)]',
+										cardHover: 'hover:shadow-purple-400/40 dark:hover:shadow-purple-400/40',
 										cardClass: 'card-purple',
 									},
 									{
 										icon: <LayoutDashboard className="h-6 w-6 sm:h-8 sm:w-8" />,
 										title: t('hero.scalability'),
 										label: t('hero.limits'),
-										hoverColor: 'group-hover:text-green-400 dark:group-hover:text-green-300',
-										glowColor: 'dark:group-hover:shadow-[0_0_15px_rgba(34,197,94,0.5)]',
-										cardHover: 'hover:shadow-green-500/20 dark:hover:shadow-green-500/20',
+										hoverColor: 'group-hover:text-green-300 dark:group-hover:text-green-300',
+										glowColor: 'group-hover:shadow-[0_0_25px_rgba(34,197,94,0.8)]',
+										cardHover: 'hover:shadow-green-400/40 dark:hover:shadow-green-400/40',
 										cardClass: 'card-green',
 									},
 								].map((stat, index) => (
 									<div
 										key={index}
 										className={`${stat.cardClass} group text-center p-3 sm:p-4 rounded-xl bg-white/5 dark:bg-blue-900/30 
-                      hover:bg-white/10 dark:hover:bg-blue-800/40 
-                      transform hover:-translate-y-1 transition-all duration-300
-                      hover:shadow-lg ${stat.cardHover}`}
+                      hover:bg-white/20 dark:hover:bg-blue-700/60 
+                      transform hover:-translate-y-2 transition-all duration-300
+                      hover:shadow-xl ${stat.cardHover} hover:scale-105`}
 									>
 										<div
 											className={`inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 
-                      rounded-lg bg-white/10 dark:bg-blue-800/50 mb-2 sm:mb-3 transform group-hover:scale-110 
-                      transition-all duration-300 group-hover:rotate-3 ${stat.glowColor}`}
+                      rounded-lg bg-white/10 dark:bg-blue-800/50 mb-2 sm:mb-3 transform group-hover:scale-125 
+                      transition-all duration-300 group-hover:rotate-6 ${stat.glowColor}
+                      group-hover:bg-white/30 dark:group-hover:bg-blue-700/70`}
 										>
 											{React.cloneElement(stat.icon, {
 												className: `transition-colors duration-300 ${stat.hoverColor} text-white`,
@@ -151,13 +152,13 @@ export default function Hero() {
 										</div>
 										<h3
 											className="text-base sm:text-lg font-medium text-white dark:text-blue-100 mb-1 
-                      transition-colors duration-300 group-hover:text-white/90"
+                      transition-colors duration-300 group-hover:text-white group-hover:font-semibold"
 										>
 											{stat.title}
 										</h3>
 										<p
 											className="text-sm sm:text-base text-white/80 dark:text-blue-200/80 
-                      transition-colors duration-300 group-hover:text-white/90 font-medium"
+                      transition-colors duration-300 group-hover:text-white group-hover:font-medium"
 										>
 											{stat.label}
 										</p>

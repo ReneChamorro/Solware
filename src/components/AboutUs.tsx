@@ -44,7 +44,7 @@ const AboutUs = () => {
 								{/* Panel 1 */}
 								<div className="relative pl-16">
 									<div 
-										className="absolute left-0 w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center shadow-lg transform transition-transform duration-300 hover:scale-110 animate-bounce" 
+										className="absolute left-0 w-10 h-10 bg-pink-600 rounded-full flex items-center justify-center shadow-lg transform transition-transform duration-300 hover:scale-110 animate-bounce hover:shadow-[0_0_15px_rgba(219,39,119,0.5)]" 
 										style={{ 
 											top: '10px',
 											animationDelay: '0s',
@@ -52,7 +52,7 @@ const AboutUs = () => {
 										}}>
 										<Lightbulb className="w-5 h-5 text-white" />
 									</div>
-									<div className="bg-pink-100 dark:bg-pink-900/30 rounded-lg p-5 border-l-4 border-pink-600 transform transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:-translate-y-3 shadow-md" style={{ marginTop: '10px' }}>
+									<div className="bg-pink-100 dark:bg-pink-900/30 rounded-lg p-5 border-l-4 border-pink-600 transform transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(219,39,119,0.4)] hover:-translate-y-3 shadow-md" style={{ marginTop: '10px' }}>
 										<p className="text-gray-700 dark:text-gray-300 text-sm md:text-base leading-relaxed">{t('about.story.paragraph1')}</p>
 									</div>
 								</div>
@@ -60,7 +60,7 @@ const AboutUs = () => {
 								{/* Panel 2 */}
 								<div className="relative pl-16">
 									<div 
-										className="absolute left-0 w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center shadow-lg transform transition-transform duration-300 hover:scale-110 animate-bounce" 
+										className="absolute left-0 w-10 h-10 bg-purple-500 rounded-full flex items-center justify-center shadow-lg transform transition-transform duration-300 hover:scale-110 animate-bounce hover:shadow-[0_0_15px_rgba(168,85,247,0.5)]" 
 										style={{ 
 											top: '10px',
 											animationDelay: '0.7s',
@@ -68,7 +68,7 @@ const AboutUs = () => {
 										}}>
 										<Target className="w-5 h-5 text-white" />
 									</div>
-									<div className="bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-lg p-5 border-l-4 border-purple-500 transform transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:-translate-y-3 shadow-md" style={{ marginTop: '10px' }}>
+									<div className="bg-gradient-to-r from-purple-50 to-purple-100 dark:from-purple-900/20 dark:to-purple-800/20 rounded-lg p-5 border-l-4 border-purple-500 transform transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(168,85,247,0.4)] hover:-translate-y-3 shadow-md" style={{ marginTop: '10px' }}>
 										<p className="text-gray-700 dark:text-gray-300 text-sm md:text-base leading-relaxed">{t('about.story.paragraph2')}</p>
 									</div>
 								</div>
@@ -76,7 +76,7 @@ const AboutUs = () => {
 								{/* Panel 3 */}
 								<div className="relative pl-16">
 									<div 
-										className="absolute left-0 w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center shadow-lg transform transition-transform duration-300 hover:scale-110 animate-bounce" 
+										className="absolute left-0 w-10 h-10 bg-blue-500 rounded-full flex items-center justify-center shadow-lg transform transition-transform duration-300 hover:scale-110 animate-bounce hover:shadow-[0_0_15px_rgba(59,130,246,0.5)]" 
 										style={{ 
 											top: '10px',
 											animationDelay: '1.4s',
@@ -84,7 +84,7 @@ const AboutUs = () => {
 										}}>
 										<Rocket className="w-5 h-5 text-white" />
 									</div>
-									<div className="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg p-5 border-l-4 border-blue-500 transform transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(0,0,0,0.3)] hover:-translate-y-3 shadow-md" style={{ marginTop: '10px' }}>
+									<div className="bg-gradient-to-r from-blue-50 to-blue-100 dark:from-blue-900/20 dark:to-blue-800/20 rounded-lg p-5 border-l-4 border-blue-500 transform transition-all duration-300 hover:scale-105 hover:shadow-[0_20px_50px_rgba(59,130,246,0.4)] hover:-translate-y-3 shadow-md" style={{ marginTop: '10px' }}>
 										<p className="text-gray-700 dark:text-gray-300 text-sm md:text-base leading-relaxed">{t('about.story.paragraph3')}</p>
 									</div>
 								</div>
