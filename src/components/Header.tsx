@@ -133,20 +133,18 @@ export default function Header() {
 											<button
 												type="button"
 												onClick={toggleDropdown}
-												className={`flex items-center w-full justify-center gap-x-1.5 rounded-md px-3 py-2 text-sm lg:text-base font-semibold shadow-xs transition-colors duration-300 ${
+												className={`relative flex items-center w-full justify-center gap-x-1.5 rounded-full px-4 py-2 text-sm lg:text-base font-semibold shadow-xs transition-all duration-300 overflow-hidden group ${
 													isScrolled
-														? activeSection === 'servicios' || activeSection === 'automatizacion' || activeSection === 'pricing'
-															? 'text-blue-600 dark:text-blue-400'
-															: 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
-														: 'text-white hover:text-blue-200'
+														? 'text-gray-700 dark:text-gray-300 hover:bg-blue-600 hover:text-white hover:shadow-lg hover:transform hover:scale-105'
+														: 'text-white hover:bg-blue-600 hover:text-white hover:shadow-lg hover:transform hover:scale-105'
 												}`}
 												id="menu-button"
 												aria-expanded={openDropdown}
 												aria-haspopup="true"
 											>
-												{item.label}
+												<span className="relative z-10">{item.label}</span>
 												<svg
-													className={`size-5 -rotate-90 transition-transform ${openDropdown ? 'rotate-0' : ''}`}
+													className={`size-5 -rotate-90 transition-transform relative z-10 ${openDropdown ? 'rotate-0' : ''}`}
 													viewBox="0 0 20 20"
 													fill="currentColor"
 													aria-hidden="true"
@@ -158,6 +156,7 @@ export default function Header() {
 														clipRule="evenodd"
 													/>
 												</svg>
+												<span className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full opacity-0 group-hover:opacity-100"></span>
 											</button>
 										</div>
 										<div
@@ -198,15 +197,13 @@ export default function Header() {
 										key={item.href}
 										href={item.href}
 										onClick={handleNavClick}
-										className={`px-3 py-2 rounded-md text-sm lg:text-base transition-colors font-medium duration-200 ${
+										className={`relative px-4 py-2 rounded-full text-sm lg:text-base font-semibold transition-all duration-300 overflow-hidden group ${
 											isScrolled
-												? activeSection === (item.href ? item.href.replace('#', '') : '')
-													? 'text-blue-600 dark:text-blue-400'
-													: 'text-gray-700 dark:text-gray-300 hover:text-blue-600 dark:hover:text-blue-400'
-												: 'text-white hover:text-blue-200'
+												? 'text-gray-700 dark:text-gray-300 hover:bg-blue-600 hover:text-white hover:shadow-lg hover:transform hover:scale-105'
+												: 'text-white hover:bg-blue-600 hover:text-white hover:shadow-lg hover:transform hover:scale-105'
 										}`}
 									>
-										{item.label}
+										<span className="relative z-10">{item.label}</span>
 									</a>
 								),
 							)}
