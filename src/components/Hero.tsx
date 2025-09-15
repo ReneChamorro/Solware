@@ -9,6 +9,9 @@ export default function Hero() {
 	const { t, i18n } = useTranslation()
 	const [isPreloadFinished, setIsPreloadFinished] = useState(false)
 	const [animationKey, setAnimationKey] = useState(0)
+	const [autoHoverIndex, setAutoHoverIndex] = useState(-1)
+	const [isManualHover, setIsManualHover] = useState(false)
+	const [manualHoverIndex, setManualHoverIndex] = useState(-1)
 
 	useEffect(() => {
 		// Simulate preload animation ending
@@ -27,6 +30,36 @@ export default function Hero() {
 
 		return () => clearInterval(animationInterval)
 	}, [])
+
+	// Auto hover animation effect
+	useEffect(() => {
+		if (!isManualHover) {
+			// Start immediately with the first card
+			setAutoHoverIndex(0)
+			
+			const autoHoverInterval = setInterval(() => {
+				setAutoHoverIndex(prev => {
+					const nextIndex = (prev + 1) % 4 // 4 cards total
+					return nextIndex
+				})
+			}, 7000) // 7 seconds
+
+			return () => clearInterval(autoHoverInterval)
+		}
+	}, [isManualHover])
+
+	// Handle manual hover
+	const handleMouseEnter = (index: number) => {
+		setIsManualHover(true)
+		setManualHoverIndex(index)
+		setAutoHoverIndex(-1) // Stop auto hover
+	}
+
+	const handleMouseLeave = () => {
+		setIsManualHover(false)
+		setManualHoverIndex(-1)
+		// Auto hover will resume due to useEffect dependency
+	}
 
 	return (
 		<div className="relative min-h-[100svh] flex items-center" id="inicio">
@@ -86,13 +119,18 @@ export default function Hero() {
 
 					<div className="hidden lg:block">
 						<div
-							className="bg-white/10 dark:bg-blue-900/20 backdrop-blur-lg rounded-2xl p-6 sm:p-8 
+							className={`bg-white/10 dark:bg-blue-900/20 backdrop-blur-lg rounded-2xl p-6 sm:p-8 
               shadow-2xl dark:shadow-blue-500/20 animate-fade-in-delay 
               transition-all duration-500 
-              has-[.card-amber:hover]:!shadow-[0_0_40px_rgba(245,158,11,0.4)]
-              has-[.card-blue:hover]:!shadow-[0_0_40px_rgba(59,130,246,0.4)]
-              has-[.card-purple:hover]:!shadow-[0_0_40px_rgba(168,85,247,0.4)]
-              has-[.card-green:hover]:!shadow-[0_0_40px_rgba(34,197,94,0.4)]"
+              has-[.card-amber:hover]:!shadow-[0_0_50px_rgba(245,158,11,0.6)]
+              has-[.card-blue:hover]:!shadow-[0_0_50px_rgba(59,130,246,0.6)]
+              has-[.card-purple:hover]:!shadow-[0_0_50px_rgba(168,85,247,0.6)]
+              has-[.card-green:hover]:!shadow-[0_0_50px_rgba(34,197,94,0.6)] ${
+								!isManualHover && autoHoverIndex === 0 ? '!shadow-[0_0_50px_rgba(245,158,11,0.6)]' :
+								!isManualHover && autoHoverIndex === 1 ? '!shadow-[0_0_50px_rgba(59,130,246,0.6)]' :
+								!isManualHover && autoHoverIndex === 2 ? '!shadow-[0_0_50px_rgba(168,85,247,0.6)]' :
+								!isManualHover && autoHoverIndex === 3 ? '!shadow-[0_0_50px_rgba(34,197,94,0.6)]' : ''
+							}`}
 						>
 							<div className="grid grid-cols-2 gap-4 sm:gap-6">
 								{[
@@ -132,38 +170,75 @@ export default function Hero() {
 										cardHover: 'hover:shadow-green-400/40 dark:hover:shadow-green-400/40',
 										cardClass: 'card-green',
 									},
-								].map((stat, index) => (
-									<div
-										key={index}
-										className={`${stat.cardClass} group text-center p-3 sm:p-4 rounded-xl bg-white/5 dark:bg-blue-900/30 
-                      hover:bg-white/20 dark:hover:bg-blue-700/60 
-                      transform hover:-translate-y-2 transition-all duration-300
-                      hover:shadow-xl ${stat.cardHover} hover:scale-105`}
-									>
+								].map((stat, index) => {
+									const isActiveHover = isManualHover 
+										? manualHoverIndex === index 
+										: autoHoverIndex === index
+
+									return (
 										<div
-											className={`inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 
-                      rounded-lg bg-white/10 dark:bg-blue-800/50 mb-2 sm:mb-3 transform group-hover:scale-125 
-                      transition-all duration-300 group-hover:rotate-6 ${stat.glowColor}
-                      group-hover:bg-white/30 dark:group-hover:bg-blue-700/70`}
+											key={index}
+											onMouseEnter={() => handleMouseEnter(index)}
+											onMouseLeave={handleMouseLeave}
+											className={`${stat.cardClass} group text-center p-3 sm:p-4 rounded-xl bg-white/5 dark:bg-blue-900/30 
+                      transition-all duration-300
+                      ${isActiveHover ? 
+                        `bg-white/20 dark:bg-blue-700/60 -translate-y-2 shadow-xl scale-105 ${
+													index === 0 ? 'shadow-amber-400/40 dark:shadow-amber-400/40' : 
+													index === 1 ? 'shadow-blue-400/40 dark:shadow-blue-400/40' : 
+													index === 2 ? 'shadow-purple-400/40 dark:shadow-purple-400/40' : 
+													index === 3 ? 'shadow-green-400/40 dark:shadow-green-400/40' : ''
+												}` :
+                        'hover:bg-white/20 dark:hover:bg-blue-700/60 hover:-translate-y-2 hover:shadow-xl hover:scale-105 ' + stat.cardHover
+                      }`}
 										>
-											{React.cloneElement(stat.icon, {
-												className: `transition-colors duration-300 ${stat.hoverColor} text-white`,
-											})}
+											<div
+												className={`inline-flex items-center justify-center w-10 h-10 sm:w-12 sm:h-12 
+                      rounded-lg bg-white/10 dark:bg-blue-800/50 mb-2 sm:mb-3 transform transition-all duration-300
+                      ${isActiveHover ? 
+                        `scale-125 rotate-6 bg-white/30 dark:bg-blue-700/70 ${
+													index === 0 ? 'shadow-[0_0_25px_rgba(245,158,11,0.8)]' : 
+													index === 1 ? 'shadow-[0_0_25px_rgba(59,130,246,0.8)]' : 
+													index === 2 ? 'shadow-[0_0_25px_rgba(168,85,247,0.8)]' : 
+													index === 3 ? 'shadow-[0_0_25px_rgba(34,197,94,0.8)]' : ''
+												}` :
+                        'group-hover:scale-125 group-hover:rotate-6 group-hover:bg-white/30 dark:group-hover:bg-blue-700/70 ' + stat.glowColor
+                      }`}
+											>
+												{React.cloneElement(stat.icon, {
+													className: `h-6 w-6 sm:h-8 sm:w-8 transition-colors duration-300 ${
+														isActiveHover ? 
+															(index === 0 ? 'text-yellow-300' : 
+															 index === 1 ? 'text-blue-300' : 
+															 index === 2 ? 'text-purple-300' : 
+															 index === 3 ? 'text-green-300' : 'text-white') : 
+															`text-white ${stat.hoverColor}`
+													}`,
+												})}
+											</div>
+											<h3
+												className={`text-base sm:text-lg font-medium text-white dark:text-blue-100 mb-1 
+                      transition-colors duration-300 ${
+													isActiveHover ? 
+														'text-white font-semibold' : 
+														'group-hover:text-white group-hover:font-semibold'
+												}`}
+											>
+												{stat.title}
+											</h3>
+											<p
+												className={`text-sm sm:text-base text-white/80 dark:text-blue-200/80 
+                      transition-colors duration-300 ${
+													isActiveHover ? 
+														'text-white font-medium' : 
+														'group-hover:text-white group-hover:font-medium'
+												}`}
+											>
+												{stat.label}
+											</p>
 										</div>
-										<h3
-											className="text-base sm:text-lg font-medium text-white dark:text-blue-100 mb-1 
-                      transition-colors duration-300 group-hover:text-white group-hover:font-semibold"
-										>
-											{stat.title}
-										</h3>
-										<p
-											className="text-sm sm:text-base text-white/80 dark:text-blue-200/80 
-                      transition-colors duration-300 group-hover:text-white group-hover:font-medium"
-										>
-											{stat.label}
-										</p>
-									</div>
-								))}
+									)
+								})}
 							</div>
 						</div>
 					</div>
