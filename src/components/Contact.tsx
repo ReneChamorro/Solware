@@ -1,8 +1,10 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react'
-import { Mail, Phone, Clock, Send, ChevronDown, Instagram } from 'lucide-react'
+import { Mail, Phone, Clock, Send, ChevronDown, Instagram, CheckCircle, AlertCircle } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import BlurText from './effectsComponents/BlurText'
 import { useTranslation } from 'react-i18next'
+import emailjs from '@emailjs/browser'
+import { emailjsConfig, isEmailJSConfigured } from '../lib/emailjs-config'
 
 interface FormData {
 	name: string
@@ -176,6 +178,8 @@ const Contact: React.FC = () => {
 	]
 	const formRef = useRef<HTMLFormElement>(null)
 	const [isSubmitting, setIsSubmitting] = useState(false)
+	const [submitStatus, setSubmitStatus] = useState<'idle' | 'success' | 'error'>('idle')
+	const [submitMessage, setSubmitMessage] = useState('')
 	const [openFaqIndex, setOpenFaqIndex] = useState<number | null>(null)
 	const [formData, setFormData] = useState<FormData>({
 		name: '',
@@ -333,25 +337,73 @@ const Contact: React.FC = () => {
 			}
 
 			setIsSubmitting(true)
+			setSubmitStatus('idle')
 
 			try {
-				// Insert data into Supabase
-				const { error } = await supabase.from('contact_submissions').insert([
-					{
-						name: formData.name,
-						email: formData.email,
-						phone: `${formData.countryCode} ${formData.phone}`,
-						areas: formData.areas.map((id) => areasDeInteres.find((area) => area.id === id)?.label || id),
-						message: formData.message,
-					},
-				])
+				// Check if EmailJS is configured
+				const emailJSReady = isEmailJSConfigured()
 
-				if (error) {
-					throw error
+				let emailSent = false
+
+				if (emailJSReady) {
+					try {
+						// Prepare template parameters for EmailJS
+						const templateParams = {
+							to_email: emailjsConfig.toEmail,
+							from_name: formData.name,
+							from_email: formData.email,
+							phone: `${formData.countryCode} ${formData.phone}`,
+							areas: formData.areas.map((id) => areasDeInteres.find((area) => area.id === id)?.label || id).join(', '),
+							message: formData.message,
+							reply_to: formData.email,
+						}
+
+						// Send email using EmailJS
+						await emailjs.send(
+							emailjsConfig.serviceId,
+							emailjsConfig.templateId,
+							templateParams,
+							emailjsConfig.publicKey
+						)
+
+						emailSent = true
+					} catch (emailError) {
+						// Continue to save in database even if email fails
+					}
+				} else {
+					// EmailJS not configured, continue with database storage only
 				}
 
-				alert(t('contact.form.success'))
+				// Save to Supabase (always try this as backup)
+				try {
+					const { error } = await supabase.from('contact_submissions').insert([
+						{
+							name: formData.name,
+							email: formData.email,
+							phone: `${formData.countryCode} ${formData.phone}`,
+							areas: formData.areas.map((id) => areasDeInteres.find((area) => area.id === id)?.label || id),
+							message: formData.message,
+						},
+					])
 
+					if (error) {
+						throw error
+					}
+				} catch (dbError) {
+					// If email wasn't sent and database fails, throw error
+					if (!emailSent) {
+						throw dbError
+					}
+				}
+
+				setSubmitStatus('success')
+				if (emailSent) {
+					setSubmitMessage('¡Mensaje enviado exitosamente! Te contactaremos pronto.')
+				} else {
+					setSubmitMessage('¡Mensaje recibido! Te contactaremos pronto. (Email pendiente de configuración)')
+				}
+
+				// Reset form
 				setFormData({
 					name: '',
 					email: '',
@@ -361,9 +413,32 @@ const Contact: React.FC = () => {
 					areas: [],
 				})
 				setFormErrors({})
+
+				// Hide success message after 5 seconds
+				setTimeout(() => {
+					setSubmitStatus('idle')
+				}, 5000)
+
 			} catch (error) {
-				console.error('Error al enviar el mensaje:', error)
-				alert(t('contact.form.error'))
+				setSubmitStatus('error')
+				
+				let errorMessage = 'Error al enviar el mensaje. Por favor, intenta nuevamente.'
+				
+				// More specific error messages
+				if (error instanceof Error) {
+					if (error.message.includes('Invalid') || error.message.includes('config')) {
+						errorMessage = 'Error de configuración. Por favor, contacta al administrador.'
+					} else if (error.message.includes('network') || error.message.includes('fetch')) {
+						errorMessage = 'Error de conexión. Verifica tu internet y intenta nuevamente.'
+					}
+				}
+				
+				setSubmitMessage(errorMessage)
+				
+				// Hide error message after 5 seconds
+				setTimeout(() => {
+					setSubmitStatus('idle')
+				}, 5000)
 			} finally {
 				setIsSubmitting(false)
 			}
@@ -594,6 +669,24 @@ const Contact: React.FC = () => {
 									<p className="mt-1 text-sm text-red-600 dark:text-red-400">{formErrors.message}</p>
 								)}
 							</div>
+
+							{/* Status notification */}
+							{submitStatus !== 'idle' && (
+								<div
+									className={`flex items-center p-4 rounded-lg border ${
+										submitStatus === 'success'
+											? 'bg-green-50 dark:bg-green-900/20 border-green-200 dark:border-green-700 text-green-700 dark:text-green-300'
+											: 'bg-red-50 dark:bg-red-900/20 border-red-200 dark:border-red-700 text-red-700 dark:text-red-300'
+									}`}
+								>
+									{submitStatus === 'success' ? (
+										<CheckCircle className="h-5 w-5 mr-2" />
+									) : (
+										<AlertCircle className="h-5 w-5 mr-2" />
+									)}
+									<span className="text-sm">{submitMessage}</span>
+								</div>
+							)}
 
 							<button
 								type="submit"
