@@ -1,4 +1,4 @@
-import React, { useState, useRef, useCallback } from 'react'
+import React, { useState, useRef, useCallback, useEffect } from 'react'
 import { Mail, Phone, Clock, Send, ChevronDown, Instagram } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import BlurText from './effectsComponents/BlurText'
@@ -7,13 +7,143 @@ import { useTranslation } from 'react-i18next'
 interface FormData {
 	name: string
 	email: string
+	countryCode: string
 	phone: string
 	message: string
 	areas: string[]
 }
 
+interface FormErrors {
+	name?: string
+	email?: string
+	phone?: string
+	message?: string
+}
+
+interface CountryCode {
+	code: string
+	country: string
+	countryCode: string // ISO code like "US", "ES", "MX"
+	pattern: RegExp
+	placeholder: string
+	maxLength: number
+}
+
 const Contact: React.FC = () => {
 	const { t } = useTranslation()
+	
+	// Country codes for all countries worldwide
+	const countryCodes: CountryCode[] = [
+		// North America
+		{ code: '+1', country: 'Estados Unidos', countryCode: 'US', pattern: /^\d{10}$/, placeholder: '1234567890', maxLength: 10 },
+		{ code: '+1', country: 'Canadá', countryCode: 'CA', pattern: /^\d{10}$/, placeholder: '1234567890', maxLength: 10 },
+		
+		// Europe
+		{ code: '+34', country: 'España', countryCode: 'ES', pattern: /^\d{9}$/, placeholder: '123456789', maxLength: 9 },
+		{ code: '+33', country: 'Francia', countryCode: 'FR', pattern: /^\d{10}$/, placeholder: '0123456789', maxLength: 10 },
+		{ code: '+49', country: 'Alemania', countryCode: 'DE', pattern: /^\d{10,11}$/, placeholder: '01234567890', maxLength: 11 },
+		{ code: '+39', country: 'Italia', countryCode: 'IT', pattern: /^\d{10}$/, placeholder: '0123456789', maxLength: 10 },
+		{ code: '+44', country: 'Reino Unido', countryCode: 'GB', pattern: /^\d{10}$/, placeholder: '1234567890', maxLength: 10 },
+		{ code: '+31', country: 'Países Bajos', countryCode: 'NL', pattern: /^\d{9}$/, placeholder: '123456789', maxLength: 9 },
+		{ code: '+41', country: 'Suiza', countryCode: 'CH', pattern: /^\d{9}$/, placeholder: '123456789', maxLength: 9 },
+		{ code: '+43', country: 'Austria', countryCode: 'AT', pattern: /^\d{10,11}$/, placeholder: '01234567890', maxLength: 11 },
+		{ code: '+32', country: 'Bélgica', countryCode: 'BE', pattern: /^\d{9}$/, placeholder: '123456789', maxLength: 9 },
+		{ code: '+45', country: 'Dinamarca', countryCode: 'DK', pattern: /^\d{8}$/, placeholder: '12345678', maxLength: 8 },
+		{ code: '+46', country: 'Suecia', countryCode: 'SE', pattern: /^\d{9}$/, placeholder: '123456789', maxLength: 9 },
+		{ code: '+47', country: 'Noruega', countryCode: 'NO', pattern: /^\d{8}$/, placeholder: '12345678', maxLength: 8 },
+		{ code: '+358', country: 'Finlandia', countryCode: 'FI', pattern: /^\d{9}$/, placeholder: '123456789', maxLength: 9 },
+		{ code: '+351', country: 'Portugal', countryCode: 'PT', pattern: /^\d{9}$/, placeholder: '123456789', maxLength: 9 },
+		{ code: '+30', country: 'Grecia', countryCode: 'GR', pattern: /^\d{10}$/, placeholder: '1234567890', maxLength: 10 },
+		{ code: '+48', country: 'Polonia', countryCode: 'PL', pattern: /^\d{9}$/, placeholder: '123456789', maxLength: 9 },
+		{ code: '+420', country: 'República Checa', countryCode: 'CZ', pattern: /^\d{9}$/, placeholder: '123456789', maxLength: 9 },
+		{ code: '+36', country: 'Hungría', countryCode: 'HU', pattern: /^\d{9}$/, placeholder: '123456789', maxLength: 9 },
+		{ code: '+7', country: 'Rusia', countryCode: 'RU', pattern: /^\d{10}$/, placeholder: '1234567890', maxLength: 10 },
+		{ code: '+380', country: 'Ucrania', countryCode: 'UA', pattern: /^\d{9}$/, placeholder: '123456789', maxLength: 9 },
+		{ code: '+353', country: 'Irlanda', countryCode: 'IE', pattern: /^\d{9}$/, placeholder: '123456789', maxLength: 9 },
+		
+		// Latin America
+		{ code: '+54', country: 'Argentina', countryCode: 'AR', pattern: /^\d{10}$/, placeholder: '1123456789', maxLength: 10 },
+		{ code: '+55', country: 'Brasil', countryCode: 'BR', pattern: /^\d{11}$/, placeholder: '11987654321', maxLength: 11 },
+		{ code: '+56', country: 'Chile', countryCode: 'CL', pattern: /^\d{9}$/, placeholder: '987654321', maxLength: 9 },
+		{ code: '+57', country: 'Colombia', countryCode: 'CO', pattern: /^\d{10}$/, placeholder: '3001234567', maxLength: 10 },
+		{ code: '+52', country: 'México', countryCode: 'MX', pattern: /^\d{10}$/, placeholder: '5512345678', maxLength: 10 },
+		{ code: '+51', country: 'Perú', countryCode: 'PE', pattern: /^\d{9}$/, placeholder: '987654321', maxLength: 9 },
+		{ code: '+58', country: 'Venezuela', countryCode: 'VE', pattern: /^\d{10}$/, placeholder: '4123456789', maxLength: 10 },
+		{ code: '+593', country: 'Ecuador', countryCode: 'EC', pattern: /^\d{9}$/, placeholder: '987654321', maxLength: 9 },
+		{ code: '+595', country: 'Paraguay', countryCode: 'PY', pattern: /^\d{9}$/, placeholder: '987654321', maxLength: 9 },
+		{ code: '+598', country: 'Uruguay', countryCode: 'UY', pattern: /^\d{9}$/, placeholder: '987654321', maxLength: 9 },
+		{ code: '+591', country: 'Bolivia', countryCode: 'BO', pattern: /^\d{8}$/, placeholder: '12345678', maxLength: 8 },
+		{ code: '+506', country: 'Costa Rica', countryCode: 'CR', pattern: /^\d{8}$/, placeholder: '12345678', maxLength: 8 },
+		{ code: '+507', country: 'Panamá', countryCode: 'PA', pattern: /^\d{8}$/, placeholder: '12345678', maxLength: 8 },
+		{ code: '+505', country: 'Nicaragua', countryCode: 'NI', pattern: /^\d{8}$/, placeholder: '12345678', maxLength: 8 },
+		{ code: '+504', country: 'Honduras', countryCode: 'HN', pattern: /^\d{8}$/, placeholder: '12345678', maxLength: 8 },
+		{ code: '+503', country: 'El Salvador', countryCode: 'SV', pattern: /^\d{8}$/, placeholder: '12345678', maxLength: 8 },
+		{ code: '+502', country: 'Guatemala', countryCode: 'GT', pattern: /^\d{8}$/, placeholder: '12345678', maxLength: 8 },
+		{ code: '+53', country: 'Cuba', countryCode: 'CU', pattern: /^\d{8}$/, placeholder: '12345678', maxLength: 8 },
+		{ code: '+1', country: 'República Dominicana', countryCode: 'DO', pattern: /^\d{10}$/, placeholder: '8091234567', maxLength: 10 },
+		{ code: '+509', country: 'Haití', countryCode: 'HT', pattern: /^\d{8}$/, placeholder: '12345678', maxLength: 8 },
+		{ code: '+1', country: 'Jamaica', countryCode: 'JM', pattern: /^\d{10}$/, placeholder: '8761234567', maxLength: 10 },
+		
+		// Asia
+		{ code: '+86', country: 'China', countryCode: 'CN', pattern: /^\d{11}$/, placeholder: '13812345678', maxLength: 11 },
+		{ code: '+81', country: 'Japón', countryCode: 'JP', pattern: /^\d{10,11}$/, placeholder: '09012345678', maxLength: 11 },
+		{ code: '+82', country: 'Corea del Sur', countryCode: 'KR', pattern: /^\d{10,11}$/, placeholder: '01012345678', maxLength: 11 },
+		{ code: '+91', country: 'India', countryCode: 'IN', pattern: /^\d{10}$/, placeholder: '9876543210', maxLength: 10 },
+		{ code: '+62', country: 'Indonesia', countryCode: 'ID', pattern: /^\d{9,12}$/, placeholder: '81234567890', maxLength: 12 },
+		{ code: '+60', country: 'Malasia', countryCode: 'MY', pattern: /^\d{9,10}$/, placeholder: '123456789', maxLength: 10 },
+		{ code: '+65', country: 'Singapur', countryCode: 'SG', pattern: /^\d{8}$/, placeholder: '12345678', maxLength: 8 },
+		{ code: '+66', country: 'Tailandia', countryCode: 'TH', pattern: /^\d{9}$/, placeholder: '812345678', maxLength: 9 },
+		{ code: '+84', country: 'Vietnam', countryCode: 'VN', pattern: /^\d{9,10}$/, placeholder: '912345678', maxLength: 10 },
+		{ code: '+63', country: 'Filipinas', countryCode: 'PH', pattern: /^\d{10}$/, placeholder: '9171234567', maxLength: 10 },
+		{ code: '+92', country: 'Pakistán', countryCode: 'PK', pattern: /^\d{10}$/, placeholder: '3001234567', maxLength: 10 },
+		{ code: '+880', country: 'Bangladesh', countryCode: 'BD', pattern: /^\d{10}$/, placeholder: '1812345678', maxLength: 10 },
+		{ code: '+94', country: 'Sri Lanka', countryCode: 'LK', pattern: /^\d{9}$/, placeholder: '712345678', maxLength: 9 },
+		{ code: '+98', country: 'Irán', countryCode: 'IR', pattern: /^\d{10}$/, placeholder: '9123456789', maxLength: 10 },
+		{ code: '+90', country: 'Turquía', countryCode: 'TR', pattern: /^\d{10}$/, placeholder: '5321234567', maxLength: 10 },
+		{ code: '+972', country: 'Israel', countryCode: 'IL', pattern: /^\d{9}$/, placeholder: '501234567', maxLength: 9 },
+		{ code: '+971', country: 'Emiratos Árabes', countryCode: 'AE', pattern: /^\d{9}$/, placeholder: '501234567', maxLength: 9 },
+		{ code: '+966', country: 'Arabia Saudí', countryCode: 'SA', pattern: /^\d{9}$/, placeholder: '501234567', maxLength: 9 },
+		
+		// Africa
+		{ code: '+27', country: 'Sudáfrica', countryCode: 'ZA', pattern: /^\d{9}$/, placeholder: '712345678', maxLength: 9 },
+		{ code: '+20', country: 'Egipto', countryCode: 'EG', pattern: /^\d{10}$/, placeholder: '1012345678', maxLength: 10 },
+		{ code: '+234', country: 'Nigeria', countryCode: 'NG', pattern: /^\d{10}$/, placeholder: '8012345678', maxLength: 10 },
+		{ code: '+254', country: 'Kenia', countryCode: 'KE', pattern: /^\d{9}$/, placeholder: '712345678', maxLength: 9 },
+		{ code: '+212', country: 'Marruecos', countryCode: 'MA', pattern: /^\d{9}$/, placeholder: '612345678', maxLength: 9 },
+		{ code: '+233', country: 'Ghana', countryCode: 'GH', pattern: /^\d{9}$/, placeholder: '501234567', maxLength: 9 },
+		{ code: '+256', country: 'Uganda', countryCode: 'UG', pattern: /^\d{9}$/, placeholder: '712345678', maxLength: 9 },
+		{ code: '+255', country: 'Tanzania', countryCode: 'TZ', pattern: /^\d{9}$/, placeholder: '712345678', maxLength: 9 },
+		
+		// Oceania
+		{ code: '+61', country: 'Australia', countryCode: 'AU', pattern: /^\d{9}$/, placeholder: '412345678', maxLength: 9 },
+		{ code: '+64', country: 'Nueva Zelanda', countryCode: 'NZ', pattern: /^\d{8,9}$/, placeholder: '212345678', maxLength: 9 },
+		
+		// Middle East (additional)
+		{ code: '+962', country: 'Jordania', countryCode: 'JO', pattern: /^\d{9}$/, placeholder: '791234567', maxLength: 9 },
+		{ code: '+961', country: 'Líbano', countryCode: 'LB', pattern: /^\d{8}$/, placeholder: '71123456', maxLength: 8 },
+		{ code: '+963', country: 'Siria', countryCode: 'SY', pattern: /^\d{9}$/, placeholder: '991234567', maxLength: 9 },
+		{ code: '+964', country: 'Irak', countryCode: 'IQ', pattern: /^\d{10}$/, placeholder: '7901234567', maxLength: 10 },
+		{ code: '+965', country: 'Kuwait', countryCode: 'KW', pattern: /^\d{8}$/, placeholder: '50123456', maxLength: 8 },
+		{ code: '+968', country: 'Omán', countryCode: 'OM', pattern: /^\d{8}$/, placeholder: '92123456', maxLength: 8 },
+		{ code: '+974', country: 'Qatar', countryCode: 'QA', pattern: /^\d{8}$/, placeholder: '33123456', maxLength: 8 },
+		{ code: '+973', country: 'Bahréin', countryCode: 'BH', pattern: /^\d{8}$/, placeholder: '36123456', maxLength: 8 },
+		
+		// Additional European countries
+		{ code: '+421', country: 'Eslovaquia', countryCode: 'SK', pattern: /^\d{9}$/, placeholder: '901123456', maxLength: 9 },
+		{ code: '+386', country: 'Eslovenia', countryCode: 'SI', pattern: /^\d{8}$/, placeholder: '31123456', maxLength: 8 },
+		{ code: '+385', country: 'Croacia', countryCode: 'HR', pattern: /^\d{8,9}$/, placeholder: '912345678', maxLength: 9 },
+		{ code: '+381', country: 'Serbia', countryCode: 'RS', pattern: /^\d{8,9}$/, placeholder: '601234567', maxLength: 9 },
+		{ code: '+382', country: 'Montenegro', countryCode: 'ME', pattern: /^\d{8}$/, placeholder: '67123456', maxLength: 8 },
+		{ code: '+387', country: 'Bosnia', countryCode: 'BA', pattern: /^\d{8}$/, placeholder: '61123456', maxLength: 8 },
+		{ code: '+389', country: 'Macedonia del Norte', countryCode: 'MK', pattern: /^\d{8}$/, placeholder: '70123456', maxLength: 8 },
+		{ code: '+355', country: 'Albania', countryCode: 'AL', pattern: /^\d{9}$/, placeholder: '672123456', maxLength: 9 },
+		{ code: '+40', country: 'Rumania', countryCode: 'RO', pattern: /^\d{9}$/, placeholder: '721234567', maxLength: 9 },
+		{ code: '+359', country: 'Bulgaria', countryCode: 'BG', pattern: /^\d{9}$/, placeholder: '881234567', maxLength: 9 },
+		{ code: '+370', country: 'Lituania', countryCode: 'LT', pattern: /^\d{8}$/, placeholder: '61234567', maxLength: 8 },
+		{ code: '+371', country: 'Letonia', countryCode: 'LV', pattern: /^\d{8}$/, placeholder: '21234567', maxLength: 8 },
+		{ code: '+372', country: 'Estonia', countryCode: 'EE', pattern: /^\d{7,8}$/, placeholder: '5123456', maxLength: 8 },
+	]
+
 	const areasDeInteres = [
 		{ id: 'automatizacion', label: t('contact.form.areas.options.automatizacion') },
 		{ id: 'desarrollo', label: t('contact.form.areas.options.desarrollo') },
@@ -50,10 +180,106 @@ const Contact: React.FC = () => {
 	const [formData, setFormData] = useState<FormData>({
 		name: '',
 		email: '',
+		countryCode: '+58', // Default to Venezuela
 		phone: '',
 		message: '',
 		areas: [],
 	})
+	const [formErrors, setFormErrors] = useState<FormErrors>({})
+	
+	// Country dropdown search states
+	const [isDropdownOpen, setIsDropdownOpen] = useState(false)
+	const [searchQuery, setSearchQuery] = useState('')
+	const [filteredCountries, setFilteredCountries] = useState(countryCodes)
+
+	// Validation functions
+	const validateName = (name: string): string | undefined => {
+		const trimmedName = name.trim()
+		if (!trimmedName) return 'Por favor ingresa tu nombre completo'
+		
+		const nameParts = trimmedName.split(/\s+/).filter(part => part.length > 0)
+		if (nameParts.length < 2) {
+			return 'Por favor ingresa tu nombre completo (nombre y apellido)'
+		}
+		
+		return undefined
+	}
+
+	const validateEmail = (email: string): string | undefined => {
+		const trimmedEmail = email.trim()
+		if (!trimmedEmail) return 'Por favor ingresa tu correo electrónico'
+		
+		const emailRegex = /^[^\s@]+@[^\s@]+\.[^\s@]+$/
+		if (!emailRegex.test(trimmedEmail)) {
+			return 'Por favor ingresa un correo electrónico válido'
+		}
+		
+		return undefined
+	}
+
+	const validateMessage = (message: string): string | undefined => {
+		const trimmedMessage = message.trim()
+		if (!trimmedMessage) return 'Por favor ingresa tu mensaje'
+		
+		return undefined
+	}
+
+	const validatePhone = (phone: string, countryCode: string): string | undefined => {
+		const trimmedPhone = phone.trim()
+		if (!trimmedPhone) return 'Por favor ingresa tu número de teléfono'
+		
+		const selectedCountry = countryCodes.find(country => country.code === countryCode)
+		if (!selectedCountry) return 'Por favor selecciona un código de país válido'
+		
+		// Remove any non-digit characters
+		const cleanPhone = trimmedPhone.replace(/\D/g, '')
+		
+		if (!selectedCountry.pattern.test(cleanPhone)) {
+			return `Por favor ingresa un número válido para ${selectedCountry.country} (${selectedCountry.placeholder})`
+		}
+		
+		return undefined
+	}
+
+	// Country search functions
+	const handleSearchChange = (query: string) => {
+		setSearchQuery(query)
+		const filtered = countryCodes.filter(country => 
+			country.country.toLowerCase().includes(query.toLowerCase()) ||
+			country.countryCode.toLowerCase().includes(query.toLowerCase()) ||
+			country.code.includes(query)
+		)
+		setFilteredCountries(filtered)
+	}
+
+	const handleCountrySelect = (country: CountryCode) => {
+		setFormData(prev => ({ ...prev, countryCode: country.code }))
+		setIsDropdownOpen(false)
+		setSearchQuery('')
+		setFilteredCountries(countryCodes)
+	}
+
+	const getSelectedCountry = () => {
+		return countryCodes.find(country => country.code === formData.countryCode) || countryCodes[0]
+	}
+
+	// Close dropdown when clicking outside
+	useEffect(() => {
+		const handleClickOutside = (event: MouseEvent) => {
+			const target = event.target as HTMLElement
+			if (!target.closest('.country-dropdown')) {
+				setIsDropdownOpen(false)
+			}
+		}
+
+		if (isDropdownOpen) {
+			document.addEventListener('mousedown', handleClickOutside)
+		}
+
+		return () => {
+			document.removeEventListener('mousedown', handleClickOutside)
+		}
+	}, [isDropdownOpen])
 
 	const handleChange = useCallback(
 		(e: React.ChangeEvent<HTMLInputElement | HTMLTextAreaElement | HTMLSelectElement>) => {
@@ -62,8 +288,16 @@ const Contact: React.FC = () => {
 				...prev,
 				[name]: value,
 			}))
+
+			// Clear error when user starts typing
+			if (formErrors[name as keyof FormErrors]) {
+				setFormErrors((prev) => ({
+					...prev,
+					[name]: undefined,
+				}))
+			}
 		},
-		[],
+		[formErrors],
 	)
 
 	const handleAreaChange = useCallback((areaId: string) => {
@@ -79,6 +313,25 @@ const Contact: React.FC = () => {
 
 			if (!formRef.current || isSubmitting) return
 
+			// Validate form
+			const nameError = validateName(formData.name)
+			const emailError = validateEmail(formData.email)
+			const phoneError = validatePhone(formData.phone, formData.countryCode)
+			const messageError = validateMessage(formData.message)
+
+			const errors: FormErrors = {}
+			if (nameError) errors.name = nameError
+			if (emailError) errors.email = emailError
+			if (phoneError) errors.phone = phoneError
+			if (messageError) errors.message = messageError
+
+			setFormErrors(errors)
+
+			// If there are errors, don't submit
+			if (Object.keys(errors).length > 0) {
+				return
+			}
+
 			setIsSubmitting(true)
 
 			try {
@@ -87,7 +340,7 @@ const Contact: React.FC = () => {
 					{
 						name: formData.name,
 						email: formData.email,
-						phone: formData.phone,
+						phone: `${formData.countryCode} ${formData.phone}`,
 						areas: formData.areas.map((id) => areasDeInteres.find((area) => area.id === id)?.label || id),
 						message: formData.message,
 					},
@@ -102,10 +355,12 @@ const Contact: React.FC = () => {
 				setFormData({
 					name: '',
 					email: '',
+					countryCode: '+58',
 					phone: '',
 					message: '',
 					areas: [],
 				})
+				setFormErrors({})
 			} catch (error) {
 				console.error('Error al enviar el mensaje:', error)
 				alert(t('contact.form.error'))
@@ -113,7 +368,7 @@ const Contact: React.FC = () => {
 				setIsSubmitting(false)
 			}
 		},
-		[formRef, isSubmitting, formData],
+		[formRef, isSubmitting, formData, validateName, validateEmail, validatePhone, validateMessage],
 	)
 
 	const openWhatsApp = useCallback(() => {
@@ -164,14 +419,17 @@ const Contact: React.FC = () => {
 									name="name"
 									value={formData.name}
 									onChange={handleChange}
-									required
 									placeholder={t('contact.form.name.placeholder')}
-									className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-600 
-                    bg-gray-50 dark:bg-gray-700 px-3 py-2 text-gray-900 dark:text-white 
-                    shadow-sm focus:border-blue-500 dark:focus:border-blue-400 
-                    focus:ring-blue-500 dark:focus:ring-blue-400 
-                    focus:bg-white dark:focus:bg-gray-600 transition-colors duration-300"
+									className={`mt-1 block w-full rounded-md border px-3 py-2 text-gray-900 dark:text-white 
+									shadow-sm focus:ring-2 focus:ring-offset-0 transition-colors duration-300 ${
+										formErrors.name
+											? 'border-red-500 dark:border-red-400 bg-red-50 dark:bg-red-900/20 focus:border-red-500 focus:ring-red-500'
+											: 'border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-blue-500 dark:focus:ring-blue-400 focus:bg-white dark:focus:bg-gray-600'
+									}`}
 								/>
+								{formErrors.name && (
+									<p className="mt-1 text-sm text-red-600 dark:text-red-400">{formErrors.name}</p>
+								)}
 							</div>
 
 							<div>
@@ -179,38 +437,113 @@ const Contact: React.FC = () => {
 									{t('contact.form.email.title')}
 								</label>
 								<input
-									type="email"
+									type="text"
 									id="email"
 									name="email"
 									value={formData.email}
 									onChange={handleChange}
-									required
 									placeholder={t('contact.form.email.placeholder')}
-									className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-600 
-                    bg-gray-50 dark:bg-gray-700 px-3 py-2 text-gray-900 dark:text-white 
-                    shadow-sm focus:border-blue-500 dark:focus:border-blue-400 
-                    focus:ring-blue-500 dark:focus:ring-blue-400 
-                    focus:bg-white dark:focus:bg-gray-600 transition-colors duration-300"
+									className={`mt-1 block w-full rounded-md border px-3 py-2 text-gray-900 dark:text-white 
+									shadow-sm focus:ring-2 focus:ring-offset-0 transition-colors duration-300 ${
+										formErrors.email
+											? 'border-red-500 dark:border-red-400 bg-red-50 dark:bg-red-900/20 focus:border-red-500 focus:ring-red-500'
+											: 'border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-blue-500 dark:focus:ring-blue-400 focus:bg-white dark:focus:bg-gray-600'
+									}`}
 								/>
+								{formErrors.email && (
+									<p className="mt-1 text-sm text-red-600 dark:text-red-400">{formErrors.email}</p>
+								)}
 							</div>
 
 							<div>
 								<label htmlFor="phone" className="block text-sm font-medium text-gray-700 dark:text-gray-300">
 									{t('contact.form.phone.title')}
 								</label>
-								<input
-									type="tel"
-									id="phone"
-									name="phone"
-									value={formData.phone}
-									onChange={handleChange}
-									placeholder={t('contact.form.phone.placeholder')}
-									className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-600 
-                    bg-gray-50 dark:bg-gray-700 px-3 py-2 text-gray-900 dark:text-white 
-                    shadow-sm focus:border-blue-500 dark:focus:border-blue-400 
-                    focus:ring-blue-500 dark:focus:ring-blue-400 
-                    focus:bg-white dark:focus:bg-gray-600 transition-colors duration-300"
-								/>
+								<div className="mt-1 flex space-x-2">
+									{/* Country Code Dropdown with Search */}
+									<div className="relative w-32 country-dropdown">
+										<div
+											className={`block w-full rounded-md border px-3 py-2 text-gray-900 dark:text-white text-sm
+											shadow-sm cursor-pointer transition-colors duration-300 ${
+												formErrors.phone
+													? 'border-red-500 dark:border-red-400 bg-red-50 dark:bg-red-900/20'
+													: 'border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 hover:bg-white dark:hover:bg-gray-600'
+											}`}
+											onClick={() => setIsDropdownOpen(!isDropdownOpen)}
+										>
+											<div className="flex items-center justify-between">
+												<span className="text-xs font-semibold text-blue-600 dark:text-blue-400">
+													{getSelectedCountry().countryCode}
+												</span>
+												<span className="text-sm">{getSelectedCountry().code}</span>
+											</div>
+										</div>
+										
+										{isDropdownOpen && (
+											<div className="absolute z-50 mt-1 w-80 max-h-64 overflow-hidden bg-white dark:bg-gray-800 border border-gray-300 dark:border-gray-600 rounded-md shadow-lg">
+												{/* Search Input */}
+												<div className="p-2 border-b border-gray-200 dark:border-gray-700">
+													<input
+														type="text"
+														placeholder="Buscar país..."
+														value={searchQuery}
+														onChange={(e) => handleSearchChange(e.target.value)}
+														className="w-full px-3 py-2 text-sm border border-gray-300 dark:border-gray-600 rounded-md bg-white dark:bg-gray-700 text-gray-900 dark:text-white focus:outline-none focus:ring-2 focus:ring-blue-500"
+														onClick={(e) => e.stopPropagation()}
+													/>
+												</div>
+												
+												{/* Countries List */}
+												<div className="max-h-48 overflow-y-auto">
+													{filteredCountries.map((country) => (
+														<div
+															key={`${country.code}-${country.countryCode}`}
+															className="px-3 py-2 hover:bg-gray-100 dark:hover:bg-gray-700 cursor-pointer flex items-center justify-between text-sm"
+															onClick={() => handleCountrySelect(country)}
+														>
+															<div className="flex items-center space-x-2">
+																<span className="text-xs font-semibold text-blue-600 dark:text-blue-400 w-8">
+																	{country.countryCode}
+																</span>
+																<span className="text-gray-900 dark:text-white">
+																	{country.country}
+																</span>
+															</div>
+															<span className="text-gray-600 dark:text-gray-300">
+																{country.code}
+															</span>
+														</div>
+													))}
+													{filteredCountries.length === 0 && (
+														<div className="px-3 py-2 text-sm text-gray-500 dark:text-gray-400">
+															No se encontraron países
+														</div>
+													)}
+												</div>
+											</div>
+										)}
+									</div>
+									
+									{/* Phone Number Input */}
+									<input
+										type="tel"
+										id="phone"
+										name="phone"
+										value={formData.phone}
+										onChange={handleChange}
+										placeholder={countryCodes.find(c => c.code === formData.countryCode)?.placeholder || t('contact.form.phone.placeholder')}
+										maxLength={countryCodes.find(c => c.code === formData.countryCode)?.maxLength || 15}
+										className={`flex-1 block w-full rounded-md border px-3 py-2 text-gray-900 dark:text-white 
+										shadow-sm focus:ring-2 focus:ring-offset-0 transition-colors duration-300 ${
+											formErrors.phone
+												? 'border-red-500 dark:border-red-400 bg-red-50 dark:bg-red-900/20 focus:border-red-500 focus:ring-red-500'
+												: 'border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-blue-500 dark:focus:ring-blue-400 focus:bg-white dark:focus:bg-gray-600'
+										}`}
+									/>
+								</div>
+								{formErrors.phone && (
+									<p className="mt-1 text-sm text-red-600 dark:text-red-400">{formErrors.phone}</p>
+								)}
 							</div>
 
 							<div>
@@ -248,15 +581,18 @@ const Contact: React.FC = () => {
 									name="message"
 									value={formData.message}
 									onChange={handleChange}
-									required
 									placeholder={t('contact.form.message.placeholder')}
 									rows={4}
-									className="mt-1 block w-full rounded-md border border-gray-300 dark:border-gray-600 
-                    bg-gray-50 dark:bg-gray-700 px-3 py-2 text-gray-900 dark:text-white 
-                    shadow-sm focus:border-blue-500 dark:focus:border-blue-400 
-                    focus:ring-blue-500 dark:focus:ring-blue-400 
-                    focus:bg-white dark:focus:bg-gray-600 transition-colors duration-300"
+									className={`mt-1 block w-full rounded-md border px-3 py-2 text-gray-900 dark:text-white 
+									shadow-sm focus:ring-2 focus:ring-offset-0 transition-colors duration-300 ${
+										formErrors.message
+											? 'border-red-500 dark:border-red-400 bg-red-50 dark:bg-red-900/20 focus:border-red-500 focus:ring-red-500'
+											: 'border-gray-300 dark:border-gray-600 bg-gray-50 dark:bg-gray-700 focus:border-blue-500 dark:focus:border-blue-400 focus:ring-blue-500 dark:focus:ring-blue-400 focus:bg-white dark:focus:bg-gray-600'
+									}`}
 								/>
+								{formErrors.message && (
+									<p className="mt-1 text-sm text-red-600 dark:text-red-400">{formErrors.message}</p>
+								)}
 							</div>
 
 							<button
