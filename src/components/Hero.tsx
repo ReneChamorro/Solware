@@ -42,7 +42,7 @@ export default function Hero() {
 					const nextIndex = (prev + 1) % 4 // 4 cards total
 					return nextIndex
 				})
-			}, 7000) // 7 seconds
+			}, 3000) // 3 seconds
 
 			return () => clearInterval(autoHoverInterval)
 		}
