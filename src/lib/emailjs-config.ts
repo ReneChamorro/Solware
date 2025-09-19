@@ -8,13 +8,13 @@
 
 export const emailjsConfig = {
   // Service ID - obtenido de la sección Services en EmailJS
-  serviceId: 'service_jyvc03w', // ✅ CONFIGURADO
+  serviceId: 'service_lteo1ob', // ✅ CONFIGURADO
   
   // Template ID - obtenido de la sección Templates en EmailJS
-  templateId: 'template_6qlaug8', // ✅ CONFIGURADO
+  templateId: 'template_xmzuro8', // ✅ CONFIGURADO
   
   // Public Key - obtenido de Account Settings > API Keys
-  publicKey: 'cPPKf_MNWiEYr73Xh', // ✅ CONFIGURADO
+  publicKey: 'yMmw_lgATsFxHOF-u', // ✅ CONFIGURADO
   
   // Email de destino
   toEmail: 'renebehrens90@gmail.com'

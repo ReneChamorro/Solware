@@ -342,10 +342,10 @@
         "options": {
           "automatizacion": "Process Automation",
           "desarrollo": "Web/Mobile Development",
-          "crm": "CRM & Customer Management",
-          "marketing": "Digital Marketing",
-          "infraestructura": "Cloud Infrastructure",
-          "consultoria": "Digital Consulting"
+          "crm": "UX/UI Consulting",
+          "marketing": "Health Sector",
+          "infraestructura": "Open Talk",
+          "consultoria": "AI Agents"
         }
       },
       "whatsapp": {
@@ -538,7 +538,7 @@
         "ayuda": "help",
         "servicio": "service",
         "web": "web",
-        "marketing": "marketing",
+        "marketing": "imarketng",
         "aplicacion": "application",
         "movil": "mobile",
         "telefono": "phone",

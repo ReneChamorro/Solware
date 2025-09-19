@@ -360,10 +360,10 @@
         "options": {
           "automatizacion": "Automatización de Procesos",
           "desarrollo": "Desarrollo Web/Móvil",
-          "crm": "CRM y Gestión de Clientes",
-          "marketing": "Marketing Digital",
-          "infraestructura": "Infraestructura en la Nube",
-          "consultoria": "Consultoría Digital"
+          "crm": "Asesoría UX/UI",
+          "marketing": "Sector Salud",
+          "infraestructura": "Open Talk",
+          "consultoria": "Agentes de IA"
         }
       },
       "whatsapp": {
