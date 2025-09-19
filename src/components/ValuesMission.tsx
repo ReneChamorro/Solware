@@ -1,5 +1,5 @@
 import React from 'react'
-import { Lightbulb, Users, Target, Leaf } from 'lucide-react'
+import { Lightbulb, Users, Target, Leaf, Handshake } from 'lucide-react'
 import BlurText from './effectsComponents/BlurText'
 import { useTranslation } from 'react-i18next'
 
@@ -13,7 +13,7 @@ const ValuesMission: React.FC = () => {
 			color: 'bg-amber-100 dark:bg-amber-900/30',
 			iconColor: 'text-amber-600 dark:text-amber-400',
 			hoverColor: 'group-hover:text-amber-500 dark:group-hover:text-amber-300',
-			cardHover: 'hover:shadow-amber-500/20 dark:hover:shadow-amber-500/20',
+			cardHover: 'hover:shadow-[0_20px_50px_rgba(245,158,11,0.4)] dark:hover:shadow-[0_0_20px_rgba(245,158,11,0.5)]',
 		},
 		{
 			icon: <Users className="h-6 w-6" />,
@@ -22,7 +22,7 @@ const ValuesMission: React.FC = () => {
 			color: 'bg-blue-100 dark:bg-blue-900/30',
 			iconColor: 'text-blue-600 dark:text-blue-400',
 			hoverColor: 'group-hover:text-blue-500 dark:group-hover:text-blue-300',
-			cardHover: 'hover:shadow-blue-500/20 dark:hover:shadow-blue-500/20',
+			cardHover: 'hover:shadow-[0_20px_50px_rgba(59,130,246,0.4)] dark:hover:shadow-[0_0_20px_rgba(59,130,246,0.5)]',
 		},
 		{
 			icon: <Target className="h-6 w-6" />,
@@ -31,7 +31,7 @@ const ValuesMission: React.FC = () => {
 			color: 'bg-purple-100 dark:bg-purple-900/30',
 			iconColor: 'text-purple-600 dark:text-purple-400',
 			hoverColor: 'group-hover:text-purple-500 dark:group-hover:text-purple-300',
-			cardHover: 'hover:shadow-purple-500/20 dark:hover:shadow-purple-500/20',
+			cardHover: 'hover:shadow-[0_20px_50px_rgba(168,85,247,0.4)] dark:hover:shadow-[0_0_20px_rgba(168,85,247,0.5)]',
 		},
 		{
 			icon: <Leaf className="h-6 w-6" />,
@@ -40,7 +40,7 @@ const ValuesMission: React.FC = () => {
 			color: 'bg-green-100 dark:bg-green-900/30',
 			iconColor: 'text-green-600 dark:text-green-400',
 			hoverColor: 'group-hover:text-green-500 dark:group-hover:text-green-300',
-			cardHover: 'hover:shadow-green-500/20 dark:hover:shadow-green-500/20',
+			cardHover: 'hover:shadow-[0_20px_50px_rgba(34,197,94,0.4)] dark:hover:shadow-[0_0_20px_rgba(34,197,94,0.5)]',
 		},
 	]
 
@@ -67,9 +67,13 @@ const ValuesMission: React.FC = () => {
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-12 items-center">
 					<div
 						className="bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 
-              rounded-2xl p-8 sm:p-10 shadow-lg transform hover:scale-[1.02] transition-all duration-300"
+              rounded-2xl p-8 sm:p-10 shadow-lg transform hover:scale-[1.02] transition-all duration-300
+              hover:shadow-[0_20px_50px_rgba(236,72,153,0.4)] dark:hover:shadow-[0_0_20px_rgba(236,72,153,0.5)]"
 					>
 						<div className="prose prose-lg dark:prose-invert max-w-none text-justify">
+							<div className="w-12 h-12 bg-pink-100 dark:bg-pink-900/30 rounded-lg flex items-center justify-center float-left mr-4 mb-2">
+								<Handshake className="h-6 w-6 text-pink-600 dark:text-pink-400" />
+							</div>
 							<p className="text-gray-700 dark:text-gray-300 leading-relaxed mb-6">{t('valuesMission.paragraph1')}</p>
 							<div className="text-gray-700 dark:text-gray-300 leading-relaxed">
 								{t('valuesMission.paragraph2').split('\n').map((line, index) => (

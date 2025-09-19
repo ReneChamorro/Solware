@@ -303,7 +303,7 @@
     "description": "Impulsando tu transformación digital con propósito y excelencia",
 
     "paragraph1": "En Solware transformamos negocios y mejoramos vidas usando tecnología como motor de cambio. Nuestra misión es impulsar empresas de cualquier industria con soluciones innovadoras, accesibles y sostenibles, adaptadas a cada necesidad.",
-    "paragraph2": "Creemos en la confianza, la colaboración y la excelencia.\nCada proyecto no solo debe cumplirse, sino superar expectativas.\nJuntos, construimos un futuro digital donde tu éxito es nuestro objetivo.",
+    "paragraph2": "Creemos en la confianza, la colaboración y la excelencia. Cada proyecto no solo debe cumplirse, sino superar expectativas. Juntos, construimos un futuro digital donde tu éxito es nuestro objetivo.",
 
     "values": {
       "innovation": {
@@ -360,10 +360,10 @@
         "options": {
           "automatizacion": "Automatización de Procesos",
           "desarrollo": "Desarrollo Web/Móvil",
-          "crm": "CRM y Gestión de Clientes",
-          "marketing": "Marketing Digital",
-          "infraestructura": "Infraestructura en la Nube",
-          "consultoria": "Consultoría Digital"
+          "crm": "Asesoría UX/UI",
+          "marketing": "Sector Salud",
+          "infraestructura": "Open Talk",
+          "consultoria": "Agentes de IA"
         }
       },
       "whatsapp": {
