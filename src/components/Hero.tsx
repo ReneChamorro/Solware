@@ -32,21 +32,28 @@ export default function Hero() {
 	}, [])
 
 	// Auto hover animation effect
-	useEffect(() => {
-		if (!isManualHover) {
-			// Start immediately with the first card
-			setAutoHoverIndex(0)
-			
-			const autoHoverInterval = setInterval(() => {
-				setAutoHoverIndex(prev => {
-					const nextIndex = (prev + 1) % 4 // 4 cards total
-					return nextIndex
-				})
-			}, 3000) // 3 seconds
+useEffect(() => {
+    if (!isManualHover) {
+        const initialDelay = 1000 // milisegundos
 
-			return () => clearInterval(autoHoverInterval)
-		}
-	}, [isManualHover])
+        let intervalId: NodeJS.Timeout
+        const timeoutId = setTimeout(() => {
+            setAutoHoverIndex(0) // Inicia el autohover después del delay
+
+            intervalId = setInterval(() => {
+                setAutoHoverIndex(prev => {
+                    const nextIndex = (prev + 1) % 4 // 4 cards total
+                    return nextIndex
+                })
+            }, 3000)
+        }, initialDelay)
+
+        return () => {
+            clearTimeout(timeoutId)
+            clearInterval(intervalId)
+        }
+    }
+}, [isManualHover])
 
 	// Handle manual hover
 	const handleMouseEnter = (index: number) => {
