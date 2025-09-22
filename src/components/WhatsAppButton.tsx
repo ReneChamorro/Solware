@@ -1,12 +1,10 @@
-import { memo, useCallback, useState, useRef, useEffect } from 'react';
+import { memo, useCallback, useState, useEffect } from 'react';
 import { Instagram, Linkedin } from 'lucide-react';
 
 const WhatsAppButton = memo(() => {
-  const [isActive, setIsActive] = useState(false);
   const [isAutoHover, setIsAutoHover] = useState(false);
   const [isAutoHoverExit, setIsAutoHoverExit] = useState(false);
   const [isManualHover, setIsManualHover] = useState(false);
-  const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
   const openWhatsApp = useCallback(() => {
   const message = encodeURIComponent('Hola, me gustaría obtener más información sobre sus servicios.');
@@ -21,30 +19,12 @@ const WhatsAppButton = memo(() => {
     window.open('https://www.linkedin.com/company/agencia-solware', '_blank');
   }, []);
 
-  const handleMobileToggle = useCallback(() => {
-    if (isActive) {
-      // Si ya está activo, lo desactivamos
-      setIsActive(false);
-    } else {
-      // Si no está activo, lo activamos
-      setIsActive(true);
-      setIsManualHover(true); // Pausar auto-hover
-      
-      // Auto-cerrar después de 2 segundos
-      if (timeoutRef.current) clearTimeout(timeoutRef.current);
-      timeoutRef.current = setTimeout(() => {
-        setIsActive(false);
-        setIsManualHover(false); // Reanudar auto-hover
-      }, 2000);
-    }
-  }, [isActive]);
-
   // Auto hover effect cada 10 segundos
   useEffect(() => {
     if (!isManualHover) {
       const autoHoverInterval = setInterval(() => {
         setIsAutoHover(true);
-        // Duración de la animación: 1.6 segundos (como el mobile)
+        // Duración de la animación: 1.6 segundos
         setTimeout(() => {
           setIsAutoHover(false);
           setIsAutoHoverExit(true);
@@ -208,7 +188,7 @@ const WhatsAppButton = memo(() => {
           }
         }
 
-        /* MOBILE STYLES - Exactamente igual que desktop */
+        /* MOBILE STYLES - Igual que desktop */
         @media (max-width: 768px) {
           /* Área invisible ajustada para móvil */
           .matryoshka-group .hover-area {
@@ -217,101 +197,16 @@ const WhatsAppButton = memo(() => {
             bottom: -5px !important;
             left: -5px !important;
           }
-
-          /* Flecha indicadora para móvil - Al lado derecho del botón */
-          .mobile-arrow {
-            position: absolute;
-            top: 50%;
-            right: -40px;
-            transform: translateY(-50%);
-            width: 60px;
-            height: 60px;
-            background: transparent;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            opacity: 1;
-            transition: all 0.3s ease;
-            pointer-events: auto;
-            z-index: 25;
-            cursor: pointer;
-            animation: arrow-pulse 2s infinite;
-          }
-
-          /* Ocultar flecha cuando hay animación activa */
-          .matryoshka-group:hover .mobile-arrow,
-          .matryoshka-group.active .mobile-arrow,
-          .matryoshka-group.auto-hover .mobile-arrow {
-            opacity: 0 !important;
-            animation: none !important;
-          }
-
-          /* FORZAR mostrar flecha de nuevo */
-          .matryoshka-group:not(.active):not(.auto-hover):not(:hover) .mobile-arrow {
-            opacity: 1 !important;
-            animation: arrow-pulse 2s infinite !important;
-          }
-
-          /* Activar con clase .active también (además del hover) */
-          .matryoshka-group.active .instagram-btn,
-          .matryoshka-group.active .linkedin-btn {
-            pointer-events: auto !important;
-            opacity: 1 !important;
-          }
-
-          .matryoshka-group.active .instagram-btn {
-            animation: matryoshka-pop-ig 0.8s ease-out 0.1s forwards !important;
-          }
-
-          .matryoshka-group.active .linkedin-btn {
-            animation: matryoshka-pop-ln 0.8s ease-out 0.2s forwards !important;
-          }
-
-          /* Posiciones iniciales iguales que desktop */
-          .instagram-btn {
-            top: 50% !important;
-            left: 0 !important;
-            transform: translateY(-50%) translateX(16px) scale(0) !important;
-          }
-
-          .linkedin-btn {
-            top: 50% !important;
-            left: 0 !important;
-            transform: translateY(-50%) translateX(16px) scale(0) !important;
-          }
-
-          /* Animación de pulso para la flecha */
-          @keyframes arrow-pulse {
-            0%, 100% {
-              opacity: 1;
-              transform: translateY(-50%) scale(1);
-            }
-            50% {
-              opacity: 0.6;
-              transform: translateY(-50%) scale(1.1);
-            }
-          }
         }
       `}</style>
 
       <div 
-        className={`fixed bottom-5 left-5 z-50 matryoshka-group ${isActive ? 'active' : ''} ${isAutoHover ? 'auto-hover' : ''} ${isAutoHoverExit ? 'auto-hover-exit' : ''}`}
+        className={`fixed bottom-5 left-5 z-50 matryoshka-group ${isAutoHover ? 'auto-hover' : ''} ${isAutoHoverExit ? 'auto-hover-exit' : ''}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
         {/* Área invisible para mantener hover - ajustada según dispositivo */}
         <div className="hover-area absolute -top-5 -bottom-5 -left-5 -right-32 pointer-events-none hover:pointer-events-auto"></div>
-        
-        {/* Flecha indicadora para móvil */}
-        <div className="mobile-arrow md:hidden" onClick={handleMobileToggle}>
-          <svg 
-            className="w-10 h-10 text-[#25D366] transition-transform duration-200 hover:scale-110" 
-            fill="currentColor" 
-            viewBox="0 0 24 24"
-          >
-            <path d="M10 7l5 5-5 5V7z"/>
-          </svg>
-        </div>
         
         {/* Botón principal de WhatsApp */}
         <button
