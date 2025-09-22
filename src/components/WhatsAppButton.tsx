@@ -86,13 +86,13 @@ const WhatsAppButton = memo(() => {
         .whatsapp-btn:hover ~ .instagram-btn,
         .matryoshka-group.auto-hover .instagram-btn,
         .matryoshka-group:hover .instagram-btn {
-          animation: matryoshka-pop-ig 0.6s ease-out 0.1s forwards !important;
+          animation: matryoshka-pop-ig 0.8s ease-out 0.1s forwards !important;
           pointer-events: auto;
         }
         .whatsapp-btn:hover ~ .linkedin-btn,
         .matryoshka-group.auto-hover .linkedin-btn,
         .matryoshka-group:hover .linkedin-btn {
-          animation: matryoshka-pop-ln 0.6s ease-out 0.2s forwards !important;
+          animation: matryoshka-pop-ln 0.8s ease-out 0.2s forwards !important;
           pointer-events: auto;
         }
 
@@ -106,16 +106,6 @@ const WhatsAppButton = memo(() => {
         .matryoshka-group.auto-hover .linkedin-btn {
           pointer-events: auto;
           opacity: 1;
-        }
-
-        .matryoshka-group:hover:not(:has(.whatsapp-btn:hover)) .instagram-btn,
-        .matryoshka-group.auto-hover .instagram-btn {
-          transform: translateY(-50%) translateX(70px) scale(1) !important;
-        }
-
-        .matryoshka-group:hover:not(:has(.whatsapp-btn:hover)) .linkedin-btn,
-        .matryoshka-group.auto-hover .linkedin-btn {
-          transform: translateY(-50%) translateX(120px) scale(1) !important;
         }
 
         .instagram-btn:hover {
@@ -277,7 +267,7 @@ const WhatsAppButton = memo(() => {
           .matryoshka-group:active .instagram-btn,
           .matryoshka-group.active .instagram-btn,
           .matryoshka-group.auto-hover .instagram-btn {
-            animation: matryoshka-pop-ig 0.6s ease-out 0.1s forwards !important;
+            animation: matryoshka-pop-ig 0.8s ease-out 0.1s forwards !important;
             pointer-events: auto;
             opacity: 1;
           }
@@ -285,20 +275,20 @@ const WhatsAppButton = memo(() => {
           .matryoshka-group:active .linkedin-btn,
           .matryoshka-group.active .linkedin-btn,
           .matryoshka-group.auto-hover .linkedin-btn {
-            animation: matryoshka-pop-ln 0.6s ease-out 0.2s forwards !important;
+            animation: matryoshka-pop-ln 0.8s ease-out 0.2s forwards !important;
             pointer-events: auto;
             opacity: 1;
           }
 
           /* También para hover manual en móvil */
           .matryoshka-group:hover .instagram-btn {
-            animation: matryoshka-pop-ig 0.6s ease-out 0.1s forwards !important;
+            animation: matryoshka-pop-ig 0.8s ease-out 0.1s forwards !important;
             pointer-events: auto;
             opacity: 1;
           }
 
           .matryoshka-group:hover .linkedin-btn {
-            animation: matryoshka-pop-ln 0.6s ease-out 0.2s forwards !important;
+            animation: matryoshka-pop-ln 0.8s ease-out 0.2s forwards !important;
             pointer-events: auto;
             opacity: 1;
           }
@@ -338,18 +328,6 @@ const WhatsAppButton = memo(() => {
           }
 
           /* Posiciones para móvil - Instagram PEGADITO */
-          .matryoshka-group:hover:not(:has(.whatsapp-btn:hover)) .instagram-btn,
-          .matryoshka-group.auto-hover .instagram-btn,
-          .matryoshka-group.active .instagram-btn {
-            transform: translateX(-50%) translateY(-10px) scale(1) !important;
-          }
-
-          .matryoshka-group:hover:not(:has(.whatsapp-btn:hover)) .linkedin-btn,
-          .matryoshka-group.auto-hover .linkedin-btn,
-          .matryoshka-group.active .linkedin-btn {
-            transform: translateX(-50%) translateY(-60px) scale(1) !important;
-          }
-
           .instagram-btn:hover {
             transform: translateX(-50%) translateY(-10px) scale(1.1) !important;
           }
