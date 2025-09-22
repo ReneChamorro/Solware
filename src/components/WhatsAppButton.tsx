@@ -5,7 +5,6 @@ const WhatsAppButton = memo(() => {
   const [isActive, setIsActive] = useState(false);
   const [isAutoHover, setIsAutoHover] = useState(false);
   const [isAutoHoverExit, setIsAutoHoverExit] = useState(false);
-  const [isMobileExit, setIsMobileExit] = useState(false);
   const [isManualHover, setIsManualHover] = useState(false);
   const timeoutRef = useRef<NodeJS.Timeout | null>(null);
 
@@ -24,25 +23,19 @@ const WhatsAppButton = memo(() => {
 
   const handleMobileToggle = useCallback(() => {
     if (isActive) {
+      // Si ya está activo, lo desactivamos
       setIsActive(false);
-      setIsMobileExit(true);
-      // Limpiar el estado de salida después de las animaciones
-      setTimeout(() => {
-        setIsMobileExit(false);
-      }, 1600);
     } else {
+      // Si no está activo, lo activamos
       setIsActive(true);
-      setIsMobileExit(false); // Limpiar estado de salida
-      // Auto-cerrar después de 1.6 segundos (mismo timing que desktop)
+      setIsManualHover(true); // Pausar auto-hover
+      
+      // Auto-cerrar después de 2 segundos
       if (timeoutRef.current) clearTimeout(timeoutRef.current);
       timeoutRef.current = setTimeout(() => {
         setIsActive(false);
-        setIsMobileExit(true);
-        // Limpiar el estado de salida después de las animaciones
-        setTimeout(() => {
-          setIsMobileExit(false);
-        }, 1600);
-      }, 1600);
+        setIsManualHover(false); // Reanudar auto-hover
+      }, 2000);
     }
   }, [isActive]);
 
@@ -215,22 +208,22 @@ const WhatsAppButton = memo(() => {
           }
         }
 
-        /* MOBILE STYLES (hacia arriba) */
+        /* MOBILE STYLES - Exactamente igual que desktop */
         @media (max-width: 768px) {
           /* Área invisible ajustada para móvil */
           .matryoshka-group .hover-area {
-            top: -80px !important;
-            right: -5px !important;
+            top: -5px !important;
+            right: -80px !important;
             bottom: -5px !important;
             left: -5px !important;
           }
 
-          /* Flecha indicadora para móvil - Estado base */
+          /* Flecha indicadora para móvil - Al lado derecho del botón */
           .mobile-arrow {
             position: absolute;
-            top: -40px;
-            left: 50%;
-            transform: translateX(-50%);
+            top: 50%;
+            right: -40px;
+            transform: translateY(-50%);
             width: 60px;
             height: 60px;
             background: transparent;
@@ -245,207 +238,64 @@ const WhatsAppButton = memo(() => {
             animation: arrow-pulse 2s infinite;
           }
 
-          /* Ocultar flecha cuando hay animación activa - Z-INDEX BAJO */
+          /* Ocultar flecha cuando hay animación activa */
           .matryoshka-group:hover .mobile-arrow,
           .matryoshka-group.active .mobile-arrow,
           .matryoshka-group.auto-hover .mobile-arrow {
             opacity: 0 !important;
             animation: none !important;
-            top: -40px !important;
-            z-index: 15 !important;
           }
 
-          /* FORZAR mostrar flecha de nuevo después del auto-hover - Z-INDEX ALTO */
+          /* FORZAR mostrar flecha de nuevo */
           .matryoshka-group:not(.active):not(.auto-hover):not(:hover) .mobile-arrow {
             opacity: 1 !important;
             animation: arrow-pulse 2s infinite !important;
-            top: -40px !important;
-            z-index: 25 !important;
           }
 
-          /* Trigger para móvil usando :active, clase y autohover */
-          .matryoshka-group:active .instagram-btn,
+          /* Activar con clase .active también (además del hover) */
           .matryoshka-group.active .instagram-btn,
-          .matryoshka-group.auto-hover .instagram-btn {
+          .matryoshka-group.active .linkedin-btn {
+            pointer-events: auto !important;
+            opacity: 1 !important;
+          }
+
+          .matryoshka-group.active .instagram-btn {
             animation: matryoshka-pop-ig 0.8s ease-out 0.1s forwards !important;
-            pointer-events: auto;
-            opacity: 1;
           }
 
-          .matryoshka-group:active .linkedin-btn,
-          .matryoshka-group.active .linkedin-btn,
-          .matryoshka-group.auto-hover .linkedin-btn {
+          .matryoshka-group.active .linkedin-btn {
             animation: matryoshka-pop-ln 0.8s ease-out 0.2s forwards !important;
-            pointer-events: auto;
-            opacity: 1;
           }
 
-          /* También para hover manual en móvil */
-          .matryoshka-group:hover .instagram-btn {
-            animation: matryoshka-pop-ig 0.8s ease-out 0.1s forwards !important;
-            pointer-events: auto;
-            opacity: 1;
-          }
-
-          .matryoshka-group:hover .linkedin-btn {
-            animation: matryoshka-pop-ln 0.8s ease-out 0.2s forwards !important;
-            pointer-events: auto;
-            opacity: 1;
-          }
-
-          /* Animaciones de salida CON delay real de 1 segundo para móvil */
-          .matryoshka-group:not(.active):not(.auto-hover):not(.auto-hover-exit):not(:hover) .instagram-btn {
-            animation: matryoshka-stay-ig 1.1s ease-out forwards, matryoshka-exit-ig 0.5s ease-in 1.1s forwards;
-          }
-          .matryoshka-group:not(.active):not(.auto-hover):not(.auto-hover-exit):not(:hover) .linkedin-btn {
-            animation: matryoshka-stay-ln 1s ease-out forwards, matryoshka-exit-ln 0.5s ease-in 1s forwards;
-          }
-
-          /* Animaciones de salida cuando .active se quita */
-          @media (pointer: coarse) {
-            .matryoshka-group:not(.active):not(.auto-hover):not(.auto-hover-exit) .instagram-btn {
-              animation: matryoshka-stay-ig 1.1s ease-out forwards, matryoshka-exit-ig 0.5s ease-in 1.1s forwards !important;
-            }
-            .matryoshka-group:not(.active):not(.auto-hover):not(.auto-hover-exit) .linkedin-btn {
-              animation: matryoshka-stay-ln 1s ease-out forwards, matryoshka-exit-ln 0.5s ease-in 1s forwards !important;
-            }
-          }
-
-          /* Animaciones de salida específicas para autohover en móvil */
-          .matryoshka-group.auto-hover-exit .instagram-btn {
-            animation: matryoshka-stay-ig 1.1s ease-out forwards, matryoshka-exit-ig 0.5s ease-in 1.1s forwards;
-          }
-          .matryoshka-group.auto-hover-exit .linkedin-btn {
-            animation: matryoshka-stay-ln 1s ease-out forwards, matryoshka-exit-ln 0.5s ease-in 1s forwards;
-          }
-
-          /* Animaciones de salida específicas para mobile manual */
-          .matryoshka-group.mobile-exit .instagram-btn {
-            animation: matryoshka-stay-ig 1.1s ease-out forwards, matryoshka-exit-ig 0.5s ease-in 1.1s forwards !important;
-          }
-          .matryoshka-group.mobile-exit .linkedin-btn {
-            animation: matryoshka-stay-ln 1s ease-out forwards, matryoshka-exit-ln 0.5s ease-in 1s forwards !important;
-          }
-
-          /* Posiciones para móvil - Instagram PEGADITO */
-          .instagram-btn:hover {
-            transform: translateX(-50%) translateY(-10px) scale(1.1) !important;
-          }
-
-          .linkedin-btn:hover {
-            transform: translateX(-50%) translateY(-60px) scale(1.1) !important;
-          }
-
-          /* Botones posicionados arriba del botón principal */
+          /* Posiciones iniciales iguales que desktop */
           .instagram-btn {
-            top: auto !important;
-            bottom: 60px;
-            left: 50% !important;
-            transform: translateX(-50%) translateY(16px) scale(0) !important;
+            top: 50% !important;
+            left: 0 !important;
+            transform: translateY(-50%) translateX(16px) scale(0) !important;
           }
 
           .linkedin-btn {
-            top: auto !important;
-            bottom: 60px;
-            left: 50% !important;
-            transform: translateX(-50%) translateY(16px) scale(0) !important;
+            top: 50% !important;
+            left: 0 !important;
+            transform: translateY(-50%) translateX(16px) scale(0) !important;
           }
 
           /* Animación de pulso para la flecha */
-          .mobile-arrow {
-            animation: arrow-pulse 2s infinite;
-          }
-
           @keyframes arrow-pulse {
             0%, 100% {
               opacity: 1;
-              transform: translateX(-50%) scale(1);
+              transform: translateY(-50%) scale(1);
             }
             50% {
               opacity: 0.6;
-              transform: translateX(-50%) scale(1.1);
-            }
-          }
-
-          /* MOBILE ANIMATIONS (hacia arriba) CON ROTACIÓN */
-          @keyframes matryoshka-pop-ig {
-            0% {
-              transform: translateX(-50%) translateY(-4px) scale(0) rotate(-180deg);
-              opacity: 0;
-            }
-            60% {
-              transform: translateX(-50%) translateY(-15px) scale(1.15) rotate(-10deg);
-              opacity: 0.9;
-            }
-            100% {
-              transform: translateX(-50%) translateY(-10px) scale(1) rotate(0deg);
-              opacity: 1;
-            }
-          }
-
-          @keyframes matryoshka-pop-ln {
-            0% {
-              transform: translateX(-50%) translateY(-4px) scale(0) rotate(-270deg);
-              opacity: 0;
-            }
-            60% {
-              transform: translateX(-50%) translateY(-65px) scale(1.2) rotate(-15deg);
-              opacity: 0.9;
-            }
-            100% {
-              transform: translateX(-50%) translateY(-60px) scale(1) rotate(0deg);
-              opacity: 1;
-            }
-          }
-
-          @keyframes matryoshka-stay-ig {
-            0%, 100% {
-              transform: translateX(-50%) translateY(-10px) scale(1) rotate(0deg);
-              opacity: 1;
-            }
-          }
-
-          @keyframes matryoshka-stay-ln {
-            0%, 100% {
-              transform: translateX(-50%) translateY(-60px) scale(1) rotate(0deg);
-              opacity: 1;
-            }
-          }
-
-          @keyframes matryoshka-exit-ig {
-            0% {
-              transform: translateX(-50%) translateY(-10px) scale(1) rotate(0deg);
-              opacity: 1;
-            }
-            40% {
-              transform: translateX(-50%) translateY(-15px) scale(1.15) rotate(10deg);
-              opacity: 0.9;
-            }
-            100% {
-              transform: translateX(-50%) translateY(-4px) scale(0) rotate(180deg);
-              opacity: 0;
-            }
-          }
-
-          @keyframes matryoshka-exit-ln {
-            0% {
-              transform: translateX(-50%) translateY(-60px) scale(1) rotate(0deg);
-              opacity: 1;
-            }
-            40% {
-              transform: translateX(-50%) translateY(-65px) scale(1.2) rotate(15deg);
-              opacity: 0.9;
-            }
-            100% {
-              transform: translateX(-50%) translateY(-4px) scale(0) rotate(270deg);
-              opacity: 0;
+              transform: translateY(-50%) scale(1.1);
             }
           }
         }
       `}</style>
 
       <div 
-        className={`fixed bottom-5 left-5 z-50 matryoshka-group ${isActive ? 'active' : ''} ${isAutoHover ? 'auto-hover' : ''} ${isAutoHoverExit ? 'auto-hover-exit' : ''} ${isMobileExit ? 'mobile-exit' : ''}`}
+        className={`fixed bottom-5 left-5 z-50 matryoshka-group ${isActive ? 'active' : ''} ${isAutoHover ? 'auto-hover' : ''} ${isAutoHoverExit ? 'auto-hover-exit' : ''}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
@@ -455,11 +305,11 @@ const WhatsAppButton = memo(() => {
         {/* Flecha indicadora para móvil */}
         <div className="mobile-arrow md:hidden" onClick={handleMobileToggle}>
           <svg 
-            className="w-10 h-10 text-[#25D366]" 
+            className="w-10 h-10 text-[#25D366] transition-transform duration-200 hover:scale-110" 
             fill="currentColor" 
             viewBox="0 0 24 24"
           >
-            <path d="M7 14l5-5 5 5z"/>
+            <path d="M10 7l5 5-5 5V7z"/>
           </svg>
         </div>
         
