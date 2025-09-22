@@ -194,20 +194,20 @@
       }
     },
     "digitalizacion": {
-      "title": "3D Digitization & 360° Captures",
-      "description": "We create immersive experiences and high-quality interactive visualizations.",
+      "title": "UX/UI Advisors",
+      "description": "We optimize user experience and interface design to create functional, intuitive, and attractive digital products.",
       "details": {
         "0": {
-          "title": "Professional 3D Modeling",
-          "description": "Creation of detailed 3D models for products and spaces."
+          "title": "UX Research and Strategy",
+          "description": "We analyze user needs and business goals to design effective experiences."
         },
         "1": {
-          "title": "360° Virtual Tours",
-          "description": "Interactive experiences that let you explore spaces from anywhere."
+          "title": "UI Interface Design",
+          "description": "We create clear, modern, and brand-consistent visual interfaces."
         },
         "2": {
-          "title": "Architectural Visualization",
-          "description": "Transforming floor plans into impactful 3D visualizations."
+          "title": "Usability Testing",
+          "description": "We validate prototypes and solutions with real users to ensure a functional and efficient product."
         }
       }
     },
