@@ -209,20 +209,20 @@
       }
     },
     "digitalizacion": {
-      "title": "Digitalización 3D y Capturas 360°",
-      "description": "Creamos experiencias inmersivas y visualizaciones interactivas de alta calidad.",
+      "title": "Asesores UX/UI",
+      "description": "Optimizamos la experiencia de usuario y la interfaz para lograr productos digitales funcionales, intuitivos y atractivos.",
       "details": {
         "0": {
-          "title": "Modelado 3D Profesional",
-          "description": "Creación de modelos 3D detallados para productos y espacios."
+          "title": "Investigación y Estrategia UX",
+          "description": "Analizamos necesidades de usuarios y objetivos de negocio para diseñar experiencias efectivas."
         },
         "1": {
-          "title": "Tours Virtuales 360°",
-          "description": "Experiencias interactivas que permiten explorar espacios desde cualquier lugar."
+          "title": "Diseño de Interfaces UI",
+          "description": "Creamos interfaces visuales claras, modernas y coherentes con la identidad de tu marca."
         },
         "2": {
-          "title": "Visualización Arquitectónica",
-          "description": "Transformamos planos en visualizaciones 3D impactantes."
+          "title": "Pruebas de Usabilidad",
+          "description": "Validamos prototipos y soluciones con usuarios reales para garantizar un producto funcional y eficiente."
         }
       }
     },
