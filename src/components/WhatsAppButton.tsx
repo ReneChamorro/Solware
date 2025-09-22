@@ -33,7 +33,7 @@ const WhatsAppButton = memo(() => {
             setIsAutoHoverExit(false);
           }, 1600);
         }, 1600);
-      }, 10000); // Cada 10 segundos
+      }, 7000); // Cada 10 segundos
 
       return () => clearInterval(autoHoverInterval);
     }
