@@ -238,20 +238,19 @@ const Carousel: React.FC<CarouselProps> = ({ items, autoPlay = true, autoPlayInt
 			</button>
 
 			<div className="flex justify-center items-center gap-2 mt-4 mb-4">
-				{items.map((_, index) => (
-					<button
-						key={index}
-						onClick={() => !isTransitioning && setCurrentIndex(index + 1)}
-						className={`w-2 h-2 rounded-full transition-all duration-275 ease-out 
-              transform hover:scale-110${
-								index === currentIndex - 1
-									? 'bg-blue-600 dark:bg-blue-500 scale-125'
-									: 'bg-gray-300 dark:bg-gray-600 hover:bg-blue-400 dark:hover:bg-blue-400'
-							}`}
-						aria-label={`Ir a la diapositiva ${index + 1}`}
-						aria-current={index === currentIndex - 1}
-					/>
-				))}
+				   {items.map((_, index) => (
+					   <button
+						   key={index}
+						   onClick={() => !isTransitioning && setCurrentIndex(index + 1)}
+						   className={`w-2 h-2 rounded-full transition-all duration-275 ease-out transform hover:scale-110
+							   ${index === currentIndex - 1
+								   ? 'bg-gray-800 dark:bg-blue-500 scale-125 border border-gray-300 dark:border-blue-400'
+								   : 'bg-gray-400 dark:bg-gray-600 hover:bg-blue-400 dark:hover:bg-blue-400 border border-gray-300 dark:border-gray-500'}
+						   `}
+						   aria-label={`Ir a la diapositiva ${index + 1}`}
+						   aria-current={index === currentIndex - 1}
+					   />
+				   ))}
 			</div>
 		</div>
 	)

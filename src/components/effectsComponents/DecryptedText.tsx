@@ -30,6 +30,7 @@ interface DecryptedTextProps extends HTMLMotionProps<'span'> {
 	parentClassName?: string
 	encryptedClassName?: string
 	animateOn?: 'view' | 'hover'
+	onRevealEnd?: () => void // Nuevo callback
 }
 
 export default function DecryptedText({
@@ -44,6 +45,7 @@ export default function DecryptedText({
 	parentClassName = '',
 	encryptedClassName = '',
 	animateOn = 'hover',
+	onRevealEnd,
 	...props
 }: DecryptedTextProps) {
 	const [displayText, setDisplayText] = useState<string>(text)
@@ -137,6 +139,7 @@ export default function DecryptedText({
 						} else {
 							clearInterval(interval)
 							setIsScrambling(false)
+							if (onRevealEnd) onRevealEnd() // Llama el callback al terminar
 							return prevRevealed
 						}
 					} else {
@@ -160,7 +163,7 @@ export default function DecryptedText({
 		return () => {
 			if (interval) clearInterval(interval)
 		}
-	}, [isHovering, text, speed, maxIterations, sequential, revealDirection, characters, useOriginalCharsOnly])
+	}, [isHovering, text, speed, maxIterations, sequential, revealDirection, characters, useOriginalCharsOnly, onRevealEnd])
 
 	useEffect(() => {
 		if (animateOn !== 'view') return
