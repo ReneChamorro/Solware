@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react'
-import { Mail, Phone, Clock, Send, ChevronDown, Instagram, CheckCircle, AlertCircle } from 'lucide-react'
+import { Mail, Phone, Clock, Send, ChevronDown, Instagram, CheckCircle, AlertCircle, Code2 } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import BlurText from './effectsComponents/BlurText'
 import { useTranslation } from 'react-i18next'
@@ -476,7 +476,7 @@ const Contact: React.FC = () => {
 				</div>
 
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-12">
-					<div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
+					<div className="bg-white dark:bg-gray-800 rounded-2xl border border-blue-500/60 p-8 shadow-[0_0_20px_rgba(59,130,246,0.15)]">
 						<div className="mb-8">
 							<h3 className="text-2xl font-bold text-gray-900 dark:text-white mb-2 transition-colors duration-300">
 								{t('contact.form.title')}
@@ -712,89 +712,103 @@ const Contact: React.FC = () => {
 					</div>
 
 					<div className="space-y-8">
-						<div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
+						<div className="bg-white dark:bg-gray-800 rounded-2xl border border-blue-500/60 p-8 shadow-[0_0_20px_rgba(59,130,246,0.15)]">
 							<h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300">
 								{t('contact.contactInf.title')}
 							</h3>
 
-							<div className="space-y-4">
-								<div className="flex items-center">
-									<Mail className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-									<a
-										href="mailto:ventas@solware.agency"
-										className="ml-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 
-                      dark:hover:text-blue-400 transition-colors"
-									>
-										ventas@solware.agency
-									</a>
+							<div className="space-y-6">
+								{/* Sección superior: Texto | Logo */}
+								<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 items-center">
+									<div className="space-y-4">
+										<div className="flex items-center">
+											<Mail className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+											<a
+												href="mailto:ventas@solware.agency"
+												className="ml-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 
+		                      dark:hover:text-blue-400 transition-colors"
+											>
+												ventas@solware.agency
+											</a>
+										</div>
+
+										<div className="flex items-center">
+											<Phone className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+											<a
+												href="tel:+584129974533"
+												className="ml-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 
+		                      dark:hover:text-blue-400 transition-colors"
+											>
+												+58 412-9974533
+											</a>
+										</div>
+
+										<div className="flex items-center">
+											<Instagram className="h-5 w-5 text-blue-600 dark:text-blue-400" />
+											<a
+												href="https://www.instagram.com/solware_?igsh=MTg4OTdwM3k3d2o4cA=="
+												target="_blank"
+												rel="noopener noreferrer"
+												className="ml-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 
+		                      dark:hover:text-blue-400 transition-colors"
+											>
+												{t('contact.contactInf.ig')}
+											</a>
+										</div>
+
+										<div className="flex items-center">
+											<svg
+												className="h-5 w-5 text-blue-600 dark:text-blue-400"
+												xmlns="http://www.w3.org/2000/svg"
+												viewBox="0 0 24 24"
+												fill="currentColor"
+											>
+												<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.5c0-1.379-1.121-2.5-2.5-2.5s-2.5 1.121-2.5 2.5v5.5h-3v-10h3v1.5c.69-.69 1.79-1.5 3-1.5 2.209 0 4 1.791 4 4v6z" />
+											</svg>
+											<a
+												href="https://www.linkedin.com/company/agencia-solware/"
+												target="_blank"
+												rel="noopener noreferrer"
+												className="ml-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 
+		                      dark:hover:text-blue-400 transition-colors"
+											>
+												{t('contact.contactInf.linkedin')}
+											</a>
+										</div>
+									</div>
+
+									{/* Logo a la derecha - centrado verticalmente */}
+									<div className="flex justify-center lg:justify-center items-center">
+										<div className="group relative">
+											<div
+												className="rounded-full p-4 drop-shadow-[0px_0px_3px_rgba(29,78,216,0.5)] group-hover:drop-shadow-[0px_0px_10px_rgba(29,78,216,0.8)] transition duration-300 hover:scale-110 animate-pulse"
+												style={{ backgroundColor: '#3b82f6' }}
+											>
+												<Code2 className="size-20 text-white group-hover:rotate-180 transition-all duration-700 ease-in-out" />
+											</div>
+										</div>
+									</div>
 								</div>
 
-								<div className="flex items-center">
-									<Phone className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-									<a
-										href="tel:+584129974533"
-										className="ml-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 
-                      dark:hover:text-blue-400 transition-colors"
-									>
-										+58 412-9974533
-									</a>
-								</div>
+								{/* Línea divisoria */}
+								<hr className="border-gray-200 dark:border-gray-700" />
 
-								<div className="flex items-center">
-									<Clock className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-									<span className="ml-3 text-gray-600 dark:text-gray-300">
-										{t('contact.contactInf.days')}, 9:00 - 18:00 hrs
-									</span>
-								</div>
-
-								<div className="flex items-center">
-									<Instagram className="h-5 w-5 text-blue-600 dark:text-blue-400" />
-									<a
-										href="https://www.instagram.com/solware_?igsh=MTg4OTdwM3k3d2o4cA=="
-										target="_blank"
-										rel="noopener noreferrer"
-										className="ml-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 
-                      dark:hover:text-blue-400 transition-colors"
-									>
-										{t('contact.contactInf.ig')}
-									</a>
-								</div>
-
-								<div className="flex items-center">
-									<svg
-										className="h-5 w-5 text-blue-600 dark:text-blue-400"
-										xmlns="http://www.w3.org/2000/svg"
-										viewBox="0 0 24 24"
-										fill="currentColor"
-									>
-										<path d="M19 0h-14c-2.761 0-5 2.239-5 5v14c0 2.761 2.239 5 5 5h14c2.761 0 5-2.239 5-5v-14c0-2.761-2.239-5-5-5zm-11 19h-3v-10h3v10zm-1.5-11.268c-.966 0-1.75-.784-1.75-1.75s.784-1.75 1.75-1.75 1.75.784 1.75 1.75-.784 1.75-1.75 1.75zm13.5 11.268h-3v-5.5c0-1.379-1.121-2.5-2.5-2.5s-2.5 1.121-2.5 2.5v5.5h-3v-10h3v1.5c.69-.69 1.79-1.5 3-1.5 2.209 0 4 1.791 4 4v6z" />
-									</svg>
-									<a
-										href="https://www.linkedin.com/company/agencia-solware/"
-										target="_blank"
-										rel="noopener noreferrer"
-										className="ml-3 text-gray-600 dark:text-gray-300 hover:text-blue-600 
-                      dark:hover:text-blue-400 transition-colors"
-									>
-										{t('contact.contactInf.linkedin')}
-									</a>
-								</div>
-
-								<div className="pt-4">
+								{/* Botón de WhatsApp ocupando todo el ancho */}
+								<div>
 									<button
 										onClick={openWhatsApp}
 										className="w-full flex items-center justify-center px-6 py-3 relative
-                      bg-green-500 dark:bg-green-600 text-white rounded-full 
-                      hover:bg-green-600 dark:hover:bg-green-700 hover:scale-105 hover:shadow-2xl
-                      border border-green-400/30 dark:border-green-300/20
-                      transition-all duration-300 shadow-lg hover:-translate-y-1
-                      active:scale-95 transform
-                      before:absolute before:inset-0 before:rounded-full before:border 
-                      before:border-green-300/40 dark:before:border-green-400/30 before:opacity-0 
-                      hover:before:opacity-100 before:transition-opacity before:duration-300
-                      after:absolute after:inset-[-2px] after:rounded-full after:border 
-                      after:border-green-200/30 dark:after:border-green-500/20 after:opacity-0 
-                      hover:after:opacity-100 after:transition-opacity after:duration-500"
+	                    bg-green-500 dark:bg-green-600 text-white rounded-full 
+	                    hover:bg-green-600 dark:hover:bg-green-700 hover:scale-105 hover:shadow-2xl
+	                    border border-green-400/30 dark:border-green-300/20
+	                    transition-all duration-300 shadow-lg hover:-translate-y-1
+	                    active:scale-95 transform
+	                    before:absolute before:inset-0 before:rounded-full before:border 
+	                    before:border-green-300/40 dark:before:border-green-400/30 before:opacity-0 
+	                    hover:before:opacity-100 before:transition-opacity before:duration-300
+	                    after:absolute after:inset-[-2px] after:rounded-full after:border 
+	                    after:border-green-200/30 dark:after:border-green-500/20 after:opacity-0 
+	                    hover:after:opacity-100 after:transition-opacity after:duration-500"
 									>
 										<svg 
 											className="h-5 w-5 mr-2" 
@@ -810,7 +824,7 @@ const Contact: React.FC = () => {
 							</div>
 						</div>
 
-						<div className="bg-white dark:bg-gray-800 rounded-2xl p-8 shadow-lg">
+						<div className="bg-white dark:bg-gray-800 rounded-2xl border border-blue-500/60 p-8 shadow-[0_0_20px_rgba(59,130,246,0.15)]">
 							<h3 className="text-xl font-bold text-gray-900 dark:text-white mb-6 transition-colors duration-300">
 								{t('contact.faq.title')}
 							</h3>

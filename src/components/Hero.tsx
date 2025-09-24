@@ -12,6 +12,7 @@ export default function Hero() {
 	const [autoHoverIndex, setAutoHoverIndex] = useState(-1)
 	const [isManualHover, setIsManualHover] = useState(false)
 	const [manualHoverIndex, setManualHoverIndex] = useState(-1)
+	const [canStartAutoHover, setCanStartAutoHover] = useState(false)
 
 	useEffect(() => {
 		// Simulate preload animation ending
@@ -32,28 +33,21 @@ export default function Hero() {
 	}, [])
 
 	// Auto hover animation effect
-useEffect(() => {
-    if (!isManualHover) {
-        const initialDelay = 1000 // milisegundos
-
-        let intervalId: NodeJS.Timeout
-        const timeoutId = setTimeout(() => {
-            setAutoHoverIndex(0) // Inicia el autohover después del delay
-
-            intervalId = setInterval(() => {
-                setAutoHoverIndex(prev => {
-                    const nextIndex = (prev + 1) % 4 // 4 cards total
-                    return nextIndex
-                })
-            }, 3000)
-        }, initialDelay)
-
-        return () => {
-            clearTimeout(timeoutId)
-            clearInterval(intervalId)
-        }
-    }
-}, [isManualHover])
+	useEffect(() => {
+		if (!isManualHover && canStartAutoHover) {
+			let intervalId: NodeJS.Timeout
+			setAutoHoverIndex(0)
+			intervalId = setInterval(() => {
+				setAutoHoverIndex(prev => {
+					const nextIndex = (prev + 1) % 4 // 4 cards total
+					return nextIndex
+				})
+			}, 3000)
+			return () => {
+				clearInterval(intervalId)
+			}
+		}
+	}, [isManualHover, canStartAutoHover])
 
 	// Handle manual hover
 	const handleMouseEnter = (index: number) => {
@@ -82,16 +76,19 @@ useEffect(() => {
 			<div className="relative w-full max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 py-16 sm:py-20 lg:py-32">
 				<div className="grid grid-cols-1 lg:grid-cols-2 gap-8 lg:gap-12 items-center">
 					<div className="text-center lg:text-left">
-						<DecryptedText
-							key={`hero-title-${i18n.language}-${animationKey}`} // Fuerza re-render cuando cambia el idioma o la animación
-							text={t('hero.title')}
-							speed={50}
-							className="revealed text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white dark:text-blue-100 
-              mb-12 sm:mb-15 lg:mb-24 animate-fade-in leading-tight sm:leading-tight"
-							animateOn={isPreloadFinished ? 'view' : 'hover'}
-							revealDirection="start"
-							sequential={true}
-						/>
+						<div className="min-h-[120px] sm:min-h-[140px] lg:min-h-[180px] xl:min-h-[220px] flex items-start">
+							<DecryptedText
+								key={`hero-title-${i18n.language}-${animationKey}`} // Fuerza re-render cuando cambia el idioma o la animación
+								text={t('hero.title')}
+								speed={50}
+								className="revealed text-3xl sm:text-4xl lg:text-5xl xl:text-6xl font-bold text-white dark:text-blue-100 \
+	              mb-12 sm:mb-15 lg:mb-24 animate-fade-in leading-tight sm:leading-tight w-full"
+								animateOn={isPreloadFinished ? 'view' : 'hover'}
+								revealDirection="start"
+								sequential={true}
+								onRevealEnd={() => setCanStartAutoHover(true)}
+							/>
+						</div>
 
 						<p
 							className="text-lg sm:text-xl text-white/90 dark:text-blue-200 mb-6 sm:mb-8 animate-fade-in-delay 

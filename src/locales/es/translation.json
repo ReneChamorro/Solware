@@ -2,7 +2,7 @@
   "header": {
     "navItems": {
       "quienesSomos": "Quiénes Somos",
-      "workflow": "Proceso",
+      "workflow": "Procesos",
       "servicios": "Soluciones",
       "soluciones": "Servicios",
       "automatizacion": "Automatización",
@@ -57,6 +57,16 @@
         "text": "Tu éxito es nuestro éxito. Trabajamos de cerca con cada cliente para asegurar resultados excepcionales."
       }
     }
+  },
+  "recognition": {
+    "title": "Hackathon IESA",
+    "institution": "Instituto de Estudios Superiores de Administración",
+    "description": "Reconocidos por nuestra innovación en salud digital, elevando la calidad y eficiencia de clínicas y laboratorios en Venezuela.",
+    "position": "1°",
+    "positionLabel": "Lugar",
+    "year": "2025",
+    "yearLabel": "Año",
+    "quote": "Menos papeles, más precisión, salud conectada. Eso es Solware."
   },
   "workProcess": {
     "title": "El camino para lograr tus objetivos profesionales",
@@ -227,23 +237,24 @@
       }
     },
     "soporte": {
-      "title": "Reportes y Análisis de Datos",
-      "description": "Obtén insights clave para tomar decisiones informadas y mejorar resultados.",
+      "title": "Presentaciones Digitales",
+      "description": "Diseñamos presentaciones impactantes y profesionales que comunican ideas con claridad y estilo.",
       "details": {
         "0": {
-          "title": "Dashboards Interactivos",
-          "description": "Visualizaciones dinámicas que te ayudan a explorar y entender tus datos."
+          "title": "Presentaciones Interactivas",
+          "description": "Formatos dinámicos y modernos que elevan el impacto visual de tus contenidos."
         },
         "1": {
-          "title": "Reportes Automatizados",
-          "description": "Generación y distribución automática de reportes personalizados."
+          "title": "Diseño Personalizado",
+          "description": "Cada presentación se adapta a tu identidad de marca y objetivos de comunicación."
         },
         "2": {
-          "title": "Integración de Fuentes",
-          "description": "Consolidación de datos de múltiples fuentes para análisis integral."
+          "title": "Experiencia Visual Inmersiva",
+          "description": "Incorporamos animaciones, transiciones y recursos gráficos para cautivar a tu audiencia."
         }
       }
     }
+
   },
   "automation": {
     "title": "Automatización Empresarial",
