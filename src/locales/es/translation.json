@@ -590,5 +590,11 @@
         "si_quiero_una_cotizacion": "Sí, quiero una cotización"
       }
     }
+  },
+  "404": {
+    "title": "Página no encontrada",
+    "description": "Lo sentimos, la página que estás buscando no existe o ha sido movida.",
+    "button": "Volver al inicio",
+    "backButton": "Volver atrás"
   }
 }

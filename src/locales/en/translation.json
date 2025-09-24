@@ -571,5 +571,11 @@
         "si_quiero_una_cotizacion": "Yes, I want a quote"
       }
     }
+  },
+  "404": {
+    "title": "Page not found",
+    "description": "Sorry, the page you are looking for does not exist or has been moved.",
+    "button": "Back to home",
+    "backButton": "Go back"
   }
 }
