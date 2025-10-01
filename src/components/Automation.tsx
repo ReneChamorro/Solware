@@ -1,4 +1,3 @@
-import { Bot, Zap, BarChart2, FileSpreadsheet, Clock, Database } from 'lucide-react';
 import Carousel from './Carousel';
 import BlurText from './effectsComponents/BlurText'
 import { useTranslation } from 'react-i18next'
@@ -11,12 +10,6 @@ const Automation = () => {
       title: t("automation.integracion.title"),
       image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/integ%20de%20sist.webp",
       description: t("automation.integracion.description")
-    },
-    {
-      id: 2,
-      title: t("automation.automatizacion.title"),
-      image: "https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/automat%20proce.webp",
-      description: t("automation.automatizacion.description")
     },
     {
       id: 3,

@@ -201,7 +201,19 @@ export default function Pricing() {
 										</p>
 									</div>
 									<a href="#contacto">
-										<button className="mt-4 px-4 py-2 text-white rounded hover:opacity-90 bg-[#3b82f6] hover:scale-105 transition-all text-sm sm:text-base md:text-lg">
+										<button className="mt-4 w-full flex items-center justify-center px-6 py-3 relative
+                  text-base font-medium rounded-full text-white bg-blue-600 dark:bg-blue-500 
+                  hover:bg-blue-700 dark:hover:bg-blue-600 hover:scale-105 hover:shadow-2xl
+                  border border-blue-400/30 dark:border-blue-300/20
+                  focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 
+                  transition-all duration-300 disabled:opacity-50 disabled:cursor-not-allowed
+                  active:scale-95 transform hover:-translate-y-1
+                  before:absolute before:inset-0 before:rounded-full before:border 
+                  before:border-blue-300/40 dark:before:border-blue-400/30 before:opacity-0 
+                  hover:before:opacity-100 before:transition-opacity before:duration-300
+                  after:absolute after:inset-[-2px] after:rounded-full after:border 
+                  after:border-blue-200/30 dark:after:border-blue-500/20 after:opacity-0 
+                  hover:after:opacity-100 after:transition-opacity after:duration-500">
 											{t("pricing.button")}
 										</button>
 									</a>
