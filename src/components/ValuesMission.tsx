@@ -88,7 +88,7 @@ const ValuesMission: React.FC = () => {
 							<div
 								key={index}
 								className={`group bg-gradient-to-br from-blue-50 to-purple-50 dark:from-blue-900/20 dark:to-purple-900/20 
-                  rounded-xl p-6 shadow-lg hover:shadow-xl transition-all duration-300 transform hover:-translate-y-1 ${value.cardHover}`}
+                  rounded-xl p-6 shadow-lg transition-all duration-300 transform hover:-translate-y-1 ${value.cardHover}`}
 							>
 								<div
 									className={`w-12 h-12 ${value.color} rounded-lg flex items-center justify-center 

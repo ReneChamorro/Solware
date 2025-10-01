@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react'
-import { Mail, Phone, Clock, Send, ChevronDown, Instagram, CheckCircle, AlertCircle, Code2 } from 'lucide-react'
+import { Mail, Phone, Send, ChevronDown, Instagram, CheckCircle, AlertCircle, Code2 } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import BlurText from './effectsComponents/BlurText'
 import { useTranslation } from 'react-i18next'
