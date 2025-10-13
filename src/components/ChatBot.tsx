@@ -38,14 +38,12 @@ const ChatBot: React.FC<ChatBotProps> = ({ isOpen, setIsOpen }) => {
 			options: [
 				t('chatbot.responses.services.options.automatizacion'),
 				t('chatbot.responses.services.options.desarrollo'),
-				t('chatbot.responses.services.options.crm'),
 				t('chatbot.responses.services.options.marketing'),
 				t('chatbot.responses.services.options.consultoria'),
 			],
 			responses: {
 				[t('chatbot.responses.services.automatizacion.title')]: t('chatbot.responses.services.automatizacion.text'),
 				[t('chatbot.responses.services.desarrollo.title')]: t('chatbot.responses.services.desarrollo.text'),
-				[t('chatbot.responses.services.crm.title')]: t('chatbot.responses.services.crm.text'),
 				[t('chatbot.responses.services.marketing.title')]: t('chatbot.responses.services.marketing.text'),
 				[t('chatbot.responses.services.consultoria.title')]: t('chatbot.responses.services.consultoria.text'),
 			},
@@ -142,8 +140,7 @@ const ChatBot: React.FC<ChatBotProps> = ({ isOpen, setIsOpen }) => {
 			input.includes(t('chatbot.userInputs.aplicacion')) ||
 			input.includes(t('chatbot.userInputs.movil')) ||
 			input.includes(t('chatbot.userInputs.telefono')) ||
-			input.includes(t('chatbot.userInputs.celular')) ||
-			input.includes(t('chatbot.userInputs.crm'))
+			input.includes(t('chatbot.userInputs.celular'))
 		) {
 			response = {
 				id: messages.length + 2,
@@ -193,7 +190,6 @@ const ChatBot: React.FC<ChatBotProps> = ({ isOpen, setIsOpen }) => {
 			// Opciones de servicios específicos
 			input === t('chatbot.responses.services.options.automatizacion').toLowerCase() ||
 			input === t('chatbot.responses.services.options.desarrollo').toLowerCase() ||
-			input === t('chatbot.responses.services.options.crm').toLowerCase() ||
 			input === t('chatbot.responses.services.options.marketing').toLowerCase() ||
 			input === t('chatbot.responses.services.options.consultoria').toLowerCase()
 		) {
@@ -206,7 +202,6 @@ const ChatBot: React.FC<ChatBotProps> = ({ isOpen, setIsOpen }) => {
 				options: [
 					t('chatbot.responses.services.options.automatizacion'),
 					t('chatbot.responses.services.options.desarrollo'),
-					t('chatbot.responses.services.options.crm'),
 					t('chatbot.responses.services.options.marketing'),
 					t('chatbot.responses.services.options.consultoria'),
 					t('chatbot.responses.options.volver_al_menu'),

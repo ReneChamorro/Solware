@@ -108,7 +108,7 @@
         "details": {
           "0": "Strategic deployment by phases.",
           "1": "Real-time testing and validation.",
-          "2": "Integrations with your CRM, website, and databases.",
+          "2": "Integrations with your website, and databases.",
           "3": "Real-time monitoring and alerts.",
           "4": "Organizational change management."
         }
@@ -204,7 +204,7 @@
         },
         "2": {
           "title": "Insights Automation",
-          "description": "Automatic generation of reports and alerts based on CRM data analysis."
+          "description": "Automatic generation of reports and alerts."
         }
       }
     },
@@ -492,7 +492,7 @@
         "options": {
           "automatizacion": "Process automation",
           "desarrollo": "Web/mobile development",
-          "crm": "CRM and management",
+          "crm": "Management",
           "marketing": "Digital marketing",
           "consultoria": "Technology consulting"
         },
@@ -505,8 +505,8 @@
           "text": "We develop custom web and mobile solutions using the latest technologies:\n• Responsive websites\n• Progressive web apps\n• Native mobile apps\n• Enterprise platforms"
         },
         "crm": {
-          "title": "crm and management",
-          "text": "We implement CRM systems to improve customer management:\n• Lead tracking\n• Marketing automation\n• Sales management\n• Data analysis"
+          "title": "Management",
+          "text": "• Lead tracking\n• Marketing automation\n• Sales management\n• Data analysis"
         },
         "marketing": {
           "title": "digital marketing",
@@ -558,7 +558,6 @@
         "movil": "mobile",
         "telefono": "phone",
         "celular": "cellphone",
-        "crm": "crm",
         "precio": "price",
         "costo": "cost",
         "dinero": "money",

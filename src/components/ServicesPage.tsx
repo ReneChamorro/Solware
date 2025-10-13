@@ -611,7 +611,7 @@ const ServicesPage: React.FC = () => {
                 </AnimatePresence>
 
                 {/* Navigation Indicators */}
-                <div className="flex flex-col items-center space-y-3 md:space-y-4 lg:space-y-5 2xl:space-y-6 mt-0 sm:mt-4 md:mt-8 lg:mt-10 xl:mt-12 2xl:mt-16 mb-4 md:mb-6 lg:mb-0">
+                <div className="flex flex-col items-center space-y-3 md:space-y-4 lg:space-y-5 2xl:space-y-6 mt-0 sm:mt-4 md:mt-8 lg:mt-10 xl:mt-12 2xl:mt-16 mb-2 md:mb-6 lg:mb-0">
                   {/* Service Points Progress - Hidden */}
                   <div className="flex space-x-2 hidden">
                     {services[currentServiceIndex].points.map((_, index) => (

@@ -120,7 +120,7 @@
 
           "0": "Despliegue por fases estratégicas.",
           "1": "Pruebas y validación en tiempo real.",
-          "2": "Integraciones con tu CRM, web y bases de datos.",
+          "2": "Integraciones con tu web y bases de datos.",
           "3": "Monitoreo en tiempo real y alertas.",
           "4": "Gestión del cambio organizacional."
 
@@ -219,7 +219,7 @@
         },
         "2": {
           "title": "Automatización de Insights",
-          "description": "Generación automática de reportes y alertas basados en análisis de datos del CRM."
+          "description": "Generación automática de reportes y alertas."
         }
       }
     },
@@ -511,7 +511,7 @@
         "options": {
           "automatizacion": "Automatización de procesos",
           "desarrollo": "Desarrollo web/móvil",
-          "crm": "CRM y gestión",
+          "crm": "Gestión",
           "marketing": "Marketing digital",
           "consultoria": "Consultoría tecnológica"
         },
@@ -524,8 +524,8 @@
           "text": "Desarrollamos soluciones web y móviles personalizadas usando las últimas tecnologías:\n• Sitios web responsivos\n• Aplicaciones web progresivas\n• Apps móviles nativas\n• Plataformas empresariales"
         },
         "crm": {
-          "title": "crm y gestión",
-          "text": "Implementamos sistemas CRM para mejorar la gestión de clientes:\n• Seguimiento de prospectos\n• Automatización de marketing\n• Gestión de ventas\n• Análisis de datos"
+          "title": "Gestión",
+          "text": "• Seguimiento de prospectos\n• Automatización de marketing\n• Gestión de ventas\n• Análisis de datos"
         },
         "marketing": {
           "title": "marketing digital",
@@ -577,7 +577,6 @@
         "movil": "móvil",
         "telefono": "teléfono",
         "celular": "celular",
-        "crm": "crm",
         "precio": "precio",
         "costo": "costo",
         "dinero": "dinero",

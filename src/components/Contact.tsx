@@ -149,7 +149,6 @@ const Contact: React.FC = () => {
 	const areasDeInteres = [
 		{ id: 'automatizacion', label: t('contact.form.areas.options.automatizacion') },
 		{ id: 'desarrollo', label: t('contact.form.areas.options.desarrollo') },
-		{ id: 'crm', label: t('contact.form.areas.options.crm') },
 		{ id: 'marketing', label: t('contact.form.areas.options.marketing') },
 		{ id: 'infraestructura', label: t('contact.form.areas.options.infraestructura') },
 		{ id: 'consultoria', label: t('contact.form.areas.options.consultoria') },
