@@ -55,6 +55,7 @@
     }
   },
   "recognition": {
+    "sectionTitle": "Awards",
     "title": "IESA Hackathon",
     "institution": "Institute of Higher Studies in Administration",
     "description": "Recognized for our innovation in automation and business technology solutions, standing out among the best development teams in the country.",
@@ -128,9 +129,13 @@
   "services": {
     "title": "Comprehensive Digital Solutions",
     "description": "We transform your business with cutting-edge technology and tailored solutions.",
+    "shortDescription": "We transform your business with cutting-edge technology and tailored solutions",
     "details": "Service Details",
     "button": "Learn More",
     "back": "Back",
+    "viewMore": "View All Services",
+    "backToServices": "Back to Services",
+    "requestConsultation": "Request Free Consultation",
     "automatizacion": {
       "title": "Process Automation",
       "description": "Optimize your operations with intelligent automated solutions.",
@@ -151,7 +156,7 @@
     },
     "agentes": {
       "title": "AI Agents",
-      "description": "Integrate intelligent agents to optimize processes and enhance customer experience.",
+      "description": "Integrate intelligent agents to optimize processes",
       "details": {
         "0": {
           "title": "Virtual Assistants",
@@ -186,7 +191,7 @@
       }
     },
     "crm": {
-      "title": "CRM & Business Intelligence",
+      "title": "Business Intelligence",
       "description": "Make strategic decisions based on intelligent data analysis.",
       "details": {
         "0": {
@@ -205,7 +210,7 @@
     },
     "digitalizacion": {
       "title": "UX/UI Advisors",
-      "description": "We optimize user experience and interface design to create functional, intuitive, and attractive digital products.",
+      "description": "We optimize user experience and interface design",
       "details": {
         "0": {
           "title": "UX Research and Strategy",
@@ -222,8 +227,8 @@
       }
     },
     "soporte": {
-      "title": "Reports & Data Analysis",
-      "description": "Gain key insights to make informed decisions and improve results.",
+      "title": "Digital Presentations",
+      "description": "We design impactful and professional presentations",
       "details": {
         "0": {
           "title": "Interactive Dashboards",

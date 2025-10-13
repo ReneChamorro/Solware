@@ -59,6 +59,7 @@
     }
   },
   "recognition": {
+    "sectionTitle": "Reconocimientos",
     "title": "Hackathon IESA",
     "institution": "Instituto de Estudios Superiores de Administración",
     "description": "Reconocidos por nuestra innovación en salud digital, elevando la calidad y eficiencia de clínicas y laboratorios en Venezuela.",
@@ -143,9 +144,13 @@
   "services": {
     "title": "Soluciones Digitales Integrales",
     "description": "Transformamos tu negocio con tecnología de vanguardia y soluciones personalizadas.",
+    "shortDescription": "Transformamos tu negocio con tecnología de vanguardia y soluciones personalizadas",
     "details": "Detalles del Servicio",
     "button": "Conocer Más",
     "back": "Volver",
+    "viewMore": "Ver Todos los Servicios",
+    "backToServices": "Volver a Servicios",
+    "requestConsultation": "Solicitar Consulta Gratuita",
     "automatizacion": {
       "title": "Automatización de Procesos",
       "description": "Optimiza tus operaciones con soluciones automatizadas inteligentes.",
@@ -166,7 +171,7 @@
     },
     "agentes": {
       "title": "Agentes de IA",
-      "description": "Integra agentes inteligentes para optimizar procesos y mejorar la experiencia del cliente.",
+      "description": "Integra agentes inteligentes para optimizar procesos",
       "details": {
         "0": {
           "title": "Asistentes Virtuales",
@@ -201,7 +206,7 @@
       }
     },
     "crm": {
-      "title": "CRM y Business Intelligence",
+      "title": "Business Intelligence",
       "description": "Toma decisiones estratégicas basadas en análisis inteligente de datos.",
       "details": {
         "0": {
@@ -220,7 +225,7 @@
     },
     "digitalizacion": {
       "title": "Asesores UX/UI",
-      "description": "Optimizamos la experiencia de usuario y la interfaz para lograr productos digitales funcionales, intuitivos y atractivos.",
+      "description": "Optimizamos la experiencia de usuario y el diseño de interfaz",
       "details": {
         "0": {
           "title": "Investigación y Estrategia UX",
@@ -238,7 +243,7 @@
     },
     "soporte": {
       "title": "Presentaciones Digitales",
-      "description": "Diseñamos presentaciones impactantes y profesionales que comunican ideas con claridad y estilo.",
+      "description": "Diseñamos presentaciones impactantes y profesionales",
       "details": {
         "0": {
           "title": "Presentaciones Interactivas",
