@@ -1,5 +1,5 @@
 import React, { useState, useRef, useCallback, useEffect } from 'react'
-import { Mail, Phone, Clock, Send, ChevronDown, Instagram, CheckCircle, AlertCircle, Code2 } from 'lucide-react'
+import { Mail, Phone, Send, ChevronDown, Instagram, CheckCircle, AlertCircle, Code2 } from 'lucide-react'
 import { supabase } from '../lib/supabase'
 import BlurText from './effectsComponents/BlurText'
 import { useTranslation } from 'react-i18next'
@@ -149,7 +149,6 @@ const Contact: React.FC = () => {
 	const areasDeInteres = [
 		{ id: 'automatizacion', label: t('contact.form.areas.options.automatizacion') },
 		{ id: 'desarrollo', label: t('contact.form.areas.options.desarrollo') },
-		{ id: 'crm', label: t('contact.form.areas.options.crm') },
 		{ id: 'marketing', label: t('contact.form.areas.options.marketing') },
 		{ id: 'infraestructura', label: t('contact.form.areas.options.infraestructura') },
 		{ id: 'consultoria', label: t('contact.form.areas.options.consultoria') },

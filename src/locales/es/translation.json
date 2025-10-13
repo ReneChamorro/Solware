@@ -59,6 +59,7 @@
     }
   },
   "recognition": {
+    "sectionTitle": "Reconocimientos",
     "title": "Hackathon IESA",
     "institution": "Instituto de Estudios Superiores de Administración",
     "description": "Reconocidos por nuestra innovación en salud digital, elevando la calidad y eficiencia de clínicas y laboratorios en Venezuela.",
@@ -119,7 +120,7 @@
 
           "0": "Despliegue por fases estratégicas.",
           "1": "Pruebas y validación en tiempo real.",
-          "2": "Integraciones con tu CRM, web y bases de datos.",
+          "2": "Integraciones con tu web y bases de datos.",
           "3": "Monitoreo en tiempo real y alertas.",
           "4": "Gestión del cambio organizacional."
 
@@ -143,9 +144,13 @@
   "services": {
     "title": "Soluciones Digitales Integrales",
     "description": "Transformamos tu negocio con tecnología de vanguardia y soluciones personalizadas.",
+    "shortDescription": "Transformamos tu negocio con tecnología de vanguardia y soluciones personalizadas",
     "details": "Detalles del Servicio",
     "button": "Conocer Más",
     "back": "Volver",
+    "viewMore": "Ver Todos los Servicios",
+    "backToServices": "Volver a Servicios",
+    "requestConsultation": "Solicitar Consulta Gratuita",
     "automatizacion": {
       "title": "Automatización de Procesos",
       "description": "Optimiza tus operaciones con soluciones automatizadas inteligentes.",
@@ -166,7 +171,7 @@
     },
     "agentes": {
       "title": "Agentes de IA",
-      "description": "Integra agentes inteligentes para optimizar procesos y mejorar la experiencia del cliente.",
+      "description": "Integra agentes inteligentes para optimizar procesos",
       "details": {
         "0": {
           "title": "Asistentes Virtuales",
@@ -201,7 +206,7 @@
       }
     },
     "crm": {
-      "title": "CRM y Business Intelligence",
+      "title": "Business Intelligence",
       "description": "Toma decisiones estratégicas basadas en análisis inteligente de datos.",
       "details": {
         "0": {
@@ -214,13 +219,13 @@
         },
         "2": {
           "title": "Automatización de Insights",
-          "description": "Generación automática de reportes y alertas basados en análisis de datos del CRM."
+          "description": "Generación automática de reportes y alertas."
         }
       }
     },
     "digitalizacion": {
       "title": "Asesores UX/UI",
-      "description": "Optimizamos la experiencia de usuario y la interfaz para lograr productos digitales funcionales, intuitivos y atractivos.",
+      "description": "Optimizamos la experiencia de usuario y el diseño de interfaz",
       "details": {
         "0": {
           "title": "Investigación y Estrategia UX",
@@ -238,7 +243,7 @@
     },
     "soporte": {
       "title": "Presentaciones Digitales",
-      "description": "Diseñamos presentaciones impactantes y profesionales que comunican ideas con claridad y estilo.",
+      "description": "Diseñamos presentaciones impactantes y profesionales",
       "details": {
         "0": {
           "title": "Presentaciones Interactivas",
@@ -401,7 +406,7 @@
       "title": "Preguntas Frecuentes",
       "faqs": {
         "0": {
-          "question": "¿Cómo puede Solware ayudar a mi empresa?",
+          "question": "¿Puedo contactar a Solware para una consulta gratuita?",
           "answer": "Solware puede ayudar a tu empresa a aumentar la eficiencia operacional, reducir costos, mejorar la experiencia del cliente y facilitar la adopción de nuevas tecnologías para mantenerte competitivo en el mercado."
         },
         "1": {
@@ -413,7 +418,7 @@
           "answer": "Implementamos un sistema riguroso de KPIs y métricas desde el inicio, estableciendo objetivos claros y medibles. Realizamos monitoreo continuo, proporcionamos reportes detallados y ajustamos estrategias según sea necesario para asegurar el éxito del proyecto."
         },
         "3": {
-          "question": "¿Puedo contactar a Solware para una consulta gratuita?",
+          "question": "¿Cómo puede Solware ayudar a mi empresa?",
           "answer": "¡Absolutamente! Ofrecemos consultas iniciales sin costo donde analizamos tus necesidades y presentamos soluciones personalizadas. Puedes contactarnos a través de nuestro formulario, WhatsApp o correo electrónico."
         },
         "4": {
@@ -506,7 +511,7 @@
         "options": {
           "automatizacion": "Automatización de procesos",
           "desarrollo": "Desarrollo web/móvil",
-          "crm": "CRM y gestión",
+          "crm": "Gestión",
           "marketing": "Marketing digital",
           "consultoria": "Consultoría tecnológica"
         },
@@ -519,8 +524,8 @@
           "text": "Desarrollamos soluciones web y móviles personalizadas usando las últimas tecnologías:\n• Sitios web responsivos\n• Aplicaciones web progresivas\n• Apps móviles nativas\n• Plataformas empresariales"
         },
         "crm": {
-          "title": "crm y gestión",
-          "text": "Implementamos sistemas CRM para mejorar la gestión de clientes:\n• Seguimiento de prospectos\n• Automatización de marketing\n• Gestión de ventas\n• Análisis de datos"
+          "title": "Gestión",
+          "text": "• Seguimiento de prospectos\n• Automatización de marketing\n• Gestión de ventas\n• Análisis de datos"
         },
         "marketing": {
           "title": "marketing digital",
@@ -572,7 +577,6 @@
         "movil": "móvil",
         "telefono": "teléfono",
         "celular": "celular",
-        "crm": "crm",
         "precio": "precio",
         "costo": "costo",
         "dinero": "dinero",

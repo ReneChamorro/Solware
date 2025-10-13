@@ -67,6 +67,21 @@ function App() {
 		}
 	}, [handleScroll])
 
+	// Check if need to scroll to services after navigation
+	useEffect(() => {
+		const shouldScrollToServices = sessionStorage.getItem('scrollToServices')
+		if (shouldScrollToServices === 'true') {
+			sessionStorage.removeItem('scrollToServices')
+			// Wait for the page to fully load and render
+			setTimeout(() => {
+				const servicesSection = document.getElementById('servicios')
+				if (servicesSection) {
+					servicesSection.scrollIntoView({ behavior: 'smooth' })
+				}
+			}, 500)
+		}
+	}, [])
+
 	return (
 		<>
 			<Preloader />

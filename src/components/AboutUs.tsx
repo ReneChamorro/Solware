@@ -204,7 +204,7 @@ const AboutUs = () => {
 						{/* Título principal con efectos especiales */}
 						<div className="relative mb-16">
 							<BlurText
-								text="RECONOCIMIENTOS"
+								text={t('recognition.sectionTitle')}
 								delay={150}
 								animateBy="words"
 								direction="top"

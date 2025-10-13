@@ -1,4 +1,5 @@
-import { Settings, Code2, Users, Bot, BarChart2, Cuboid as Cube } from 'lucide-react';
+import { Settings, Code2, Users, Bot, BarChart2, Cuboid as Cube, ArrowRight } from 'lucide-react';
+import { Link } from 'react-router-dom';
 import ServiceCard from './ServiceCard';
 import BlurText from './effectsComponents/BlurText'
 import { useTranslation } from 'react-i18next'
@@ -154,6 +155,18 @@ const Services = () => {
           {services.map((service, index) => (
             <ServiceCard key={index} {...service} />
           ))}
+        </div>
+
+        {/* Botón Ver Más */}
+        <div className="text-center mt-12">
+          <Link
+            to="/services"
+            onClick={() => window.scrollTo({ top: 0, behavior: 'smooth' })}
+            className="group inline-flex items-center justify-center px-8 py-4 bg-blue-600 hover:bg-blue-700 text-white font-semibold rounded-full shadow-lg hover:shadow-xl transform hover:-translate-y-1 transition-all duration-300"
+          >
+            <span className="mr-2">{t('services.viewMore', 'Ver Todos los Servicios')}</span>
+            <ArrowRight className="h-5 w-5 group-hover:translate-x-1 transition-transform duration-300" />
+          </Link>
         </div>
       </div>
     </section>

@@ -3,17 +3,24 @@ import { Menu, X, Code2, Moon, Sun } from 'lucide-react'
 import { useActiveSection } from '../hooks/useActiveSection'
 import { useDarkMode } from '../hooks/useDarkMode'
 import { useTranslation } from 'react-i18next'
+import { useNavigate, useLocation } from 'react-router-dom'
 import LanguageDropdown from './LanguageDropdown'
 
 export default function Header() {
 	const { t } = useTranslation()
-	const navItems = [
+	const navigate = useNavigate()
+	const location = useLocation()
+	const navItems: Array<{
+		href?: string
+		label: string
+		items?: Array<{ href: string; label: string; isRoute?: boolean }>
+	}> = [
 		{ href: '#quienes-somos', label: t('header.navItems.quienesSomos') },
 		{ href: '#proceso', label: t('header.navItems.workflow') },
 		{
 			label: t('header.navItems.soluciones'),
 			items: [
-				{ href: '#servicios', label: t('header.navItems.servicios') },
+				{ href: '/services', label: t('header.navItems.servicios'), isRoute: true },
 				{ href: '#automatizacion', label: t('header.navItems.automatizacion') },
 				{ href: '#pricing', label: t('header.navItems.masVendidos') },
 			],
@@ -47,11 +54,41 @@ export default function Header() {
 		return () => document.removeEventListener('click', handleClickOutside)
 	}, [])
 
-	const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>) => {
+	const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, isRoute = false) => {
 		e.preventDefault()
 		const href = e.currentTarget.getAttribute('href')
 		if (!href) return
 
+		// Si es una ruta (empieza con /), navegar con React Router
+		if (isRoute || href.startsWith('/')) {
+			navigate(href)
+			setIsMenuOpen(false)
+			return
+		}
+
+		// Si estamos en ServicesPage y el href es un ancla, volver al home primero
+		if (location.pathname !== '/' && href.startsWith('#')) {
+			navigate('/')
+			// Esperar a que se cargue el home y luego hacer scroll
+			setTimeout(() => {
+				const targetId = href.replace('#', '')
+				const element = document.getElementById(targetId)
+				if (!element) return
+
+				const headerHeight = 80
+				const elementPosition = element.getBoundingClientRect().top
+				const offsetPosition = elementPosition + window.pageYOffset - headerHeight
+
+				window.scrollTo({
+					top: offsetPosition,
+					behavior: 'smooth',
+				})
+			}, 100)
+			setIsMenuOpen(false)
+			return
+		}
+
+		// Scroll normal en la misma página
 		const targetId = href.replace('#', '')
 		const element = document.getElementById(targetId)
 		if (!element) return
@@ -103,8 +140,12 @@ export default function Header() {
 				<div className="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8">
 					<div className="flex justify-between items-center h-16 sm:h-20">
 						<a
-							href="#inicio"
-							onClick={handleNavClick}
+							href="/"
+							onClick={(e) => {
+								e.preventDefault()
+								navigate('/')
+								window.scrollTo({ top: 0, behavior: 'smooth' })
+							}}
 							className={`flex items-center space-x-2 hover:opacity-90 transition-opacity ${
 								isScrolled ? '' : 'text-white'
 							}`}
@@ -177,7 +218,7 @@ export default function Header() {
 															<a
 																key={subItem.href}
 																href={subItem.href}
-																onClick={handleNavClick}
+																onClick={(e) => handleNavClick(e, subItem.isRoute)}
 																className={`block px-4 py-3 text-sm transition-all duration-300 hover:bg-gray-500/10 rounded-t-md last:rounded-b-md last:rounded-t-none ${
 																	isDark ? 'text-gray-300 hover:text-blue-400' : 'text-gray-700 hover:text-blue-600'
 																}`}
@@ -347,7 +388,7 @@ export default function Header() {
 																<a
 																	key={subItem.href}
 																	href={subItem.href}
-																	onClick={handleNavClick}
+																	onClick={(e) => handleNavClick(e, subItem.isRoute)}
 																	className={`block ml-4 py-2 text-sm font-medium transition-colors duration-300 ${
 																		isDark ? 'text-gray-300 hover:text-blue-400' : 'text-gray-700 hover:text-blue-600'
 																	}`}

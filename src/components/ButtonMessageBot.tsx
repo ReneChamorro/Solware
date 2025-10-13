@@ -25,14 +25,16 @@ function ButtonMessageBot() {
 	}, [])
 
 	return (
-		<div className="fixed bottom-1 right-1 z-40">
-			<div className="flex items-end">
+		<div className="fixed bottom-[70px] sm:bottom-[80px] md:bottom-5 right-3 sm:right-5 z-50">
+			<div className="flex items-end gap-2">
 				{showMessage && (
 					<button
 						onClick={() => setIsChatBotOpen(true)}
-						className={`sticky bottom-96 flex items-center bg-blue-600/80 dark:bg-white/20 backdrop-blur-2xl px-4 py-2 rounded-full shadow-lg transition-all duration-300 font-semibold text-white animate-bounce opacity-100 scale-100`}
+						className={`flex items-center bg-blue-600/80 dark:bg-white/20 backdrop-blur-2xl px-4 py-2 rounded-full shadow-lg transition-all duration-300 font-semibold text-white animate-bounce opacity-100 scale-100 hidden md:flex`}
 					>
-						<span className="text-xs md:text-sm">{t('robotButton.title')}</span>
+						<span className="text-xs md:text-sm">
+							{t('robotButton.title')}
+						</span>
 					</button>
 				)}
 				<ChatBot isOpen={isChatBotOpen} setIsOpen={setIsChatBotOpen} />

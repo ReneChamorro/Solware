@@ -55,6 +55,7 @@
     }
   },
   "recognition": {
+    "sectionTitle": "Awards",
     "title": "IESA Hackathon",
     "institution": "Institute of Higher Studies in Administration",
     "description": "Recognized for our innovation in automation and business technology solutions, standing out among the best development teams in the country.",
@@ -107,7 +108,7 @@
         "details": {
           "0": "Strategic deployment by phases.",
           "1": "Real-time testing and validation.",
-          "2": "Integrations with your CRM, website, and databases.",
+          "2": "Integrations with your website, and databases.",
           "3": "Real-time monitoring and alerts.",
           "4": "Organizational change management."
         }
@@ -128,9 +129,13 @@
   "services": {
     "title": "Comprehensive Digital Solutions",
     "description": "We transform your business with cutting-edge technology and tailored solutions.",
+    "shortDescription": "We transform your business with cutting-edge technology and tailored solutions",
     "details": "Service Details",
     "button": "Learn More",
     "back": "Back",
+    "viewMore": "View All Services",
+    "backToServices": "Back to Services",
+    "requestConsultation": "Request Free Consultation",
     "automatizacion": {
       "title": "Process Automation",
       "description": "Optimize your operations with intelligent automated solutions.",
@@ -151,7 +156,7 @@
     },
     "agentes": {
       "title": "AI Agents",
-      "description": "Integrate intelligent agents to optimize processes and enhance customer experience.",
+      "description": "Integrate intelligent agents to optimize processes",
       "details": {
         "0": {
           "title": "Virtual Assistants",
@@ -186,7 +191,7 @@
       }
     },
     "crm": {
-      "title": "CRM & Business Intelligence",
+      "title": "Business Intelligence",
       "description": "Make strategic decisions based on intelligent data analysis.",
       "details": {
         "0": {
@@ -199,13 +204,13 @@
         },
         "2": {
           "title": "Insights Automation",
-          "description": "Automatic generation of reports and alerts based on CRM data analysis."
+          "description": "Automatic generation of reports and alerts."
         }
       }
     },
     "digitalizacion": {
       "title": "UX/UI Advisors",
-      "description": "We optimize user experience and interface design to create functional, intuitive, and attractive digital products.",
+      "description": "We optimize user experience and interface design",
       "details": {
         "0": {
           "title": "UX Research and Strategy",
@@ -222,8 +227,8 @@
       }
     },
     "soporte": {
-      "title": "Reports & Data Analysis",
-      "description": "Gain key insights to make informed decisions and improve results.",
+      "title": "Digital Presentations",
+      "description": "We design impactful and professional presentations",
       "details": {
         "0": {
           "title": "Interactive Dashboards",
@@ -382,7 +387,7 @@
       "title": "Frequently Asked Questions",
       "faqs": {
         "0": {
-          "question": "How can Solware help my company?",
+          "question": "Can I contact Solware for a free consultation?",
           "answer": "Solware can help your company increase operational efficiency, reduce costs, improve customer experience, and ease the adoption of new technologies to keep you competitive in the market."
         },
         "1": {
@@ -394,7 +399,7 @@
           "answer": "We implement a rigorous system of KPIs and metrics from the start, setting clear and measurable goals. We conduct ongoing monitoring, provide detailed reports, and adjust strategies as needed to ensure project success."
         },
         "3": {
-          "question": "Can I contact Solware for a free consultation?",
+          "question": "How can Solware help my company?",
           "answer": "Absolutely! We offer initial consultations at no cost where we analyze your needs and present personalized solutions. You can contact us through our form, WhatsApp, or email."
         },
         "4": {
@@ -487,7 +492,7 @@
         "options": {
           "automatizacion": "Process automation",
           "desarrollo": "Web/mobile development",
-          "crm": "CRM and management",
+          "crm": "Management",
           "marketing": "Digital marketing",
           "consultoria": "Technology consulting"
         },
@@ -500,8 +505,8 @@
           "text": "We develop custom web and mobile solutions using the latest technologies:\n• Responsive websites\n• Progressive web apps\n• Native mobile apps\n• Enterprise platforms"
         },
         "crm": {
-          "title": "crm and management",
-          "text": "We implement CRM systems to improve customer management:\n• Lead tracking\n• Marketing automation\n• Sales management\n• Data analysis"
+          "title": "Management",
+          "text": "• Lead tracking\n• Marketing automation\n• Sales management\n• Data analysis"
         },
         "marketing": {
           "title": "digital marketing",
@@ -553,7 +558,6 @@
         "movil": "mobile",
         "telefono": "phone",
         "celular": "cellphone",
-        "crm": "crm",
         "precio": "price",
         "costo": "cost",
         "dinero": "money",

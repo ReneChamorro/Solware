@@ -5,6 +5,7 @@ import App from './App'
 import NotFound from './components/NotFound'
 import PrivacyPolicy from './components/PrivacyPolicy'
 import Demonstration from './components/Demonstration'
+import ServicesPage from './components/ServicesPage'
 import './index.css'
 import './i18n'
 
@@ -35,6 +36,7 @@ root.render(
     <BrowserRouter {...routerOptions}>
       <Routes>
         <Route path="/" element={<App />} />
+        <Route path="/services" element={<ServicesPage />} />
         <Route path="/demo" element={<Demonstration />} />
         <Route path="/privacy" element={<PrivacyPolicy />} />
         <Route path="*" element={<NotFound />} />

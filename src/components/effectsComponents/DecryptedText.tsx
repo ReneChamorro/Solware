@@ -55,6 +55,9 @@ export default function DecryptedText({
 	const [hasAnimated, setHasAnimated] = useState<boolean>(false)
 	const containerRef = useRef<HTMLSpanElement>(null)
 
+	// Ref para asegurarnos de llamar onRevealEnd solo una vez por ciclo
+	const onRevealCalledRef = useRef(false)
+
 	useEffect(() => {
 		let interval: NodeJS.Timeout
 		let currentIteration = 0
@@ -126,6 +129,8 @@ export default function DecryptedText({
 		}
 
 		if (isHovering) {
+			// resetear la marca cuando comienza la animación
+			onRevealCalledRef.current = false
 			setIsScrambling(true)
 			interval = setInterval(() => {
 				setRevealedIndices((prevRevealed) => {
@@ -139,7 +144,6 @@ export default function DecryptedText({
 						} else {
 							clearInterval(interval)
 							setIsScrambling(false)
-							if (onRevealEnd) onRevealEnd() // Llama el callback al terminar
 							return prevRevealed
 						}
 					} else {
@@ -164,6 +168,15 @@ export default function DecryptedText({
 			if (interval) clearInterval(interval)
 		}
 	}, [isHovering, text, speed, maxIterations, sequential, revealDirection, characters, useOriginalCharsOnly, onRevealEnd])
+
+	// Llamar a onRevealEnd después del render cuando se complete el revelado (solo en modo sequential)
+	useEffect(() => {
+		if (!sequential) return
+		if (revealedIndices.size === text.length && !onRevealCalledRef.current) {
+			onRevealCalledRef.current = true
+			onRevealEnd?.()
+		}
+	}, [revealedIndices, text, sequential, onRevealEnd])
 
 	useEffect(() => {
 		if (animateOn !== 'view') return
