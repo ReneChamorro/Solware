@@ -128,11 +128,16 @@ export default function Header() {
 		setCloseTimeout(timeout)
 	}
 
+	// Detectar si estamos en ServicesPage
+	const isServicesPage = location.pathname === '/services'
+	// En ServicesPage, siempre mostrar como si estuviera scrolled
+	const shouldShowScrolledStyle = isScrolled || isServicesPage
+
 	return (
 		<>
 			<header
 				className={`fixed w-full z-50 transition-all duration-300 ${
-					isScrolled
+					shouldShowScrolledStyle
 						? 'bg-white dark:bg-gray-900 shadow-sm md:bg-white/70 md:dark:bg-gray-900/70 md:backdrop-blur-md'
 						: 'bg-transparent'
 				}`}
@@ -147,15 +152,15 @@ export default function Header() {
 								window.scrollTo({ top: 0, behavior: 'smooth' })
 							}}
 							className={`flex items-center space-x-2 hover:opacity-90 transition-opacity ${
-								isScrolled ? '' : 'text-white'
+								shouldShowScrolledStyle ? '' : 'text-white'
 							}`}
 						>
 							<Code2
-								className={`h-7 w-7 sm:h-8 sm:w-8 ${isScrolled ? 'text-blue-600 dark:text-blue-400' : 'text-white'}`}
+								className={`h-7 w-7 sm:h-8 sm:w-8 ${shouldShowScrolledStyle ? 'text-blue-600 dark:text-blue-400' : 'text-white'}`}
 							/>
 							<span
 								className={`text-xl sm:text-2xl font-bold ${
-									isScrolled ? 'text-gray-900 dark:text-white' : 'text-white'
+									shouldShowScrolledStyle ? 'text-gray-900 dark:text-white' : 'text-white'
 								}`}
 							>
 								Solware
@@ -175,7 +180,7 @@ export default function Header() {
 												type="button"
 												onClick={toggleDropdown}
 												className={`relative flex items-center w-full justify-center gap-x-1.5 rounded-full px-4 py-2 text-sm lg:text-base font-semibold shadow-xs transition-all duration-300 overflow-hidden group ${
-													isScrolled
+													shouldShowScrolledStyle
 														? 'text-gray-700 dark:text-gray-300 hover:bg-blue-600 hover:text-white hover:shadow-lg hover:transform hover:scale-105'
 														: 'text-white hover:bg-blue-600 hover:text-white hover:shadow-lg hover:transform hover:scale-105'
 												}`}
@@ -239,7 +244,7 @@ export default function Header() {
 										href={item.href}
 										onClick={handleNavClick}
 										className={`relative px-4 py-2 rounded-full text-sm lg:text-base font-semibold transition-all duration-300 overflow-hidden group ${
-											isScrolled
+											shouldShowScrolledStyle
 												? 'text-gray-700 dark:text-gray-300 hover:bg-blue-600 hover:text-white hover:shadow-lg hover:transform hover:scale-105'
 												: 'text-white hover:bg-blue-600 hover:text-white hover:shadow-lg hover:transform hover:scale-105'
 										}`}
@@ -254,14 +259,14 @@ export default function Header() {
 								onClick={toggleDarkMode}
 								className={`p-2 rounded-full transition-colors duration-300 
                   focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 ${
-										isScrolled ? 'hover:bg-gray-100 dark:hover:bg-gray-800' : 'hover:bg-white/10'
+										shouldShowScrolledStyle ? 'hover:bg-gray-100 dark:hover:bg-gray-800' : 'hover:bg-white/10'
 									}`}
 								aria-label={isDark ? 'Activar modo claro' : 'Activar modo oscuro'}
 							>
 								{isDark ? (
-									<Sun className={`h-5 w-5 ${isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'}`} />
+									<Sun className={`h-5 w-5 ${shouldShowScrolledStyle ? 'text-gray-700 dark:text-gray-300' : 'text-white'}`} />
 								) : (
-									<Moon className={`h-5 w-5 ${isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'}`} />
+									<Moon className={`h-5 w-5 ${shouldShowScrolledStyle ? 'text-gray-700 dark:text-gray-300' : 'text-white'}`} />
 								)}
 							</button>
 
@@ -270,7 +275,7 @@ export default function Header() {
 								target="_blank"
 								className={`px-4 sm:px-6 py-2 rounded-full text-sm sm:text-base 
                   transition-colors duration-300 whitespace-nowrap ${
-										isScrolled
+										shouldShowScrolledStyle
 											? 'bg-blue-600 dark:bg-blue-500 text-white hover:bg-blue-700 dark:hover:bg-blue-600'
 											: 'bg-white/10 text-white hover:bg-white/20'
 									}`}
@@ -289,19 +294,19 @@ export default function Header() {
 								onClick={toggleDarkMode}
 								className={`p-2 rounded-full transition-colors duration-300 
                   focus:outline-none focus:ring-2 focus:ring-blue-500 dark:focus:ring-blue-400 ${
-										isScrolled ? 'hover:bg-gray-100 dark:hover:bg-gray-800' : 'hover:bg-white/10'
+										shouldShowScrolledStyle ? 'hover:bg-gray-100 dark:hover:bg-gray-800' : 'hover:bg-white/10'
 									}`}
 								aria-label={isDark ? 'Activar modo claro' : 'Activar modo oscuro'}
 							>
 								{isDark ? (
-									<Sun className={`h-5 w-5 ${isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'}`} />
+									<Sun className={`h-5 w-5 ${shouldShowScrolledStyle ? 'text-gray-700 dark:text-gray-300' : 'text-white'}`} />
 								) : (
-									<Moon className={`h-5 w-5 ${isScrolled ? 'text-gray-700 dark:text-gray-300' : 'text-white'}`} />
+									<Moon className={`h-5 w-5 ${shouldShowScrolledStyle ? 'text-gray-700 dark:text-gray-300' : 'text-white'}`} />
 								)}
 							</button>
 
 							<button
-								className={`px-1 rounded-lg ${isScrolled ? 'text-gray-700 dark:text-white' : 'text-white'}`}
+								className={`px-1 rounded-lg ${shouldShowScrolledStyle ? 'text-gray-700 dark:text-white' : 'text-white'}`}
 								onClick={() => setIsMenuOpen(!isMenuOpen)}
 								aria-label={isMenuOpen ? 'Cerrar menú' : 'Abrir menú'}
 							>
