@@ -1,12 +1,17 @@
 import { useTranslation } from 'react-i18next'
 import { useEffect, useState } from 'react'
+import { useLocation } from 'react-router-dom'
 import i18n from 'i18next'
 
 function LanguageDropdown() {
 	const { t } = useTranslation()
+	const location = useLocation()
 	const [openDropdown, setOpenDropdown] = useState(false)
 	const [closeTimeout, setCloseTimeout] = useState<NodeJS.Timeout | null>(null)
 	const [isScrolled, setIsScrolled] = useState(false)
+	
+	// Detectar si estamos en la página de servicios
+	const isServicesPage = location.pathname === '/services'
 	
 	// Definir los idiomas disponibles
 	const languages = [
@@ -63,7 +68,7 @@ function LanguageDropdown() {
 					type="button"
 					onClick={toggleDropdown}
 					className={`flex items-center w-fit justify-center rounded-md px-3 py-2 text-sm lg:text-base font-semibold shadow-xs transition-colors duration-300 ${
-						isScrolled
+						isServicesPage || isScrolled
 							? 'text-blue-600 dark:text-blue-400'
 							: 'text-white hover:text-blue-200'
 					}`}

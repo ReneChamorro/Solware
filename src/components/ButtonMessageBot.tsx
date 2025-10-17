@@ -25,7 +25,7 @@ function ButtonMessageBot() {
 	}, [])
 
 	return (
-		<div className="fixed bottom-[70px] sm:bottom-[80px] md:bottom-5 right-3 sm:right-5 z-50">
+		<div className="fixed bottom-5 right-5 z-50">
 			<div className="flex items-end gap-2">
 				{showMessage && (
 					<button

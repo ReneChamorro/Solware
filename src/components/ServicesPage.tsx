@@ -53,10 +53,6 @@ const ServicesPage: React.FC = () => {
         {
           title: t('services.agentes.details.1.title'),
           description: t('services.agentes.details.1.description'),
-        },
-        {
-          title: t('services.agentes.details.2.title'),
-          description: t('services.agentes.details.2.description'),
         }
       ]
     },
@@ -64,15 +60,11 @@ const ServicesPage: React.FC = () => {
       id: 'desarrollo',
       title: t('services.desarrollo.title'),
       subtitle: t('services.desarrollo.description'),
-      image: 'https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/desarrollo.webp',
+      image: 'https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/Desarrollomovilydesktop.webp',
       points: [
         {
           title: t('services.desarrollo.details.0.title'),
           description: t('services.desarrollo.details.0.description'),
-        },
-        {
-          title: t('services.desarrollo.details.1.title'),
-          description: t('services.desarrollo.details.1.description'),
         },
         {
           title: t('services.desarrollo.details.2.title'),
@@ -104,7 +96,7 @@ const ServicesPage: React.FC = () => {
       id: 'digitalizacion',
       title: t('services.digitalizacion.title'),
       subtitle: t('services.digitalizacion.description'),
-      image: 'https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/digitalizacion%20(2).webp',
+      image: 'https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/Digitalizaci%C3%B3n.webp',
       points: [
         {
           title: t('services.digitalizacion.details.0.title'),
@@ -113,10 +105,6 @@ const ServicesPage: React.FC = () => {
         {
           title: t('services.digitalizacion.details.1.title'),
           description: t('services.digitalizacion.details.1.description'),
-        },
-        {
-          title: t('services.digitalizacion.details.2.title'),
-          description: t('services.digitalizacion.details.2.description'),
         }
       ]
     },
@@ -124,22 +112,18 @@ const ServicesPage: React.FC = () => {
       id: 'soporte',
       title: t('services.soporte.title'),
       subtitle: t('services.soporte.description'),
-      image: 'https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/soporte.webp',
+      image: 'https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/imagenes/Servicios/Soporte.webp',
       points: [
         {
           title: t('services.soporte.details.0.title'),
           description: t('services.soporte.details.0.description'),
         },
         {
-          title: t('services.soporte.details.1.title'),
-          description: t('services.soporte.details.1.description'),
-        },
-        {
           title: t('services.soporte.details.2.title'),
           description: t('services.soporte.details.2.description'),
         }
       ]
-    }
+    },
   ]
 
   // Navegación total de elementos
@@ -671,25 +655,18 @@ const ServicesPage: React.FC = () => {
       <div className="fixed bottom-0 left-0 right-0 z-10 bg-gray-50/95 dark:bg-gray-800/95 backdrop-blur-md border-t border-gray-200 dark:border-gray-700">
         <div className="max-w-4xl lg:max-w-5xl xl:max-w-5xl 2xl:max-w-7xl mx-auto text-center px-4 sm:px-6 md:px-8 lg:px-10 xl:px-10 py-3 md:py-4 lg:py-4 xl:py-5 2xl:py-6">
           <div className="flex flex-col sm:flex-row gap-2 md:gap-3 lg:gap-3 xl:gap-4 justify-center items-center">
-            <Link
-              to="/#contacto"
+            <a
+              href="https://calendar.app.google/EYruMbWpJwJ82gHr6"
+              target="_blank"
+              rel="noopener noreferrer"
               className="inline-flex items-center px-4 sm:px-6 md:px-8 lg:px-8 xl:px-10 2xl:px-12 py-2 sm:py-3 md:py-3 lg:py-3 xl:py-3.5 2xl:py-4 text-xs sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-xl font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
               {t('services.requestConsultation')}
-            </Link>
+            </a>
             <Link
               to="/"
               onClick={() => {
-                // Store the intent to scroll to services
-                sessionStorage.setItem('scrollToServices', 'true');
-                
-                // Also try with a longer timeout as backup
-                setTimeout(() => {
-                  const servicesSection = document.getElementById('servicios');
-                  if (servicesSection) {
-                    servicesSection.scrollIntoView({ behavior: 'smooth' });
-                  }
-                }, 300);
+                window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
               className="inline-flex items-center px-3 sm:px-4 md:px-6 lg:px-6 xl:px-8 2xl:px-10 py-1.5 sm:py-2 md:py-2.5 lg:py-2.5 xl:py-3 2xl:py-3 text-xs sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-xl font-medium text-blue-600 dark:text-blue-400 border border-blue-600 dark:border-blue-400 rounded-full hover:bg-blue-600 dark:hover:bg-blue-400 hover:text-white dark:hover:text-gray-900 transition-all duration-300 hover:scale-105"
             >

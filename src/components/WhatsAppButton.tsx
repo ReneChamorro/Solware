@@ -327,7 +327,7 @@ const WhatsAppButton = memo(() => {
       `}</style>
 
       <div 
-        className={`fixed bottom-[70px] sm:bottom-[80px] md:bottom-5 left-3 sm:left-5 z-50 matryoshka-group ${isAutoHover ? 'auto-hover' : ''} ${isAutoHoverExit ? 'auto-hover-exit' : ''}`}
+        className={`fixed bottom-5 left-5 z-50 matryoshka-group ${isAutoHover ? 'auto-hover' : ''} ${isAutoHoverExit ? 'auto-hover-exit' : ''}`}
         onMouseEnter={handleMouseEnter}
         onMouseLeave={handleMouseLeave}
       >
