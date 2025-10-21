@@ -136,6 +136,10 @@
     "viewMore": "View All Services",
     "backToServices": "Back to Home",
     "requestConsultation": "Request Free Consultation",
+    "navigation": {
+      "desktop": "Use scroll or ←→ arrows to navigate",
+      "mobile": "Swipe horizontally to navigate"
+    },
     "automatizacion": {
       "title": "Process Automation",
       "description": "Optimize your operations with intelligent automated solutions.",

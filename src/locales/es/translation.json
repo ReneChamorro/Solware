@@ -151,6 +151,10 @@
     "viewMore": "Ver Todos los Servicios",
     "backToServices": "Volver al Inicio",
     "requestConsultation": "Solicitar Consulta Gratuita",
+    "navigation": {
+      "desktop": "Usa scroll o flechas ←→ para navegar",
+      "mobile": "Desliza horizontalmente para navegar"
+    },
     "automatizacion": {
       "title": "Automatización de Procesos",
       "description": "Optimiza tus operaciones con soluciones automatizadas inteligentes.",
