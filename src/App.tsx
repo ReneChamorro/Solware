@@ -13,7 +13,7 @@ import ButtonMessageBot from './components/ButtonMessageBot'
 import AboutUs from './components/AboutUs'
 import Pricing from './components/Pricing'
 import SplashCursor from './components/effectsComponents/SplashCursor'
-import { Analytics } from '@vercel/analytics/next'
+import { Analytics } from '@vercel/analytics/react'
 
 function App() {
 	const [isLoading, setIsLoading] = useState(true)
