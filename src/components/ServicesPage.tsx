@@ -395,7 +395,7 @@ const ServicesPage: React.FC = () => {
       <Header />
 
       {/* Main Content with Fixed Layout */}
-      <main id="main-content" className="relative min-h-screen md:h-screen overflow-y-auto md:overflow-hidden overflow-x-hidden w-full max-w-full">
+      <main id="main-content" className="relative min-h-screen md:h-screen overflow-y-auto md:overflow-hidden overflow-x-hidden w-full max-w-full pb-16 md:pb-14">
         <AnimatePresence mode="wait">
           {isInitialSlide ? (
             // Initial Slide - Soluciones Digitales Integrales
@@ -434,13 +434,13 @@ const ServicesPage: React.FC = () => {
                 >
                   {/* Indicativo desktop */}
                   <div className="hidden md:block text-base md:text-lg lg:text-lg xl:text-xl 2xl:text-2xl text-gray-500 dark:text-gray-400 text-center">
-                    Usa la rueda del mouse o flechas ←→ para explorar servicios
+                    {t('services.navigation.initial.desktop')}
                   </div>
                   
                   {/* Indicativo móvil con animación de swipe */}
                   <div className="md:hidden flex flex-col items-center space-y-4 sm:space-y-5">
                     <div className="text-lg sm:text-xl text-gray-500 dark:text-gray-400 text-center px-4">
-                      Desliza horizontalmente para explorar servicios
+                      {t('services.navigation.initial.mobile')}
                     </div>
                     <div className="flex items-center space-x-3 text-blue-600 dark:text-blue-400">
                       <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7 animate-pulse" />
@@ -474,7 +474,7 @@ const ServicesPage: React.FC = () => {
                 duration: 0.8, 
                 ease: [0.43, 0.13, 0.23, 0.96]
               }}
-              className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 py-16 md:py-24 lg:py-28 xl:py-24 2xl:py-32 md:pt-24 md:pb-4 w-full overflow-hidden"
+              className="min-h-screen bg-white dark:bg-gray-900 transition-colors duration-300 py-16 md:py-24 lg:py-28 xl:py-24 2xl:py-28 md:pt-24 md:pb-4 w-full overflow-hidden"
               style={{ perspective: 1000 }}
             >
               <div className="max-w-7xl xl:max-w-7xl 2xl:max-w-[100rem] mx-auto px-4 sm:px-6 md:px-8 lg:px-10 xl:px-12 2xl:px-16 md:min-h-screen flex flex-col justify-start md:justify-center md:pt-0 w-full">
@@ -635,11 +635,25 @@ const ServicesPage: React.FC = () => {
                   {/* Progress Info */}
                   <div className="text-center text-xs sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-xl text-gray-500 dark:text-gray-400">
                     <span className="font-medium">{getCurrentGlobalIndex() + 1}</span> / <span>{getTotalItems()}</span>
-                    <div className="mt-1 md:mt-2 hidden md:block">
-                      Usa scroll o flechas ←→ para navegar
+                  </div>
+                  
+                  {/* Navigation Instructions */}
+                  <div className="flex flex-col items-center space-y-3 sm:space-y-4 mt-4 sm:mt-5 md:mt-6">
+                    {/* Desktop Navigation Text */}
+                    <div className="hidden md:block text-sm md:text-base lg:text-base xl:text-lg 2xl:text-xl text-gray-500 dark:text-gray-400 text-center">
+                      {t('services.navigation.slides.desktop')}
                     </div>
-                    <div className="mt-1 md:hidden">
-                      Desliza horizontalmente para navegar
+                    
+                    {/* Mobile Navigation with Icons */}
+                    <div className="md:hidden flex flex-col items-center space-y-3">
+                      <div className="text-sm sm:text-base text-gray-500 dark:text-gray-400 text-center px-4">
+                        {t('services.navigation.slides.mobile')}
+                      </div>
+                      <div className="flex items-center space-x-3 text-blue-600 dark:text-blue-400">
+                        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse" />
+                        <div className="w-8 sm:w-10 h-1 bg-blue-600 dark:bg-blue-400 rounded-full animate-pulse"></div>
+                        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse" />
+                      </div>
                     </div>
                   </div>
                 </div>
@@ -648,27 +662,33 @@ const ServicesPage: React.FC = () => {
           )}
         </AnimatePresence>
 
-
       </main>
 
       {/* Call to Action - Fixed at bottom */}
       <div className="fixed bottom-0 left-0 right-0 z-10 bg-gray-50/95 dark:bg-gray-800/95 backdrop-blur-md border-t border-gray-200 dark:border-gray-700">
-        <div className="max-w-4xl lg:max-w-5xl xl:max-w-5xl 2xl:max-w-7xl mx-auto text-center px-4 sm:px-6 md:px-8 lg:px-10 xl:px-10 py-3 md:py-4 lg:py-4 xl:py-5 2xl:py-6">
+        <div className="max-w-4xl lg:max-w-5xl xl:max-w-5xl 2xl:max-w-7xl mx-auto text-center px-4 sm:px-6 md:px-8 lg:px-10 xl:px-10 py-2 md:py-2.5 lg:py-2.5 xl:py-3 2xl:py-3.5">
           <div className="flex flex-col sm:flex-row gap-2 md:gap-3 lg:gap-3 xl:gap-4 justify-center items-center">
             <a
               href="https://calendar.app.google/EYruMbWpJwJ82gHr6"
               target="_blank"
               rel="noopener noreferrer"
-              className="inline-flex items-center px-4 sm:px-6 md:px-8 lg:px-8 xl:px-10 2xl:px-12 py-2 sm:py-3 md:py-3 lg:py-3 xl:py-3.5 2xl:py-4 text-xs sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-xl font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
+              className="inline-flex items-center px-4 sm:px-6 md:px-8 lg:px-8 xl:px-10 2xl:px-12 py-1.5 sm:py-2 md:py-2 lg:py-2 xl:py-2.5 2xl:py-3 text-xs sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-xl font-medium text-white bg-blue-600 hover:bg-blue-700 rounded-full transition-all duration-300 hover:scale-105 shadow-lg hover:shadow-xl"
             >
               {t('services.requestConsultation')}
             </a>
+            
+            {/* Navigation Button */}
+            <div className="inline-flex items-center px-3 sm:px-4 md:px-6 lg:px-6 xl:px-8 2xl:px-10 py-1 sm:py-1.5 md:py-2 lg:py-2 xl:py-2.5 2xl:py-2.5 text-xs sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-xl font-medium text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-full border border-gray-300 dark:border-gray-600">
+              <span className="hidden md:inline">{t('services.navigation.slides.desktop')}</span>
+              <span className="md:hidden">{t('services.navigation.slides.mobile')}</span>
+            </div>
+            
             <Link
               to="/"
               onClick={() => {
                 window.scrollTo({ top: 0, behavior: 'smooth' });
               }}
-              className="inline-flex items-center px-3 sm:px-4 md:px-6 lg:px-6 xl:px-8 2xl:px-10 py-1.5 sm:py-2 md:py-2.5 lg:py-2.5 xl:py-3 2xl:py-3 text-xs sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-xl font-medium text-blue-600 dark:text-blue-400 border border-blue-600 dark:border-blue-400 rounded-full hover:bg-blue-600 dark:hover:bg-blue-400 hover:text-white dark:hover:text-gray-900 transition-all duration-300 hover:scale-105"
+              className="inline-flex items-center px-3 sm:px-4 md:px-6 lg:px-6 xl:px-8 2xl:px-10 py-1 sm:py-1.5 md:py-2 lg:py-2 xl:py-2.5 2xl:py-2.5 text-xs sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-xl font-medium text-blue-600 dark:text-blue-400 border border-blue-600 dark:border-blue-400 rounded-full hover:bg-blue-600 dark:hover:bg-blue-400 hover:text-white dark:hover:text-gray-900 transition-all duration-300 hover:scale-105"
             >
               {t('services.backToServices')}
             </Link>

@@ -98,6 +98,53 @@ export default function Hero() {
 							{t('hero.subtitle')}
 						</p>
 
+						{/* Responsive feature module - Only visible on smaller screens */}
+						<div className="lg:hidden mb-8 animate-fade-in-delay">
+							<div className="bg-white/10 dark:bg-blue-900/20 backdrop-blur-lg rounded-xl p-4 shadow-lg dark:shadow-blue-500/20">
+								<div className="grid grid-cols-2 gap-3">
+									{[
+										{
+											icon: <Zap className="h-5 w-5" />,
+											title: t('hero.automation'),
+											label: t('hero.efficiency'),
+										},
+										{
+											icon: <Paintbrush className="h-5 w-5" />,
+											title: t('hero.security'),
+											label: t('hero.activeTime'),
+										},
+										{
+											icon: <Bot className="h-5 w-5" />,
+											title: t('hero.savings'),
+											label: t('hero.costs'),
+										},
+										{
+											icon: <LayoutDashboard className="h-5 w-5" />,
+											title: t('hero.scalability'),
+											label: t('hero.limits'),
+										},
+									].map((stat, index) => (
+										<div
+											key={index}
+											className="text-center p-3 rounded-lg bg-white/5 dark:bg-blue-900/30 transition-all duration-300"
+										>
+											<div className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-white/10 dark:bg-blue-800/50 mb-2">
+												{React.cloneElement(stat.icon, {
+													className: 'h-5 w-5 text-white',
+												})}
+											</div>
+											<h3 className="text-sm font-medium text-white dark:text-blue-100 mb-1">
+												{stat.title}
+											</h3>
+											<p className="text-xs text-white/80 dark:text-blue-200/80">
+												{stat.label}
+											</p>
+										</div>
+									))}
+								</div>
+							</div>
+						</div>
+
 						<div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-delay-2">
 							<a
 								href="https://calendar.app.google/EYruMbWpJwJ82gHr6"

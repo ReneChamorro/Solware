@@ -176,17 +176,14 @@ export default function Header() {
 										onMouseLeave={handleMouseLeave}
 									>
 										<div>
-											<button
-												type="button"
-												onClick={toggleDropdown}
+											<a
+												href="/services"
+												onClick={(e) => handleNavClick(e, true)}
 												className={`relative flex items-center w-full justify-center gap-x-1.5 rounded-full px-4 py-2 text-sm lg:text-base font-semibold shadow-xs transition-all duration-300 overflow-hidden group ${
 													shouldShowScrolledStyle
 														? 'text-gray-700 dark:text-gray-300 hover:bg-blue-600 hover:text-white hover:shadow-lg hover:transform hover:scale-105'
 														: 'text-white hover:bg-blue-600 hover:text-white hover:shadow-lg hover:transform hover:scale-105'
 												}`}
-												id="menu-button"
-												aria-expanded={openDropdown}
-												aria-haspopup="true"
 											>
 												<span className="relative z-10">{item.label}</span>
 												<svg
@@ -203,7 +200,7 @@ export default function Header() {
 													/>
 												</svg>
 												<span className="absolute inset-0 bg-gradient-to-r from-blue-600 to-blue-500 transform scale-x-0 group-hover:scale-x-100 transition-transform duration-300 origin-left rounded-full opacity-0 group-hover:opacity-100"></span>
-											</button>
+											</a>
 										</div>
 										<div
 											className={` opacity-0 transition-all -translate-y-20 duration-300 ${
@@ -344,37 +341,51 @@ export default function Header() {
 								{navItems.map((item) =>
 									item.items ? (
 										<div key={item.label} className="dropdown">
-											<div
-												className={`w-full px-4 py-3 rounded-lg text-lg font-medium transition-colors duration-200 cursor-pointer ${
-													activeSection === 'servicios' || activeSection === 'automatizacion'
-														? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50'
-														: 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-500/30'
-												}`}
-												onClick={toggleDropdown}
-											>
-												<button
-													type="button"
-													className="flex items-center justify-between w-full"
-													id="menu-button-mobile"
-													aria-expanded={openDropdown}
-													aria-haspopup="true"
-												>
-													<span>{item.label}</span>
-													<svg
-														className={`size-5 -rotate-90 transition-transform ${openDropdown ? 'rotate-0' : ''}`}
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														aria-hidden="true"
-														data-slot="icon"
+											<div className={`w-full rounded-lg transition-colors duration-200 ${
+												activeSection === 'servicios' || activeSection === 'automatizacion'
+													? 'bg-blue-50 dark:bg-blue-900/50'
+													: 'hover:bg-gray-50 dark:hover:bg-gray-500/30'
+											}`}>
+												<div className="flex items-center">
+													{/* Botón de texto - lleva a servicios */}
+													<a
+														href="/services"
+														onClick={(e) => handleNavClick(e, true)}
+														className={`flex-1 px-4 py-3 text-lg font-medium transition-colors duration-200 cursor-pointer ${
+															activeSection === 'servicios' || activeSection === 'automatizacion'
+																? 'text-blue-600 dark:text-blue-400'
+																: 'text-gray-700 dark:text-gray-300'
+														}`}
 													>
-														<path
-															fillRule="evenodd"
-															d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-															clipRule="evenodd"
-														/>
-													</svg>
-												</button>
+														{item.label}
+													</a>
+													
+													{/* Botón de flecha - despliega dropdown */}
+													<button
+														onClick={toggleDropdown}
+														className={`px-3 py-3 transition-colors duration-200 ${
+															activeSection === 'servicios' || activeSection === 'automatizacion'
+																? 'text-blue-600 dark:text-blue-400'
+																: 'text-gray-700 dark:text-gray-300'
+														}`}
+													>
+														<svg
+															className={`size-5 -rotate-90 transition-transform ${openDropdown ? 'rotate-0' : ''}`}
+															viewBox="0 0 20 20"
+															fill="currentColor"
+															aria-hidden="true"
+															data-slot="icon"
+														>
+															<path
+																fillRule="evenodd"
+																d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+																clipRule="evenodd"
+															/>
+														</svg>
+													</button>
+												</div>
 											</div>
+											
 											<div
 												className={` opacity-0 transition-all -translate-y-5 duration-300 ${
 													openDropdown ? 'opacity-100 translate-y-1' : 'opacity-0 -translate-y-5'
