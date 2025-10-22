@@ -341,49 +341,51 @@ export default function Header() {
 								{navItems.map((item) =>
 									item.items ? (
 										<div key={item.label} className="dropdown">
-											{/* En móvil: dos botones separados */}
-											<div className="flex items-stretch rounded-lg overflow-hidden">
-												{/* Botón principal "Soluciones" */}
-												<a
-													href="/services"
-													onClick={(e) => handleNavClick(e, true)}
-													className={`flex-1 px-4 py-3 text-lg font-medium transition-colors duration-200 ${
-														activeSection === 'servicios' || activeSection === 'automatizacion'
-															? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50'
-															: 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-500/30'
-													}`}
-												>
-													{item.label}
-												</a>
-												
-												{/* Botón de flecha para dropdown */}
-												<button
-													type="button"
-													onClick={toggleDropdown}
-													className={`px-3 py-3 text-lg font-medium transition-colors duration-200 border-l ${
-														activeSection === 'servicios' || activeSection === 'automatizacion'
-															? 'text-blue-600 dark:text-blue-400 bg-blue-50 dark:bg-blue-900/50 border-blue-200 dark:border-blue-800'
-															: 'text-gray-700 dark:text-gray-300 hover:bg-gray-50 dark:hover:bg-gray-500/30 border-gray-200 dark:border-gray-600'
-													}`}
-													id="menu-button-mobile"
-													aria-expanded={openDropdown}
-													aria-haspopup="true"
-												>
-													<svg
-														className={`size-5 -rotate-90 transition-transform ${openDropdown ? 'rotate-0' : ''}`}
-														viewBox="0 0 20 20"
-														fill="currentColor"
-														aria-hidden="true"
-														data-slot="icon"
+											<div className={`w-full rounded-lg transition-colors duration-200 ${
+												activeSection === 'servicios' || activeSection === 'automatizacion'
+													? 'bg-blue-50 dark:bg-blue-900/50'
+													: 'hover:bg-gray-50 dark:hover:bg-gray-500/30'
+											}`}>
+												<div className="flex items-center">
+													{/* Botón de texto - lleva a servicios */}
+													<a
+														href="/services"
+														onClick={(e) => handleNavClick(e, true)}
+														className={`flex-1 px-4 py-3 text-lg font-medium transition-colors duration-200 cursor-pointer ${
+															activeSection === 'servicios' || activeSection === 'automatizacion'
+																? 'text-blue-600 dark:text-blue-400'
+																: 'text-gray-700 dark:text-gray-300'
+														}`}
 													>
-														<path
-															fillRule="evenodd"
-															d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
-															clipRule="evenodd"
-														/>
-													</svg>
-												</button>
+														{item.label}
+													</a>
+													
+													{/* Botón de flecha - despliega dropdown */}
+													<button
+														onClick={toggleDropdown}
+														className={`px-3 py-3 transition-colors duration-200 ${
+															activeSection === 'servicios' || activeSection === 'automatizacion'
+																? 'text-blue-600 dark:text-blue-400'
+																: 'text-gray-700 dark:text-gray-300'
+														}`}
+													>
+														<svg
+															className={`size-5 -rotate-90 transition-transform ${openDropdown ? 'rotate-0' : ''}`}
+															viewBox="0 0 20 20"
+															fill="currentColor"
+															aria-hidden="true"
+															data-slot="icon"
+														>
+															<path
+																fillRule="evenodd"
+																d="M5.22 8.22a.75.75 0 0 1 1.06 0L10 11.94l3.72-3.72a.75.75 0 1 1 1.06 1.06l-4.25 4.25a.75.75 0 0 1-1.06 0L5.22 9.28a.75.75 0 0 1 0-1.06Z"
+																clipRule="evenodd"
+															/>
+														</svg>
+													</button>
+												</div>
 											</div>
+											
 											<div
 												className={` opacity-0 transition-all -translate-y-5 duration-300 ${
 													openDropdown ? 'opacity-100 translate-y-1' : 'opacity-0 -translate-y-5'

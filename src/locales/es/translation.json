@@ -151,9 +151,16 @@
     "viewMore": "Ver Todos los Servicios",
     "backToServices": "Volver al Inicio",
     "requestConsultation": "Solicitar Consulta Gratuita",
+    "exploreServices": "Desliza horizontalmente para explorar servicios",
     "navigation": {
-      "desktop": "Usa scroll o flechas ←→ para navegar",
-      "mobile": "Desliza horizontalmente para navegar"
+      "initial": {
+        "desktop": "Usa la rueda del mouse o flechas ←→ para explorar servicios",
+        "mobile": "Desliza horizontalmente para explorar servicios"
+      },
+      "slides": {
+        "desktop": "Rueda del mouse o flechas ←→",
+        "mobile": "Desliza horizontalmente →"
+      }
     },
     "automatizacion": {
       "title": "Automatización de Procesos",

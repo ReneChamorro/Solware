@@ -434,13 +434,13 @@ const ServicesPage: React.FC = () => {
                 >
                   {/* Indicativo desktop */}
                   <div className="hidden md:block text-base md:text-lg lg:text-lg xl:text-xl 2xl:text-2xl text-gray-500 dark:text-gray-400 text-center">
-                    Usa la rueda del mouse o flechas ←→ para explorar servicios
+                    {t('services.navigation.initial.desktop')}
                   </div>
                   
                   {/* Indicativo móvil con animación de swipe */}
                   <div className="md:hidden flex flex-col items-center space-y-4 sm:space-y-5">
                     <div className="text-lg sm:text-xl text-gray-500 dark:text-gray-400 text-center px-4">
-                      Desliza horizontalmente para explorar servicios
+                      {t('services.navigation.initial.mobile')}
                     </div>
                     <div className="flex items-center space-x-3 text-blue-600 dark:text-blue-400">
                       <ChevronLeft className="w-6 h-6 sm:w-7 sm:h-7 animate-pulse" />
@@ -636,6 +636,26 @@ const ServicesPage: React.FC = () => {
                   <div className="text-center text-xs sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-xl text-gray-500 dark:text-gray-400">
                     <span className="font-medium">{getCurrentGlobalIndex() + 1}</span> / <span>{getTotalItems()}</span>
                   </div>
+                  
+                  {/* Navigation Instructions */}
+                  <div className="flex flex-col items-center space-y-3 sm:space-y-4 mt-4 sm:mt-5 md:mt-6">
+                    {/* Desktop Navigation Text */}
+                    <div className="hidden md:block text-sm md:text-base lg:text-base xl:text-lg 2xl:text-xl text-gray-500 dark:text-gray-400 text-center">
+                      {t('services.navigation.slides.desktop')}
+                    </div>
+                    
+                    {/* Mobile Navigation with Icons */}
+                    <div className="md:hidden flex flex-col items-center space-y-3">
+                      <div className="text-sm sm:text-base text-gray-500 dark:text-gray-400 text-center px-4">
+                        {t('services.navigation.slides.mobile')}
+                      </div>
+                      <div className="flex items-center space-x-3 text-blue-600 dark:text-blue-400">
+                        <ChevronLeft className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse" />
+                        <div className="w-8 sm:w-10 h-1 bg-blue-600 dark:bg-blue-400 rounded-full animate-pulse"></div>
+                        <ChevronRight className="w-5 h-5 sm:w-6 sm:h-6 animate-pulse" />
+                      </div>
+                    </div>
+                  </div>
                 </div>
               </div>
             </motion.section>
@@ -659,8 +679,8 @@ const ServicesPage: React.FC = () => {
             
             {/* Navigation Button */}
             <div className="inline-flex items-center px-3 sm:px-4 md:px-6 lg:px-6 xl:px-8 2xl:px-10 py-1 sm:py-1.5 md:py-2 lg:py-2 xl:py-2.5 2xl:py-2.5 text-xs sm:text-sm md:text-base lg:text-base xl:text-lg 2xl:text-xl font-medium text-gray-600 dark:text-gray-300 bg-gray-100 dark:bg-gray-700 rounded-full border border-gray-300 dark:border-gray-600">
-              <span className="hidden md:inline">{t('services.navigation.desktop')}</span>
-              <span className="md:hidden">{t('services.navigation.mobile')}</span>
+              <span className="hidden md:inline">{t('services.navigation.slides.desktop')}</span>
+              <span className="md:hidden">{t('services.navigation.slides.mobile')}</span>
             </div>
             
             <Link

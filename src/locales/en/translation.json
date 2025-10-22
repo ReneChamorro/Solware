@@ -136,9 +136,16 @@
     "viewMore": "View All Services",
     "backToServices": "Back to Home",
     "requestConsultation": "Request Free Consultation",
+    "exploreServices": "Swipe horizontally to explore services",
     "navigation": {
-      "desktop": "Use scroll or ←→ arrows to navigate",
-      "mobile": "Swipe horizontally to navigate"
+      "initial": {
+        "desktop": "Use mouse wheel or arrow keys ←→ to explore services",
+        "mobile": "Swipe horizontally to explore services"
+      },
+      "slides": {
+        "desktop": "Mouse wheel or arrow keys ←→",
+        "mobile": "Swipe horizontally →"
+      }
     },
     "automatizacion": {
       "title": "Process Automation",

@@ -90,133 +90,6 @@ export default function Hero() {
 							/>
 						</div>
 
-						{/* Módulo de características - Solo responsive (móvil/tablet) */}
-						<div className="lg:hidden mb-8 sm:mb-10">
-							<div
-								className={`bg-white/10 dark:bg-blue-900/20 backdrop-blur-lg rounded-xl p-3 sm:p-4 
-                shadow-xl dark:shadow-blue-500/20 animate-fade-in-delay 
-                transition-all duration-500 max-w-xs mx-auto
-                has-[.card-amber:hover]:!shadow-[0_0_30px_rgba(245,158,11,0.5)]
-                has-[.card-blue:hover]:!shadow-[0_0_30px_rgba(59,130,246,0.5)]
-                has-[.card-purple:hover]:!shadow-[0_0_30px_rgba(168,85,247,0.5)]
-                has-[.card-green:hover]:!shadow-[0_0_30px_rgba(34,197,94,0.5)] ${
-									!isManualHover && autoHoverIndex === 0 ? '!shadow-[0_0_30px_rgba(245,158,11,0.5)]' :
-									!isManualHover && autoHoverIndex === 1 ? '!shadow-[0_0_30px_rgba(59,130,246,0.5)]' :
-									!isManualHover && autoHoverIndex === 2 ? '!shadow-[0_0_30px_rgba(168,85,247,0.5)]' :
-									!isManualHover && autoHoverIndex === 3 ? '!shadow-[0_0_30px_rgba(34,197,94,0.5)]' : ''
-								}`}
-							>
-								<div className="grid grid-cols-2 gap-2 sm:gap-3">
-									{[
-										{
-											icon: <Zap className="h-4 w-4 sm:h-5 sm:w-5" />,
-											title: "Automatización",
-											label: t('hero.efficiency'),
-											hoverColor: 'group-hover:text-yellow-300 dark:group-hover:text-yellow-300',
-											glowColor: 'group-hover:shadow-[0_0_15px_rgba(245,158,11,0.6)]',
-											cardHover: 'hover:shadow-amber-400/30 dark:hover:shadow-amber-400/30',
-											cardClass: 'card-amber',
-										},
-										{
-											icon: <Paintbrush className="h-4 w-4 sm:h-5 sm:w-5" />,
-											title: "Hiper\npersonalización",
-											label: "Sin límites",
-											hoverColor: 'group-hover:text-blue-300 dark:group-hover:text-blue-300',
-											glowColor: 'group-hover:shadow-[0_0_15px_rgba(59,130,246,0.6)]',
-											cardHover: 'hover:shadow-blue-400/30 dark:hover:shadow-blue-400/30',
-											cardClass: 'card-blue',
-										},
-										{
-											icon: <Bot className="h-4 w-4 sm:h-5 sm:w-5" />,
-											title: "Inteligencia\nArtificial",
-											label: "Procesos inteligentes",
-											hoverColor: 'group-hover:text-purple-300 dark:group-hover:text-purple-300',
-											glowColor: 'group-hover:shadow-[0_0_15px_rgba(168,85,247,0.6)]',
-											cardHover: 'hover:shadow-purple-400/30 dark:hover:shadow-purple-400/30',
-											cardClass: 'card-purple',
-										},
-										{
-											icon: <LayoutDashboard className="h-4 w-4 sm:h-5 sm:w-5" />,
-											title: "Dashboards",
-											label: "En tiempo real",
-											hoverColor: 'group-hover:text-green-300 dark:group-hover:text-green-300',
-											glowColor: 'group-hover:shadow-[0_0_15px_rgba(34,197,94,0.6)]',
-											cardHover: 'hover:shadow-green-400/30 dark:hover:shadow-green-400/30',
-											cardClass: 'card-green',
-										},
-									].map((stat, index) => {
-										const isActiveHover = isManualHover 
-											? manualHoverIndex === index 
-											: autoHoverIndex === index
-
-										return (
-											<div
-												key={index}
-												onMouseEnter={() => handleMouseEnter(index)}
-												onMouseLeave={handleMouseLeave}
-												className={`${stat.cardClass} group text-center p-1.5 sm:p-2 rounded-lg bg-white/5 dark:bg-blue-900/30 
-                        transition-all duration-300
-                        ${isActiveHover ? 
-                          `bg-white/20 dark:bg-blue-700/60 -translate-y-1 shadow-lg scale-105 ${
-														index === 0 ? 'shadow-amber-400/30 dark:shadow-amber-400/30' : 
-														index === 1 ? 'shadow-blue-400/30 dark:shadow-blue-400/30' : 
-														index === 2 ? 'shadow-purple-400/30 dark:shadow-purple-400/30' : 
-														index === 3 ? 'shadow-green-400/30 dark:shadow-green-400/30' : ''
-													}` :
-                          'hover:bg-white/20 dark:hover:bg-blue-700/60 hover:-translate-y-1 hover:shadow-lg hover:scale-105 ' + stat.cardHover
-                        }`}
-											>
-												<div
-													className={`inline-flex items-center justify-center w-6 h-6 sm:w-7 sm:h-7 
-                        rounded-md bg-white/10 dark:bg-blue-800/50 mb-1 transform transition-all duration-300
-                        ${isActiveHover ? 
-                          `scale-110 rotate-3 bg-white/30 dark:bg-blue-700/70 ${
-														index === 0 ? 'shadow-[0_0_15px_rgba(245,158,11,0.6)]' : 
-														index === 1 ? 'shadow-[0_0_15px_rgba(59,130,246,0.6)]' : 
-														index === 2 ? 'shadow-[0_0_15px_rgba(168,85,247,0.6)]' : 
-														index === 3 ? 'shadow-[0_0_15px_rgba(34,197,94,0.6)]' : ''
-													}` :
-                          'group-hover:scale-110 group-hover:rotate-3 group-hover:bg-white/30 dark:group-hover:bg-blue-700/70 ' + stat.glowColor
-                        }`}
-												>
-													{React.cloneElement(stat.icon, {
-														className: `h-4 w-4 sm:h-5 sm:w-5 transition-colors duration-300 ${
-															isActiveHover ? 
-																(index === 0 ? 'text-yellow-300' : 
-																 index === 1 ? 'text-blue-300' : 
-																 index === 2 ? 'text-purple-300' : 
-																 index === 3 ? 'text-green-300' : 'text-white') : 
-																`text-white ${stat.hoverColor}`
-														}`,
-													})}
-												</div>
-												<h3
-													className={`text-xs sm:text-sm font-medium text-white dark:text-blue-100 mb-0.5 
-                        transition-colors duration-300 leading-tight whitespace-pre-line ${
-														isActiveHover ? 
-															'text-white font-semibold' : 
-															'group-hover:text-white group-hover:font-semibold'
-													}`}
-												>
-													{stat.title}
-												</h3>
-												<p
-													className={`text-xs text-white/80 dark:text-blue-200/80 
-                        transition-colors duration-300 leading-tight ${
-														isActiveHover ? 
-															'text-white/90 font-medium' : 
-															'group-hover:text-white/90 group-hover:font-medium'
-													}`}
-												>
-													{stat.label}
-												</p>
-											</div>
-										)
-									})}
-								</div>
-							</div>
-						</div>
-
 						<p
 							className="text-lg sm:text-xl text-white/90 dark:text-blue-200 mb-6 sm:mb-8 animate-fade-in-delay 
               [text-shadow:_0_1px_5px_rgba(0,0,0,0.1)] dark:[text-shadow:_0_0_15px_rgba(147,197,253,0.3)]
@@ -224,6 +97,53 @@ export default function Hero() {
 						>
 							{t('hero.subtitle')}
 						</p>
+
+						{/* Responsive feature module - Only visible on smaller screens */}
+						<div className="lg:hidden mb-8 animate-fade-in-delay">
+							<div className="bg-white/10 dark:bg-blue-900/20 backdrop-blur-lg rounded-xl p-4 shadow-lg dark:shadow-blue-500/20">
+								<div className="grid grid-cols-2 gap-3">
+									{[
+										{
+											icon: <Zap className="h-5 w-5" />,
+											title: t('hero.automation'),
+											label: t('hero.efficiency'),
+										},
+										{
+											icon: <Paintbrush className="h-5 w-5" />,
+											title: t('hero.security'),
+											label: t('hero.activeTime'),
+										},
+										{
+											icon: <Bot className="h-5 w-5" />,
+											title: t('hero.savings'),
+											label: t('hero.costs'),
+										},
+										{
+											icon: <LayoutDashboard className="h-5 w-5" />,
+											title: t('hero.scalability'),
+											label: t('hero.limits'),
+										},
+									].map((stat, index) => (
+										<div
+											key={index}
+											className="text-center p-3 rounded-lg bg-white/5 dark:bg-blue-900/30 transition-all duration-300"
+										>
+											<div className="inline-flex items-center justify-center w-8 h-8 rounded-lg bg-white/10 dark:bg-blue-800/50 mb-2">
+												{React.cloneElement(stat.icon, {
+													className: 'h-5 w-5 text-white',
+												})}
+											</div>
+											<h3 className="text-sm font-medium text-white dark:text-blue-100 mb-1">
+												{stat.title}
+											</h3>
+											<p className="text-xs text-white/80 dark:text-blue-200/80">
+												{stat.label}
+											</p>
+										</div>
+									))}
+								</div>
+							</div>
+						</div>
 
 						<div className="flex flex-col sm:flex-row gap-4 justify-center lg:justify-start animate-fade-in-delay-2">
 							<a
