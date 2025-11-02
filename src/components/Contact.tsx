@@ -606,6 +606,22 @@ const Contact: React.FC = () => {
 										name="phone"
 										value={formData.phone}
 										onChange={handleChange}
+										onKeyPress={(e) => {
+											// Solo permitir números
+											if (!/[0-9]/.test(e.key)) {
+												e.preventDefault()
+											}
+										}}
+										onPaste={(e) => {
+											// Limpiar cualquier caracter no numérico al pegar
+											const pastedText = e.clipboardData.getData('text')
+											const cleanedText = pastedText.replace(/\D/g, '')
+											if (cleanedText !== pastedText) {
+												e.preventDefault()
+												const newValue = formData.phone + cleanedText
+												setFormData(prev => ({ ...prev, phone: newValue }))
+											}
+										}}
 										placeholder={countryCodes.find(c => c.code === formData.countryCode)?.placeholder || t('contact.form.phone.placeholder')}
 										maxLength={countryCodes.find(c => c.code === formData.countryCode)?.maxLength || 15}
 										className={`flex-1 block w-full rounded-md border px-3 py-2 text-gray-900 dark:text-white 
