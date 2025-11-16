@@ -30,7 +30,7 @@ const Demonstration = () => {
 				</button>
 
 				{/* Title Section */}
-				<div className="text-center max-w-3xl mx-auto mb-16">
+				<div className="text-center max-w-3xl mx-auto mb-12">
 					<BlurText
 						text={t('demonstration.title')}
 						delay={150}
@@ -47,22 +47,52 @@ const Demonstration = () => {
 					/>
 				</div>
 
-				{/* Video Section con efectos mejorados */}
-				<div ref={videoRef} className="relative flex justify-center mb-12">
-					{/* Resplandor de fondo sutil en azul */}
-					<div className="absolute inset-0 bg-blue-500/10 rounded-3xl blur-xl"></div>
-					
-					{/* Contenedor del video para formato vertical */}
-					<div className="relative w-full max-w-md">
-						<div className="relative group">
-							{/* Borde decorativo animado en azul */}
-							<div className="absolute -inset-1 bg-blue-600 dark:bg-blue-500 rounded-3xl blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
-							
+				{/* Grid layout: Texto a la izquierda, Video a la derecha */}
+				<div className="grid lg:grid-cols-2 gap-8 items-stretch max-w-6xl mx-auto">
+					{/* Video Description - Izquierda */}
+					<div className="bg-white/90 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 p-6 transition-all duration-300 hover:shadow-[0_20px_50px_rgba(59,130,246,0.3)] flex flex-col">
+						<h2 className="text-xl md:text-2xl font-bold text-gray-900 dark:text-white mb-3 transition-colors duration-300">
+							{t('demonstration.video.title')}
+						</h2>
+						<p className="text-gray-600 dark:text-gray-300 mb-4 transition-colors duration-300 text-base leading-relaxed">
+							{t('demonstration.video.description')}
+						</p>
+
+						{/* Key Points con diseño mejorado */}
+						<div className="grid grid-cols-1 gap-3 flex-grow">
+							{[
+								t('demonstration.video.points.0'),
+								t('demonstration.video.points.1'),
+								t('demonstration.video.points.2'),
+								t('demonstration.video.points.3'),
+							].map((point, index) => (
+								<div 
+									key={index} 
+									className="flex items-start space-x-2 text-gray-700 dark:text-gray-300 p-2.5 rounded-lg bg-blue-50/50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800/30 transition-all duration-300 hover:bg-blue-100/50 dark:hover:bg-blue-900/30 hover:scale-[1.02]"
+								>
+									<div className="h-2 w-2 rounded-full bg-blue-600 dark:bg-blue-500 mt-1.5 flex-shrink-0" />
+									<span className="leading-relaxed text-sm">{point}</span>
+								</div>
+							))}
+						</div>
+					</div>
+
+					{/* Video Section - Derecha */}
+					<div ref={videoRef} className="relative flex items-center justify-center">
+						{/* Resplandor de fondo sutil en azul */}
+						<div className="absolute inset-0 bg-blue-500/10 rounded-3xl blur-xl"></div>
+						
+						{/* Contenedor del video para formato vertical */}
+						<div className="relative w-full max-w-md h-full flex items-center">
+							<div className="relative group">
+								{/* Borde decorativo animado en azul */}
+								<div className="absolute -inset-1 bg-blue-600 dark:bg-blue-500 rounded-3xl blur opacity-50 group-hover:opacity-75 transition duration-1000 group-hover:duration-200"></div>
+								
 							{/* Video con aspect ratio vertical */}
-							<div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gray-900 ring-1 ring-gray-900/5">
+							<div className="relative rounded-2xl overflow-hidden shadow-2xl bg-gray-900 ring-1 ring-gray-900/5 w-full">
 								<video
 									src="https://lafysstpyiejevhrlmzc.supabase.co/storage/v1/object/public/videos/SolHoub/Conspat%20x%20Solware%20(1)%20(1).mp4"
-									className="w-full h-auto max-h-[70vh] object-contain"
+									className="w-full h-auto max-h-[500px] object-contain"
 									controls
 									preload="metadata"
 									playsInline
@@ -71,35 +101,8 @@ const Demonstration = () => {
 									Tu navegador no soporta el elemento de video.
 								</video>
 							</div>
-						</div>
-					</div>
-				</div>
-
-				{/* Video Description con efectos mejorados */}
-				<div className="bg-white/90 dark:bg-gray-800/80 backdrop-blur-md rounded-2xl shadow-2xl border border-gray-200 dark:border-gray-700 p-8 transition-all duration-300 hover:shadow-[0_20px_50px_rgba(59,130,246,0.3)]">
-					<h2 className="text-2xl md:text-3xl font-bold text-gray-900 dark:text-white mb-4 transition-colors duration-300">
-						{t('demonstration.video.title')}
-					</h2>
-					<p className="text-gray-600 dark:text-gray-300 mb-6 transition-colors duration-300 text-lg leading-relaxed">
-						{t('demonstration.video.description')}
-					</p>
-
-					{/* Key Points con diseño mejorado */}
-					<div className="grid grid-cols-1 sm:grid-cols-2 gap-4">
-						{[
-							t('demonstration.video.points.0'),
-							t('demonstration.video.points.1'),
-							t('demonstration.video.points.2'),
-							t('demonstration.video.points.3'),
-						].map((point, index) => (
-							<div 
-								key={index} 
-								className="flex items-start space-x-3 text-gray-700 dark:text-gray-300 p-3 rounded-lg bg-blue-50/50 dark:bg-blue-900/20 border border-blue-100 dark:border-blue-800/30 transition-all duration-300 hover:bg-blue-100/50 dark:hover:bg-blue-900/30 hover:scale-[1.02]"
-							>
-								<div className="h-2 w-2 rounded-full bg-blue-600 dark:bg-blue-500 mt-2 flex-shrink-0" />
-								<span className="leading-relaxed">{point}</span>
 							</div>
-						))}
+						</div>
 					</div>
 				</div>
 			</div>
